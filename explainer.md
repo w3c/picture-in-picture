@@ -64,6 +64,34 @@ partial interface DocumentOrShadowRoot {
 };
 ```
 
+## Example
+
+```js
+if (document.pictureInPictureEnabled) {
+  
+  requestPictureInPictureButton.addEventListener('click', function() {
+    videoElement.requestPictureInPicture()
+    .then(_ => {
+      exitPictureInPictureButton.classList.add('visible');
+      requestPictureInPictureButton.classList.remove('visible');
+    });
+  });  
+  
+  exitPictureInPictureButton.addEventListener('click', function() {
+    document.exitPictureInPicture();
+  });
+
+  document.addEventListener('enterpictureinpicture', function() {
+    // Some element entered Picture-In-Picture mode.
+    console.log('Picture-In-Picture element: ' + document.pictureInPictureElement); 
+  });
+
+  document.addEventListener('leavepictureinpicture', function() {
+    // Some element left Picture-In-Picture mode.
+  });
+
+}
+```
 
 ## Interaction with HTMLMediaElement
 
