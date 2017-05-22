@@ -42,7 +42,7 @@ dictionary PictureInPictureOptions {
   optional unsigned int width;
   optional unsigned int height;
   optional unsigned int top;
-  optional unsigned int left;
+  optional unsigned int start;
 };
 
 partial interface HTMLVideoElement {
