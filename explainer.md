@@ -74,16 +74,16 @@ if (document.pictureInPictureEnabled) {
   requestPictureInPictureButton.addEventListener('click', function() {
     videoElement.requestPictureInPicture()
     .then(_ => {
-      exitPictureInPictureButton.classList.add('visible');
-      requestPictureInPictureButton.classList.remove('visible');
+      requestPictureInPictureButton.hidden = true;
+      exitPictureInPictureButton.hidden = false;
     });
   });  
   
   exitPictureInPictureButton.addEventListener('click', function() {
     document.exitPictureInPicture()
     .then(_ => {
-      exitPictureInPictureButton.classList.remove('visible');
-      requestPictureInPictureButton.classList.add('visible');
+      exitPictureInPictureButton.hidden = true;
+      requestPictureInPictureButton.hidden = false;
     });
   });
 
