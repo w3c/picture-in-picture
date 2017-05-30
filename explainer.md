@@ -123,13 +123,11 @@ Safari iOS 9 has support for Picture in Picture since iOS 9 on iPads and support
 
 The API allows the developer to:
 
-
-
 *   Check if Picture in Picture is supported (`webkitSupportsPresentationMode()`)
 *   Check if the video is currently played in Picture in Picture (`webkitPresentationMode()`)
 *   Request the video to be played in Picture in Picture (`webkitSetPresentationMode()`)
 *   Be notified when Picture in Picture state changes with the `webkitpresentationmodechanged` event.
 
-Safari introduced a concept of *presentation mode* that supports the following states: `inline`, `fullscreen`, and `Picture in Picture`.
+Safari introduced a concept of *presentation mode* that supports the following states: `inline`, `fullscreen`, and `picture-in-picture`.
 
 Safari does not seem to provide a mechanism for websites to be aware of a failure when entering Picture in Picture. It might mean that Safari will require the website to check if Picture in Picture is supported before entering.
