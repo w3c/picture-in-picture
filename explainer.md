@@ -80,7 +80,11 @@ if (document.pictureInPictureEnabled) {
   });  
   
   exitPictureInPictureButton.addEventListener('click', function() {
-    document.exitPictureInPicture();
+    document.exitPictureInPicture()
+    .then(_ => {
+      exitPictureInPictureButton.classList.remove('visible');
+      requestPictureInPictureButton.classList.add('visible');
+    });
   });
 
   document.addEventListener('enterpictureinpicture', function() {
