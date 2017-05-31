@@ -74,13 +74,17 @@ if (document.pictureInPictureEnabled) {
   requestPictureInPictureButton.addEventListener('click', function() {
     videoElement.requestPictureInPicture()
     .then(_ => {
-      exitPictureInPictureButton.classList.add('visible');
-      requestPictureInPictureButton.classList.remove('visible');
+      requestPictureInPictureButton.hidden = true;
+      exitPictureInPictureButton.hidden = false;
     });
   });  
   
   exitPictureInPictureButton.addEventListener('click', function() {
-    document.exitPictureInPicture();
+    document.exitPictureInPicture()
+    .then(_ => {
+      exitPictureInPictureButton.hidden = true;
+      requestPictureInPictureButton.hidden = false;
+    });
   });
 
   document.addEventListener('enterpictureinpicture', function() {
