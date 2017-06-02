@@ -242,24 +242,10 @@ spec: Feature Policy; urlPrefix: https://wicg.github.io/feature-policy/#
 
 <pre class="link-defaults">
 spec:dom; type:dfn; for:NamedNodeMap; text:element
-spec:html; type:dfn; for:htmlvideoelement; text:HTMLVideoElement
 spec: html
   type: dfn
     text: triggered by user activation
     text: in parallel
-    text: incumbent settings object
-    text: environment settings object
-    text: global object; for: environment settings object
-    text: initialising a new document object
-    text: inserted into a document
-    text: responsible document
-    text: run a worker
-    text: HTMLVideoElement
     text: fire a simple event
-  type: element
-    text: link
-    text: script
-  type: idl
-    text: HTMLVideoElement
 </pre>
 
