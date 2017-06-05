@@ -1,0 +1,12 @@
+language: generic
+
+script: bash ./deploy.sh
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+  - ENCRYPTION_LABEL: a6bea6cd9355
+  - COMMIT_AUTHOR_EMAIL: travis-ci@w3.org
