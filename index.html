@@ -1472,20 +1472,20 @@ sites, or applications on their device.</p>
       <li><a href="#example-monitor-video-pip-changes"><span class="secno">2.2</span> <span class="content">Monitor video picture in picture changes</span></a>
      </ol>
     <li>
-     <a href="#api"><span class="secno">3</span> <span class="content">API</span></a>
+     <a href="#concepts"><span class="secno">3</span> <span class="content">Concepts</span></a>
      <ol class="toc">
-      <li><a href="#htmlvideoelement-extensions"><span class="secno">3.1</span> <span class="content">Extensions to <code>HTMLVideoElement</code></span></a>
-      <li><a href="#document-extensions"><span class="secno">3.2</span> <span class="content">Extensions to <code>Document</code></span></a>
-      <li><a href="#shadow-root-extension"><span class="secno">3.3</span> <span class="content">Extension to <code>DocumentOrShadowRoot</code></span></a>
-      <li><a href="#event-types"><span class="secno">3.4</span> <span class="content">Event types</span></a>
+      <li><a href="#request-pip"><span class="secno">3.1</span> <span class="content">Request picture in picture</span></a>
+      <li><a href="#exit-pip"><span class="secno">3.2</span> <span class="content">Exit picture in picture</span></a>
+      <li><a href="#remote-playback"><span class="secno">3.3</span> <span class="content">Interaction with Remote Playback</span></a>
+      <li><a href="#one-pip-window"><span class="secno">3.4</span> <span class="content">One Picture in Picture window</span></a>
      </ol>
     <li>
-     <a href="#concepts"><span class="secno">4</span> <span class="content">Concepts</span></a>
+     <a href="#api"><span class="secno">4</span> <span class="content">API</span></a>
      <ol class="toc">
-      <li><a href="#request-pip"><span class="secno">4.1</span> <span class="content">Request picture in picture</span></a>
-      <li><a href="#exit-pip"><span class="secno">4.2</span> <span class="content">Exit picture in picture</span></a>
-      <li><a href="#remote-playback"><span class="secno">4.3</span> <span class="content">Interaction with Remote Playback</span></a>
-      <li><a href="#one-pip-window"><span class="secno">4.4</span> <span class="content">One Picture in Picture window</span></a>
+      <li><a href="#htmlvideoelement-extensions"><span class="secno">4.1</span> <span class="content">Extensions to <code>HTMLVideoElement</code></span></a>
+      <li><a href="#document-extensions"><span class="secno">4.2</span> <span class="content">Extensions to <code>Document</code></span></a>
+      <li><a href="#shadow-root-extension"><span class="secno">4.3</span> <span class="content">Extension to <code>DocumentOrShadowRoot</code></span></a>
+      <li><a href="#event-types"><span class="secno">4.4</span> <span class="content">Event types</span></a>
      </ol>
     <li>
      <a href="#security-considerations"><span class="secno">5</span> <span class="content">Security considerations</span></a>
@@ -1576,8 +1576,70 @@ extensible.</p>
 </span>  <span class="p">}</span><span class="p">)</span><span class="p">;</span>
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">></span>
 </pre>
-   <h2 class="heading settled" data-level="3" id="api"><span class="secno">3. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
-   <h3 class="heading settled" data-level="3.1" id="htmlvideoelement-extensions"><span class="secno">3.1. </span><span class="content">Extensions to <code>HTMLVideoElement</code></span><a class="self-link" href="#htmlvideoelement-extensions"></a></h3>
+   <h2 class="heading settled" data-level="3" id="concepts"><span class="secno">3. </span><span class="content">Concepts</span><a class="self-link" href="#concepts"></a></h2>
+   <h3 class="heading settled" data-level="3.1" id="request-pip"><span class="secno">3.1. </span><span class="content">Request picture in picture</span><a class="self-link" href="#request-pip"></a></h3>
+   <p>When the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="request-picture-in-picture-algorithm">request picture in picture algorithm</dfn> with <var>video</var> and <var>options</var> is invoked, the user agent MUST run the following steps:</p>
+   <ol>
+    <li data-md="">
+     <p>If the algorithm is not <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#triggered-by-user-activation">triggered by user activation</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#securityerror">SecurityError</a></code> and abort these steps.</p>
+    <li data-md="">
+     <p>Let <var>pipWindow</var> be the Picture In Picture window that consistently stays
+above most other windows.</p>
+    <li data-md="">
+     <p>Let <var>pipVideo</var> be the video contained in the <var>pipWindow</var>.</p>
+    <li data-md="">
+     <p>If a <var>pipWindow</var> is not already created, create one.</p>
+    <li data-md="">
+     <p>If one can’t be created, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#unknownerror">UnknownError</a></code> and abort these steps.</p>
+    <li data-md="">
+     <p>Apply <var>options</var> <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-width" id="ref-for-dom-pictureinpictureoptions-width-1">width</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-height" id="ref-for-dom-pictureinpictureoptions-height-1">height</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-top" id="ref-for-dom-pictureinpictureoptions-top-1">top</a></code>, and <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-start" id="ref-for-dom-pictureinpictureoptions-start-1">start</a></code> to the <var>pipWindow</var> dimensions and position. If some <var>options</var> can’t be applied, it SHOULD apply latest ones that were successfully set if
+any.</p>
+    <li data-md="">
+     <p>Render <var>video</var> frames in the <var>pipVideo</var>.</p>
+   </ol>
+   <p>It is RECOMMENDED that the <var>video</var> frames are not rendered in the page and in
+the <var>pipVideo</var> at the same time but if they are, they MUST be kept in sync.</p>
+   <p>When a video is played in Picture in Picture, the states SHOULD transition as
+if it was played inline. That means that the events SHOULD fire at the same
+time, calling methods SHOULD have the same behaviour, etc. However, the user
+agent MAY transition out of Picture in Picture when the video element enters a
+state that is considered not compatible with Picture in Picture.</p>
+   <h3 class="heading settled" data-level="3.2" id="exit-pip"><span class="secno">3.2. </span><span class="content">Exit picture in picture</span><a class="self-link" href="#exit-pip"></a></h3>
+   <p>When the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="exit-picture-in-picture-algorithm">exit picture in picture algorithm</dfn> is invoked,
+the user agent MUST run the following steps:</p>
+   <ol>
+    <li data-md="">
+     <p>Let <var>pipWindow</var> be the current Picture In Picture window.</p>
+    <li data-md="">
+     <p>Let <var>pipVideo</var> be the video contained in the <var>pipWindow</var>.</p>
+    <li data-md="">
+     <p>Let <var>video</var> be the source video of <var>pipVideo</var> frames.</p>
+    <li data-md="">
+     <p>Close <var>pipWindow</var>.</p>
+    <li data-md="">
+     <p>If <var>pipWindow</var> can’t be closed, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#unknownerror">UnknownError</a></code> and abort these
+steps.</p>
+    <li data-md="">
+     <p>Render <var>pipVideo</var> frames in the <var>video</var>.</p>
+   </ol>
+   <h3 class="heading settled" data-level="3.3" id="remote-playback"><span class="secno">3.3. </span><span class="content">Interaction with Remote Playback</span><a class="self-link" href="#remote-playback"></a></h3>
+   <p>The <a data-link-type="biblio" href="#biblio-remote-playback">[Remote-Playback]</a> specification defines a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-device">local playback device</a> and a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-state">local playback state</a>. For the purpose of Picture in Picture, the
+playback is local and regardless of whether it is played in page or in Picture
+in Picture.</p>
+   <h3 class="heading settled" data-level="3.4" id="one-pip-window"><span class="secno">3.4. </span><span class="content">One Picture in Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
+   <p>Operating systems with a Picture In Picture API usually restricts Picture In
+Picture to only one window.  Whether only one window is allowed in Picture In
+Picture will be left to the implementation and the platform. However, because
+of the one Picture In Picture window limitation, the specification assumes that
+a given <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document">Document</a></code> can only have one Picture In Picture window.</p>
+   <p>What happens when there is a Picture In Picture request while a window is
+already in Picture In Picture will be left as an implementation details: the
+current Picture In Picture window could be closed, the Picture In Picture
+request could be rejected or even two Picture In Picture windows can be
+created. Regardless, the User Agent will have to fire the appropriate events
+in order to notify the website of the Picture In Picture status changes.</p>
+   <h2 class="heading settled" data-level="4" id="api"><span class="secno">4. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
+   <h3 class="heading settled" data-level="4.1" id="htmlvideoelement-extensions"><span class="secno">4.1. </span><span class="content">Extensions to <code>HTMLVideoElement</code></span><a class="self-link" href="#htmlvideoelement-extensions"></a></h3>
 <pre class="idl highlight def"><span class="kt">dictionary</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-pictureinpictureoptions"><code>PictureInPictureOptions</code></dfn> {
     <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt">unsigned</span> <span class="kt">long</span></a> <dfn class="nv dfn-paneled idl-code" data-dfn-for="PictureInPictureOptions" data-dfn-type="dict-member" data-export="" data-type="unsigned long " id="dom-pictureinpictureoptions-width"><code>width</code></dfn>;
     <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt">unsigned</span> <span class="kt">long</span></a> <dfn class="nv dfn-paneled idl-code" data-dfn-for="PictureInPictureOptions" data-dfn-type="dict-member" data-export="" data-type="unsigned long " id="dom-pictureinpictureoptions-height"><code>height</code></dfn>;
@@ -1616,12 +1678,7 @@ bubble, MUST not be cancelable, and has no default action.</p>
     <li data-md="">
      <p>Return <var>promise</var>.</p>
    </ol>
-   <p>When a video is played in Picture in Picture, the states SHOULD transition as
-if it was played inline. That means that the events SHOULD fire at the same
-time, calling methods SHOULD have the same behaviour, etc. However, the user
-agent MAY transition out of Picture in Picture when the video element enters a
-state that is considered not compatible with Picture in Picture.</p>
-   <h3 class="heading settled" data-level="3.2" id="document-extensions"><span class="secno">3.2. </span><span class="content">Extensions to <code>Document</code></span><a class="self-link" href="#document-extensions"></a></h3>
+   <h3 class="heading settled" data-level="4.2" id="document-extensions"><span class="secno">4.2. </span><span class="content">Extensions to <code>Document</code></span><a class="self-link" href="#document-extensions"></a></h3>
 <pre class="idl highlight def"><span class="kt">partial</span> <span class="kt">interface</span> <a class="nv idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#document">Document</a> {
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt">boolean</span></a> <dfn class="nv dfn-paneled idl-code" data-dfn-for="Document" data-dfn-type="attribute" data-export="" data-readonly="" data-type="boolean" id="dom-document-pictureinpictureenabled"><code>pictureInPictureEnabled</code></dfn>;
 
@@ -1651,7 +1708,7 @@ bubble, MUST not be cancelable, and has no default action.</p>
     <li data-md="">
      <p>Return <var>promise</var>.</p>
    </ol>
-   <h3 class="heading settled" data-level="3.3" id="shadow-root-extension"><span class="secno">3.3. </span><span class="content">Extension to <code>DocumentOrShadowRoot</code></span><a class="self-link" href="#shadow-root-extension"></a></h3>
+   <h3 class="heading settled" data-level="4.3" id="shadow-root-extension"><span class="secno">4.3. </span><span class="content">Extension to <code>DocumentOrShadowRoot</code></span><a class="self-link" href="#shadow-root-extension"></a></h3>
 <pre class="idl highlight def"><span class="kt">partial</span> <span class="kt">interface</span> <a class="nv idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#documentorshadowroot">DocumentOrShadowRoot</a> {
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#element">Element</a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="DocumentOrShadowRoot" data-dfn-type="attribute" data-export="" data-readonly="" data-type="Element?" id="dom-documentorshadowroot-pictureinpictureelement"><code>pictureInPictureElement</code></dfn>;
 };
@@ -1663,7 +1720,7 @@ bubble, MUST not be cancelable, and has no default action.</p>
     <li data-md="">
      <p>Return the picture in picture element</p>
    </ol>
-   <h3 class="heading settled" data-level="3.4" id="event-types"><span class="secno">3.4. </span><span class="content">Event types</span><a class="self-link" href="#event-types"></a></h3>
+   <h3 class="heading settled" data-level="4.4" id="event-types"><span class="secno">4.4. </span><span class="content">Event types</span><a class="self-link" href="#event-types"></a></h3>
    <dl>
     <dt data-md=""><dfn class="dfn-paneled idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="event" data-export="" id="eventdef-htmlvideoelement-enterpictureinpicture"><code><code>enterpictureinpicture</code></code></dfn>
     <dd data-md="">
@@ -1672,63 +1729,6 @@ bubble, MUST not be cancelable, and has no default action.</p>
     <dd data-md="">
      <p>Fired on a <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlvideoelement">HTMLVideoElement</a></code> when it leaves Picture In Picture.</p>
    </dl>
-   <h2 class="heading settled" data-level="4" id="concepts"><span class="secno">4. </span><span class="content">Concepts</span><a class="self-link" href="#concepts"></a></h2>
-   <h3 class="heading settled" data-level="4.1" id="request-pip"><span class="secno">4.1. </span><span class="content">Request picture in picture</span><a class="self-link" href="#request-pip"></a></h3>
-   <p>When the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="request-picture-in-picture-algorithm">request picture in picture algorithm</dfn> with <var>video</var> and <var>options</var> is invoked, the user agent MUST run the following steps:</p>
-   <ol>
-    <li data-md="">
-     <p>If the algorithm is not <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#triggered-by-user-activation">triggered by user activation</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#securityerror">SecurityError</a></code> and abort these steps.</p>
-    <li data-md="">
-     <p>Let <var>pipWindow</var> be the Picture In Picture window that consistently stays
-above most other windows.</p>
-    <li data-md="">
-     <p>Let <var>pipVideo</var> be the video contained in the <var>pipWindow</var>.</p>
-    <li data-md="">
-     <p>If a <var>pipWindow</var> is not already created, create one.</p>
-    <li data-md="">
-     <p>If one can’t be created, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#unknownerror">UnknownError</a></code> and abort these steps.</p>
-    <li data-md="">
-     <p>Apply <var>options</var> <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-width" id="ref-for-dom-pictureinpictureoptions-width-1">width</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-height" id="ref-for-dom-pictureinpictureoptions-height-1">height</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-top" id="ref-for-dom-pictureinpictureoptions-top-1">top</a></code>, and <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-start" id="ref-for-dom-pictureinpictureoptions-start-1">start</a></code> to the <var>pipWindow</var> dimensions and position. If some <var>options</var> can’t be applied, it SHOULD apply latest ones that were successfully set if
-any.</p>
-    <li data-md="">
-     <p>Render <var>video</var> frames in the <var>pipVideo</var>.</p>
-   </ol>
-   <p>It is RECOMMENDED that the <var>video</var> frames are not rendered in the page and in
-the <var>pipVideo</var> at the same time but if they are, they MUST be kept in sync.</p>
-   <h3 class="heading settled" data-level="4.2" id="exit-pip"><span class="secno">4.2. </span><span class="content">Exit picture in picture</span><a class="self-link" href="#exit-pip"></a></h3>
-   <p>When the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="exit-picture-in-picture-algorithm">exit picture in picture algorithm</dfn> is invoked,
-the user agent MUST run the following steps:</p>
-   <ol>
-    <li data-md="">
-     <p>Let <var>pipWindow</var> be the current Picture In Picture window.</p>
-    <li data-md="">
-     <p>Let <var>pipVideo</var> be the video contained in the <var>pipWindow</var>.</p>
-    <li data-md="">
-     <p>Let <var>video</var> be the source video of <var>pipVideo</var> frames.</p>
-    <li data-md="">
-     <p>Close <var>pipWindow</var>.</p>
-    <li data-md="">
-     <p>If <var>pipWindow</var> can’t be closed, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#unknownerror">UnknownError</a></code> and abort these
-steps.</p>
-    <li data-md="">
-     <p>Render <var>pipVideo</var> frames in the <var>video</var>.</p>
-   </ol>
-   <h3 class="heading settled" data-level="4.3" id="remote-playback"><span class="secno">4.3. </span><span class="content">Interaction with Remote Playback</span><a class="self-link" href="#remote-playback"></a></h3>
-   <p>The <a data-link-type="biblio" href="#biblio-remote-playback">[Remote-Playback]</a> specification defines a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-device">local playback device</a> and a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-state">local playback state</a>. For the purpose of Picture in Picture, the
-playback is local and regardless of whether it is played in page or in Picture
-in Picture.</p>
-   <h3 class="heading settled" data-level="4.4" id="one-pip-window"><span class="secno">4.4. </span><span class="content">One Picture in Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
-   <p>Operating systems with a Picture In Picture API usually restricts Picture In
-Picture to only one window.  Whether only one window is allowed in Picture In
-Picture will be left to the implementation and the platform. However, because
-of the one Picture In Picture window limitation, the specification assumes that
-a given <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document">Document</a></code> can only have one Picture In Picture window.</p>
-   <p>What happens when there is a Picture In Picture request while a window is
-already in Picture In Picture will be left as an implementation details: the
-current Picture In Picture window could be closed, the Picture In Picture
-request could be rejected or even two Picture In Picture windows can be
-created. Regardless, the User Agent will have to fire the appropriate events
-in order to notify the website of the Picture In Picture status changes.</p>
    <h2 class="heading settled" data-level="5" id="security-considerations"><span class="secno">5. </span><span class="content">Security considerations</span><a class="self-link" href="#security-considerations"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="feature-policy"><span class="secno">5.1. </span><span class="content">Feature Policy</span><a class="self-link" href="#feature-policy"></a></h3>
    <p>This specification defines a <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#feature">feature</a> that controls whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled-4">pictureInPictureEnabled</a></code> is <code>true</code> or <code>false</code>.</p>
@@ -1884,23 +1884,23 @@ in order to notify the website of the Picture In Picture status changes.</p>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
-   <li><a href="#eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a><span>, in §3.4</span>
-   <li><a href="#dom-document-exitpictureinpicture">exitPictureInPicture()</a><span>, in §3.2</span>
-   <li><a href="#exit-picture-in-picture-algorithm">exit picture in picture algorithm</a><span>, in §4.2</span>
-   <li><a href="#dom-pictureinpictureoptions-height">height</a><span>, in §3.1</span>
-   <li><a href="#eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a><span>, in §3.4</span>
-   <li><a href="#dom-htmlvideoelement-onenterpictureinpicture">onenterpictureinpicture</a><span>, in §3.1</span>
-   <li><a href="#dom-htmlvideoelement-onleavepictureinpicture">onleavepictureinpicture</a><span>, in §3.1</span>
-   <li><a href="#dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a><span>, in §3.3</span>
-   <li><a href="#dom-document-pictureinpictureenabled">pictureInPictureEnabled</a><span>, in §3.2</span>
-   <li><a href="#picture-in-picture-is-supported">Picture In Picture is supported</a><span>, in §3.2</span>
-   <li><a href="#dictdef-pictureinpictureoptions">PictureInPictureOptions</a><span>, in §3.1</span>
-   <li><a href="#dom-htmlvideoelement-requestpictureinpicture">requestPictureInPicture()</a><span>, in §3.1</span>
-   <li><a href="#request-picture-in-picture-algorithm">request picture in picture algorithm</a><span>, in §4.1</span>
-   <li><a href="#dom-htmlvideoelement-requestpictureinpicture">requestPictureInPicture(options)</a><span>, in §3.1</span>
-   <li><a href="#dom-pictureinpictureoptions-start">start</a><span>, in §3.1</span>
-   <li><a href="#dom-pictureinpictureoptions-top">top</a><span>, in §3.1</span>
-   <li><a href="#dom-pictureinpictureoptions-width">width</a><span>, in §3.1</span>
+   <li><a href="#eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a><span>, in §4.4</span>
+   <li><a href="#dom-document-exitpictureinpicture">exitPictureInPicture()</a><span>, in §4.2</span>
+   <li><a href="#exit-picture-in-picture-algorithm">exit picture in picture algorithm</a><span>, in §3.2</span>
+   <li><a href="#dom-pictureinpictureoptions-height">height</a><span>, in §4.1</span>
+   <li><a href="#eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a><span>, in §4.4</span>
+   <li><a href="#dom-htmlvideoelement-onenterpictureinpicture">onenterpictureinpicture</a><span>, in §4.1</span>
+   <li><a href="#dom-htmlvideoelement-onleavepictureinpicture">onleavepictureinpicture</a><span>, in §4.1</span>
+   <li><a href="#dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a><span>, in §4.3</span>
+   <li><a href="#dom-document-pictureinpictureenabled">pictureInPictureEnabled</a><span>, in §4.2</span>
+   <li><a href="#picture-in-picture-is-supported">Picture In Picture is supported</a><span>, in §4.2</span>
+   <li><a href="#dictdef-pictureinpictureoptions">PictureInPictureOptions</a><span>, in §4.1</span>
+   <li><a href="#dom-htmlvideoelement-requestpictureinpicture">requestPictureInPicture()</a><span>, in §4.1</span>
+   <li><a href="#request-picture-in-picture-algorithm">request picture in picture algorithm</a><span>, in §3.1</span>
+   <li><a href="#dom-htmlvideoelement-requestpictureinpicture">requestPictureInPicture(options)</a><span>, in §4.1</span>
+   <li><a href="#dom-pictureinpictureoptions-start">start</a><span>, in §4.1</span>
+   <li><a href="#dom-pictureinpictureoptions-top">top</a><span>, in §4.1</span>
+   <li><a href="#dom-pictureinpictureoptions-width">width</a><span>, in §4.1</span>
   </ul>
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
@@ -2002,92 +2002,92 @@ in order to notify the website of the Picture In Picture status changes.</p>
 };
 
 </pre>
+  <aside class="dfn-panel" data-for="request-picture-in-picture-algorithm">
+   <b><a href="#request-picture-in-picture-algorithm">#request-picture-in-picture-algorithm</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-request-picture-in-picture-algorithm-1">4.1. Extensions to HTMLVideoElement</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="exit-picture-in-picture-algorithm">
+   <b><a href="#exit-picture-in-picture-algorithm">#exit-picture-in-picture-algorithm</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-exit-picture-in-picture-algorithm-1">4.2. Extensions to Document</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="dictdef-pictureinpictureoptions">
    <b><a href="#dictdef-pictureinpictureoptions">#dictdef-pictureinpictureoptions</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dictdef-pictureinpictureoptions-1">3.1. Extensions to HTMLVideoElement</a>
+    <li><a href="#ref-for-dictdef-pictureinpictureoptions-1">4.1. Extensions to HTMLVideoElement</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-pictureinpictureoptions-width">
    <b><a href="#dom-pictureinpictureoptions-width">#dom-pictureinpictureoptions-width</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-pictureinpictureoptions-width-1">4.1. Request picture in picture</a>
+    <li><a href="#ref-for-dom-pictureinpictureoptions-width-1">3.1. Request picture in picture</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-pictureinpictureoptions-height">
    <b><a href="#dom-pictureinpictureoptions-height">#dom-pictureinpictureoptions-height</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-pictureinpictureoptions-height-1">4.1. Request picture in picture</a>
+    <li><a href="#ref-for-dom-pictureinpictureoptions-height-1">3.1. Request picture in picture</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-pictureinpictureoptions-top">
    <b><a href="#dom-pictureinpictureoptions-top">#dom-pictureinpictureoptions-top</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-pictureinpictureoptions-top-1">4.1. Request picture in picture</a>
+    <li><a href="#ref-for-dom-pictureinpictureoptions-top-1">3.1. Request picture in picture</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-pictureinpictureoptions-start">
    <b><a href="#dom-pictureinpictureoptions-start">#dom-pictureinpictureoptions-start</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-pictureinpictureoptions-start-1">4.1. Request picture in picture</a>
+    <li><a href="#ref-for-dom-pictureinpictureoptions-start-1">3.1. Request picture in picture</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-htmlvideoelement-requestpictureinpicture">
    <b><a href="#dom-htmlvideoelement-requestpictureinpicture">#dom-htmlvideoelement-requestpictureinpicture</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-htmlvideoelement-requestpictureinpicture-1">3.1. Extensions to HTMLVideoElement</a>
+    <li><a href="#ref-for-dom-htmlvideoelement-requestpictureinpicture-1">4.1. Extensions to HTMLVideoElement</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-document-pictureinpictureenabled">
    <b><a href="#dom-document-pictureinpictureenabled">#dom-document-pictureinpictureenabled</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-document-pictureinpictureenabled-1">3.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-dom-document-pictureinpictureenabled-2">3.2. Extensions to Document</a> <a href="#ref-for-dom-document-pictureinpictureenabled-3">(2)</a>
+    <li><a href="#ref-for-dom-document-pictureinpictureenabled-1">4.1. Extensions to HTMLVideoElement</a>
+    <li><a href="#ref-for-dom-document-pictureinpictureenabled-2">4.2. Extensions to Document</a> <a href="#ref-for-dom-document-pictureinpictureenabled-3">(2)</a>
     <li><a href="#ref-for-dom-document-pictureinpictureenabled-4">5.1. Feature Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-document-exitpictureinpicture">
    <b><a href="#dom-document-exitpictureinpicture">#dom-document-exitpictureinpicture</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-document-exitpictureinpicture-1">3.2. Extensions to Document</a>
+    <li><a href="#ref-for-dom-document-exitpictureinpicture-1">4.2. Extensions to Document</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="picture-in-picture-is-supported">
    <b><a href="#picture-in-picture-is-supported">#picture-in-picture-is-supported</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-picture-in-picture-is-supported-1">3.2. Extensions to Document</a>
+    <li><a href="#ref-for-picture-in-picture-is-supported-1">4.2. Extensions to Document</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-documentorshadowroot-pictureinpictureelement">
    <b><a href="#dom-documentorshadowroot-pictureinpictureelement">#dom-documentorshadowroot-pictureinpictureelement</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement-1">3.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement-2">3.2. Extensions to Document</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement-3">3.3. Extension to DocumentOrShadowRoot</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement-1">4.1. Extensions to HTMLVideoElement</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement-2">4.2. Extensions to Document</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement-3">4.3. Extension to DocumentOrShadowRoot</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="eventdef-htmlvideoelement-enterpictureinpicture">
    <b><a href="#eventdef-htmlvideoelement-enterpictureinpicture">#eventdef-htmlvideoelement-enterpictureinpicture</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-eventdef-htmlvideoelement-enterpictureinpicture-1">3.1. Extensions to HTMLVideoElement</a>
+    <li><a href="#ref-for-eventdef-htmlvideoelement-enterpictureinpicture-1">4.1. Extensions to HTMLVideoElement</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="eventdef-htmlvideoelement-leavepictureinpicture">
    <b><a href="#eventdef-htmlvideoelement-leavepictureinpicture">#eventdef-htmlvideoelement-leavepictureinpicture</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-eventdef-htmlvideoelement-leavepictureinpicture-1">3.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="request-picture-in-picture-algorithm">
-   <b><a href="#request-picture-in-picture-algorithm">#request-picture-in-picture-algorithm</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-request-picture-in-picture-algorithm-1">3.1. Extensions to HTMLVideoElement</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="exit-picture-in-picture-algorithm">
-   <b><a href="#exit-picture-in-picture-algorithm">#exit-picture-in-picture-algorithm</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-exit-picture-in-picture-algorithm-1">3.2. Extensions to Document</a>
+    <li><a href="#ref-for-eventdef-htmlvideoelement-leavepictureinpicture-1">4.2. Extensions to Document</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */

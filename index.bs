@@ -112,6 +112,70 @@ extensible.
 </script>
 ```
 
+# Concepts # {#concepts}
+
+## Request picture in picture ## {#request-pip}
+
+When the <dfn>request picture in picture algorithm</dfn> with |video|
+and |options| is invoked, the user agent MUST run the following steps:
+
+1. If the algorithm is not <a>triggered by user activation</a>, throw a
+    {{SecurityError}} and abort these steps.
+2. Let |pipWindow| be the Picture In Picture window that consistently stays
+    above most other windows.
+3. Let |pipVideo| be the video contained in the |pipWindow|.
+4. If a |pipWindow| is not already created, create one.
+5. If one can't be created, throw a {{UnknownError}} and abort these steps.
+6. Apply |options| {{width}}, {{height}}, {{PictureInPictureOptions/top}}, and
+    {{start}} to the |pipWindow| dimensions and position. If some |options|
+    can't be applied, it SHOULD apply latest ones that were successfully set if
+    any.
+7. Render |video| frames in the |pipVideo|.
+
+It is RECOMMENDED that the |video| frames are not rendered in the page and in
+the |pipVideo| at the same time but if they are, they MUST be kept in sync.
+
+When a video is played in Picture in Picture, the states SHOULD transition as
+if it was played inline. That means that the events SHOULD fire at the same
+time, calling methods SHOULD have the same behaviour, etc. However, the user
+agent MAY transition out of Picture in Picture when the video element enters a
+state that is considered not compatible with Picture in Picture.
+
+## Exit picture in picture ## {#exit-pip}
+
+When the <dfn>exit picture in picture algorithm</dfn> is invoked,
+the user agent MUST run the following steps:
+
+1. Let |pipWindow| be the current Picture In Picture window.
+2. Let |pipVideo| be the video contained in the |pipWindow|.
+3. Let |video| be the source video of |pipVideo| frames.
+4. Close |pipWindow|.
+5. If |pipWindow| can't be closed, throw a {{UnknownError}} and abort these
+    steps.
+6. Render |pipVideo| frames in the |video|.
+
+## Interaction with Remote Playback ## {#remote-playback}
+
+The [[Remote-Playback]] specification defines a <a>local playback device</a>
+and a <a>local playback state</a>. For the purpose of Picture in Picture, the
+playback is local and regardless of whether it is played in page or in Picture
+in Picture.
+
+## One Picture in Picture window ## {#one-pip-window}
+
+Operating systems with a Picture In Picture API usually restricts Picture In
+Picture to only one window.  Whether only one window is allowed in Picture In
+Picture will be left to the implementation and the platform. However, because
+of the one Picture In Picture window limitation, the specification assumes that
+a given {{Document}} can only have one Picture In Picture window.
+
+What happens when there is a Picture In Picture request while a window is
+already in Picture In Picture will be left as an implementation details: the
+current Picture In Picture window could be closed, the Picture In Picture
+request could be rejected or even two Picture In Picture windows can be
+created. Regardless, the User Agent will have to fire the appropriate events
+in order to notify the website of the Picture In Picture status changes.
+
 # API # {#api}
 
 ## Extensions to <code>HTMLVideoElement</code> ## {#htmlvideoelement-extensions}
@@ -152,12 +216,6 @@ parallel</a>:
     {{enterpictureinpicture}} at the |video|. The event MUST not
     bubble, MUST not be cancelable, and has no default action.
 8. Return |promise|.
-
-When a video is played in Picture in Picture, the states SHOULD transition as
-if it was played inline. That means that the events SHOULD fire at the same
-time, calling methods SHOULD have the same behaviour, etc. However, the user
-agent MAY transition out of Picture in Picture when the video element enters a
-state that is considered not compatible with Picture in Picture.
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
 
@@ -212,64 +270,6 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
 :: Fired on a {{HTMLVideoElement}} when it enters Picture In Picture.
 : <dfn event for="HTMLVideoElement"><code>leavepictureinpicture</code></dfn>
 :: Fired on a {{HTMLVideoElement}} when it leaves Picture In Picture.
-
-# Concepts # {#concepts}
-
-## Request picture in picture ## {#request-pip}
-
-When the <dfn>request picture in picture algorithm</dfn> with |video|
-and |options| is invoked, the user agent MUST run the following steps:
-
-1. If the algorithm is not <a>triggered by user activation</a>, throw a
-    {{SecurityError}} and abort these steps.
-2. Let |pipWindow| be the Picture In Picture window that consistently stays
-    above most other windows.
-3. Let |pipVideo| be the video contained in the |pipWindow|.
-4. If a |pipWindow| is not already created, create one.
-5. If one can't be created, throw a {{UnknownError}} and abort these steps.
-6. Apply |options| {{width}}, {{height}}, {{PictureInPictureOptions/top}}, and
-    {{start}} to the |pipWindow| dimensions and position. If some |options|
-    can't be applied, it SHOULD apply latest ones that were successfully set if
-    any.
-7. Render |video| frames in the |pipVideo|.
-
-It is RECOMMENDED that the |video| frames are not rendered in the page and in
-the |pipVideo| at the same time but if they are, they MUST be kept in sync.
-
-## Exit picture in picture ## {#exit-pip}
-
-When the <dfn>exit picture in picture algorithm</dfn> is invoked,
-the user agent MUST run the following steps:
-
-1. Let |pipWindow| be the current Picture In Picture window.
-2. Let |pipVideo| be the video contained in the |pipWindow|.
-3. Let |video| be the source video of |pipVideo| frames.
-4. Close |pipWindow|.
-5. If |pipWindow| can't be closed, throw a {{UnknownError}} and abort these
-    steps.
-6. Render |pipVideo| frames in the |video|.
-
-## Interaction with Remote Playback ## {#remote-playback}
-
-The [[Remote-Playback]] specification defines a <a>local playback device</a>
-and a <a>local playback state</a>. For the purpose of Picture in Picture, the
-playback is local and regardless of whether it is played in page or in Picture
-in Picture.
-
-## One Picture in Picture window ## {#one-pip-window}
-
-Operating systems with a Picture In Picture API usually restricts Picture In
-Picture to only one window.  Whether only one window is allowed in Picture In
-Picture will be left to the implementation and the platform. However, because
-of the one Picture In Picture window limitation, the specification assumes that
-a given {{Document}} can only have one Picture In Picture window.
-
-What happens when there is a Picture In Picture request while a window is
-already in Picture In Picture will be left as an implementation details: the
-current Picture In Picture window could be closed, the Picture In Picture
-request could be rejected or even two Picture In Picture windows can be
-created. Regardless, the User Agent will have to fire the appropriate events
-in order to notify the website of the Picture In Picture status changes.
 
 # Security considerations # {#security-considerations}
 
