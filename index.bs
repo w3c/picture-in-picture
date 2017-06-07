@@ -5,6 +5,7 @@ Level: 1
 Status: ED
 ED: https://wicg.github.io/picture-in-picture
 Group: WICG
+Repository: wicg/picture-in-picture
 Editor: François Beaufort, Google, fbeaufort@google.com
 Editor: Mounir Lamouri, Google, mlamouri@google.com
 Abstract: This specification intends to provide APIs to allow websites to
