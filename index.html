@@ -1176,7 +1176,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 5a452c3b31d7ee897346bcc9d1310197c08e491a" name="generator">
+  <meta content="Bikeshed version 39e591568007a470c8705dd14db3d9d86db98356" name="generator">
   <link href="https://wicg.github.io/picture-in-picture" rel="canonical">
 <style>/* style-md-lists */
 
@@ -1424,11 +1424,13 @@ pre.idl.highlight { color: #708090; }
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture In Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-06-07">7 June 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-06-09">9 June 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
      <dd><a class="u-url" href="https://wicg.github.io/picture-in-picture">https://wicg.github.io/picture-in-picture</a>
+     <dt>Issue Tracking:
+     <dd><a href="https://github.com/wicg/picture-in-picture/issues/">GitHub</a>
      <dt class="editor">Editors:
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:fbeaufort@google.com">François Beaufort</a> (<span class="p-org org">Google</span>)
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:mlamouri@google.com">Mounir Lamouri</a> (<span class="p-org org">Google</span>)
@@ -1532,7 +1534,7 @@ element.</p>
 by the user agent.</p>
    </ul>
    <p>The proposed Picture In Picture API is very similar to <a data-link-type="biblio" href="#biblio-fullscreen">[Fullscreen]</a> as they
-have similar properties. The API only applies on <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlvideoelement">HTMLVideoElement</a></code> at the moment but is meant to be
+have similar properties. The API only applies on <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">HTMLVideoElement</a></code> at the moment but is meant to be
 extensible.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <h3 class="heading settled" data-level="2.1" id="example-add-custom-pip-button"><span class="secno">2.1. </span><span class="content">Add a custom picture in picture button</span><a class="self-link" href="#example-add-custom-pip-button"></a></h3>
@@ -1645,7 +1647,7 @@ in order to notify the website of the Picture In Picture status changes.</p>
     <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt">unsigned</span> <span class="kt">long</span></a> <dfn class="nv dfn-paneled idl-code" data-dfn-for="PictureInPictureOptions" data-dfn-type="dict-member" data-export="" data-type="unsigned long " id="dom-pictureinpictureoptions-start"><code>start</code></dfn>;
 };
 </pre>
-<pre class="idl highlight def"><span class="kt">partial</span> <span class="kt">interface</span> <a class="nv idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlvideoelement">HTMLVideoElement</a> {
+<pre class="idl highlight def"><span class="kt">partial</span> <span class="kt">interface</span> <a class="nv idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">HTMLVideoElement</a> {
     <span class="kt">Promise</span>&lt;<span class="kt">void</span>> <dfn class="nv dfn-paneled idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="method" data-export="" data-lt="requestPictureInPicture(options)|requestPictureInPicture()" id="dom-htmlvideoelement-requestpictureinpicture"><code>requestPictureInPicture</code></dfn>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="#dictdef-pictureinpictureoptions" id="ref-for-dictdef-pictureinpictureoptions-1">PictureInPictureOptions</a> <dfn class="nv idl-code" data-dfn-for="HTMLVideoElement/requestPictureInPicture(options), HTMLVideoElement/requestPictureInPicture()" data-dfn-type="argument" data-export="" id="dom-htmlvideoelement-requestpictureinpicture-options-options"><code>options</code><a class="self-link" href="#dom-htmlvideoelement-requestpictureinpicture-options-options"></a></dfn>);
 
     <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a> <dfn class="nv idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="attribute" data-export="" data-type="EventHandler" id="dom-htmlvideoelement-onenterpictureinpicture"><code>onenterpictureinpicture</code><a class="self-link" href="#dom-htmlvideoelement-onenterpictureinpicture"></a></dfn>;
@@ -1683,7 +1685,7 @@ bubble, MUST not be cancelable, and has no default action.</p>
   <span class="kt">Promise</span>&lt;<span class="kt">void</span>> <dfn class="nv dfn-paneled idl-code" data-dfn-for="Document" data-dfn-type="method" data-export="" data-lt="exitPictureInPicture()" id="dom-document-exitpictureinpicture"><code>exitPictureInPicture</code></dfn>();
 };
 </pre>
-   <p>The <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled-2">pictureInPictureEnabled</a></code> attribute’s getter must return <code>true</code> if the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object">context object</a> is <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/embedded-content.html#allowed-to-use">allowed to use</a> the
+   <p>The <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled-2">pictureInPictureEnabled</a></code> attribute’s getter must return <code>true</code> if the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object">context object</a> is <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a> the
 feature indicated by attribute name <code>allowpictureinpicture</code> and <a data-link-type="dfn" href="#picture-in-picture-is-supported" id="ref-for-picture-in-picture-is-supported-1">Picture In Picture is supported</a>, and false otherwise.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="picture-in-picture-is-supported">Picture In Picture is supported</dfn> if there is no
 previously-established user preference, security risk, or platform limitation.</p>
@@ -1722,10 +1724,10 @@ bubble, MUST not be cancelable, and has no default action.</p>
    <dl>
     <dt data-md=""><dfn class="dfn-paneled idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="event" data-export="" id="eventdef-htmlvideoelement-enterpictureinpicture"><code><code>enterpictureinpicture</code></code></dfn>
     <dd data-md="">
-     <p>Fired on a <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlvideoelement">HTMLVideoElement</a></code> when it enters Picture In Picture.</p>
+     <p>Fired on a <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">HTMLVideoElement</a></code> when it enters Picture In Picture.</p>
     <dt data-md=""><dfn class="dfn-paneled idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="event" data-export="" id="eventdef-htmlvideoelement-leavepictureinpicture"><code><code>leavepictureinpicture</code></code></dfn>
     <dd data-md="">
-     <p>Fired on a <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlvideoelement">HTMLVideoElement</a></code> when it leaves Picture In Picture.</p>
+     <p>Fired on a <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">HTMLVideoElement</a></code> when it leaves Picture In Picture.</p>
    </dl>
    <h2 class="heading settled" data-level="5" id="security-considerations"><span class="secno">5. </span><span class="content">Security considerations</span><a class="self-link" href="#security-considerations"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="feature-policy"><span class="secno">5.1. </span><span class="content">Feature Policy</span><a class="self-link" href="#feature-policy"></a></h3>
@@ -1924,8 +1926,8 @@ bubble, MUST not be cancelable, and has no default action.</p>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlvideoelement">HTMLVideoElement</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#allowed-to-use">allowed to use</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">HTMLVideoElement</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event">fire a simple event</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">in parallel</a>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">queue a task</a>
@@ -1975,28 +1977,28 @@ bubble, MUST not be cancelable, and has no default action.</p>
    <dd>Anne van Kesteren. <a href="https://fullscreen.spec.whatwg.org/">Fullscreen API Standard</a>. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl highlight def"><span class="kt"><span class="kt">dictionary</span></span> <a class="nv" href="#dictdef-pictureinpictureoptions"><code><span class="nv">PictureInPictureOptions</span></code></a> {
-    <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt"><span class="kt">unsigned</span></span> <span class="kt"><span class="kt">long</span></span></a> <a class="nv" data-type="unsigned long " href="#dom-pictureinpictureoptions-width"><code><span class="nv">width</span></code></a>;
-    <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt"><span class="kt">unsigned</span></span> <span class="kt"><span class="kt">long</span></span></a> <a class="nv" data-type="unsigned long " href="#dom-pictureinpictureoptions-height"><code><span class="nv">height</span></code></a>;
-    <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt"><span class="kt">unsigned</span></span> <span class="kt"><span class="kt">long</span></span></a> <a class="nv" data-type="unsigned long " href="#dom-pictureinpictureoptions-top"><code><span class="nv">top</span></code></a>;
-    <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt"><span class="kt">unsigned</span></span> <span class="kt"><span class="kt">long</span></span></a> <a class="nv" data-type="unsigned long " href="#dom-pictureinpictureoptions-start"><code><span class="nv">start</span></code></a>;
+<pre class="idl highlight def"><span class="kt">dictionary</span> <a class="nv" href="#dictdef-pictureinpictureoptions"><code>PictureInPictureOptions</code></a> {
+    <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt">unsigned</span> <span class="kt">long</span></a> <a class="nv" data-type="unsigned long " href="#dom-pictureinpictureoptions-width"><code>width</code></a>;
+    <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt">unsigned</span> <span class="kt">long</span></a> <a class="nv" data-type="unsigned long " href="#dom-pictureinpictureoptions-height"><code>height</code></a>;
+    <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt">unsigned</span> <span class="kt">long</span></a> <a class="nv" data-type="unsigned long " href="#dom-pictureinpictureoptions-top"><code>top</code></a>;
+    <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><span class="kt">unsigned</span> <span class="kt">long</span></a> <a class="nv" data-type="unsigned long " href="#dom-pictureinpictureoptions-start"><code>start</code></a>;
 };
 
-<span class="kt"><span class="kt">partial</span></span> <span class="kt"><span class="kt">interface</span></span> <a class="nv idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/embedded-content.html#htmlvideoelement"><span class="nv">HTMLVideoElement</span></a> {
-    <span class="kt"><span class="kt">Promise</span></span>&lt;<span class="kt"><span class="kt">void</span></span>> <a class="nv" href="#dom-htmlvideoelement-requestpictureinpicture"><code><span class="nv">requestPictureInPicture</span></code></a>(<span class="kt"><span class="kt">optional</span></span> <a class="n" data-link-type="idl-name" href="#dictdef-pictureinpictureoptions"><span class="n">PictureInPictureOptions</span></a> <a class="nv" href="#dom-htmlvideoelement-requestpictureinpicture-options-options"><code><span class="nv">options</span></code></a>);
+<span class="kt">partial</span> <span class="kt">interface</span> <a class="nv idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">HTMLVideoElement</a> {
+    <span class="kt">Promise</span>&lt;<span class="kt">void</span>> <a class="nv" href="#dom-htmlvideoelement-requestpictureinpicture"><code>requestPictureInPicture</code></a>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="#dictdef-pictureinpictureoptions">PictureInPictureOptions</a> <a class="nv" href="#dom-htmlvideoelement-requestpictureinpicture-options-options"><code>options</code></a>);
 
-    <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler"><span class="n">EventHandler</span></a> <a class="nv" data-type="EventHandler" href="#dom-htmlvideoelement-onenterpictureinpicture"><code><span class="nv">onenterpictureinpicture</span></code></a>;
-    <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler"><span class="n">EventHandler</span></a> <a class="nv" data-type="EventHandler" href="#dom-htmlvideoelement-onleavepictureinpicture"><code><span class="nv">onleavepictureinpicture</span></code></a>;
+    <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a> <a class="nv" data-type="EventHandler" href="#dom-htmlvideoelement-onenterpictureinpicture"><code>onenterpictureinpicture</code></a>;
+    <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a> <a class="nv" data-type="EventHandler" href="#dom-htmlvideoelement-onleavepictureinpicture"><code>onleavepictureinpicture</code></a>;
 };
 
-<span class="kt"><span class="kt">partial</span></span> <span class="kt"><span class="kt">interface</span></span> <a class="nv idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#document"><span class="nv">Document</span></a> {
-  <span class="kt"><span class="kt">readonly</span></span> <span class="kt"><span class="kt">attribute</span></span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt"><span class="kt">boolean</span></span></a> <a class="nv" data-readonly="" data-type="boolean" href="#dom-document-pictureinpictureenabled"><code><span class="nv">pictureInPictureEnabled</span></code></a>;
+<span class="kt">partial</span> <span class="kt">interface</span> <a class="nv idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#document">Document</a> {
+  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><span class="kt">boolean</span></a> <a class="nv" data-readonly="" data-type="boolean" href="#dom-document-pictureinpictureenabled"><code>pictureInPictureEnabled</code></a>;
 
-  <span class="kt"><span class="kt">Promise</span></span>&lt;<span class="kt"><span class="kt">void</span></span>> <a class="nv" href="#dom-document-exitpictureinpicture"><code><span class="nv">exitPictureInPicture</span></code></a>();
+  <span class="kt">Promise</span>&lt;<span class="kt">void</span>> <a class="nv" href="#dom-document-exitpictureinpicture"><code>exitPictureInPicture</code></a>();
 };
 
-<span class="kt"><span class="kt">partial</span></span> <span class="kt"><span class="kt">interface</span></span> <a class="nv idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#documentorshadowroot"><span class="nv">DocumentOrShadowRoot</span></a> {
-  <span class="kt"><span class="kt">readonly</span></span> <span class="kt"><span class="kt">attribute</span></span> <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#element"><span class="n">Element</span></a>? <a class="nv" data-readonly="" data-type="Element?" href="#dom-documentorshadowroot-pictureinpictureelement"><code><span class="nv">pictureInPictureElement</span></code></a>;
+<span class="kt">partial</span> <span class="kt">interface</span> <a class="nv idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#documentorshadowroot">DocumentOrShadowRoot</a> {
+  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#element">Element</a>? <a class="nv" data-readonly="" data-type="Element?" href="#dom-documentorshadowroot-pictureinpictureelement"><code>pictureInPictureElement</code></a>;
 };
 
 </pre>
