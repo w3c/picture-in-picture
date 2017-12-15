@@ -1176,7 +1176,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 549748cf00f6303618e14a7868fb2ecd5725161f" name="generator">
+  <meta content="Bikeshed version 684b7af5acf2630a118f6d3ab3978cfc3d7e431f" name="generator">
   <link href="https://wicg.github.io/picture-in-picture" rel="canonical">
 <style>/* style-md-lists */
 
@@ -1424,7 +1424,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture In Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-12-14">14 December 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-12-15">15 December 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1583,6 +1583,9 @@ extensible.</p>
     <li data-md="">
      <p>If the algorithm is not <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#triggered-by-user-activation" id="ref-for-triggered-by-user-activation">triggered by user activation</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#securityerror" id="ref-for-securityerror">SecurityError</a></code> and abort these steps.</p>
     <li data-md="">
+     <p>If document is not allowed to use the <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> named <code>"picture-in-picture"</code>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#securityerror" id="ref-for-securityerror①">SecurityError</a></code> and abort these
+steps.</p>
+    <li data-md="">
      <p>Let <var>pipWindow</var> be the Picture In Picture window that is <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="always on top" data-noexport="" id="always-on-top">always on
 top</dfn>. It consistently stays above most other windows.</p>
     <li data-md="">
@@ -1590,10 +1593,9 @@ top</dfn>. It consistently stays above most other windows.</p>
     <li data-md="">
      <p>If a <var>pipWindow</var> is not already created, create one.</p>
     <li data-md="">
-     <p>If one can’t be created, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#unknownerror" id="ref-for-unknownerror">UnknownError</a></code> and abort these steps.</p>
-    <li data-md="">
-     <p>Apply <var>options</var> <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-width" id="ref-for-dom-pictureinpictureoptions-width">width</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-height" id="ref-for-dom-pictureinpictureoptions-height">height</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-top" id="ref-for-dom-pictureinpictureoptions-top">top</a></code>, and <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-start" id="ref-for-dom-pictureinpictureoptions-start">start</a></code> to the <var>pipWindow</var> dimensions and position. If some <var>options</var> can’t be applied, it SHOULD apply latest ones that were successfully set if
-any.</p>
+     <p>OPTIONALLY, apply <var>options</var> <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-width" id="ref-for-dom-pictureinpictureoptions-width">width</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-height" id="ref-for-dom-pictureinpictureoptions-height">height</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-top" id="ref-for-dom-pictureinpictureoptions-top">top</a></code>, and <code class="idl"><a data-link-type="idl" href="#dom-pictureinpictureoptions-start" id="ref-for-dom-pictureinpictureoptions-start">start</a></code> to the <var>pipWindow</var> dimensions
+and position. If some <var>options</var> can’t be applied, apply latest ones that
+were successfully set if any.</p>
     <li data-md="">
      <p>Render <var>video</var> frames in the <var>pipVideo</var>.</p>
    </ol>
@@ -1617,7 +1619,7 @@ the user agent MUST run the following steps:</p>
     <li data-md="">
      <p>Close <var>pipWindow</var>.</p>
     <li data-md="">
-     <p>If <var>pipWindow</var> can’t be closed, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#unknownerror" id="ref-for-unknownerror①">UnknownError</a></code> and abort these
+     <p>If <var>pipWindow</var> can’t be closed, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#unknownerror" id="ref-for-unknownerror">UnknownError</a></code> and abort these
 steps.</p>
     <li data-md="">
      <p>Render <var>pipVideo</var> frames in the <var>video</var>.</p>
@@ -1731,7 +1733,8 @@ bubble, MUST not be cancelable, and has no default action.</p>
    </dl>
    <h2 class="heading settled" data-level="5" id="security-considerations"><span class="secno">5. </span><span class="content">Security considerations</span><a class="self-link" href="#security-considerations"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="feature-policy"><span class="secno">5.1. </span><span class="content">Feature Policy</span><a class="self-link" href="#feature-policy"></a></h3>
-   <p>This specification defines a <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#feature" id="ref-for-feature">feature</a> that controls whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled③">pictureInPictureEnabled</a></code> is <code>true</code> or <code>false</code>.</p>
+   <p>This specification defines a <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature①">policy-controlled feature</a> that controls
+whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled③">pictureInPictureEnabled</a></code> is <code>true</code> or <code>false</code>.</p>
    <p>The <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#feature-name" id="ref-for-feature-name">feature name</a> for this feature is <code>"picture-in-picture"</code>.</p>
    <p>The <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#default-allowlist" id="ref-for-default-allowlist">default allowlist</a> for this feature is <code>["self"]</code>.</p>
   </main>
@@ -1920,8 +1923,8 @@ bubble, MUST not be cancelable, and has no default action.</p>
     <a data-link-type="biblio">[feature policy]</a> defines the following terms:
     <ul>
      <li><a href="https://wicg.github.io/feature-policy/#default-allowlist">default allowlist</a>
-     <li><a href="https://wicg.github.io/feature-policy/#feature">feature</a>
      <li><a href="https://wicg.github.io/feature-policy/#feature-name">feature name</a>
+     <li><a href="https://wicg.github.io/feature-policy/#policy-controlled-feature">policy-controlled feature</a>
     </ul>
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
