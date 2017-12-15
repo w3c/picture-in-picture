@@ -129,13 +129,11 @@ and |options| is invoked, the user agent MUST run the following steps:
     top</dfn>. It consistently stays above most other windows.
 4. Let |pipVideo| be the video contained in the |pipWindow|.
 5. If a |pipWindow| is not already created, create one.
-6. If one can't be created because user agent blocked feature for instance,
-    throw a {{NotAllowedError}} and abort these steps.
-7. Apply |options| {{width}}, {{height}}, {{PictureInPictureOptions/top}}, and
-    {{start}} to the |pipWindow| dimensions and position. If some |options|
-    can't be applied, it SHOULD apply latest ones that were successfully set if
-    any.
-8. Render |video| frames in the |pipVideo|.
+6. OPTIONALLY, apply |options| {{width}}, {{height}},
+    {{PictureInPictureOptions/top}}, and {{start}} to the |pipWindow| dimensions
+    and position. If some |options| can't be applied, it applies latest ones that
+    were successfully set if any.
+7. Render |video| frames in the |pipVideo|.
 
 It is RECOMMENDED that the |video| frames are not rendered in the page and in
 the |pipVideo| at the same time but if they are, they MUST be kept in sync.
