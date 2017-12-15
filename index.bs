@@ -76,8 +76,8 @@ extensible.
 <button id="pipButton"></button>
 
 <script>
-  // Hide button if Picture In Picture is not supported.
-  pipButton.hidden = !document.pictureInPictureEnabled;
+  // Hide button if Picture In Picture is not supported or disabled.
+  pipButton.hidden = !document.pictureInPictureEnabled || video.disablePictureInPicture;
 
   pipButton.addEventListener('click', function() {
     // If there is no element in Picture In Picture yet, let's request Picture
@@ -155,6 +155,33 @@ the user agent MUST run the following steps:
     steps.
 6. Render |pipVideo| frames in the |video|.
 
+## Disable Picture in Picture
+
+Some pages may want to disable Picture In Picture for a video element. To
+support this, a new {{disablePictureInPicture}} attribute is added to the list
+of content attributes for video elements.
+
+A corresponding {{disablePictureInPicture}} IDL attribute which reflects the
+value of element’s {{disablePictureInPicture}} content attribute is added to
+the {{HTMLVideoElement}} interface. The {{disablePictureInPicture}} IDL attribute
+MUST reflect the content attribute of the same name.
+
+If the {{disablePictureInPicture}} attribute is present on the video element,
+the user agent SHOULD NOT play the video element in picture in picture or
+present any UI to do so.
+
+When the {{disablePictureInPicture}} attribute is added to a |video| element,
+the user agent SHOULD run these steps:
+
+1. Reject any pending promises returned by the {{requestPictureInPicture()}}
+    method with {{InvalidStateError}}.
+2. If |video| is playing in Picture in Picture:
+    1. Run the <a>exit picture in picture algorithm</a>.
+    2. Unset {{pictureInPictureElement}}.
+    3. <a>Queue a task</a> to <a>fire a simple event</a> with the name
+        {{leavepictureinpicture}} at the |video|. The event MUST not
+        bubble, MUST not be cancelable, and has no default action.
+
 ## Interaction with Remote Playback ## {#remote-playback}
 
 The [[Remote-Playback]] specification defines a <a>local playback device</a>
@@ -196,6 +223,9 @@ partial interface HTMLVideoElement {
 
     attribute EventHandler onenterpictureinpicture;
     attribute EventHandler onleavepictureinpicture;
+
+    [CEReactions]
+    attribute Boolean disablePictureInPicture;
 };
 </pre>
 
