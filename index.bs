@@ -131,7 +131,7 @@ and |options| is invoked, the user agent MUST run the following steps:
 5. If a |pipWindow| is not already created, create one.
 6. OPTIONALLY, apply |options| {{width}}, {{height}},
     {{PictureInPictureOptions/top}}, and {{start}} to the |pipWindow| dimensions
-    and position. If some |options| can't be applied, it applies latest ones that
+    and position. If some |options| can't be applied, apply latest ones that
     were successfully set if any.
 7. Render |video| frames in the |pipVideo|.
 
