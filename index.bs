@@ -175,7 +175,7 @@ the user agent SHOULD run these steps:
 
 1. Reject any pending promises returned by the {{requestPictureInPicture()}}
     method with {{InvalidStateError}}.
-2. If |video| is playing in Picture in Picture:
+2. If |video| is |pipVideo|:
     1. Run the <a>exit picture in picture algorithm</a>.
     2. Unset {{pictureInPictureElement}}.
     3. <a>Queue a task</a> to <a>fire a simple event</a> with the name
@@ -225,7 +225,7 @@ partial interface HTMLVideoElement {
     attribute EventHandler onleavepictureinpicture;
 
     [CEReactions]
-    attribute Boolean disablePictureInPicture;
+    attribute boolean disablePictureInPicture;
 };
 </pre>
 
