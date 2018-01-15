@@ -18,8 +18,8 @@ Abstract: content sites, or applications on their device.
 spec: Feature Policy; urlPrefix: https://wicg.github.io/feature-policy/#
     type: dfn
         text: default allowlist
-        text: feature
         text: feature name
+        text: policy-controlled feature
 spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
         urlPrefix: infrastructure.html
@@ -122,15 +122,17 @@ and |options| is invoked, the user agent MUST run the following steps:
 
 1. If the algorithm is not <a>triggered by user activation</a>, throw a
     {{SecurityError}} and abort these steps.
-2. Let |pipWindow| be the Picture In Picture window that is <dfn>always on
+2. If document is not allowed to use the <a>policy-controlled feature</a> named
+    <code>"picture-in-picture"</code>, throw a {{SecurityError}} and abort these
+    steps.
+3. Let |pipWindow| be the Picture In Picture window that is <dfn>always on
     top</dfn>. It consistently stays above most other windows.
-3. Let |pipVideo| be the video contained in the |pipWindow|.
-4. If a |pipWindow| is not already created, create one.
-5. If one can't be created, throw a {{UnknownError}} and abort these steps.
-6. Apply |options| {{width}}, {{height}}, {{PictureInPictureOptions/top}}, and
-    {{start}} to the |pipWindow| dimensions and position. If some |options|
-    can't be applied, it SHOULD apply latest ones that were successfully set if
-    any.
+4. Let |pipVideo| be the video contained in the |pipWindow|.
+5. If a |pipWindow| is not already created, create one.
+6. OPTIONALLY, apply |options| {{width}}, {{height}},
+    {{PictureInPictureOptions/top}}, and {{start}} to the |pipWindow| dimensions
+    and position. If some |options| can't be applied, apply latest ones that
+    were successfully set if any.
 7. Render |video| frames in the |pipVideo|.
 
 It is RECOMMENDED that the |video| frames are not rendered in the page and in
@@ -306,8 +308,8 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
 
 ## Feature Policy ## {#feature-policy}
 
-This specification defines a <a>feature</a> that controls whether
-{{pictureInPictureEnabled}} is <code>true</code> or <code>false</code>.
+This specification defines a <a>policy-controlled feature</a> that controls
+whether {{pictureInPictureEnabled}} is <code>true</code> or <code>false</code>.
 
 The <a>feature name</a> for this feature is <code>"picture-in-picture"</code>.
 
