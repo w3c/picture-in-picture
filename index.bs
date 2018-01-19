@@ -121,10 +121,10 @@ When the <dfn>request picture in picture algorithm</dfn> with |video|
 and |options| is invoked, the user agent MUST run the following steps:
 
 1. If document is not allowed to use the <a>policy-controlled feature</a> named
-    <code>"picture-in-picture"</code>, throw a {{NotAllowedError}} and abort these
+    <code>"picture-in-picture"</code>, throw a {{SecurityError}} and abort these
     steps.
 2. If the algorithm is not <a>triggered by user activation</a>, throw a
-    {{SecurityError}} and abort these steps.
+    {{NotAllowedError}} and abort these steps.
 3. Let |pipWindow| be the Picture In Picture window that is <dfn>always on
     top</dfn>. It consistently stays above most other windows.
 4. Let |pipVideo| be the video contained in the |pipWindow|.
