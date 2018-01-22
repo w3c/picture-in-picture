@@ -1,4 +1,4 @@
-# Picture in Picture Web Standard
+# Picture-in-Picture Web Standard
 
 https://wicg.github.io/picture-in-picture
 
