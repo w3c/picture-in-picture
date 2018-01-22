@@ -117,23 +117,19 @@ extensible.
 
 ## Request picture in picture ## {#request-pip}
 
-When the <dfn>request picture in picture algorithm</dfn> with |video|
-and |options| is invoked, the user agent MUST run the following steps:
+When the <dfn>request picture in picture algorithm</dfn> with |video| is
+invoked, the user agent MUST run the following steps:
 
-1. If the algorithm is not <a>triggered by user activation</a>, throw a
-    {{SecurityError}} and abort these steps.
-2. If document is not allowed to use the <a>policy-controlled feature</a> named
+1. If document is not allowed to use the <a>policy-controlled feature</a> named
     <code>"picture-in-picture"</code>, throw a {{SecurityError}} and abort these
     steps.
+2. If the algorithm is not <a>triggered by user activation</a>, throw a
+    {{NotAllowedError}} and abort these steps.
 3. Let |pipWindow| be the Picture In Picture window that is <dfn>always on
     top</dfn>. It consistently stays above most other windows.
 4. Let |pipVideo| be the video contained in the |pipWindow|.
 5. If a |pipWindow| is not already created, create one.
-6. OPTIONALLY, apply |options| {{width}}, {{height}},
-    {{PictureInPictureOptions/top}}, and {{start}} to the |pipWindow| dimensions
-    and position. If some |options| can't be applied, apply latest ones that
-    were successfully set if any.
-7. Render |video| frames in the |pipVideo|.
+6. Render |video| frames in the |pipVideo|.
 
 It is RECOMMENDED that the |video| frames are not rendered in the page and in
 the |pipVideo| at the same time but if they are, they MUST be kept in sync.
@@ -211,17 +207,8 @@ in order to notify the website of the Picture In Picture status changes.
 ## Extensions to <code>HTMLVideoElement</code> ## {#htmlvideoelement-extensions}
 
 <pre class="idl">
-dictionary PictureInPictureOptions {
-    unsigned long width;
-    unsigned long height;
-    unsigned long top;
-    unsigned long start;
-};
-</pre>
-
-<pre class="idl">
 partial interface HTMLVideoElement {
-    Promise&lt;void> requestPictureInPicture(optional PictureInPictureOptions options);
+    Promise&lt;void> requestPictureInPicture();
 
     attribute EventHandler onenterpictureinpicture;
     attribute EventHandler onleavepictureinpicture;
@@ -237,18 +224,15 @@ parallel</a>:
 
 1. If {{pictureInPictureEnabled}} is |false|, reject |promise| with a
     {{NotSupportedError}} and abort these steps.
-2. If |options| is not valid, reject |promise| with a {{TypeError}} and abort
-    these steps.
-3. Let |video| be the requested video.
-4. Run the <a>request picture in picture algorithm</a> with |video| and
-    |options|.
-5. If the previous step threw an exception, reject |promise| with that
+2. Let |video| be the requested video.
+3. Run the <a>request picture in picture algorithm</a> with |video|. 
+4. If the previous step threw an exception, reject |promise| with that
     exception and abort these steps.
-6. Set {{pictureInPictureElement}} to |video|.
-7. <a>Queue a task</a> to <a>fire a simple event</a> with the name
+5. Set {{pictureInPictureElement}} to |video|.
+6. <a>Queue a task</a> to <a>fire a simple event</a> with the name
     {{enterpictureinpicture}} at the |video|. The event MUST not
     bubble, MUST not be cancelable, and has no default action.
-8. Return |promise|.
+7. Return |promise|.
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
 
