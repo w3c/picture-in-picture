@@ -126,7 +126,7 @@ invoked, the user agent MUST run the following steps:
 2. If the algorithm is not <a>triggered by user activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
 3. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
-    |video|, throw a {{NotAllowedError}} and abort these steps.
+    |video|, throw a {{InvalidStateError}} and abort these steps.
 4. Let |pipWindow| be the Picture In Picture window that is <dfn>always on
     top</dfn>. It consistently stays above most other windows.
 5. Let |pipVideo| be the video contained in the |pipWindow|.
