@@ -1586,9 +1586,12 @@ invoked, the user agent MUST run the following steps:</p>
      <p>If document is not allowed to use the <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> named <code>"picture-in-picture"</code>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#securityerror" id="ref-for-securityerror">SecurityError</a></code> and abort these
 steps.</p>
     <li data-md="">
-     <p>If the algorithm is not <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#triggered-by-user-activation" id="ref-for-triggered-by-user-activation">triggered by user activation</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#notallowederror" id="ref-for-notallowederror">NotAllowedError</a></code> and abort these steps.</p>
+     <p>If <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled">pictureInPictureEnabled</a></code> is <var>false</var>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#notsupportederror" id="ref-for-notsupportederror">NotSupportedError</a></code> and
+abort these steps.</p>
     <li data-md="">
      <p>OPTIONALLY, if the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a></code> attribute is present on <var>video</var>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code> and abort these steps.</p>
+    <li data-md="">
+     <p>If the algorithm is not <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#triggered-by-user-activation" id="ref-for-triggered-by-user-activation">triggered by user activation</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#notallowederror" id="ref-for-notallowederror">NotAllowedError</a></code> and abort these steps.</p>
     <li data-md="">
      <p>Let <var>pipWindow</var> be the Picture In Picture window that is <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="always on top" data-noexport="" id="always-on-top">always on
 top</dfn>. It consistently stays above most other windows.</p>
@@ -1598,6 +1601,11 @@ top</dfn>. It consistently stays above most other windows.</p>
      <p>If a <var>pipWindow</var> is not already created, create one.</p>
     <li data-md="">
      <p>Render <var>video</var> frames in the <var>pipVideo</var>.</p>
+    <li data-md="">
+     <p>Set <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a></code> to <var>video</var>.</p>
+    <li data-md="">
+     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task">Queue a task</a> to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event" id="ref-for-fire-a-simple-event">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-enterpictureinpicture" id="ref-for-eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a></code> at the <var>video</var>. The event MUST not
+bubble, MUST not be cancelable, and has no default action.</p>
    </ol>
    <p>It is RECOMMENDED that the <var>video</var> frames are not rendered in the page and in
 the <var>pipVideo</var> at the same time but if they are, they MUST be kept in sync.</p>
@@ -1623,6 +1631,11 @@ the user agent MUST run the following steps:</p>
 steps.</p>
     <li data-md="">
      <p>Render <var>pipVideo</var> frames in the <var>video</var>.</p>
+    <li data-md="">
+     <p>Unset <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①">pictureInPictureElement</a></code>.</p>
+    <li data-md="">
+     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task①">Queue a task</a> to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event" id="ref-for-fire-a-simple-event①">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a></code> at the <var>video</var>. The event MUST not
+bubble, MUST not be cancelable, and has no default action.</p>
    </ol>
    <h3 class="heading settled" data-level="3.3" id="disable-picture-in-picture"><span class="secno">3.3. </span><span class="content">Disable Picture in Picture</span><a class="self-link" href="#disable-picture-in-picture"></a></h3>
    <p>Some pages may want to disable Picture In Picture for a video element. To
@@ -1646,9 +1659,9 @@ the user agent SHOULD run these steps:</p>
       <li data-md="">
        <p>Run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm">exit picture in picture algorithm</a>.</p>
       <li data-md="">
-       <p>Unset <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a></code>.</p>
+       <p>Unset <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement②">pictureInPictureElement</a></code>.</p>
       <li data-md="">
-       <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task">Queue a task</a> to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event" id="ref-for-fire-a-simple-event">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a></code> at the <var>video</var>. The event MUST not
+       <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task②">Queue a task</a> to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event" id="ref-for-fire-a-simple-event②">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture①">leavepictureinpicture</a></code> at the <var>video</var>. The event MUST not
 bubble, MUST not be cancelable, and has no default action.</p>
      </ol>
    </ol>
@@ -1685,19 +1698,12 @@ return <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-gu
 parallel</a>:</p>
    <ol>
     <li data-md="">
-     <p>If <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled">pictureInPictureEnabled</a></code> is <var>false</var>, reject <var>promise</var> with a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#notsupportederror" id="ref-for-notsupportederror">NotSupportedError</a></code> and abort these steps.</p>
-    <li data-md="">
      <p>Let <var>video</var> be the requested video.</p>
     <li data-md="">
      <p>Run the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm" id="ref-for-request-picture-in-picture-algorithm">request picture in picture algorithm</a> with <var>video</var>.</p>
     <li data-md="">
      <p>If the previous step threw an exception, reject <var>promise</var> with that
 exception and abort these steps.</p>
-    <li data-md="">
-     <p>Set <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①">pictureInPictureElement</a></code> to <var>video</var>.</p>
-    <li data-md="">
-     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task①">Queue a task</a> to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event" id="ref-for-fire-a-simple-event①">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-enterpictureinpicture" id="ref-for-eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a></code> at the <var>video</var>. The event MUST not
-bubble, MUST not be cancelable, and has no default action.</p>
     <li data-md="">
      <p>Return <var>promise</var>.</p>
    </ol>
@@ -1717,17 +1723,10 @@ return <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-gu
 parallel</a>:</p>
    <ol>
     <li data-md="">
-     <p>If <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled②">pictureInPictureEnabled</a></code> is <var>false</var>, reject <var>promise</var> with a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#notsupportederror" id="ref-for-notsupportederror①">NotSupportedError</a></code> and abort these steps.</p>
-    <li data-md="">
      <p>Run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm①">exit picture in picture algorithm</a>.</p>
     <li data-md="">
      <p>If the previous step threw an exception, reject <var>promise</var> with that
 exception and abort these steps.</p>
-    <li data-md="">
-     <p>Unset <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement②">pictureInPictureElement</a></code>.</p>
-    <li data-md="">
-     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task②">Queue a task</a> to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event" id="ref-for-fire-a-simple-event②">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture①">leavepictureinpicture</a></code> at the <var>video</var>. The event MUST not
-bubble, MUST not be cancelable, and has no default action.</p>
     <li data-md="">
      <p>Return <var>promise</var>.</p>
    </ol>
@@ -1755,7 +1754,7 @@ bubble, MUST not be cancelable, and has no default action.</p>
    <h2 class="heading settled" data-level="5" id="security-considerations"><span class="secno">5. </span><span class="content">Security considerations</span><a class="self-link" href="#security-considerations"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="feature-policy"><span class="secno">5.1. </span><span class="content">Feature Policy</span><a class="self-link" href="#feature-policy"></a></h3>
    <p>This specification defines a <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature①">policy-controlled feature</a> that controls
-whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled③">pictureInPictureEnabled</a></code> is <code>true</code> or <code>false</code>.</p>
+whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled②">pictureInPictureEnabled</a></code> is <code>true</code> or <code>false</code>.</p>
    <p>The <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#feature-name" id="ref-for-feature-name">feature name</a> for this feature is <code>"picture-in-picture"</code>.</p>
    <p>The <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#default-allowlist" id="ref-for-default-allowlist">default allowlist</a> for this feature is <code>["self"]</code>.</p>
   </main>
@@ -2055,9 +2054,9 @@ whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinp
   <aside class="dfn-panel" data-for="dom-document-pictureinpictureenabled">
    <b><a href="#dom-document-pictureinpictureenabled">#dom-document-pictureinpictureenabled</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-document-pictureinpictureenabled">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-dom-document-pictureinpictureenabled①">4.2. Extensions to Document</a> <a href="#ref-for-dom-document-pictureinpictureenabled②">(2)</a>
-    <li><a href="#ref-for-dom-document-pictureinpictureenabled③">5.1. Feature Policy</a>
+    <li><a href="#ref-for-dom-document-pictureinpictureenabled">3.1. Request picture in picture</a>
+    <li><a href="#ref-for-dom-document-pictureinpictureenabled①">4.2. Extensions to Document</a>
+    <li><a href="#ref-for-dom-document-pictureinpictureenabled②">5.1. Feature Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-document-exitpictureinpicture">
@@ -2075,23 +2074,23 @@ whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinp
   <aside class="dfn-panel" data-for="dom-documentorshadowroot-pictureinpictureelement">
    <b><a href="#dom-documentorshadowroot-pictureinpictureelement">#dom-documentorshadowroot-pictureinpictureelement</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement">3.3. Disable Picture in Picture</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement②">4.2. Extensions to Document</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement">3.1. Request picture in picture</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①">3.2. Exit picture in picture</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement②">3.3. Disable Picture in Picture</a>
     <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement③">4.3. Extension to DocumentOrShadowRoot</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="eventdef-htmlvideoelement-enterpictureinpicture">
    <b><a href="#eventdef-htmlvideoelement-enterpictureinpicture">#eventdef-htmlvideoelement-enterpictureinpicture</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-eventdef-htmlvideoelement-enterpictureinpicture">4.1. Extensions to HTMLVideoElement</a>
+    <li><a href="#ref-for-eventdef-htmlvideoelement-enterpictureinpicture">3.1. Request picture in picture</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="eventdef-htmlvideoelement-leavepictureinpicture">
    <b><a href="#eventdef-htmlvideoelement-leavepictureinpicture">#eventdef-htmlvideoelement-leavepictureinpicture</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-eventdef-htmlvideoelement-leavepictureinpicture">3.3. Disable Picture in Picture</a>
-    <li><a href="#ref-for-eventdef-htmlvideoelement-leavepictureinpicture①">4.2. Extensions to Document</a>
+    <li><a href="#ref-for-eventdef-htmlvideoelement-leavepictureinpicture">3.2. Exit picture in picture</a>
+    <li><a href="#ref-for-eventdef-htmlvideoelement-leavepictureinpicture①">3.3. Disable Picture in Picture</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */
