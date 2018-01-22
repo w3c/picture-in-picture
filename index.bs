@@ -113,6 +113,30 @@ extensible.
 </script>
 ```
 
+## Update video size based on picture in picture window size changes ## {#example-update-video-on-window-size-changes}
+
+```html
+<video id="video" src="https://example.com/file.mp4"></video>
+
+<button id="pipButton"></button>
+
+<script>
+  pipButton.addEventListener('click', function() {
+    video.requestPictureInPicture()
+    .then(pipWindow => {
+      updateVideoSize(pipWindow.width, pipWindow.height);
+      pipWindow.addEventListener('resize', function(event) {
+        updateVideoSize(pipWindow.width, pipWindow.height);
+      });
+    });
+  });
+
+  function updateVideoSize(width, height) {
+    // TODO: Update video size based on pip window width and height.
+  }
+</script>
+```
+
 # Concepts # {#concepts}
 
 ## Request picture in picture ## {#request-pip}
@@ -210,7 +234,7 @@ in order to notify the website of the Picture In Picture status changes.
 
 <pre class="idl">
 partial interface HTMLVideoElement {
-    Promise&lt;void> requestPictureInPicture();
+    Promise&lt;PictureInPictureWindow> requestPictureInPicture();
 
     attribute EventHandler onenterpictureinpicture;
     attribute EventHandler onleavepictureinpicture;
@@ -234,7 +258,10 @@ parallel</a>:
 6. <a>Queue a task</a> to <a>fire a simple event</a> with the name
     {{enterpictureinpicture}} at the |video|. The event MUST not
     bubble, MUST not be cancelable, and has no default action.
-7. Return |promise|.
+7. Let |pipWindow| be a new {{PictureInPictureWindow}} object. Set |pipWindow|
+    {{width}} and {{height}} respectively to the width and height of the
+    Picture In Picture window that is always on top.
+8. Return |promise| with |pipWindow|.
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
 
@@ -283,12 +310,28 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
     <a for=DocumentFragment>host</a> is not <a>connected</a>, then return null.
 2. Return the picture in picture element
 
+## <code>PictureInPictureWindow</code> ## {#picture-in-picture-window}
+
+<pre class="idl">
+interface PictureInPictureWindow {
+    readonly attribute long width;
+    readonly attribute long height;
+
+    attribute EventHandler onresize;
+};
+</pre>
+
+The {{PictureInPictureWindow}} is a simple proxy to get information such as
+dimensions about the current Picture In Picture window.
+
 ## Event types ## {#event-types}
 
 : <dfn event for="HTMLVideoElement"><code>enterpictureinpicture</code></dfn>
 :: Fired on a {{HTMLVideoElement}} when it enters Picture In Picture.
 : <dfn event for="HTMLVideoElement"><code>leavepictureinpicture</code></dfn>
 :: Fired on a {{HTMLVideoElement}} when it leaves Picture In Picture.
+: <dfn event for="PictureInPictureWindow"><code>resize</code></dfn>
+:: Fired on a {{PictureInPictureWindow}} when it changes size.
 
 # Security considerations # {#security-considerations}
 
