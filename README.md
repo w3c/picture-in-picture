@@ -1,5 +1,7 @@
 # Picture-in-Picture Web Standard
 
+[![Build Status](https://travis-ci.org/WICG/picture-in-picture.svg?branch=master)](https://travis-ci.org/WICG/picture-in-picture)
+
 https://wicg.github.io/picture-in-picture
 
 This standardization project aims to provide APIs to allow websites to create a floating video window over the desktop.
