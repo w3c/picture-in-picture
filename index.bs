@@ -58,8 +58,6 @@ by exposing the following sets of properties to the API:
     element.
 * Allow the website to exit Picture-in-Picture.
 * Allow the website to check if Picture-in-Picture can be triggered.
-* Take a hint for the preferred window size and position which could be ignored
-    by the user agent.
 
 The proposed Picture-in-Picture API is very similar to [[Fullscreen]] as they
 have similar properties. The API only applies on
