@@ -253,7 +253,7 @@ partial interface Document {
 
 The {{pictureInPictureEnabled}} attribute's getter must return
 <code>true</code> if the <a>context object</a> is <a>allowed to use</a> the
-feature indicated by attribute name <code>allowpictureinpicture</code> and
+feature indicated by attribute name <code>picture-in-picture</code> and
 <a>Picture-in-Picture is supported</a>, and false otherwise.
 
 <dfn>Picture-in-Picture is supported</dfn> if there is no
