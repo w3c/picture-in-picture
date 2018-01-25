@@ -68,35 +68,39 @@ partial interface DocumentOrShadowRoot {
 
 ## Example
 
-```js
-if (document.pictureInPictureEnabled) {
-  
-  requestPictureInPictureButton.addEventListener('click', function() {
-    videoElement.requestPictureInPicture()
-    .then(_ => {
-      requestPictureInPictureButton.hidden = true;
-      exitPictureInPictureButton.hidden = false;
-    });
-  });  
-  
-  exitPictureInPictureButton.addEventListener('click', function() {
-    document.exitPictureInPicture()
-    .then(_ => {
-      exitPictureInPictureButton.hidden = true;
-      requestPictureInPictureButton.hidden = false;
-    });
+```html
+<video id="video" src="https://example.com/file.mp4"></video>
+
+<button id="pipButton"></button>
+
+<script>
+  // Hide button if Picture-in-Picture is not supported or disabled.
+  pipButton.hidden = !document.pictureInPictureEnabled || video.disablePictureInPicture;
+
+  pipButton.addEventListener('click', function() {
+    // If there is no element in Picture-in-Picture yet, let's request
+    // Picture-in-Picture for the video, otherwise leave it.
+    if (!document.pictureInPictureElement) {
+      video.requestPictureInPicture()
+      .catch(error => {
+        // Video failed to enter Picture-in-Picture mode.
+      });
+    } else {
+      document.exitPictureInPicture()
+      .catch(error => {
+        // Video failed to leave Picture-in-Picture mode.
+      });
+    }
   });
 
-  document.addEventListener('enterpictureinpicture', function() {
-    // Some element entered Picture-In-Picture mode.
-    console.log('Picture-In-Picture element: ' + document.pictureInPictureElement); 
+  video.addEventListener('enterpictureinpicture', function() {
+    // Video element entered Picture-In-Picture mode.
   });
 
-  document.addEventListener('leavepictureinpicture', function() {
-    // Some element left Picture-In-Picture mode.
+  video.addEventListener('leavepictureinpicture', function() {
+    // Video element left Picture-In-Picture mode.
   });
-
-}
+</script>
 ```
 
 ## Interaction with HTMLMediaElement
