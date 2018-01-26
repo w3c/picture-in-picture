@@ -1,4 +1,6 @@
-# Picture in Picture Web Standard
+# Picture-in-Picture (PiP) ![](https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_picture_in_picture_alt_black_24px.svg) 
+
+[![Build Status](https://travis-ci.org/WICG/picture-in-picture.svg?branch=master)](https://travis-ci.org/WICG/picture-in-picture)
 
 https://wicg.github.io/picture-in-picture
 
