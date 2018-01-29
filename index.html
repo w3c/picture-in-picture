@@ -1424,7 +1424,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-01-26">26 January 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-01-29">29 January 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1470,7 +1470,7 @@ content sites, or applications on their device.</p>
      <ol class="toc">
       <li><a href="#example-add-custom-pip-button"><span class="secno">2.1</span> <span class="content">Add a custom Picture-in-Picture button</span></a>
       <li><a href="#example-monitor-video-pip-changes"><span class="secno">2.2</span> <span class="content">Monitor video Picture-in-Picture changes</span></a>
-      <li><a href="#example-update-video-on-window-size-changes"><span class="secno">2.3</span> <span class="content">Update video size based on picture in picture window size changes</span></a>
+      <li><a href="#example-update-video-on-window-size-changes"><span class="secno">2.3</span> <span class="content">Update video size based on Picture-in-Picture window size changes</span></a>
      </ol>
     <li>
      <a href="#concepts"><span class="secno">3</span> <span class="content">Concepts</span></a>
@@ -1576,7 +1576,7 @@ extensible.</p>
 <span class="c1"></span>  <span class="p">});</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">></span>
 </pre>
-   <h3 class="heading settled" data-level="2.3" id="example-update-video-on-window-size-changes"><span class="secno">2.3. </span><span class="content">Update video size based on picture in picture window size changes</span><a class="self-link" href="#example-update-video-on-window-size-changes"></a></h3>
+   <h3 class="heading settled" data-level="2.3" id="example-update-video-on-window-size-changes"><span class="secno">2.3. </span><span class="content">Update video size based on Picture-in-Picture window size changes</span><a class="self-link" href="#example-update-video-on-window-size-changes"></a></h3>
 <pre class="language-html highlight"><span class="p">&lt;</span><span class="nt">video</span> <span class="na">id</span><span class="o">=</span><span class="s">"video"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://example.com/file.mp4"</span><span class="p">>&lt;/</span><span class="nt">video</span><span class="p">></span>
 
 <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"pipButton"</span><span class="p">>&lt;/</span><span class="nt">button</span><span class="p">></span>
@@ -1727,7 +1727,7 @@ parallel</a>:</p>
 exception and abort these steps.</p>
     <li data-md="">
      <p>Let <var>pipWindow</var> be a new <code class="idl"><a data-link-type="idl" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow①">PictureInPictureWindow</a></code> object. Set <var>pipWindow</var> <code class="idl"><a data-link-type="idl" href="#dom-pictureinpicturewindow-width" id="ref-for-dom-pictureinpicturewindow-width">width</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-pictureinpicturewindow-height" id="ref-for-dom-pictureinpicturewindow-height">height</a></code> respectively to the width and height of the
-Picture In Picture window that is always on top.</p>
+Picture-in-Picture window that is always on top.</p>
     <li data-md="">
      <p>Return <var>promise</var> with <var>pipWindow</var>.</p>
    </ol>
@@ -1775,7 +1775,7 @@ exception and abort these steps.</p>
 };
 </pre>
    <p>The <code class="idl"><a data-link-type="idl" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow②">PictureInPictureWindow</a></code> is a simple proxy to get information such as
-dimensions about the current Picture In Picture window.</p>
+dimensions about the current Picture-in-Picture window.</p>
    <h3 class="heading settled" data-level="4.5" id="event-types"><span class="secno">4.5. </span><span class="content">Event types</span><a class="self-link" href="#event-types"></a></h3>
    <dl>
     <dt data-md=""><dfn class="dfn-paneled idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="event" data-export="" id="eventdef-htmlvideoelement-enterpictureinpicture"><code>enterpictureinpicture</code></dfn>
