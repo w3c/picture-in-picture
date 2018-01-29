@@ -42,8 +42,8 @@ No.
 **Does this specification allow an origin access to aspects of a user’s local
 computing environment?**
 
-Yes. It allows an origin to know if Picture-in-Picture is enabled 
-on user's local computing environment.
+On Android, it allows an origin to know if user has toggled 
+off "Allow picture-in-pucture" system setting.
 
 **Does this specification allow an origin access to other devices?**
 
@@ -52,7 +52,7 @@ No.
 **Does this specification allow an origin some measure of control over a user
 agent’s native UI?**
 
-No.
+An origin can create a floating video window always on top containing a video.
 
 **Does this specification expose temporary identifiers to the web?**
 
@@ -75,7 +75,7 @@ No.
 **Does this specification have a "Security Considerations" and
 "Privacy Considerations" section?**
 
-No.
+https://wicg.github.io/picture-in-picture/#security-considerations
 
 **Does this specification allow downgrading default security characteristics?**
 
