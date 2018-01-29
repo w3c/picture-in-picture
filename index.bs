@@ -111,7 +111,7 @@ extensible.
 </script>
 ```
 
-## Update video size based on picture in picture window size changes ## {#example-update-video-on-window-size-changes}
+## Update video size based on Picture-in-Picture window size changes ## {#example-update-video-on-window-size-changes}
 
 ```html
 <video id="video" src="https://example.com/file.mp4"></video>
@@ -263,7 +263,7 @@ parallel</a>:
     exception and abort these steps.
 4. Let |pipWindow| be a new {{PictureInPictureWindow}} object. Set |pipWindow|
     {{width}} and {{height}} respectively to the width and height of the
-    Picture In Picture window that is always on top.
+    Picture-in-Picture window that is always on top.
 5. Return |promise| with |pipWindow|.
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
@@ -319,7 +319,7 @@ interface PictureInPictureWindow {
 </pre>
 
 The {{PictureInPictureWindow}} is a simple proxy to get information such as
-dimensions about the current Picture In Picture window.
+dimensions about the current Picture-in-Picture window.
 
 ## Event types ## {#event-types}
 
