@@ -221,6 +221,11 @@ and a <a>local playback state</a>. For the purpose of Picture-in-Picture, the
 playback is local and regardless of whether it is played in page or in
 Picture-in-Picture.
 
+## Interaction with Media Session ## {#media-session}
+
+The API will have to be used with the [[MediaSession]] API for customizing the
+avaiable controls on the Picture-in-Picture window.
+
 ## One Picture-in-Picture window ## {#one-pip-window}
 
 Operating systems with a Picture-in-Picture API usually restricts
