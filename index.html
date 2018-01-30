@@ -1625,8 +1625,8 @@ top</dfn>. It consistently stays above most other windows.</p>
     <li data-md="">
      <p>Set <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a></code> to <var>video</var>.</p>
     <li data-md="">
-     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task">Queue a task</a> to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event" id="ref-for-fire-a-simple-event">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-enterpictureinpicture" id="ref-for-eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a></code> at the <var>video</var>. The event MUST not
-bubble, MUST not be cancelable, and has no default action.</p>
+     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task">Queue a task</a> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire" id="ref-for-concept-event-fire">fire an event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-enterpictureinpicture" id="ref-for-eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a></code> at the <var>video</var> with its <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-bubbles" id="ref-for-dom-event-bubbles">bubbles</a></code> attribute
+initialized to true.</p>
    </ol>
    <p>It is RECOMMENDED that the <var>video</var> frames are not rendered in the page and in
 the <var>pipVideo</var> at the same time but if they are, they MUST be kept in sync.</p>
@@ -1655,8 +1655,8 @@ steps.</p>
     <li data-md="">
      <p>Unset <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①">pictureInPictureElement</a></code>.</p>
     <li data-md="">
-     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task①">Queue a task</a> to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event" id="ref-for-fire-a-simple-event①">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a></code> at the <var>video</var>. The event MUST not
-bubble, MUST not be cancelable, and has no default action.</p>
+     <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task①">Queue a task</a> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire" id="ref-for-concept-event-fire①">fire an event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a></code> at the <var>video</var> with its <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-bubbles" id="ref-for-dom-event-bubbles①">bubbles</a></code> attribute
+initialized to true.</p>
    </ol>
    <h3 class="heading settled" data-level="3.3" id="disable-picture-in-picture"><span class="secno">3.3. </span><span class="content">Disable Picture-in-Picture</span><a class="self-link" href="#disable-picture-in-picture"></a></h3>
    <p>Some pages may want to disable Picture-in-Picture for a video element. To
@@ -1682,7 +1682,7 @@ the user agent SHOULD run these steps:</p>
       <li data-md="">
        <p>Unset <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement②">pictureInPictureElement</a></code>.</p>
       <li data-md="">
-       <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task②">Queue a task</a> to <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event" id="ref-for-fire-a-simple-event②">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture①">leavepictureinpicture</a></code> at the <var>video</var>. The event MUST not
+       <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task②">Queue a task</a> to <a data-link-type="dfn">fire a simple event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture①">leavepictureinpicture</a></code> at the <var>video</var>. The event MUST not
 bubble, MUST not be cancelable, and has no default action.</p>
      </ol>
    </ol>
@@ -1972,8 +1972,10 @@ whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinp
      <li><a href="https://dom.spec.whatwg.org/#document">Document</a>
      <li><a href="https://dom.spec.whatwg.org/#documentorshadowroot">DocumentOrShadowRoot</a>
      <li><a href="https://dom.spec.whatwg.org/#element">Element</a>
+     <li><a href="https://dom.spec.whatwg.org/#dom-event-bubbles">bubbles</a>
      <li><a href="https://dom.spec.whatwg.org/#connected">connected</a>
      <li><a href="https://dom.spec.whatwg.org/#context-object">context object</a>
+     <li><a href="https://dom.spec.whatwg.org/#concept-event-fire">fire an event</a>
      <li><a href="https://dom.spec.whatwg.org/#concept-documentfragment-host">host</a>
      <li><a href="https://dom.spec.whatwg.org/#concept-shadow-root">shadow root</a>
     </ul>
@@ -1991,7 +1993,6 @@ whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinp
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a>
      <li><a href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">HTMLVideoElement</a>
      <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a>
-     <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event">fire a simple event</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">in parallel</a>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">queue a task</a>
      <li><a href="https://html.spec.whatwg.org/multipage/interaction.html#triggered-by-user-activation">triggered by user activation</a>
