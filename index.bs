@@ -4,6 +4,7 @@ Shortname: picture-in-picture
 Level: 1
 Status: ED
 ED: https://wicg.github.io/picture-in-picture
+Favicon: https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png
 Group: WICG
 Repository: wicg/picture-in-picture
 Editor: François Beaufort, Google, fbeaufort@google.com
