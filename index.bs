@@ -24,8 +24,6 @@ spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
         urlPrefix: infrastructure.html
             text: in parallel
-        urlPrefix: webappapis.html
-            text: fire a simple event
         urlPrefix: interaction.html
             text: triggered by user activation
 spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
@@ -35,6 +33,7 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
 </pre>
 
 <pre class="link-defaults">
+spec:dom; type:attribute; text:bubbles
 spec:dom; type:dfn; for:NamedNodeMap; text:element
 spec:dom; type:interface; text:Document
 </pre>
@@ -157,9 +156,9 @@ invoked, the user agent MUST run the following steps:
 7. If a |pipWindow| is not already created, create one.
 8. Render |video| frames in the |pipVideo|.
 9. Set {{pictureInPictureElement}} to |video|.
-10. <a>Queue a task</a> to <a>fire a simple event</a> with the name
-    {{enterpictureinpicture}} at the |video|. The event MUST not
-    bubble, MUST not be cancelable, and has no default action.
+10. <a>Queue a task</a> to <a>fire an event</a> with the name
+    {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
+    initialized to true.
 
 It is RECOMMENDED that the |video| frames are not rendered in the page and in
 the |pipVideo| at the same time but if they are, they MUST be kept in sync.
@@ -183,9 +182,9 @@ the user agent MUST run the following steps:
     steps.
 6. Render |pipVideo| frames in the |video|.
 7. Unset {{pictureInPictureElement}}.
-8. <a>Queue a task</a> to <a>fire a simple event</a> with the name
-    {{leavepictureinpicture}} at the |video|. The event MUST not
-    bubble, MUST not be cancelable, and has no default action.
+8. <a>Queue a task</a> to <a>fire an event</a> with the name
+    {{leavepictureinpicture}} at the |video| with its {{bubbles}} attribute
+    initialized to true.
 
 ## Disable Picture-in-Picture
 
