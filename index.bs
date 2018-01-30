@@ -175,15 +175,17 @@ state that is considered not compatible with Picture-in-Picture.
 When the <dfn>exit Picture-in-Picture algorithm</dfn> is invoked,
 the user agent MUST run the following steps:
 
-1. Let |pipWindow| be the current Picture-in-Picture window.
-2. Let |pipVideo| be the video contained in the |pipWindow|.
-3. Let |video| be the source video of |pipVideo| frames.
-4. Close |pipWindow|.
-5. If |pipWindow| can't be closed, throw a {{UnknownError}} and abort these
+1. If {{pictureInPictureElement}} is null, throw a {{InvalidStateError}} and abort
+    these steps.
+2. Let |pipWindow| be the current Picture-in-Picture window.
+3. Let |pipVideo| be the video contained in the |pipWindow|.
+4. Let |video| be the source video of |pipVideo| frames.
+5. Close |pipWindow|.
+6. If |pipWindow| can't be closed, throw a {{UnknownError}} and abort these
     steps.
-6. Render |pipVideo| frames in the |video|.
-7. Unset {{pictureInPictureElement}}.
-8. <a>Queue a task</a> to <a>fire a simple event</a> with the name
+7. Render |pipVideo| frames in the |video|.
+8. Unset {{pictureInPictureElement}}.
+9. <a>Queue a task</a> to <a>fire a simple event</a> with the name
     {{leavepictureinpicture}} at the |video|. The event MUST not
     bubble, MUST not be cancelable, and has no default action.
 
