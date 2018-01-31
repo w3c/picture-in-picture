@@ -283,7 +283,7 @@ attribute name <code>picture-in-picture</code>, and <code>false</code>
 otherwise.
 
 <dfn>Picture-in-Picture support</dfn> is <code>true</code> if there is no
-previously-established user preference, security risk, or platform limitation,
+previously-established user preference, restrictions, or platform limitation,
 and <code>false</code> otherwise.
 
 The {{exitPictureInPicture()}} method, when invoked, MUST
