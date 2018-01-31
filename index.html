@@ -1480,7 +1480,8 @@ content sites, or applications on their device.</p>
       <li><a href="#exit-pip"><span class="secno">3.2</span> <span class="content">Exit Picture-in-Picture</span></a>
       <li><a href="#disable-picture-in-picture"><span class="secno">3.3</span> <span class="content">Disable Picture-in-Picture</span></a>
       <li><a href="#remote-playback"><span class="secno">3.4</span> <span class="content">Interaction with Remote Playback</span></a>
-      <li><a href="#one-pip-window"><span class="secno">3.5</span> <span class="content">One Picture-in-Picture window</span></a>
+      <li><a href="#media-session"><span class="secno">3.5</span> <span class="content">Interaction with Media Session</span></a>
+      <li><a href="#one-pip-window"><span class="secno">3.6</span> <span class="content">One Picture-in-Picture window</span></a>
      </ol>
     <li>
      <a href="#api"><span class="secno">4</span> <span class="content">API</span></a>
@@ -1681,7 +1682,10 @@ the user agent SHOULD run these steps:</p>
    <p>The <a data-link-type="biblio" href="#biblio-remote-playback">[Remote-Playback]</a> specification defines a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-device" id="ref-for-dfn-local-playback-device">local playback device</a> and a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-state" id="ref-for-dfn-local-playback-state">local playback state</a>. For the purpose of Picture-in-Picture, the
 playback is local and regardless of whether it is played in page or in
 Picture-in-Picture.</p>
-   <h3 class="heading settled" data-level="3.5" id="one-pip-window"><span class="secno">3.5. </span><span class="content">One Picture-in-Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
+   <h3 class="heading settled" data-level="3.5" id="media-session"><span class="secno">3.5. </span><span class="content">Interaction with Media Session</span><a class="self-link" href="#media-session"></a></h3>
+   <p>The API will have to be used with the <a data-link-type="biblio" href="#biblio-mediasession">[MediaSession]</a> API for customizing the
+avaiable controls on the Picture-in-Picture window.</p>
+   <h3 class="heading settled" data-level="3.6" id="one-pip-window"><span class="secno">3.6. </span><span class="content">One Picture-in-Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
    <p>Operating systems with a Picture-in-Picture API usually restricts
 Picture-in-Picture to only one window.  Whether only one window is allowed in
 Picture-in-Picture will be left to the implementation and the platform.
@@ -2030,6 +2034,8 @@ whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinp
   <dl>
    <dt id="biblio-fullscreen">[Fullscreen]
    <dd>Anne van Kesteren. <a href="https://fullscreen.spec.whatwg.org/">Fullscreen API Standard</a>. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a>
+   <dt id="biblio-mediasession">[MediaSession]
+   <dd><a href="https://wicg.github.io/mediasession/">Media Session</a>. Living Standard. URL: <a href="https://wicg.github.io/mediasession/">https://wicg.github.io/mediasession/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl highlight def"><span class="kt">partial</span> <span class="kt">interface</span> <a class="nv idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement②①">HTMLVideoElement</a> {
