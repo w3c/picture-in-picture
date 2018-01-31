@@ -207,12 +207,7 @@ the user agent SHOULD run these steps:
 
 1. Reject any pending promises returned by the {{requestPictureInPicture()}}
     method with {{InvalidStateError}}.
-2. If |video| is |pipVideo|:
-    1. Run the <a>exit Picture-in-Picture algorithm</a>.
-    2. Unset {{pictureInPictureElement}}.
-    3. <a>Queue a task</a> to <a>fire a simple event</a> with the name
-        {{leavepictureinpicture}} at the |video|. The event MUST not
-        bubble, MUST not be cancelable, and has no default action.
+2. If |video| is |pipVideo|, run the <a>exit Picture-in-Picture algorithm</a>.
 
 ## Interaction with Remote Playback ## {#remote-playback}
 
