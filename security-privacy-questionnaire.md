@@ -42,7 +42,7 @@ No.
 **Does this specification allow an origin access to aspects of a user’s local
 computing environment?**
 
-On Android, [`pictureInPictureEnabled`](https://wicg.github.io/picture-in-picture/#dom-document-pictureinpictureenabled)
+[`pictureInPictureEnabled`](https://wicg.github.io/picture-in-picture/#dom-document-pictureinpictureenabled)
 will reflect the state of the  "Picture-in-Picture" setting on the system or 
 user agent.
 
