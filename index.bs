@@ -332,6 +332,12 @@ dimensions about the current Picture-in-Picture window.
 
 # Security considerations # {#security-considerations}
 
+<em>This section is non-normative.</em>
+
+The API applies only to {{HTMLVideoElement}} in order to start on a minimal
+viable product that has limited security issues. Later versions of this
+specification may allow PIP-ing arbitrary HTML content.
+
 ## Feature Policy ## {#feature-policy}
 
 This specification defines a <a>policy-controlled feature</a> that controls
