@@ -142,8 +142,8 @@ extensible.
 When the <dfn>request Picture-in-Picture algorithm</dfn> with |video| is
 invoked, the user agent MUST run the following steps:
 
-1. If {{pictureInPictureEnabled}} is |false|, throw a {{NotSupportedError}} and
-    abort these steps.
+1. If <a>Picture-in-Picture support</a> is <code>false</code>, throw a
+    {{NotSupportedError}} and abort these steps.
 2. If document is not allowed to use the <a>policy-controlled feature</a> named
     <code>"picture-in-picture"</code>, throw a {{SecurityError}} and abort these
     steps.
@@ -187,7 +187,7 @@ the user agent MUST run the following steps:
     {{leavepictureinpicture}} at the |video|. The event MUST not
     bubble, MUST not be cancelable, and has no default action.
 
-## Disable Picture-in-Picture
+## Disable Picture-in-Picture ## {#disable-pip}
 
 Some pages may want to disable Picture-in-Picture for a video element. To
 support this, a new {{disablePictureInPicture}} attribute is added to the list
@@ -277,12 +277,14 @@ partial interface Document {
 </pre>
 
 The {{pictureInPictureEnabled}} attribute's getter must return
-<code>true</code> if <a>Picture-in-Picture is supported</a> and the <a>context
-object</a> is <a>allowed to use</a> the feature indicated by attribute name
-<code>picture-in-picture</code>, and false otherwise.
+<code>true</code> if <a>Picture-in-Picture support</a> is <code>true</code> and
+the <a>context object</a> is <a>allowed to use</a> the feature indicated by
+attribute name <code>picture-in-picture</code>, and <code>false</code>
+otherwise.
 
-<dfn>Picture-in-Picture is supported</dfn> if there is no
-previously-established user preference, security risk, or platform limitation.
+<dfn>Picture-in-Picture support</dfn> is <code>true</code> if there is no
+previously-established user preference, security risk, or platform limitation,
+and <code>false</code> otherwise.
 
 The {{exitPictureInPicture()}} method, when invoked, MUST
 return <a>a new promise</a> |promise| and run the following steps <a>in
