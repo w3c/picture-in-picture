@@ -42,8 +42,9 @@ No.
 **Does this specification allow an origin access to aspects of a user’s local
 computing environment?**
 
-On Android, it allows an origin to know if user has toggled 
-off "Allow picture-in-pucture" system setting.
+On Android, [`pictureInPictureEnabled`](https://wicg.github.io/picture-in-picture/#dom-document-pictureinpictureenabled)
+will reflect the state of the  "Picture-in-Picture" setting on the system or 
+user agent.
 
 **Does this specification allow an origin access to other devices?**
 
