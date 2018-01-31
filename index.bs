@@ -142,11 +142,11 @@ extensible.
 When the <dfn>request Picture-in-Picture algorithm</dfn> with |video| is
 invoked, the user agent MUST run the following steps:
 
-1. If document is not allowed to use the <a>policy-controlled feature</a> named
+1. If {{pictureInPictureEnabled}} is |false|, throw a {{NotSupportedError}} and
+    abort these steps.
+2. If document is not allowed to use the <a>policy-controlled feature</a> named
     <code>"picture-in-picture"</code>, throw a {{SecurityError}} and abort these
     steps.
-2. If {{pictureInPictureEnabled}} is |false|, throw a {{NotSupportedError}} and
-    abort these steps.
 3. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
     |video|, throw a {{InvalidStateError}} and abort these steps.
 4. If the algorithm is not <a>triggered by user activation</a>, throw a
@@ -277,9 +277,9 @@ partial interface Document {
 </pre>
 
 The {{pictureInPictureEnabled}} attribute's getter must return
-<code>true</code> if the <a>context object</a> is <a>allowed to use</a> the
-feature indicated by attribute name <code>picture-in-picture</code> and
-<a>Picture-in-Picture is supported</a>, and false otherwise.
+<code>true</code> if <a>Picture-in-Picture is supported</a> and the <a>context
+object</a> is <a>allowed to use</a> the feature indicated by attribute name
+<code>picture-in-picture</code>, and false otherwise.
 
 <dfn>Picture-in-Picture is supported</dfn> if there is no
 previously-established user preference, security risk, or platform limitation.
