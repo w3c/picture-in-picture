@@ -297,7 +297,7 @@ parallel</a>:
 
 <pre class="idl">
 partial interface DocumentOrShadowRoot {
-  readonly attribute Element? pictureInPictureElement;
+  readonly attribute HTMLVideoElement? pictureInPictureElement;
 };
 </pre>
 
@@ -305,7 +305,7 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
 
 1. If the <a>context object</a> is a <a for=/>shadow root</a> and its
     <a for=DocumentFragment>host</a> is not <a>connected</a>, then return null.
-2. Return the Picture-in-Picture element
+2. Return the Picture-in-Picture video element.
 
 ## <code>PictureInPictureWindow</code> ## {#picture-in-picture-window}
 
