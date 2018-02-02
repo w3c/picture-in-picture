@@ -40,19 +40,15 @@ Many users want to continue consuming media while they interact with other conte
 The proposed API is very similar to the Fullscreen API as they have similar properties. The API only applies on `HTMLVideoElement` at the moment but is meant to be extensible. In order to extend it, the `HTMLVideoElement` extension should apply to the `Element` interface instead.
 
 ```
-dictionary PictureInPictureOptions {
-  optional unsigned int width;
-  optional unsigned int height;
-  optional unsigned int top;
-  optional unsigned int start;
-};
-
 partial interface HTMLVideoElement {
-  Promise<void> requestPictureInPicture(PictureInPictureOptions? options);
+  Promise<PictureInPictureWindow> requestPictureInPicture();
 
   // On the fullscreen API, they live on the Document.
   attribute EventHandler onenterpictureinpicture;
   attribute EventHandler onleavepictureinpicture;
+
+  [CEReactions]
+  attribute boolean disablePictureInPicture;
 };
 
 partial interface Document {
@@ -62,7 +58,14 @@ partial interface Document {
 };
 
 partial interface DocumentOrShadowRoot {
-  readonly attribute Element? pictureInPictureElement;
+  readonly attribute HTMLVideoElement? pictureInPictureElement;
+};
+
+interface PictureInPictureWindow {
+  readonly attribute long width;
+  readonly attribute long height;
+
+  attribute EventHandler onresize;
 };
 ```
 
@@ -82,6 +85,12 @@ partial interface DocumentOrShadowRoot {
     // Picture-in-Picture for the video, otherwise leave it.
     if (!document.pictureInPictureElement) {
       video.requestPictureInPicture()
+      .then(pipWindow => {
+        updateVideoSize(pipWindow.width, pipWindow.height);
+        pipWindow.addEventListener('resize', function(event) {
+          updateVideoSize(pipWindow.width, pipWindow.height);
+        });
+      })
       .catch(error => {
         // Video failed to enter Picture-in-Picture mode.
       });
@@ -92,6 +101,10 @@ partial interface DocumentOrShadowRoot {
       });
     }
   });
+
+  function updateVideoSize(width, height) {
+    // TODO: Update video size based on pip window width and height.
+  }
 
   video.addEventListener('enterpictureinpicture', function() {
     // Video element entered Picture-In-Picture mode.
