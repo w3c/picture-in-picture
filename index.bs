@@ -244,13 +244,13 @@ in order to notify the website of the Picture-in-Picture status changes.
 
 <pre class="idl">
 partial interface HTMLVideoElement {
-    Promise&lt;PictureInPictureWindow> requestPictureInPicture();
+  Promise&lt;PictureInPictureWindow> requestPictureInPicture();
 
-    attribute EventHandler onenterpictureinpicture;
-    attribute EventHandler onleavepictureinpicture;
+  attribute EventHandler onenterpictureinpicture;
+  attribute EventHandler onleavepictureinpicture;
 
-    [CEReactions]
-    attribute boolean disablePictureInPicture;
+  [CEReactions]
+  attribute boolean disablePictureInPicture;
 };
 </pre>
 
@@ -314,10 +314,10 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
 
 <pre class="idl">
 interface PictureInPictureWindow {
-    readonly attribute long width;
-    readonly attribute long height;
+  readonly attribute long width;
+  readonly attribute long height;
 
-    attribute EventHandler onresize;
+  attribute EventHandler onresize;
 };
 </pre>
 
