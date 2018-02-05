@@ -314,8 +314,8 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
 
 <pre class="idl">
 interface PictureInPictureWindow {
-  readonly attribute long width;
-  readonly attribute long height;
+  readonly attribute unsigned long width;
+  readonly attribute unsigned long height;
 
   attribute EventHandler onresize;
 };

@@ -62,8 +62,8 @@ partial interface DocumentOrShadowRoot {
 };
 
 interface PictureInPictureWindow {
-  readonly attribute long width;
-  readonly attribute long height;
+  readonly attribute unsigned long width;
+  readonly attribute unsigned long height;
 
   attribute EventHandler onresize;
 };
