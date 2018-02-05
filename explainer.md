@@ -136,6 +136,24 @@ What happens when there is a PIP request while a window is already in PIP will b
 
 An entry for Picture-in-Picture in the [Feature Policy specification](https://wicg.github.io/feature-policy/) could be added in order for embedders to prevent iframes to trigger Picture-in-Picture.
 
+## Video Restrictions
+
+Even though the API only applies on `HTMLVideoElement` at the moment, there is one way today to play a `HTMLCanvasElement` in Picture-in-Picture by using [`canvas.captureStream()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/captureStream).
+
+```html
+<canvas id="canvas"></canvas>
+
+<button id="pipButton"></button>
+
+<script>
+  pipButton.addEventListener('click', function() {
+    const video = document.createElement('video');
+    video.srcObject = canvas.captureStream(60 /* fps */);
+    video.requestPictureInPicture();
+  });
+</script>
+```
+
 ## Similar APIs
 
 ### Safari API
