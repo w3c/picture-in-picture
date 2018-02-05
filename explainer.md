@@ -58,7 +58,7 @@ partial interface Document {
 };
 
 partial interface DocumentOrShadowRoot {
-  readonly attribute HTMLVideoElement? pictureInPictureElement;
+  readonly attribute Element? pictureInPictureElement;
 };
 
 interface PictureInPictureWindow {
