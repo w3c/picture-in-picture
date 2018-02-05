@@ -296,7 +296,7 @@ parallel</a>:
     exception and abort these steps.
 3. Return |promise|.
 
-## Extension to <code>DocumentOrShadowRoot</code> ## {#shadow-root-extension}
+## Extension to <code>DocumentOrShadowRoot</code> ## {#documentorshadowroot-extension}
 
 <pre class="idl">
 partial interface DocumentOrShadowRoot {
