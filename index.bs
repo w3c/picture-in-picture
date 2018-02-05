@@ -307,11 +307,12 @@ partial interface DocumentOrShadowRoot {
 The {{pictureInPictureElement}} attribute's getter must run these steps:
 
 1. If the <a>context object</a> is a <a for=/>shadow root</a> and its
-    <a for=DocumentFragment>host</a> is not <a>connected</a>, then return null.
+    <a for=DocumentFragment>host</a> is not <a>connected</a>, return null and
+    abort these steps.
 2. Let |candidate| be the result of <a>retargeting</a> Picture-in-Picture
     element against the <a>context object</a>.
 3. If |candidate| and the <a>context object</a> are in the same <a>tree</a>,
-    then return |candidate|.
+    return |candidate| and abort these steps.
 4. Return null.
 
 ## <code>PictureInPictureWindow</code> ## {#picture-in-picture-window}
