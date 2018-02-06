@@ -158,7 +158,8 @@ invoked, the user agent MUST run the following steps:
 7. If a |pipWindow| is not already created, create one.
 8. Render |video| frames in the |pipVideo|.
 9. Set {{pictureInPictureElement}} to |video|.
-10. <a>Queue a task</a> to <a>fire an event</a> with the name
+10. Set <a>Picture-in-Picture window</a> |state| to |opened|.
+11. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
@@ -184,7 +185,8 @@ the user agent MUST run the following steps:
 5. Close |pipWindow|.
 6. Render |pipVideo| frames in the |video|.
 7. Unset {{pictureInPictureElement}}.
-8. <a>Queue a task</a> to <a>fire an event</a> with the name
+8. Set <a>Picture-in-Picture window</a> |state| to |closed|.
+9. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{leavepictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
@@ -314,7 +316,7 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
     return |candidate| and abort these steps.
 4. Return null.
 
-## <code>PictureInPictureWindow</code> ## {#picture-in-picture-window}
+## Interface <code>PictureInPictureWindow</code> ## {#interface-picture-in-picture-window}
 
 <pre class="idl">
 interface PictureInPictureWindow {
@@ -325,8 +327,13 @@ interface PictureInPictureWindow {
 };
 </pre>
 
-The {{PictureInPictureWindow}} is a simple proxy to get information such as
-dimensions about the current Picture-in-Picture window.
+The {{PictureInPictureWindow}} interface is a simple proxy to get information
+such as dimensions about the current <a>Picture-in-Picture window</a>.
+
+<dfn>Picture-in-Picture window</dfn> initial |state| is |closed|.
+
+When <a>Picture-in-Picture window</a> |state| is |closed|, its dimensions
+{{width}} and {{height}} SHOULD be set to 0.
 
 ## Event types ## {#event-types}
 
