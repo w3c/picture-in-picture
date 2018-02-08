@@ -154,10 +154,8 @@ invoked, the user agent MUST run the following steps:
     {{NotAllowedError}} and abort these steps.
 5. Set {{pictureInPictureElement}} to |video|.
 6. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
-    {{PictureInPictureWindow}} with its |state| set to |opened|.
-7. Associate {{pictureInPictureElement}} with the <a>Picture-in-Picture
-    window</a>.
-8. <a>Queue a task</a> to <a>fire an event</a> with the name
+    {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
+7. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
@@ -178,8 +176,8 @@ the user agent MUST run the following steps:
 
 1. If {{pictureInPictureElement}} is null, throw a {{InvalidStateError}} and abort
     these steps.
-2. Set the <a>Picture-in-Picture window</a> associated with
-    {{pictureInPictureElement}} |state| to |closed|.
+2. Run the <a>close window algorithm</a> with the <a>Picture-in-Picture
+    window</a> associated with {{pictureInPictureElement}}.
 3. Unset {{pictureInPictureElement}}.
 4. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{leavepictureinpicture}} at the |video| with its {{bubbles}} attribute
@@ -322,15 +320,19 @@ interface PictureInPictureWindow {
 </pre>
 
 A {{PictureInPictureWindow}} instance represents a <a>Picture-in-Picture
-window</a>. It has a |state| that is either |opened| or |closed|.
+window</a> associated with an {{Element}}. When instantiated, an instance of
+{{PictureInPictureWindow}} has its |state| set to |opened|.
 
-The {{width}} attribute is the width in <a lt=px value>CSS pixels</a> of the
-<a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}}.
-When {{PictureInPictureWindow}} |state| is |closed|, {{width}} is 0.
+When the <dfn>close window algorithm</dfn> with an instance of
+{{PictureInPictureWindow}} is invoked, its |state| is set to |closed|.
+
+The {{width}} attribute MUST return the width in <a lt=px value>CSS pixels</a> of the
+<a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}} if
+the |state| is |opened|. Otherwise, it MUST return 0.
 
 The {{height}} attribute is the height in <a lt=px value>CSS pixels</a> of the
-<a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}}.
-When {{PictureInPictureWindow}} |state| is |closed|, {{height}} is 0.
+<a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}} if
+the |state| is |opened|. Otherwise, it MUST return 0.
 
 ## Event types ## {#event-types}
 
