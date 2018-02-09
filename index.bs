@@ -24,10 +24,14 @@ spec: Feature Policy; urlPrefix: https://wicg.github.io/feature-policy/#
         text: policy-controlled feature
 spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
+        urlPrefix: iframe-embed-object.html#attr-iframe-
+            text: sandbox
         urlPrefix: infrastructure.html
             text: in parallel
         urlPrefix: interaction.html
             text: triggered by user activation
+        urlPrefix: origin.html
+            text: active sandboxing flag set
 spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
     type: dfn
         text: local playback device
@@ -148,17 +152,20 @@ invoked, the user agent MUST run the following steps:
 2. If document is not allowed to use the <a>policy-controlled feature</a> named
     <code>"picture-in-picture"</code>, throw a {{SecurityError}} and abort these
     steps.
-3. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
+3. If document's <a>active sandboxing flag set</a> has the <a>sandboxed
+    picture-in-picture browsing context flag</a> set, throw a {{SecurityError}} and
+    abort these steps.
+4. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
     |video|, throw a {{InvalidStateError}} and abort these steps.
-4. If the algorithm is not <a>triggered by user activation</a>, throw a
+5. If the algorithm is not <a>triggered by user activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
-5. Let |pipWindow| be the Picture-in-Picture window that is <dfn>always on
+6. Let |pipWindow| be the Picture-in-Picture window that is <dfn>always on
     top</dfn>. It consistently stays above most other windows.
-6. Let |pipVideo| be the video contained in the |pipWindow|.
-7. If a |pipWindow| is not already created, create one.
-8. Render |video| frames in the |pipVideo|.
-9. Set {{pictureInPictureElement}} to |video|.
-10. <a>Queue a task</a> to <a>fire an event</a> with the name
+7. Let |pipVideo| be the video contained in the |pipWindow|.
+8. If a |pipWindow| is not already created, create one.
+9. Render |video| frames in the |pipVideo|.
+10. Set {{pictureInPictureElement}} to |video|.
+11. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
@@ -353,3 +360,20 @@ whether {{pictureInPictureEnabled}} is <code>true</code> or <code>false</code>.
 The <a>feature name</a> for this feature is <code>"picture-in-picture"</code>.
 
 The <a>default allowlist</a> for this feature is <code>["self"]</code>.
+
+## HTML sandboxing ## {#sandbox}
+
+The HTML5 specification defines a <a>sandboxing flag set</a> which is extended
+with this value:
+
+: The <dfn>sandboxed picture-in-picture browsing context flag</dfn>
+:: This flag disables the ability to request Picture-in-Picture.
+
+The algorithm to <a>parse a sandboxing directive</a> is also extended in step 3
+such that:
+
+- The <a>sandboxed picture-in-picture browsing context flag</a>, unless
+    |tokens| contains the <code>allow-picture-in-picture</code> keyword.
+
+Finally, the iframe's <a>sandbox</a> attribute MUST add
+<code>allow-picture-in-picture</code> amongst its allowed values.
