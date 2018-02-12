@@ -152,18 +152,16 @@ invoked, the user agent MUST run the following steps:
     |video|, throw a {{InvalidStateError}} and abort these steps.
 4. If the algorithm is not <a>triggered by user activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
-5. Let |pipWindow| be the Picture-in-Picture window that is <dfn>always on
-    top</dfn>. It consistently stays above most other windows.
-6. Let |pipVideo| be the video contained in the |pipWindow|.
-7. If a |pipWindow| is not already created, create one.
-8. Render |video| frames in the |pipVideo|.
-9. Set {{pictureInPictureElement}} to |video|.
-10. <a>Queue a task</a> to <a>fire an event</a> with the name
+5. Set {{pictureInPictureElement}} to |video|.
+6. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
+    {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
+7. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
-It is RECOMMENDED that the |video| frames are not rendered in the page and in
-the |pipVideo| at the same time but if they are, they MUST be kept in sync.
+It is RECOMMENDED that the video frames are not rendered in the page and in
+the Picture-in-Picture window at the same time but if they are, they MUST be
+kept in sync.
 
 When a video is played in Picture-in-Picture, the states SHOULD transition as
 if it was played inline. That means that the events SHOULD fire at the same
@@ -178,13 +176,10 @@ the user agent MUST run the following steps:
 
 1. If {{pictureInPictureElement}} is null, throw a {{InvalidStateError}} and abort
     these steps.
-2. Let |pipWindow| be the current Picture-in-Picture window.
-3. Let |pipVideo| be the video contained in the |pipWindow|.
-4. Let |video| be the source video of |pipVideo| frames.
-5. Close |pipWindow|.
-6. Render |pipVideo| frames in the |video|.
-7. Unset {{pictureInPictureElement}}.
-8. <a>Queue a task</a> to <a>fire an event</a> with the name
+2. Run the <a>close window algorithm</a> with the <a>Picture-in-Picture
+    window</a> associated with {{pictureInPictureElement}}.
+3. Unset {{pictureInPictureElement}}.
+4. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{leavepictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
@@ -208,7 +203,8 @@ the user agent SHOULD run these steps:
 
 1. Reject any pending promises returned by the {{requestPictureInPicture()}}
     method with {{InvalidStateError}}.
-2. If |video| is |pipVideo|, run the <a>exit Picture-in-Picture algorithm</a>.
+2. If |video| is {{pictureInPictureElement}}, run the <a>exit
+    Picture-in-Picture algorithm</a>.
 
 ## Interaction with Remote Playback ## {#remote-playback}
 
@@ -262,10 +258,8 @@ parallel</a>:
 2. Run the <a>request Picture-in-Picture algorithm</a> with |video|.
 3. If the previous step threw an exception, reject |promise| with that
     exception and abort these steps.
-4. Let |pipWindow| be a new {{PictureInPictureWindow}} object. Set |pipWindow|
-    {{width}} and {{height}} respectively to the width and height of the
-    Picture-in-Picture window that is always on top.
-5. Return |promise| with |pipWindow|.
+4. Return |promise| with the <a>Picture-in-Picture window</a> associated with
+    {{pictureInPictureElement}}.
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
 
@@ -314,7 +308,7 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
     return |candidate| and abort these steps.
 4. Return null.
 
-## <code>PictureInPictureWindow</code> ## {#picture-in-picture-window}
+## Interface <code>PictureInPictureWindow</code> ## {#interface-picture-in-picture-window}
 
 <pre class="idl">
 interface PictureInPictureWindow {
@@ -325,8 +319,20 @@ interface PictureInPictureWindow {
 };
 </pre>
 
-The {{PictureInPictureWindow}} is a simple proxy to get information such as
-dimensions about the current Picture-in-Picture window.
+A {{PictureInPictureWindow}} instance represents a <a>Picture-in-Picture
+window</a> associated with an {{HTMLVideoElement}}. When instantiated, an
+instance of {{PictureInPictureWindow}} has its |state| set to |opened|.
+
+When the <dfn>close window algorithm</dfn> with an instance of
+{{PictureInPictureWindow}} is invoked, its |state| is set to |closed|.
+
+The {{width}} attribute MUST return the width in <a lt=px value>CSS pixels</a> of the
+<a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}} if
+the |state| is |opened|. Otherwise, it MUST return 0.
+
+The {{height}} attribute MUST return the height in <a lt=px value>CSS pixels</a> of the
+<a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}} if
+the |state| is |opened|. Otherwise, it MUST return 0.
 
 ## Event types ## {#event-types}
 
