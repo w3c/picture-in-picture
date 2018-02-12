@@ -15,4 +15,4 @@ Work is in progress in [Chrome Canary](http://chrome.com/canary):
 https://bugs.webkit.org/show_bug.cgi?id=182688
 
 # Microsoft Edge
-N/A
+https://dev.windows.com/en-us/microsoft-edge/platform/status/picture-in-picture
