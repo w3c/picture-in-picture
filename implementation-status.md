@@ -7,6 +7,7 @@ This document shows the current implementation status of Picture-in-Picture on t
 
 Work is in progress in [Chrome Canary](http://chrome.com/canary).
 
+* Works only when hardware acceleration is enabled for now. See [Issue 807840](http://crbug.com/807840).
 * Give it a try with:
 
 ```
