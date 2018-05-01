@@ -38,6 +38,7 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
 spec:dom; type:attribute; text:bubbles
 spec:dom; type:dfn; for:NamedNodeMap; text:element
 spec:dom; type:interface; text:Document
+spec:html; type:attribute; for:HTMLMediaElement; text:readyState
 </pre>
 
 # Introduction # {#intro}
@@ -148,14 +149,18 @@ invoked, the user agent MUST run the following steps:
 2. If document is not allowed to use the <a>policy-controlled feature</a> named
     <code>"picture-in-picture"</code>, throw a {{SecurityError}} and abort these
     steps.
-3. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
+3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
+    {{InvalidStateError}} and abort these steps.
+4. If |video|'s has no video track, throw a {{InvalidStateError}} and abort
+    these steps.
+5. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
     |video|, throw a {{InvalidStateError}} and abort these steps.
-4. If the algorithm is not <a>triggered by user activation</a>, throw a
+6. If the algorithm is not <a>triggered by user activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
-5. Set {{pictureInPictureElement}} to |video|.
-6. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
+7. Set {{pictureInPictureElement}} to |video|.
+8. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-7. <a>Queue a task</a> to <a>fire an event</a> with the name
+9. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
