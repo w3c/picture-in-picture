@@ -151,7 +151,7 @@ invoked, the user agent MUST run the following steps:
     steps.
 3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
     {{InvalidStateError}} and abort these steps.
-4. If |video|'s has no video track, throw a {{InvalidStateError}} and abort
+4. If |video| has no video track, throw a {{InvalidStateError}} and abort
     these steps.
 5. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
     |video|, throw a {{InvalidStateError}} and abort these steps.
