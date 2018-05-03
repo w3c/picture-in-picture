@@ -28,6 +28,8 @@ spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
             text: in parallel
         urlPrefix: interaction.html
             text: triggered by user activation
+        urlPrefix: media.html
+            text: media element event task source
 spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
     type: dfn
         text: local playback device
@@ -347,6 +349,11 @@ the |state| is |opened|. Otherwise, it MUST return 0.
 :: Fired on a {{HTMLVideoElement}} when it leaves Picture-in-Picture.
 : <dfn event for="PictureInPictureWindow"><code>resize</code></dfn>
 :: Fired on a {{PictureInPictureWindow}} when it changes size.
+
+## Task source ## {#task-source}
+
+The <a>task source</a> for all the tasks queued in this specification is the
+<a>media element event task source</a> of the video element in question.
 
 # Security considerations # {#security-considerations}
 
