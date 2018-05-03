@@ -1493,6 +1493,7 @@ content sites, or applications on their device.</p>
       <li><a href="#documentorshadowroot-extension"><span class="secno">4.3</span> <span class="content">Extension to <code>DocumentOrShadowRoot</code></span></a>
       <li><a href="#interface-picture-in-picture-window"><span class="secno">4.4</span> <span class="content">Interface <code>PictureInPictureWindow</code></span></a>
       <li><a href="#event-types"><span class="secno">4.5</span> <span class="content">Event types</span></a>
+      <li><a href="#task-source"><span class="secno">4.6</span> <span class="content">Task source</span></a>
      </ol>
     <li>
      <a href="#security-considerations"><span class="secno">5</span> <span class="content">Security considerations</span></a>
@@ -1790,6 +1791,8 @@ the <var>state</var> is <var>opened</var>. Otherwise, it MUST return 0.</p>
     <dd data-md="">
      <p>Fired on a <code class="idl"><a data-link-type="idl" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow⑤">PictureInPictureWindow</a></code> when it changes size.</p>
    </dl>
+   <h3 class="heading settled" data-level="4.6" id="task-source"><span class="secno">4.6. </span><span class="content">Task source</span><a class="self-link" href="#task-source"></a></h3>
+   <p>The <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#task-source" id="ref-for-task-source">task source</a> for all the tasks queued in this specification is the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/media.html#media-element-event-task-source" id="ref-for-media-element-event-task-source">media element event task source</a> of the video element in question.</p>
    <h2 class="heading settled" data-level="5" id="security-considerations"><span class="secno">5. </span><span class="content">Security considerations</span><a class="self-link" href="#security-considerations"></a></h2>
    <p><em>This section is non-normative.</em></p>
    <p>The API applies only to <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement⑥">HTMLVideoElement</a></code> in order to start on a minimal
@@ -2006,8 +2009,10 @@ whether the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm"
      <li><a href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">HTMLVideoElement</a>
      <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a>
      <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">in parallel</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/media.html#media-element-event-task-source">media element event task source</a>
      <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">queue a task</a>
      <li><a href="https://html.spec.whatwg.org/multipage/media.html#dom-media-readystate">readyState</a>
+     <li><a href="https://html.spec.whatwg.org/multipage/webappapis.html#task-source">task source</a>
      <li><a href="https://html.spec.whatwg.org/multipage/interaction.html#triggered-by-user-activation">triggered by user activation</a>
     </ul>
    <li>
