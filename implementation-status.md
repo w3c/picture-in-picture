@@ -43,3 +43,6 @@ https://dev.windows.com/en-us/microsoft-edge/platform/status/pictureinpicture
 
 # Safari
 https://bugs.webkit.org/show_bug.cgi?id=182688
+
+# Polyfill
+https://github.com/gbentaieb/pip-polyfill/
