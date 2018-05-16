@@ -12,6 +12,9 @@ Many users want to continue consuming media while they interact with other conte
 
 *   A website wants to initiate a Picture-in-Picture experience from its own media or site controls.
 *   A website wants to be notified when the user initiates Picture-in-Picture on a video from the browser UI in order to update its UI.
+*   A website wants to inject an action into the Picture-in-Picture window by providing information used for the action in order to give its users control over the PiP’d media.
+*   A website wants to be notified when the user interacts with the action in order to handle it.
+
 
 ### For future considerations or candidates for first API
 
@@ -28,6 +31,7 @@ Many users want to continue consuming media while they interact with other conte
 *   The API will allow the website to trigger Picture-in-Picture via a user gesture on a video element.
 *   The API will allow the website to exit Picture-in-Picture.
 *   The API will allow the website to check if Picture-in-Picture can be triggered.
+*   The API will notify the website if a custom action is interacted with via user gesture.
 
 ### For future considerations or candidates for first API
 
@@ -42,6 +46,8 @@ The proposed API is very similar to the Fullscreen API as they have similar prop
 ```
 partial interface HTMLVideoElement {
   Promise<PictureInPictureWindow> requestPictureInPicture();
+
+  Promise<CustomAction> addPictureInPictureAction(CustomActionMetadata action);
 
   // On the fullscreen API, they live on the Document.
   attribute EventHandler onenterpictureinpicture;
@@ -67,6 +73,20 @@ interface PictureInPictureWindow {
 
   attribute EventHandler onresize;
 };
+
+interface CustomActionMetadata {
+  attribute DOMString label; // Description of the action.
+  attribute FrozenArray<MediaImage> artwork;
+  callback? fn; // Handles action.
+
+  void setHandler(callback fn);
+};
+
+dictionary MediaImage {
+  required USVString src;
+  DOMString sizes = "";
+  DOMString type = "";
+};
 ```
 
 ## Example
@@ -79,6 +99,17 @@ interface PictureInPictureWindow {
 <script>
   // Hide button if Picture-in-Picture is not supported or disabled.
   pipButton.hidden = !document.pictureInPictureEnabled || video.disablePictureInPicture;
+
+  const actions = {
+    label: 'Skip',
+    artwork: [
+      { src: 'image_1.png', sizes: '96x96', type: 'image/png' },
+      { src: 'image_2.png', sizes: '128x128', type: 'image/png' },
+    ],
+  };
+
+  const action = await video.addPictureInPictureAction(action);
+  action.setHandler(function() { ... });
 
   pipButton.addEventListener('click', function() {
     // If there is no element in Picture-in-Picture yet, let's request
