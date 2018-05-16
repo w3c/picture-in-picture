@@ -7,7 +7,6 @@ This document shows the current implementation status of Picture-in-Picture on t
 
 Work is in progress in [Chrome Canary](http://chrome.com/canary).
 
-* Works only when hardware acceleration is enabled for now. See [Issue 807840](http://crbug.com/807840).
 * Give it a try with:
 
 ```
@@ -34,8 +33,10 @@ Feature/Platform                       | Desktop | Android |
 Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/current-versions/](https://googlechromelabs.github.io/current-versions/).
 
 ## Notes
-  * Desktop includes Chrome OS, Linux, Mac, and Windows.
-  * Mac requires `chrome://flags#views-browser-windows` flag to be enabled.
+* Desktop includes Chrome OS, Linux, Mac, and Windows.
+* Mac requires `chrome://flags#views-browser-windows` flag to be enabled.
+* [Issue 807840](http://crbug.com/807840): Hardware acceleration has to be enabled for now.
+* [Issue 746182](http://crbug.com/746182): MediaStreams (WebRTC) are not supported yet.
 
 # Microsoft Edge
 https://dev.windows.com/en-us/microsoft-edge/platform/status/pictureinpicture
