@@ -19,18 +19,17 @@ $ chrome \
 * Know where to [report Picture-in-Picture bugs](https://bugs.chromium.org/p/chromium/issues/entry?components=Blink>Media>PictureInPicture).
 * Root [Issue 806249](http://crbug.com/806249) and blocking issues are most authorative on status.
 
-Feature/Platform                     | Desktop | Android |
------------------------------------- | :-----: | :-----: |
-`video.requestPictureInPicture()`    | 68      |         |
-`video.onenterpictureinpicture`      | 68      |         |
-`video.onenterpictureinpicture`      | 68      |         |
-`video.disablePictureInPicture`      | 68      | 68      |
-`document.pictureInPictureEnabled`   | 68      | 68      |
-`document.pictureInPictureElement`   | 68      |         |
-`document.exitPictureInPicture()`    | 68      |         |
-`PictureInPictureWindow.width`       |         |         |
-`PictureInPictureWindow.height`      |         |         |
-`PictureInPictureWindow.onresize`    |         |         |
+Feature/Platform                       | Desktop | Android |
+-------------------------------------- | :-----: | :-----: |
+`video.requestPictureInPicture()`      | 68      |         |
+`video.onenterpictureinpicture`        | 68      |         |
+`video.onleavepictureinpicture`        | 68      |         |
+`video.disablePictureInPicture`        | 68      | 68      |
+`document.pictureInPictureEnabled`     | 68      | 68      |
+`document.pictureInPictureElement`     | 68      |         |
+`document.exitPictureInPicture()`      | 68      |         |
+`PictureInPictureWindow.width\|height` | 👷      |         |
+`PictureInPictureWindow.onresize`      |         |         |
 
 Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/current-versions/](https://googlechromelabs.github.io/current-versions/).
 
