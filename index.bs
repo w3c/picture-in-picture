@@ -38,6 +38,7 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
 
 <pre class="link-defaults">
 spec:dom; type:attribute; text:bubbles
+spec:dom; type:attribute; text:cancelable
 spec:dom; type:dfn; for:NamedNodeMap; text:element
 spec:dom; type:interface; text:Document
 spec:html; type:attribute; for:HTMLMediaElement; text:readyState
@@ -340,6 +341,11 @@ the |state| is |opened|. Otherwise, it MUST return 0.
 The {{height}} attribute MUST return the height in <a lt=px value>CSS pixels</a> of the
 <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}} if
 the |state| is |opened|. Otherwise, it MUST return 0.
+
+When the size of the <a>Picture-in-Picture window</a> associated with
+{{pictureInPictureElement}} changes, the user agent MUST <a>queue a task</a> to
+<a>fire an event</a> with the name {{resize}} at {{pictureInPictureElement}}
+with its {{bubbles}} and {{cancelable}} attributes initialized to false.
 
 ## Event types ## {#event-types}
 
