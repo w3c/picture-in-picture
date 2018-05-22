@@ -27,8 +27,8 @@ Feature/Platform                       | Desktop | Android |
 `document.pictureInPictureEnabled`     | 68      | 68      |
 `document.pictureInPictureElement`     | 68      |         |
 `document.exitPictureInPicture()`      | 68      |         |
-`PictureInPictureWindow.width\|height` | 👷      |         |
-`PictureInPictureWindow.onresize`      |         |         |
+`PictureInPictureWindow.width\|height` | 68      |         |
+`PictureInPictureWindow.onresize`      | [👷](https://chromium-review.googlesource.com/c/chromium/src/+/1068066)       |         |
 
 Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/current-versions/](https://googlechromelabs.github.io/current-versions/).
 
