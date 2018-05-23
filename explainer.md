@@ -146,10 +146,11 @@ Even though the API only applies on `HTMLVideoElement` at the moment, there is o
 <button id="pipButton"></button>
 
 <script>
-  pipButton.addEventListener('click', function() {
+  pipButton.addEventListener('click', async function() {
     const video = document.createElement('video');
     video.srcObject = canvas.captureStream(60 /* fps */);
-    video.requestPictureInPicture();
+    await video.play();
+    await video.requestPictureInPicture();
   });
 </script>
 ```
