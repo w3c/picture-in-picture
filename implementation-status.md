@@ -5,16 +5,9 @@ This document shows the current implementation status of Picture-in-Picture on t
 
 # Chrome
 
-Work is in progress in [Chrome Canary](http://chrome.com/canary).
+Work is in progress in [Chrome Canary](http://chrome.com/canary):
 
-* Give it a try with:
-
-```
-$ chrome \
---enable-features=PictureInPicture,UseSurfaceLayerForVideo \
---enable-blink-features=PictureInPictureAPI
-```
-
+* The `chrome://flags/#enable-experimental-web-platform-features` and `chrome://flags/#enable-surfaces-for-videos` flags must be enabled.
 * Know where to [report Picture-in-Picture bugs](https://bugs.chromium.org/p/chromium/issues/entry?components=Blink>Media>PictureInPicture).
 * Root [Issue 806249](http://crbug.com/806249) and blocking issues are most authorative on status.
 
