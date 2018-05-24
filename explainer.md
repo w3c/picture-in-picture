@@ -116,7 +116,7 @@ interface PictureInPictureWindow {
 </script>
 ```
 
-## Interaction with HTMLMediaElement
+## Interaction with HTMLVideoElement
 
 When a video is played in Picture-in-Picture, the states should transition as if it was played inline. That means that the events should fire at the same time, calling methods should have the same behaviour, etc. However, the user agent might transition out of Picture-in-Picture when the video element enters a state that is considered not compatible with Picture-in-Picture.
 
