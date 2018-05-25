@@ -27,7 +27,6 @@ Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/
 
 ## Notes
 * Desktop includes Chrome OS, Linux, Mac, and Windows.
-* Mac requires `chrome://flags#views-browser-windows` flag to be enabled.
 * [Issue 746182](http://crbug.com/746182): MediaStreams (WebRTC) are not supported yet.
 
 # Microsoft Edge
