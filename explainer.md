@@ -50,7 +50,7 @@ partial interface HTMLVideoElement {
   // On the fullscreen API, they live on the Document.
   attribute EventHandler onenterpictureinpicture;
   attribute EventHandler onleavepictureinpicture;
-  attribute EventHandler pictureinpicturecontrolsclick;
+  attribute EventHandler onpictureinpicturecontrolsclick;
 
   [CEReactions]
   attribute boolean disablePictureInPicture;
