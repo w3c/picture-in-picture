@@ -15,7 +15,6 @@ Many users want to continue consuming media while they interact with other conte
 *   A website wants to inject an action into the Picture-in-Picture window by providing information used for the action in order to give its users control over the PiP’d media.
 *   A website wants to be notified when the user interacts with the action in order to handle it.
 
-
 ### For future considerations or candidates for first API
 
 *   A website wants to be notified when the user initiates Picture-in-Picture from the browser UI in order to decide whether it wants to grant this request.
@@ -46,7 +45,6 @@ The proposed API is very similar to the Fullscreen API as they have similar prop
 ```
 partial interface HTMLVideoElement {
   Promise<PictureInPictureWindow> requestPictureInPicture();
-
   Promise<void> setPictureInPictureControls(FrozenArray<CustomActionMetadata> action);
 
   // On the fullscreen API, they live on the Document.
