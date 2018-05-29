@@ -45,7 +45,7 @@ The proposed API is very similar to the Fullscreen API as they have similar prop
 ```
 partial interface HTMLVideoElement {
   Promise<PictureInPictureWindow> requestPictureInPicture();
-  Promise<void> setPictureInPictureControls(FrozenArray<CustomActionMetadata> action);
+  Promise<void> setPictureInPictureControls(FrozenArray<PictureInPictureControl> pipControls);
 
   // On the fullscreen API, they live on the Document.
   attribute EventHandler onenterpictureinpicture;
@@ -73,10 +73,10 @@ interface PictureInPictureWindow {
   attribute EventHandler onresize;
 };
 
-interface CustomActionMetadata {
+interface PictureInPictureControl {
   attribute DOMString id;
   attribute DOMString label; // Description of the action.
-  attribute FrozenArray<MediaImage> artwork;
+  attribute FrozenArray<MediaImage> icons;
 };
 
 dictionary MediaImage {
