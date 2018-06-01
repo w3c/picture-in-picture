@@ -190,6 +190,9 @@ the user agent MUST run the following steps:
     {{leavepictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
+The user agent SHOULD NOT change video playback state when video leaves
+Picture-in-Picture.
+
 ## Disable Picture-in-Picture ## {#disable-pip}
 
 Some pages may want to disable Picture-in-Picture for a video element. To
