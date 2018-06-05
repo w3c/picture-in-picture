@@ -148,6 +148,7 @@ Even though the API only applies on `HTMLVideoElement` at the moment, there is o
 <script>
   pipButton.addEventListener('click', function() {
     const video = document.createElement('video');
+    video.autoplay = true;
     video.srcObject = canvas.captureStream(60 /* fps */);
     video.requestPictureInPicture();
   });
