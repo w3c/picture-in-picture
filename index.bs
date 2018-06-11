@@ -7,7 +7,7 @@ ED: https://wicg.github.io/picture-in-picture
 Favicon: https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png
 Group: WICG
 Repository: wicg/picture-in-picture
-!Web Platform Tests: <a href="https://github.com/w3c/web-platform-tests/tree/master/feature-policy">feature-policy/</a><br/><a href="https://github.com/w3c/web-platform-tests/tree/master/picture-in-picture">picture-in-picture/</a>
+!Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/feature-policy">feature-policy/</a><br/><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
 Editor: François Beaufort, Google, fbeaufort@google.com
 Editor: Mounir Lamouri, Google, mlamouri@google.com
 Abstract: This specification intends to provide APIs to allow websites to
