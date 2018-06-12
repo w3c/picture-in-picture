@@ -192,9 +192,9 @@ the user agent MUST run the following steps:
 
 It is NOT RECOMMENDED that video playback state changes when the <a>exit
 Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
-of the experience if it's website's initiated. User agent MAY expose
+of the experience if it is website initiated. However, user agent MAY expose
 Picture-in-Picture window controls that change video playback state (e.g.
-pause) though.
+pause).
 
 ## Disable Picture-in-Picture ## {#disable-pip}
 
