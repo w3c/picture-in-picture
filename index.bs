@@ -190,6 +190,12 @@ the user agent MUST run the following steps:
     {{leavepictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
+It is NOT RECOMMENDED that video playback state changes when the <a>exit
+Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
+of the experience if it is website initiated. However, user agent MAY expose
+Picture-in-Picture window controls that change video playback state (e.g.
+pause).
+
 ## Disable Picture-in-Picture ## {#disable-pip}
 
 Some pages may want to disable Picture-in-Picture for a video element. To
