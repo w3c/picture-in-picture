@@ -50,7 +50,7 @@ partial interface HTMLVideoElement {
   // On the fullscreen API, they live on the Document.
   attribute EventHandler onenterpictureinpicture;
   attribute EventHandler onleavepictureinpicture;
-  attribute PictureInPictureEventHandler onpictureinpicturecontrolsclick;
+  attribute PictureInPictureControlsEventHandler onpictureinpicturecontrolsclick;
 
   [CEReactions]
   attribute boolean disablePictureInPicture;
@@ -85,7 +85,7 @@ dictionary MediaImage {
   DOMString type = "";
 };
 
-interface PictureInPictureEventHandler : EventHandler {
+interface PictureInPictureControlsEventHandler : EventHandler {
   attribute DOMString id;
 }
 ```
