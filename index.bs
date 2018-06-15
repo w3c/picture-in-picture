@@ -159,10 +159,11 @@ invoked, the user agent MUST run the following steps:
     |video|, throw a {{InvalidStateError}} and abort these steps.
 6. If the algorithm is not <a>triggered by user activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
-7. Set {{pictureInPictureElement}} to |video|.
-8. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
+7. If |video| is {{pictureInPictureElement}}, abort these steps.
+8. Set {{pictureInPictureElement}} to |video|.
+9. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-9. <a>Queue a task</a> to <a>fire an event</a> with the name
+10. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to true.
 
