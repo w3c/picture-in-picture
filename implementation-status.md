@@ -28,6 +28,7 @@ Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/
 ## Notes
 * Desktop includes Chrome OS, Linux, Mac, and Windows.
 * [Issue 746182](http://crbug.com/746182): MediaStreams (WebRTC) are not supported yet.
+* [Issue 854935](http://crbug.com/854935): Closed captions in Picture-in-Picture are not supported.
 
 # Microsoft Edge
 https://dev.windows.com/en-us/microsoft-edge/platform/status/pictureinpicture
