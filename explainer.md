@@ -41,7 +41,7 @@ The proposed API is very similar to the Fullscreen API as they have similar prop
 
 ```
 partial interface HTMLVideoElement {
-  Promise<PictureInPictureWindow> requestPictureInPicture();
+  [NewObject] Promise<PictureInPictureWindow> requestPictureInPicture();
 
   // On the fullscreen API, they live on the Document.
   attribute EventHandler onenterpictureinpicture;
@@ -54,7 +54,7 @@ partial interface HTMLVideoElement {
 partial interface Document {
   readonly attribute boolean pictureInPictureEnabled;
 
-  Promise<void> exitPictureInPicture();
+  [NewObject] Promise<void> exitPictureInPicture();
 };
 
 partial interface DocumentOrShadowRoot {
