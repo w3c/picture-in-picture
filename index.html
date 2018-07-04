@@ -1058,9 +1058,10 @@ Possible extra rowspan handling
 			   comprising the first items of each top-level section. */
 			margin-top: 1.1rem;
 		}
-		#toc .secno {
+		#toc#toc .secno { /* Ugh, need more specificity to override base.css */
 			grid-column: 1;
 			width: auto;
+			margin: 0;
 		}
 		#toc .content {
 			grid-column: 2;
@@ -1211,7 +1212,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 2c79a766227c4dfc7a3e8c3ef2fa11af393c88a3" name="generator">
+  <meta content="Bikeshed version 92249c85457a293f6e7061b7417416de926e2a74" name="generator">
   <link href="https://wicg.github.io/picture-in-picture" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
 <style>/* style-md-lists */
@@ -1460,7 +1461,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-07-03">3 July 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-07-04">4 July 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1743,8 +1744,7 @@ in order to notify the website of the Picture-in-Picture status changes.</p>
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler" id="ref-for-eventhandler">EventHandler</a> <dfn class="nv idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="attribute" data-export="" data-type="EventHandler" id="dom-htmlvideoelement-onenterpictureinpicture"><code>onenterpictureinpicture</code><a class="self-link" href="#dom-htmlvideoelement-onenterpictureinpicture"></a></dfn>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler" id="ref-for-eventhandler①">EventHandler</a> <dfn class="nv idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="attribute" data-export="" data-type="EventHandler" id="dom-htmlvideoelement-onleavepictureinpicture"><code>onleavepictureinpicture</code><a class="self-link" href="#dom-htmlvideoelement-onleavepictureinpicture"></a></dfn>;
 
-  [<a class="nv idl-code" data-link-type="extended-attribute" href="https://html.spec.whatwg.org/multipage/custom-elements.html#cereactions" id="ref-for-cereactions">CEReactions</a>]
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean"><span class="kt">boolean</span></a> <dfn class="nv dfn-paneled idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="attribute" data-export="" data-type="boolean" id="dom-htmlvideoelement-disablepictureinpicture"><code>disablePictureInPicture</code></dfn>;
+  [<a class="nv idl-code" data-link-type="extended-attribute" href="https://html.spec.whatwg.org/multipage/custom-elements.html#cereactions" id="ref-for-cereactions">CEReactions</a>] <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean"><span class="kt">boolean</span></a> <dfn class="nv dfn-paneled idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="attribute" data-export="" data-type="boolean" id="dom-htmlvideoelement-disablepictureinpicture"><code>disablePictureInPicture</code></dfn>;
 };
 </pre>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-requestpictureinpicture" id="ref-for-dom-htmlvideoelement-requestpictureinpicture①">requestPictureInPicture()</a></code> method, when invoked, MUST
@@ -2338,8 +2338,7 @@ whether the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm"
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler" id="ref-for-eventhandler③">EventHandler</a> <a class="nv" data-type="EventHandler" href="#dom-htmlvideoelement-onenterpictureinpicture"><code>onenterpictureinpicture</code></a>;
   <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler" id="ref-for-eventhandler①①">EventHandler</a> <a class="nv" data-type="EventHandler" href="#dom-htmlvideoelement-onleavepictureinpicture"><code>onleavepictureinpicture</code></a>;
 
-  [<a class="nv idl-code" data-link-type="extended-attribute" href="https://html.spec.whatwg.org/multipage/custom-elements.html#cereactions" id="ref-for-cereactions①">CEReactions</a>]
-  <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean②"><span class="kt">boolean</span></a> <a class="nv" data-type="boolean" href="#dom-htmlvideoelement-disablepictureinpicture"><code>disablePictureInPicture</code></a>;
+  [<a class="nv idl-code" data-link-type="extended-attribute" href="https://html.spec.whatwg.org/multipage/custom-elements.html#cereactions" id="ref-for-cereactions①">CEReactions</a>] <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean②"><span class="kt">boolean</span></a> <a class="nv" data-type="boolean" href="#dom-htmlvideoelement-disablepictureinpicture"><code>disablePictureInPicture</code></a>;
 };
 
 <span class="kt">partial</span> <span class="kt">interface</span> <a class="nv idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#document" id="ref-for-document①①">Document</a> {
