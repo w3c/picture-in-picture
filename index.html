@@ -1212,7 +1212,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version ebb192a273e3f86733233d2a1a128c3244b6962f" name="generator">
+  <meta content="Bikeshed version f168e9e768df676e3c9c49525fc1d754533d7501" name="generator">
   <link href="https://wicg.github.io/picture-in-picture" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
 <style>/* style-md-lists */
@@ -1461,7 +1461,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-07-06">6 July 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-07-11">11 July 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1806,7 +1806,7 @@ return <var>candidate</var> and abort these steps.</p>
      <p>Return null.</p>
    </ol>
    <h3 class="heading settled" data-level="4.4" id="interface-picture-in-picture-window"><span class="secno">4.4. </span><span class="content">Interface <code>PictureInPictureWindow</code></span><a class="self-link" href="#interface-picture-in-picture-window"></a></h3>
-<pre class="idl highlight def"><span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="pictureinpicturewindow"><code>PictureInPictureWindow</code></dfn> {
+<pre class="idl highlight def"><span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="pictureinpicturewindow"><code>PictureInPictureWindow</code></dfn> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget">EventTarget</a> {
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long" id="ref-for-idl-long"><span class="kt">long</span></a> <dfn class="nv dfn-paneled idl-code" data-dfn-for="PictureInPictureWindow" data-dfn-type="attribute" data-export="" data-readonly="" data-type="long" id="dom-pictureinpicturewindow-width"><code>width</code></dfn>;
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long" id="ref-for-idl-long①"><span class="kt">long</span></a> <dfn class="nv dfn-paneled idl-code" data-dfn-for="PictureInPictureWindow" data-dfn-type="attribute" data-export="" data-readonly="" data-type="long" id="dom-pictureinpicturewindow-height"><code>height</code></dfn>;
 
@@ -2041,6 +2041,12 @@ whether the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm"
     <li><a href="#ref-for-element">4.3. Extension to DocumentOrShadowRoot</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-eventtarget">
+   <a href="https://dom.spec.whatwg.org/#eventtarget">https://dom.spec.whatwg.org/#eventtarget</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-eventtarget">4.4. Interface PictureInPictureWindow</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-dom-event-bubbles">
    <a href="https://dom.spec.whatwg.org/#dom-event-bubbles">https://dom.spec.whatwg.org/#dom-event-bubbles</a><b>Referenced in:</b>
    <ul>
@@ -2254,6 +2260,7 @@ whether the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm"
      <li><span class="dfn-paneled" id="term-for-document" style="color:initial">Document</span>
      <li><span class="dfn-paneled" id="term-for-documentorshadowroot" style="color:initial">DocumentOrShadowRoot</span>
      <li><span class="dfn-paneled" id="term-for-element" style="color:initial">Element</span>
+     <li><span class="dfn-paneled" id="term-for-eventtarget" style="color:initial">EventTarget</span>
      <li><span class="dfn-paneled" id="term-for-dom-event-bubbles" style="color:initial">bubbles</span>
      <li><span class="dfn-paneled" id="term-for-connected" style="color:initial">connected</span>
      <li><span class="dfn-paneled" id="term-for-context-object" style="color:initial">context object</span>
@@ -2351,7 +2358,7 @@ whether the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm"
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#element" id="ref-for-element①">Element</a>? <a class="nv" data-readonly="" data-type="Element?" href="#dom-documentorshadowroot-pictureinpictureelement"><code>pictureInPictureElement</code></a>;
 };
 
-<span class="kt">interface</span> <a class="nv" href="#pictureinpicturewindow"><code>PictureInPictureWindow</code></a> {
+<span class="kt">interface</span> <a class="nv" href="#pictureinpicturewindow"><code>PictureInPictureWindow</code></a> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget①">EventTarget</a> {
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long" id="ref-for-idl-long②"><span class="kt">long</span></a> <a class="nv" data-readonly="" data-type="long" href="#dom-pictureinpicturewindow-width"><code>width</code></a>;
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long" id="ref-for-idl-long①①"><span class="kt">long</span></a> <a class="nv" data-readonly="" data-type="long" href="#dom-pictureinpicturewindow-height"><code>height</code></a>;
 
