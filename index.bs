@@ -324,7 +324,7 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
 ## Interface <code>PictureInPictureWindow</code> ## {#interface-picture-in-picture-window}
 
 <pre class="idl">
-interface PictureInPictureWindow {
+interface PictureInPictureWindow : EventTarget {
   readonly attribute long width;
   readonly attribute long height;
 
