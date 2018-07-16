@@ -230,7 +230,7 @@ Picture-in-Picture.
 ## Interaction with Media Session ## {#media-session}
 
 The API will have to be used with the [[MediaSession]] API for customizing the
-avaiable controls on the Picture-in-Picture window.
+available controls on the Picture-in-Picture window.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
