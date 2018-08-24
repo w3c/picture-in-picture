@@ -8,8 +8,8 @@ Favicon: https://raw.githubusercontent.com/google/material-design-icons/master/a
 Group: WICG
 Repository: wicg/picture-in-picture
 !Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/feature-policy">feature-policy/</a><br/><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
-Editor: François Beaufort, Google, fbeaufort@google.com
-Editor: Mounir Lamouri, Google, mlamouri@google.com
+Editor: François Beaufort, w3cid 81174, Google LLC https://www.google.com, fbeaufort@google.com
+Editor: Mounir Lamouri, w3cid 45389, Google LLC https://www.google.com, mlamouri@google.com
 Abstract: This specification intends to provide APIs to allow websites to
 Abstract: create a floating video window always on top of other windows so that
 Abstract: users may continue consuming media while they interact with other
