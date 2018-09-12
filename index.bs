@@ -240,7 +240,8 @@ The [[Page-Visibility]] specification defines a {{Document/visibilityState}}
 attribute used to determine the visibility state of a top level browsing
 context. For the purpose of Picture-in-Picture, the
 {{Document/visibilityState}} attribute is always "visible" when
-{{pictureInPictureElement}} is set.
+{{pictureInPictureElement}} is set and the Operating System lock screen is not
+shown.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
