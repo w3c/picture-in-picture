@@ -34,6 +34,8 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
     type: dfn
         text: local playback device
         text: local playback state
+spec: Page-Visibility; urlPrefix: https://www.w3.org/TR/page-visibility/
+    type: attribute; text: visibilityState; for: Document; url: dom-visibilitystate
 </pre>
 
 <pre class="link-defaults">
@@ -231,6 +233,14 @@ Picture-in-Picture.
 
 The API will have to be used with the [[MediaSession]] API for customizing the
 available controls on the Picture-in-Picture window.
+
+## Interaction with Page Visibility ## {#page-visibility}
+
+The [[Page-Visibility]] specification defines a {{Document/visibilityState}}
+attribute used to determine the visibility state of a top level browsing
+context. For the purpose of Picture-in-Picture, the
+{{Document/visibilityState}} attribute is always "visible" when
+{{pictureInPictureElement}} is set.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
