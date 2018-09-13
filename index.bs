@@ -177,6 +177,9 @@ time, calling methods SHOULD have the same behaviour, etc. However, the user
 agent MAY transition out of Picture-in-Picture when the video element enters a
 state that is considered not compatible with Picture-in-Picture.
 
+Styles applied to |video| (such as ''display: none'') don't apply in the
+Picture-in-Picture window.
+
 ## Exit Picture-in-Picture ## {#exit-pip}
 
 When the <dfn>exit Picture-in-Picture algorithm</dfn> is invoked,
