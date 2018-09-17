@@ -1212,7 +1212,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version cc50c9833ae46d7b8ae15b7144139db05797d724" name="generator">
+  <meta content="Bikeshed version a04b880cde96bf0ae2d14a0edcf2bcdcb631548b" name="generator">
   <link href="https://wicg.github.io/picture-in-picture" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
 <style>/* style-md-lists */
@@ -1461,7 +1461,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-08-23">23 August 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-09-16">16 September 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1675,6 +1675,8 @@ if it was played inline. That means that the events SHOULD fire at the same
 time, calling methods SHOULD have the same behaviour, etc. However, the user
 agent MAY transition out of Picture-in-Picture when the video element enters a
 state that is considered not compatible with Picture-in-Picture.</p>
+   <p>Styles applied to <var>video</var> (such as opacity, visibility, transform, etc.) MUST
+NOT apply in the Picture-in-Picture window.</p>
    <h3 class="heading settled" data-level="3.2" id="exit-pip"><span class="secno">3.2. </span><span class="content">Exit Picture-in-Picture</span><a class="self-link" href="#exit-pip"></a></h3>
    <p>When the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="exit-picture-in-picture-algorithm">exit Picture-in-Picture algorithm</dfn> is invoked,
 the user agent MUST run the following steps:</p>
