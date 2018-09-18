@@ -105,8 +105,11 @@ extensible.
 <video id="video" src="https://example.com/file.mp4"></video>
 
 <script>
-  video.addEventListener('enterpictureinpicture', function() {
+  video.addEventListener('enterpictureinpicture', function(event) {
     // Video entered Picture-in-Picture mode.
+    const pipWindow = event.pictureInPictureWindow;
+    console.log('Picture-in-Picture window width: ' + pipWindow.width);
+    console.log('Picture-in-Picture window height: ' + pipWindow.height);
   });
 
   video.addEventListener('leavepictureinpicture', function() {
@@ -165,7 +168,8 @@ invoked, the user agent MUST run the following steps:
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
 10. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
-    initialized to true.
+    initialized to true and its {{pictureInPictureWindow}} attribute
+    initialized to <a>Picture-in-Picture window</a>.
 
 It is RECOMMENDED that the video frames are not rendered in the page and in
 the Picture-in-Picture window at the same time but if they are, they MUST be
@@ -357,7 +361,20 @@ When the size of the <a>Picture-in-Picture window</a> associated with
 ## Event types ## {#event-types}
 
 : <dfn event for="HTMLVideoElement"><code>enterpictureinpicture</code></dfn>
-:: Fired on a {{HTMLVideoElement}} when it enters Picture-in-Picture.
+:: Fired on a {{HTMLVideoElement}} when it enters Picture-in-Picture. It uses
+    the {{EnterPictureInPictureEvent}} interface.
+
+<pre class="idl">
+[Constructor(DOMString type, EnterPictureInPictureEventInit eventInitDict)]
+interface EnterPictureInPictureEvent : Event {
+    [SameObject] readonly attribute PictureInPictureWindow pictureInPictureWindow;
+};
+
+dictionary EnterPictureInPictureEventInit : EventInit {
+    required PictureInPictureWindow pictureInPictureWindow;
+};
+</pre>
+
 : <dfn event for="HTMLVideoElement"><code>leavepictureinpicture</code></dfn>
 :: Fired on a {{HTMLVideoElement}} when it leaves Picture-in-Picture.
 : <dfn event for="PictureInPictureWindow"><code>resize</code></dfn>
