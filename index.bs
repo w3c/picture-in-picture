@@ -365,7 +365,10 @@ When the size of the <a>Picture-in-Picture window</a> associated with
     the {{EnterPictureInPictureEvent}} interface.
 
 <pre class="idl">
-[Constructor(DOMString type, EnterPictureInPictureEventInit eventInitDict)]
+[
+    Constructor(DOMString type, EnterPictureInPictureEventInit eventInitDict),
+    Exposed=Window
+]
 interface EnterPictureInPictureEvent : Event {
     [SameObject] readonly attribute PictureInPictureWindow pictureInPictureWindow;
 };
