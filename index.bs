@@ -406,3 +406,8 @@ or <code>false</code>.
 The <a>feature name</a> for this feature is <code>"picture-in-picture"</code>.
 
 The <a>default allowlist</a> for this feature is <code>*</code>.
+
+# Acknowledgments # {#acknowledgments}
+
+Thanks to Jennifer Apacible, Marcos Cáceres, Philip Jägenstedt, Jeremy Jones, 
+Jer Noble, and Eckhart Wörner for their contributions to this document.
