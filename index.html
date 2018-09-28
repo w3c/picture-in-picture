@@ -1212,7 +1212,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version ab6bd5034a8c7446535677e7ab0c5afae7810c3b" name="generator">
+  <meta content="Bikeshed version e11b92b98e366cc29d0c6509f84bde4ced535e53" name="generator">
   <link href="https://wicg.github.io/picture-in-picture" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
 <style>/* style-md-lists */
@@ -1461,7 +1461,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-09-25">25 September 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-09-28">28 September 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1582,13 +1582,13 @@ extensible.</p>
    <h3 class="heading settled" data-level="2.1" id="example-add-custom-pip-button"><span class="secno">2.1. </span><span class="content">Add a custom Picture-in-Picture button</span><a class="self-link" href="#example-add-custom-pip-button"></a></h3>
 <pre class="language-html highlight"><c- p>&lt;</c-><c- f>video</c-> <c- e>id</c-><c- o>=</c-><c- s>"video"</c-> <c- e>src</c-><c- o>=</c-><c- s>"https://example.com/file.mp4"</c-><c- p>>&lt;/</c-><c- f>video</c-><c- p>></c->
 
-<c- p>&lt;</c-><c- f>button</c-> <c- e>id</c-><c- o>=</c-><c- s>"pipButton"</c-><c- p>>&lt;/</c-><c- f>button</c-><c- p>></c->
+<c- p>&lt;</c-><c- f>button</c-> <c- e>id</c-><c- o>=</c-><c- s>"togglePipButton"</c-><c- p>>&lt;/</c-><c- f>button</c-><c- p>></c->
 
 <c- p>&lt;</c-><c- f>script</c-><c- p>></c->
   <c- c1>// Hide button if Picture-in-Picture is not supported or disabled.</c->
-  pipButton<c- p>.</c->hidden <c- o>=</c-> <c- o>!</c->document<c- p>.</c->pictureInPictureEnabled <c- o>||</c-> video<c- p>.</c->disablePictureInPicture<c- p>;</c->
+  togglePipButton<c- p>.</c->hidden <c- o>=</c-> <c- o>!</c->document<c- p>.</c->pictureInPictureEnabled <c- o>||</c-> video<c- p>.</c->disablePictureInPicture<c- p>;</c->
 
-  pipButton<c- p>.</c->addEventListener<c- p>(</c-><c- t>'click'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
+  togglePipButton<c- p>.</c->addEventListener<c- p>(</c-><c- t>'click'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
     <c- c1>// If there is no element in Picture-in-Picture yet, let’s request</c->
     <c- c1>// Picture-in-Picture for the video, otherwise leave it.</c->
     <c- k>if</c-> <c- p>(</c-><c- o>!</c->document<c- p>.</c->pictureInPictureElement<c- p>)</c-> <c- p>{</c->
@@ -1627,15 +1627,31 @@ extensible.</p>
 <c- p>&lt;</c-><c- f>button</c-> <c- e>id</c-><c- o>=</c-><c- s>"pipButton"</c-><c- p>>&lt;/</c-><c- f>button</c-><c- p>></c->
 
 <c- p>&lt;</c-><c- f>script</c-><c- p>></c->
+  <c- a>let</c-> pipWindow<c- p>;</c->
+
   pipButton<c- p>.</c->addEventListener<c- p>(</c-><c- t>'click'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
     video<c- p>.</c->requestPictureInPicture<c- p>()</c->
-    <c- p>.</c->then<c- p>(</c->pipWindow <c- p>=></c-> <c- p>{</c->
-      updateVideoSize<c- p>(</c->pipWindow<c- p>.</c->width<c- p>,</c-> pipWindow<c- p>.</c->height<c- p>);</c->
-      pipWindow<c- p>.</c->addEventListener<c- p>(</c-><c- t>'resize'</c-><c- p>,</c-> <c- a>function</c-><c- p>(</c->event<c- p>)</c-> <c- p>{</c->
-        updateVideoSize<c- p>(</c->pipWindow<c- p>.</c->width<c- p>,</c-> pipWindow<c- p>.</c->height<c- p>);</c->
-      <c- p>});</c->
+    <c- p>.</c-><c- k>catch</c-><c- p>(</c->error <c- p>=></c-> <c- p>{</c->
+      <c- c1>// Video failed to enter Picture-in-Picture mode.</c->
     <c- p>});</c->
   <c- p>});</c->
+
+  video<c- p>.</c->addEventListener<c- p>(</c-><c- t>'enterpictureinpicture'</c-><c- p>,</c-> <c- a>function</c-><c- p>(</c->event<c- p>)</c-> <c- p>{</c->
+    <c- c1>// Video entered Picture-in-Picture mode.</c->
+    pipWindow <c- o>=</c-> event<c- p>.</c->pictureInPictureWindow<c- p>;</c->
+    updateVideoSize<c- p>(</c->pipWindow<c- p>.</c->width<c- p>,</c-> pipWindow<c- p>.</c->height<c- p>);</c->
+    pipWindow<c- p>.</c->addEventListener<c- p>(</c-><c- t>'resize'</c-><c- p>,</c-> onPipWindowResize<c- p>);</c->
+  <c- p>});</c->
+
+  video<c- p>.</c->addEventListener<c- p>(</c-><c- t>'leavepictureinpicture'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
+    <c- c1>// Video left Picture-in-Picture mode.</c->
+    pipWindow<c- p>.</c->removeEventListener<c- p>(</c-><c- t>'resize'</c-><c- p>,</c-> onPipWindowResize<c- p>);</c->
+  <c- p>});</c->
+
+  <c- a>function</c-> onPipWindowResize<c- p>(</c->event<c- p>)</c-> <c- p>{</c->
+    <c- c1>// Picture-in-Picture window has been resized.</c->
+    updateVideoSize<c- p>(</c->event<c- p>.</c->target<c- p>.</c->width<c- p>,</c-> event<c- p>.</c->target<c- p>.</c->height<c- p>);</c->
+  <c- p>}</c->
 
   <c- a>function</c-> updateVideoSize<c- p>(</c->width<c- p>,</c-> height<c- p>)</c-> <c- p>{</c->
     <c- c1>// TODO: Update video size based on pip window width and height.</c->
@@ -1681,7 +1697,8 @@ time, calling methods SHOULD have the same behaviour, etc. However, the user
 agent MAY transition out of Picture-in-Picture when the video element enters a
 state that is considered not compatible with Picture-in-Picture.</p>
    <p>Styles applied to <var>video</var> (such as opacity, visibility, transform, etc.) MUST
-NOT apply in the Picture-in-Picture window.</p>
+NOT apply in the Picture-in-Picture window. Its aspect ratio is based on the
+video size.</p>
    <h3 class="heading settled" data-level="3.2" id="exit-pip"><span class="secno">3.2. </span><span class="content">Exit Picture-in-Picture</span><a class="self-link" href="#exit-pip"></a></h3>
    <p>When the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="exit-picture-in-picture-algorithm">exit Picture-in-Picture algorithm</dfn> is invoked,
 the user agent MUST run the following steps:</p>
