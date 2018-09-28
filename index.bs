@@ -75,13 +75,13 @@ extensible.
 ```html
 <video id="video" src="https://example.com/file.mp4"></video>
 
-<button id="pipButton"></button>
+<button id="togglePipButton"></button>
 
 <script>
   // Hide button if Picture-in-Picture is not supported or disabled.
-  pipButton.hidden = !document.pictureInPictureEnabled || video.disablePictureInPicture;
+  togglePipButton.hidden = !document.pictureInPictureEnabled || video.disablePictureInPicture;
 
-  pipButton.addEventListener('click', function() {
+  togglePipButton.addEventListener('click', function() {
     // If there is no element in Picture-in-Picture yet, let's request
     // Picture-in-Picture for the video, otherwise leave it.
     if (!document.pictureInPictureElement) {
@@ -126,15 +126,31 @@ extensible.
 <button id="pipButton"></button>
 
 <script>
+  let pipWindow;
+
   pipButton.addEventListener('click', function() {
     video.requestPictureInPicture()
-    .then(pipWindow => {
-      updateVideoSize(pipWindow.width, pipWindow.height);
-      pipWindow.addEventListener('resize', function(event) {
-        updateVideoSize(pipWindow.width, pipWindow.height);
-      });
+    .catch(error => {
+      // Video failed to enter Picture-in-Picture mode.
     });
   });
+
+  video.addEventListener('enterpictureinpicture', function(event) {
+    // Video entered Picture-in-Picture mode.
+    pipWindow = event.pictureInPictureWindow;
+    updateVideoSize(pipWindow.width, pipWindow.height);
+    pipWindow.addEventListener('resize', onPipWindowResize);
+  });
+
+  video.addEventListener('leavepictureinpicture', function() {
+    // Video left Picture-in-Picture mode.
+    pipWindow.removeEventListener('resize', onPipWindowResize);
+  });
+
+  function onPipWindowResize(event) {
+    // Picture-in-Picture window has been resized.
+    updateVideoSize(event.target.width, event.target.height);
+  }
 
   function updateVideoSize(width, height) {
     // TODO: Update video size based on pip window width and height.
