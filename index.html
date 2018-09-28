@@ -1571,9 +1571,6 @@ by exposing the following sets of properties to the API:</p>
      <p>Allow the website to trigger Picture-in-Picture via a user gesture on a video
 element.</p>
     <li data-md>
-     <p>Allow the website to know the size of Picture-in-Picture window and notify
-the website when it changes.</p>
-    <li data-md>
      <p>Allow the website to exit Picture-in-Picture.</p>
     <li data-md>
      <p>Allow the website to check if Picture-in-Picture can be triggered.</p>
@@ -1700,8 +1697,7 @@ time, calling methods SHOULD have the same behaviour, etc. However, the user
 agent MAY transition out of Picture-in-Picture when the video element enters a
 state that is considered not compatible with Picture-in-Picture.</p>
    <p>Styles applied to <var>video</var> (such as opacity, visibility, transform, etc.) MUST
-NOT apply in the Picture-in-Picture window. Its aspect ratio is based on the
-video size.</p>
+NOT apply in the Picture-in-Picture window.</p>
    <h3 class="heading settled" data-level="3.2" id="exit-pip"><span class="secno">3.2. </span><span class="content">Exit Picture-in-Picture</span><a class="self-link" href="#exit-pip"></a></h3>
    <p>When the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="exit-picture-in-picture-algorithm">exit Picture-in-Picture algorithm</dfn> is invoked,
 the user agent MUST run the following steps:</p>
