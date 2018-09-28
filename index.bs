@@ -60,6 +60,8 @@ by exposing the following sets of properties to the API:
 * Notify the website when it enters and leave Picture-in-Picture mode.
 * Allow the website to trigger Picture-in-Picture via a user gesture on a video
     element.
+* Allow the website to know the size of Picture-in-Picture window and notify
+    the website when it changes.
 * Allow the website to exit Picture-in-Picture.
 * Allow the website to check if Picture-in-Picture can be triggered.
 

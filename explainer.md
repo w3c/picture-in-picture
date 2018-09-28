@@ -26,6 +26,7 @@ Many users want to continue consuming media while they interact with other conte
 
 *   The API will notify the website when it enters and leave Picture-in-Picture mode.
 *   The API will allow the website to trigger Picture-in-Picture via a user gesture on a video element.
+*   The API will allow the website to know the size of Picture-in-Picture window and notify the website when it changes.
 *   The API will allow the website to exit Picture-in-Picture.
 *   The API will allow the website to check if Picture-in-Picture can be triggered.
 
