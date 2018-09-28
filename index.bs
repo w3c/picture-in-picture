@@ -182,7 +182,8 @@ agent MAY transition out of Picture-in-Picture when the video element enters a
 state that is considered not compatible with Picture-in-Picture.
 
 Styles applied to |video| (such as opacity, visibility, transform, etc.) MUST
-NOT apply in the Picture-in-Picture window.
+NOT apply in the Picture-in-Picture window. Its aspect ratio is based on the
+video size.
 
 ## Exit Picture-in-Picture ## {#exit-pip}
 
