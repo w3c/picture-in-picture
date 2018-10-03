@@ -278,16 +278,16 @@ in order to notify the website of the Picture-in-Picture status changes.
 
 ## Extensions to <code>HTMLVideoElement</code> ## {#htmlvideoelement-extensions}
 
-<pre class="idl">
+<xmp class="idl">
 partial interface HTMLVideoElement {
-  [NewObject] Promise&lt;PictureInPictureWindow> requestPictureInPicture();
+  [NewObject] Promise<PictureInPictureWindow> requestPictureInPicture();
 
   attribute EventHandler onenterpictureinpicture;
   attribute EventHandler onleavepictureinpicture;
 
   [CEReactions] attribute boolean disablePictureInPicture;
 };
-</pre>
+</xmp>
 
 The {{requestPictureInPicture()}} method, when invoked, MUST
 return <a>a new promise</a> |promise| and run the following steps <a>in
@@ -302,13 +302,13 @@ parallel</a>:
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
 
-<pre class="idl">
+<xmp class="idl">
 partial interface Document {
   readonly attribute boolean pictureInPictureEnabled;
 
-  [NewObject] Promise&lt;void> exitPictureInPicture();
+  [NewObject] Promise<void> exitPictureInPicture();
 };
-</pre>
+</xmp>
 
 The {{pictureInPictureEnabled}} attribute's getter must return
 <code>true</code> if <a>Picture-in-Picture support</a> is <code>true</code> and
@@ -331,11 +331,11 @@ parallel</a>:
 
 ## Extension to <code>DocumentOrShadowRoot</code> ## {#documentorshadowroot-extension}
 
-<pre class="idl">
+<xmp class="idl">
 partial interface DocumentOrShadowRoot {
   readonly attribute Element? pictureInPictureElement;
 };
-</pre>
+</xmp>
 
 The {{pictureInPictureElement}} attribute's getter must run these steps:
 
@@ -349,14 +349,14 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
 
 ## Interface <code>PictureInPictureWindow</code> ## {#interface-picture-in-picture-window}
 
-<pre class="idl">
+<xmp class="idl">
 interface PictureInPictureWindow : EventTarget {
   readonly attribute long width;
   readonly attribute long height;
 
   attribute EventHandler onresize;
 };
-</pre>
+</xmp>
 
 A {{PictureInPictureWindow}} instance represents a <a>Picture-in-Picture
 window</a> associated with an {{HTMLVideoElement}}. When instantiated, an
@@ -383,7 +383,7 @@ When the size of the <a>Picture-in-Picture window</a> associated with
 :: Fired on a {{HTMLVideoElement}} when it enters Picture-in-Picture. It uses
     the {{EnterPictureInPictureEvent}} interface.
 
-<pre class="idl">
+<xmp class="idl">
 [
     Constructor(DOMString type, EnterPictureInPictureEventInit eventInitDict),
     Exposed=Window
@@ -395,7 +395,7 @@ interface EnterPictureInPictureEvent : Event {
 dictionary EnterPictureInPictureEventInit : EventInit {
     required PictureInPictureWindow pictureInPictureWindow;
 };
-</pre>
+</xmp>
 
 : <dfn event for="HTMLVideoElement"><code>leavepictureinpicture</code></dfn>
 :: Fired on a {{HTMLVideoElement}} when it leaves Picture-in-Picture.
