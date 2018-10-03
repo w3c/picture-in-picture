@@ -6,6 +6,7 @@ Status: ED
 ED: https://wicg.github.io/picture-in-picture
 Favicon: https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png
 Group: WICG
+Markup Shorthands: markdown yes
 Repository: wicg/picture-in-picture
 !Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/feature-policy">feature-policy/</a><br/><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
 Editor: François Beaufort, w3cid 81174, Google LLC https://www.google.com, fbeaufort@google.com
@@ -167,11 +168,10 @@ extensible.
 When the <dfn>request Picture-in-Picture algorithm</dfn> with |video| is
 invoked, the user agent MUST run the following steps:
 
-1. If <a>Picture-in-Picture support</a> is <code>false</code>, throw a
+1. If <a>Picture-in-Picture support</a> is `false`, throw a
     {{NotSupportedError}} and abort these steps.
 2. If document is not allowed to use the <a>policy-controlled feature</a> named
-    <code>"picture-in-picture"</code>, throw a {{SecurityError}} and abort these
-    steps.
+    `"picture-in-picture"`, throw a {{SecurityError}} and abort these steps.
 3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
     {{InvalidStateError}} and abort these steps.
 4. If |video| has no video track, throw a {{InvalidStateError}} and abort
@@ -186,7 +186,7 @@ invoked, the user agent MUST run the following steps:
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
 10. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
-    initialized to true and its {{pictureInPictureWindow}} attribute
+    initialized to `true` and its {{pictureInPictureWindow}} attribute
     initialized to <a>Picture-in-Picture window</a>.
 
 It is RECOMMENDED that the video frames are not rendered in the page and in
@@ -215,7 +215,7 @@ the user agent MUST run the following steps:
 3. Unset {{pictureInPictureElement}}.
 4. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{leavepictureinpicture}} at the |video| with its {{bubbles}} attribute
-    initialized to true.
+    initialized to `true`.
 
 It is NOT RECOMMENDED that video playback state changes when the <a>exit
 Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
@@ -310,15 +310,14 @@ partial interface Document {
 };
 </xmp>
 
-The {{pictureInPictureEnabled}} attribute's getter must return
-<code>true</code> if <a>Picture-in-Picture support</a> is <code>true</code> and
-the <a>context object</a> is <a>allowed to use</a> the feature indicated by
-attribute name <code>picture-in-picture</code>, and <code>false</code>
-otherwise.
+The {{pictureInPictureEnabled}} attribute's getter must return `true` if
+<a>Picture-in-Picture support</a> is `true` and the <a>context object</a> is
+<a>allowed to use</a> the feature indicated by attribute name
+`picture-in-picture`, and `false` otherwise.
 
-<dfn>Picture-in-Picture support</dfn> is <code>true</code> if there is no
+<dfn>Picture-in-Picture support</dfn> is `true` if there is no
 previously-established user preference, restrictions, or platform limitation,
-and <code>false</code> otherwise.
+and `false` otherwise.
 
 The {{exitPictureInPicture()}} method, when invoked, MUST
 return <a>a new promise</a> |promise| and run the following steps <a>in
@@ -379,7 +378,7 @@ When the size of the <a>Picture-in-Picture window</a> associated with
 
 ## Event types ## {#event-types}
 
-: <dfn event for="HTMLVideoElement"><code>enterpictureinpicture</code></dfn>
+: <dfn event for="HTMLVideoElement">`enterpictureinpicture`</dfn>
 :: Fired on a {{HTMLVideoElement}} when it enters Picture-in-Picture. It uses
     the {{EnterPictureInPictureEvent}} interface.
 
@@ -397,9 +396,9 @@ dictionary EnterPictureInPictureEventInit : EventInit {
 };
 </xmp>
 
-: <dfn event for="HTMLVideoElement"><code>leavepictureinpicture</code></dfn>
+: <dfn event for="HTMLVideoElement">`leavepictureinpicture`</dfn>
 :: Fired on a {{HTMLVideoElement}} when it leaves Picture-in-Picture.
-: <dfn event for="PictureInPictureWindow"><code>resize</code></dfn>
+: <dfn event for="PictureInPictureWindow">`resize`</dfn>
 :: Fired on a {{PictureInPictureWindow}} when it changes size.
 
 ## Task source ## {#task-source}
@@ -419,12 +418,11 @@ specification may allow PIP-ing arbitrary HTML content.
 
 This specification defines a <a>policy-controlled feature</a> that controls
 whether the <a>request Picture-in-Picture algorithm</a> may return a
-{{SecurityError}} and whether {{pictureInPictureEnabled}} is <code>true</code>
-or <code>false</code>.
+{{SecurityError}} and whether {{pictureInPictureEnabled}} is `true` or `false`.
 
-The <a>feature name</a> for this feature is <code>"picture-in-picture"</code>.
+The <a>feature name</a> for this feature is `"picture-in-picture"`.
 
-The <a>default allowlist</a> for this feature is <code>*</code>.
+The <a>default allowlist</a> for this feature is `*`.
 
 # Acknowledgments # {#acknowledgments}
 
