@@ -2,6 +2,11 @@
 
 [![Build Status](https://travis-ci.org/WICG/picture-in-picture.svg?branch=master)](https://travis-ci.org/WICG/picture-in-picture)
 
+[![Chrome WPT](https://wpt-badge.glitch.me/?product=chrome&prefix=/picture-in-picture)]()
+[![Safari WPT](https://wpt-badge.glitch.me/?product=safari&prefix=/picture-in-picture)]()
+[![Edge WPT](https://wpt-badge.glitch.me/?product=edge&prefix=/picture-in-picture)]()
+[![Firefox WPT](https://wpt-badge.glitch.me/?product=firefox&prefix=/picture-in-picture)]()
+
 https://wicg.github.io/picture-in-picture
 
 This standardization project aims to provide APIs to allow websites to create a floating video window over the desktop.
