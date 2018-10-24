@@ -203,8 +203,9 @@ Styles applied to |video| (such as opacity, visibility, transform, etc.) MUST
 NOT apply in the Picture-in-Picture window. Its aspect ratio is based on the
 video size.
 
-It is also RECOMMENDED that the Picture-in-Picture window has a maximum size
-set to half of the screen.
+It is also RECOMMENDED that the Picture-in-Picture window has a maximum and
+minimum size. For example, it could be restricted to be between a quarter and
+a half of one dimension of the screen.
 
 ## Exit Picture-in-Picture ## {#exit-pip}
 
