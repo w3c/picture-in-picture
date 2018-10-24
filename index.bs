@@ -238,10 +238,9 @@ available controls on the Picture-in-Picture window.
 
 The [[Page-Visibility]] specification defines a {{Document/visibilityState}}
 attribute used to determine the visibility state of a top level browsing
-context. For the purpose of Picture-in-Picture, the
-{{Document/visibilityState}} attribute is always "visible" when
-{{pictureInPictureElement}} is set and the Operating System lock screen is not
-shown.
+context. For the purpose of Picture-in-Picture, the {{Document/visibilityState}}
+MUST always return "visible" when {{pictureInPictureElement}}
+is set and the Picture-in-Picture window is visible.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
