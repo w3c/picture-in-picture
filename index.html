@@ -1461,7 +1461,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-11-20">20 November 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-11-23">23 November 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1733,7 +1733,7 @@ of content attributes for video elements.</p>
    <p>A corresponding <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture②">disablePictureInPicture</a></code> IDL attribute which reflects the
 value of element’s <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture③">disablePictureInPicture</a></code> content attribute is added to
 the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement①">HTMLVideoElement</a></code> interface. The <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture④">disablePictureInPicture</a></code> IDL attribute
-MUST reflect the content attribute of the same name.</p>
+MUST <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#reflect" id="ref-for-reflect">reflect</a> the content attribute of the same name.</p>
    <p>If the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture⑤">disablePictureInPicture</a></code> attribute is present on the video element,
 the user agent SHOULD NOT play the video element in Picture-in-Picture or
 present any UI to do so.</p>
@@ -2240,6 +2240,12 @@ document.</p>
     <li><a href="#ref-for-dom-media-readystate">3.1. Request Picture-in-Picture</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-reflect">
+   <a href="https://html.spec.whatwg.org/multipage/infrastructure.html#reflect">https://html.spec.whatwg.org/multipage/infrastructure.html#reflect</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-reflect">3.3. Disable Picture-in-Picture</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-task-source">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#task-source">https://html.spec.whatwg.org/multipage/webappapis.html#task-source</a><b>Referenced in:</b>
    <ul>
@@ -2384,6 +2390,7 @@ document.</p>
      <li><span class="dfn-paneled" id="term-for-media-element-event-task-source" style="color:initial">media element event task source</span>
      <li><span class="dfn-paneled" id="term-for-queue-a-task" style="color:initial">queue a task</span>
      <li><span class="dfn-paneled" id="term-for-dom-media-readystate" style="color:initial">readyState</span>
+     <li><span class="dfn-paneled" id="term-for-reflect" style="color:initial">reflect</span>
      <li><span class="dfn-paneled" id="term-for-task-source" style="color:initial">task source</span>
      <li><span class="dfn-paneled" id="term-for-triggered-by-user-activation" style="color:initial">triggered by user activation</span>
     </ul>
