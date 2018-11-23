@@ -27,6 +27,7 @@ spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
         urlPrefix: infrastructure.html
             text: in parallel
+            text: reflect
         urlPrefix: interaction.html
             text: triggered by user activation
         urlPrefix: media.html
@@ -238,7 +239,7 @@ of content attributes for video elements.
 A corresponding {{disablePictureInPicture}} IDL attribute which reflects the
 value of element’s {{disablePictureInPicture}} content attribute is added to
 the {{HTMLVideoElement}} interface. The {{disablePictureInPicture}} IDL attribute
-MUST reflect the content attribute of the same name.
+MUST <a>reflect</a> the content attribute of the same name.
 
 If the {{disablePictureInPicture}} attribute is present on the video element,
 the user agent SHOULD NOT play the video element in Picture-in-Picture or
