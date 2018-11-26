@@ -269,7 +269,8 @@ available controls on the Picture-in-Picture window.
 ## Interaction with Page Visibility ## {#page-visibility}
 
 When {{pictureInPictureElement}} is set, the Picture-in-Picture window MUST
-be visible, even when <a>Document</a> is not in focus or hidden.
+be visible, even when <a>Document</a> is not in focus or hidden. The user agent
+SHOULD provide a way for users to manually close the Picture-in-Picture window.
 
 The [[Page-Visibility]] specification defines a {{Document/visibilityState}}
 attribute used to determine the visibility state of a <a>top-level browsing
