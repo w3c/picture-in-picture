@@ -1727,9 +1727,11 @@ of the experience if it is website initiated. However, user agent MAY expose
 Picture-in-Picture window controls that change video playback state (e.g.
 pause).</p>
    <h3 class="heading settled" data-level="3.3" id="disable-pip"><span class="secno">3.3. </span><span class="content">Disable Picture-in-Picture</span><a class="self-link" href="#disable-pip"></a></h3>
-   <p>Some pages may want to disable Picture-in-Picture for a video element. To
-support this, a new <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture①">disablePictureInPicture</a></code> attribute is added to the list
-of content attributes for video elements.</p>
+   <p>Some pages may want to disable Picture-in-Picture for a video element; for
+example, they may want to prevent user agent to suggest a Picture-in-Picture
+context menu or to request Picture-in-Picture automatically in some cases.
+To support these use cases, a new <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture①">disablePictureInPicture</a></code> attribute is
+added to the list of content attributes for video elements.</p>
    <p>A corresponding <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture②">disablePictureInPicture</a></code> IDL attribute which reflects the
 value of element’s <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture③">disablePictureInPicture</a></code> content attribute is added to
 the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement①">HTMLVideoElement</a></code> interface. The <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture④">disablePictureInPicture</a></code> IDL attribute
