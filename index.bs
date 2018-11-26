@@ -54,7 +54,8 @@ spec:html; type:attribute; for:HTMLMediaElement; text:readyState
 Many users want to continue consuming media while they interact with other
 content, sites, or applications on their device. A common UI affordance for
 this type of activity is Picture-in-Picture (PiP), where the video is contained
-in a separate miniature window that is always on top of other windows.
+in a separate miniature window that is always on top of other windows. This
+window stays visible even when user agent is not visible.
 Picture-in-Picture is a common platform-level feature among desktop and mobile
 OSs.
 
@@ -267,11 +268,14 @@ available controls on the Picture-in-Picture window.
 
 ## Interaction with Page Visibility ## {#page-visibility}
 
+When {{pictureInPictureElement}} is set, the Picture-in-Picture window MUST
+be visible, even when <a>Document</a> is not in focus or hidden.
+
 The [[Page-Visibility]] specification defines a {{Document/visibilityState}}
-attribute used to determine the visibility state of a top level browsing
-context. For the purpose of Picture-in-Picture, the {{Document/visibilityState}}
-MUST always return "visible" when {{pictureInPictureElement}}
-is set and the Picture-in-Picture window is visible.
+attribute used to determine the visibility state of a <a>top-level browsing
+context</a>. For the purpose of Picture-in-Picture, the
+{{Document/visibilityState}} MUST always return "visible" when
+{{pictureInPictureElement}} is set.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
