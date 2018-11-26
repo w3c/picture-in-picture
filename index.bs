@@ -442,5 +442,5 @@ The <a>default allowlist</a> for this feature is `*`.
 # Acknowledgments # {#acknowledgments}
 
 Thanks to Jennifer Apacible, Zouhir Chahoud, Marcos Cáceres, Philip Jägenstedt,
-Jeremy Jones, Jer Noble, and Eckhart Wörner for their contributions to this
-document.
+Jeremy Jones, Jer Noble, Yoav Weiss, and Eckhart Wörner for their contributions
+to this document.
