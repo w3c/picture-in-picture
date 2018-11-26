@@ -232,9 +232,11 @@ pause).
 
 ## Disable Picture-in-Picture ## {#disable-pip}
 
-Some pages may want to disable Picture-in-Picture for a video element. To
-support this, a new {{disablePictureInPicture}} attribute is added to the list
-of content attributes for video elements.
+Some pages may want to disable Picture-in-Picture for a video element; for
+example, they may want to prevent user agent to suggest a Picture-in-Picture
+context menu or to request Picture-in-Picture automatically in some cases.
+To support these use cases, a new {{disablePictureInPicture}} attribute is
+added to the list of content attributes for video elements.
 
 A corresponding {{disablePictureInPicture}} IDL attribute which reflects the
 value of element’s {{disablePictureInPicture}} content attribute is added to
