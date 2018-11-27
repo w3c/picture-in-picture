@@ -231,6 +231,9 @@ of the experience if it is website initiated. However, user agent MAY expose
 Picture-in-Picture window controls that change video playback state (e.g.
 pause).
 
+As one of the <a>unloading document cleanup steps</a>, run the <a>exit
+Picture-in-Picture algorithm</a>.
+
 ## Disable Picture-in-Picture ## {#disable-pip}
 
 Some pages may want to disable Picture-in-Picture for a video element; for
