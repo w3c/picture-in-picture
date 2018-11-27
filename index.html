@@ -1727,6 +1727,8 @@ Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
 of the experience if it is website initiated. However, user agent MAY expose
 Picture-in-Picture window controls that change video playback state (e.g.
 pause).</p>
+   <p>As one of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsing-the-web.html#unloading-document-cleanup-steps" id="ref-for-unloading-document-cleanup-steps">unloading document cleanup steps</a>, run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm①">exit
+Picture-in-Picture algorithm</a>.</p>
    <h3 class="heading settled" data-level="3.3" id="disable-pip"><span class="secno">3.3. </span><span class="content">Disable Picture-in-Picture</span><a class="self-link" href="#disable-pip"></a></h3>
    <p>Some pages may want to disable Picture-in-Picture for a video element; for
 example, they may want to prevent user agent to suggest a Picture-in-Picture
@@ -1746,7 +1748,7 @@ the user agent SHOULD run these steps:</p>
     <li data-md>
      <p>Reject any pending promises returned by the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-requestpictureinpicture" id="ref-for-dom-htmlvideoelement-requestpictureinpicture">requestPictureInPicture()</a></code> method with <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror④">InvalidStateError</a></code>.</p>
     <li data-md>
-     <p>If <var>video</var> is <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑥">pictureInPictureElement</a></code>, run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm①">exit
+     <p>If <var>video</var> is <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑥">pictureInPictureElement</a></code>, run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm②">exit
 Picture-in-Picture algorithm</a>.</p>
    </ol>
    <h3 class="heading settled" data-level="3.4" id="remote-playback"><span class="secno">3.4. </span><span class="content">Interaction with Remote Playback</span><a class="self-link" href="#remote-playback"></a></h3>
@@ -1816,7 +1818,7 @@ return <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-gu
 parallel</a>:</p>
    <ol>
     <li data-md>
-     <p>Run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm②">exit Picture-in-Picture algorithm</a>.</p>
+     <p>Run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm③">exit Picture-in-Picture algorithm</a>.</p>
     <li data-md>
      <p>If the previous step threw an exception, reject <var>promise</var> with that
 exception and abort these steps.</p>
@@ -2276,6 +2278,12 @@ to this document.</p>
     <li><a href="#ref-for-triggered-by-user-activation">3.1. Request Picture-in-Picture</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-unloading-document-cleanup-steps">
+   <a href="https://html.spec.whatwg.org/multipage/browsing-the-web.html#unloading-document-cleanup-steps">https://html.spec.whatwg.org/multipage/browsing-the-web.html#unloading-document-cleanup-steps</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-unloading-document-cleanup-steps">3.2. Exit Picture-in-Picture</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-dom-visibilitystate">
    <a href="https://www.w3.org/TR/page-visibility/#dom-visibilitystate">https://www.w3.org/TR/page-visibility/#dom-visibilitystate</a><b>Referenced in:</b>
    <ul>
@@ -2413,6 +2421,7 @@ to this document.</p>
      <li><span class="dfn-paneled" id="term-for-task-source" style="color:initial">task source</span>
      <li><span class="dfn-paneled" id="term-for-top-level-browsing-context" style="color:initial">top-level browsing context</span>
      <li><span class="dfn-paneled" id="term-for-triggered-by-user-activation" style="color:initial">triggered by user activation</span>
+     <li><span class="dfn-paneled" id="term-for-unloading-document-cleanup-steps" style="color:initial">unloading document cleanup steps</span>
     </ul>
    <li>
     <a data-link-type="biblio">[Page-Visibility]</a> defines the following terms:
@@ -2531,9 +2540,9 @@ to this document.</p>
   <aside class="dfn-panel" data-for="exit-picture-in-picture-algorithm">
    <b><a href="#exit-picture-in-picture-algorithm">#exit-picture-in-picture-algorithm</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-exit-picture-in-picture-algorithm">3.2. Exit Picture-in-Picture</a>
-    <li><a href="#ref-for-exit-picture-in-picture-algorithm①">3.3. Disable Picture-in-Picture</a>
-    <li><a href="#ref-for-exit-picture-in-picture-algorithm②">4.2. Extensions to Document</a>
+    <li><a href="#ref-for-exit-picture-in-picture-algorithm">3.2. Exit Picture-in-Picture</a> <a href="#ref-for-exit-picture-in-picture-algorithm①">(2)</a>
+    <li><a href="#ref-for-exit-picture-in-picture-algorithm②">3.3. Disable Picture-in-Picture</a>
+    <li><a href="#ref-for-exit-picture-in-picture-algorithm③">4.2. Extensions to Document</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-htmlvideoelement-requestpictureinpicture">
