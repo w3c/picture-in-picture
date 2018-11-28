@@ -318,7 +318,7 @@ The {{requestPictureInPicture()}} method, when invoked, MUST
 return <a>a new promise</a> |promise| and run the following steps <a>in
 parallel</a>:
 
-1. Let |video| be the requested video.
+1. Let |video| be the video element on which the method was invoked.
 2. Run the <a>request Picture-in-Picture algorithm</a> with |video|.
 3. If the previous step threw an exception, reject |promise| with that
     exception and abort these steps.
@@ -340,9 +340,8 @@ The {{pictureInPictureEnabled}} attribute's getter must return `true` if
 <a>allowed to use</a> the feature indicated by attribute name
 `picture-in-picture`, and `false` otherwise.
 
-<dfn>Picture-in-Picture support</dfn> is `true` if there is no
-previously-established user preference, restrictions, or platform limitation,
-and `false` otherwise.
+<dfn>Picture-in-Picture support</dfn> is `false` if there's a user preference
+that disables it or a platform limitation. It is `true` otherwise.
 
 The {{exitPictureInPicture()}} method, when invoked, MUST
 return <a>a new promise</a> |promise| and run the following steps <a>in
