@@ -38,6 +38,8 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
         text: local playback state
 spec: Page-Visibility; urlPrefix: https://www.w3.org/TR/page-visibility/
     type: attribute; text: visibilityState; for: Document; url: dom-visibilitystate
+spec: Media Capture and Streams; urlPrefix: https://www.w3.org/TR/mediacapture-streams/
+    type: attribute; text: getUserMedia(); url:dom-mediadevices-getusermedia()
 </pre>
 
 <pre class="link-defaults">
@@ -182,7 +184,8 @@ invoked, the user agent MUST run the following steps:
     these steps.
 5. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
     |video|, throw a {{InvalidStateError}} and abort these steps.
-6. If the algorithm is not <a>triggered by user activation</a>, throw a
+6. If document is NOT capturing any user media with {{getUserMedia()}} and
+    the algorithm is not <a>triggered by user activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
 7. If |video| is {{pictureInPictureElement}}, abort these steps.
 8. Set {{pictureInPictureElement}} to |video|.
