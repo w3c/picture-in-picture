@@ -263,10 +263,12 @@ the user agent SHOULD run these steps:
 
 ## Auto Picture-in-Picture ## {#auto-pip}
 
+<em>The paragraph below is non-normative.</em>
+
 Some pages may want to automatically enter and leave Picture-in-Picture for
 a video element; for example, video meetings web apps would benefit from
 some automatic Picture-in-Picture behavior when user switches back and forth
-between web app and other applications/tabs.
+between the web app and other applications/tabs.
 To support these use cases, a new {{autoPictureInPicture}} attribute is
 added to the list of content attributes for video elements.
 
@@ -291,7 +293,9 @@ When the visibility state of a <a>top-level browsing context</a> value
 switches from "visible" to "hidden", the user agent MAY run these steps:
 
 1. If <a>autoPictureInPictureElement</a> is null, abort these steps.
-2. Run the <a>exit Picture-in-Picture algorithm</a>.
+2. Let |video| be <a>autoPictureInPictureElement</a>.
+3. If |video| is {{pictureInPictureElement}}, run the <a>exit
+    Picture-in-Picture algorithm</a>.
 
 ## Interaction with Remote Playback ## {#remote-playback}
 
