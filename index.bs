@@ -244,10 +244,8 @@ context menu or to request Picture-in-Picture automatically in some cases.
 To support these use cases, a new {{disablePictureInPicture}} attribute is
 added to the list of content attributes for video elements.
 
-A corresponding {{disablePictureInPicture}} IDL attribute which reflects the
-value of element’s {{disablePictureInPicture}} content attribute is added to
-the {{HTMLVideoElement}} interface. The {{disablePictureInPicture}} IDL attribute
-MUST <a>reflect</a> the content attribute of the same name.
+The {{disablePictureInPicture}} IDL attribute MUST <a>reflect</a> the content
+attribute of the same name.
 
 If the {{disablePictureInPicture}} attribute is present on the video element,
 the user agent SHOULD NOT play the video element in Picture-in-Picture or
@@ -272,25 +270,24 @@ between the web app and other applications/tabs.
 To support these use cases, a new {{autoPictureInPicture}} attribute is
 added to the list of content attributes for video elements.
 
-A corresponding {{autoPictureInPicture}} IDL attribute which reflects the
-value of element’s {{autoPictureInPicture}} content attribute is added to
-the {{HTMLVideoElement}} interface. The {{autoPictureInPicture}} IDL attribute
-MUST <a>reflect</a> the content attribute of the same name.
+The {{autoPictureInPicture}} IDL attribute MUST <a>reflect</a> the content
+attribute of the same name.
 
 The <dfn>autoPictureInPictureElement</dfn> is the video element whose
 {{autoPictureInPicture}} attribute was set most recently.
 
 When the visibility state of a <a>top-level browsing context</a> value
-switches from "hidden" to "visible", the user agent MAY run these steps:
+switches from "visible" to "hidden", the user agent MAY run these steps:
 
 1. If <a>autoPictureInPictureElement</a> is null, abort these steps.
-2. Let |video| be <a>autoPictureInPictureElement</a>.
-3. Let |userActivationRequired| be `false`.
-4. Run the <a>request Picture-in-Picture algorithm</a> with |video| and
+2. If {{pictureInPictureElement}} is set, abort these steps.
+3. Let |video| be <a>autoPictureInPictureElement</a>.
+4. Let |userActivationRequired| be `false`.
+5. Run the <a>request Picture-in-Picture algorithm</a> with |video| and
     |userActivationRequired|.
 
 When the visibility state of a <a>top-level browsing context</a> value
-switches from "visible" to "hidden", the user agent MAY run these steps:
+switches from "hidden" to "visible", the user agent MAY run these steps:
 
 1. If <a>autoPictureInPictureElement</a> is null, abort these steps.
 2. Let |video| be <a>autoPictureInPictureElement</a>.
