@@ -273,8 +273,9 @@ added to the list of content attributes for video elements.
 The {{autoPictureInPicture}} IDL attribute MUST <a>reflect</a> the content
 attribute of the same name.
 
-The <dfn>autoPictureInPictureElement</dfn> is the video element whose
-{{autoPictureInPicture}} attribute was set most recently.
+The <dfn>autoPictureInPictureElement</dfn> is the video element, among all
+video elements with the {{autoPictureInPicture}} attribute currently set,
+whose {{autoPictureInPicture}} attribute was set most recently.
 
 When the visibility state of a <a>top-level browsing context</a> value
 switches from "visible" to "hidden", the user agent MAY run these steps:
