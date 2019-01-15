@@ -32,6 +32,7 @@ spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
             text: triggered by user activation
         urlPrefix: media.html
             text: media element event task source
+            text: potentially playing
 spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
     type: dfn
         text: local playback device
@@ -169,9 +170,9 @@ extensible.
 
 ## Request Picture-in-Picture ## {#request-pip}
 
-When the <dfn>request Picture-in-Picture algorithm</dfn> with |video| and
-|userActivationRequired| is invoked, the user agent MUST run the following
-steps:
+When the <dfn>request Picture-in-Picture algorithm</dfn> with |video|,
+|userActivationRequired| and |potentiallyPlayingRequired| is invoked, the user
+agent MUST run the following steps:
 
 1. If <a>Picture-in-Picture support</a> is `false`, throw a
     {{NotSupportedError}} and abort these steps.
@@ -187,10 +188,12 @@ steps:
     <a>triggered by user activation</a>, throw a {{NotAllowedError}} and
     abort these steps.
 7. If |video| is {{pictureInPictureElement}}, abort these steps.
-8. Set {{pictureInPictureElement}} to |video|.
-9. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
+8. If |potentiallyPlayingRequired| is `true` and |video| is not <a>potentially
+    playing</a>, abort these steps.
+9. Set {{pictureInPictureElement}} to |video|.
+10. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-10. <a>Queue a task</a> to <a>fire an event</a> with the name
+11. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
     initialized to `true` and its {{pictureInPictureWindow}} attribute
     initialized to <a>Picture-in-Picture window</a>.
@@ -284,8 +287,9 @@ switches from "visible" to "hidden", the user agent MAY run these steps:
 2. If {{pictureInPictureElement}} is set, abort these steps.
 3. Let |video| be <a>autoPictureInPictureElement</a>.
 4. Let |userActivationRequired| be `false`.
-5. Run the <a>request Picture-in-Picture algorithm</a> with |video| and
-    |userActivationRequired|.
+5. Let |potentiallyPlayingRequired| be `true`.
+6. Run the <a>request Picture-in-Picture algorithm</a> with |video|,
+    |userActivationRequired|, and |potentiallyPlayingRequired|.
 
 When the visibility state of a <a>top-level browsing context</a> value
 switches from "hidden" to "visible", the user agent MAY run these steps:
@@ -356,11 +360,12 @@ parallel</a>:
 
 1. Let |video| be the video element on which the method was invoked.
 2. Let |userActivationRequired| be `true`.
-3. Run the <a>request Picture-in-Picture algorithm</a> with |video| and
-    |userActivationRequired|.
-4. If the previous step threw an exception, reject |promise| with that
+3. Let |potentiallyPlayingRequired| be `false`.
+4. Run the <a>request Picture-in-Picture algorithm</a> with |video|,
+    |userActivationRequired|, and |potentiallyPlayingRequired|.
+5. If the previous step threw an exception, reject |promise| with that
     exception and abort these steps.
-5. Return |promise| with the <a>Picture-in-Picture window</a> associated with
+6. Return |promise| with the <a>Picture-in-Picture window</a> associated with
     {{pictureInPictureElement}}.
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
