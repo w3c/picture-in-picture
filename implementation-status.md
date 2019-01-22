@@ -23,6 +23,7 @@ Feature/Platform                       | Desktop | Android |
 `document.exitPictureInPicture()`      | 68      |         |
 `PictureInPictureWindow.width\|height` | 68      |         |
 `PictureInPictureWindow.onresize`      | 68      |         |
+`video.autoPictureInPicture`           | 👷      |         |
 
 Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/current-versions/](https://googlechromelabs.github.io/current-versions/).
 
