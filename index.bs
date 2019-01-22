@@ -355,7 +355,7 @@ parallel</a>:
 ## Extension to <code>DocumentOrShadowRoot</code> ## {#documentorshadowroot-extension}
 
 <xmp class="idl">
-partial interface DocumentOrShadowRoot {
+partial interface mixin DocumentOrShadowRoot {
   readonly attribute Element? pictureInPictureElement;
 };
 </xmp>
