@@ -262,8 +262,6 @@ the user agent SHOULD run these steps:
 
 ## Auto Picture-in-Picture ## {#auto-pip}
 
-<em>The paragraph below is non-normative.</em>
-
 Some pages may want to automatically enter and leave Picture-in-Picture for
 a video element; for example, video meetings web apps would benefit from
 some automatic Picture-in-Picture behavior when user switches back and forth
