@@ -358,7 +358,8 @@ return <a>a new promise</a> |promise| and run the following steps <a>in
 parallel</a>:
 
 1. Let |video| be the video element on which the method was invoked.
-2. Let |userActivationRequired| be `true`.
+2. Let |userActivationRequired| be `true` if {{pictureInPictureElement}} is
+    null. It is `false` otherwise.
 3. Let |playingRequired| be `false`.
 4. Run the <a>request Picture-in-Picture algorithm</a> with |video|,
     |userActivationRequired|, and |playingRequired|.
