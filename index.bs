@@ -504,5 +504,5 @@ The <a>default allowlist</a> for this feature is `*`.
 # Acknowledgments # {#acknowledgments}
 
 Thanks to Jennifer Apacible, Zouhir Chahoud, Marcos Cáceres, Philip Jägenstedt,
-Jeremy Jones, Jer Noble, Justin Uberti, Yoav Weiss, and Eckhart Wörner for
-their contributions to this document.
+Jeremy Jones, Chris Needham, Jer Noble, Justin Uberti, Yoav Weiss, and Eckhart
+Wörner for their contributions to this document.
