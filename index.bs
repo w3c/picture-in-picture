@@ -85,8 +85,12 @@ extensible.
 <button id="togglePipButton"></button>
 
 <script>
+  const video = document.getElementById('video');
+  const togglePipButton = document.getElementById('togglePipButton');
+
   // Hide button if Picture-in-Picture is not supported or disabled.
-  togglePipButton.hidden = !document.pictureInPictureEnabled || video.disablePictureInPicture;
+  togglePipButton.hidden = !document.pictureInPictureEnabled ||
+    video.disablePictureInPicture;
 
   togglePipButton.addEventListener('click', function() {
     // If there is no element in Picture-in-Picture yet, let's request
@@ -112,6 +116,8 @@ extensible.
 <video id="video" src="https://example.com/file.mp4"></video>
 
 <script>
+  const video = document.getElementById('video');
+
   video.addEventListener('enterpictureinpicture', function(event) {
     // Video entered Picture-in-Picture mode.
     const pipWindow = event.pictureInPictureWindow;
@@ -134,6 +140,7 @@ extensible.
 
 <script>
   let pipWindow;
+  const pipButton = document.getElementById('pipButton');
 
   pipButton.addEventListener('click', function() {
     video.requestPictureInPicture()
