@@ -227,8 +227,8 @@ a half of one dimension of the screen.
 When the <dfn>exit Picture-in-Picture algorithm</dfn> is invoked,
 the user agent MUST run the following steps:
 
-1. If {{pictureInPictureElement}} is null, throw a {{InvalidStateError}} and abort
-    these steps.
+1. If {{pictureInPictureElement}} is `null`, throw a {{InvalidStateError}} and
+    abort these steps.
 2. Run the <a>close window algorithm</a> with the <a>Picture-in-Picture
     window</a> associated with {{pictureInPictureElement}}.
 3. Unset {{pictureInPictureElement}}.
@@ -290,7 +290,7 @@ Picture-in-Picture in the <a>request Picture-in-Picture algorithm</a>.
 When the visibility state of a <a>top-level browsing context</a> value
 switches from "visible" to "hidden", the user agent MAY run these steps:
 
-1. If <a>autoPictureInPictureElement</a> is null, abort these steps.
+1. If <a>autoPictureInPictureElement</a> is `null`, abort these steps.
 2. If {{pictureInPictureElement}} is set, abort these steps.
 3. Let |video| be <a>autoPictureInPictureElement</a>.
 4. Let |userActivationRequired| be `false`.
@@ -301,7 +301,7 @@ switches from "visible" to "hidden", the user agent MAY run these steps:
 When the visibility state of a <a>top-level browsing context</a> value
 switches from "hidden" to "visible", the user agent MAY run these steps:
 
-1. If <a>autoPictureInPictureElement</a> is null, abort these steps.
+1. If <a>autoPictureInPictureElement</a> is `null`, abort these steps.
 2. Let |video| be <a>autoPictureInPictureElement</a>.
 3. If |video| is {{pictureInPictureElement}}, run the <a>exit
     Picture-in-Picture algorithm</a>.
@@ -368,7 +368,7 @@ parallel</a>:
 
 1. Let |video| be the video element on which the method was invoked.
 2. Let |userActivationRequired| be `true` if {{pictureInPictureElement}} is
-    null. It is `false` otherwise.
+    `null`. It is `false` otherwise.
 3. Let |playingRequired| be `false`.
 4. Run the <a>request Picture-in-Picture algorithm</a> with |video|,
     |userActivationRequired|, and |playingRequired|.
@@ -414,13 +414,13 @@ partial interface mixin DocumentOrShadowRoot {
 
 The {{pictureInPictureElement}} attribute's getter must run these steps:
 
-1. If the <a>context object</a> is not <a>connected</a>, return null and abort
+1. If the <a>context object</a> is not <a>connected</a>, return `null` and abort
     these steps.
 2. Let |candidate| be the result of <a>retargeting</a> Picture-in-Picture
     element against the <a>context object</a>.
 3. If |candidate| and the <a>context object</a> are in the same <a>tree</a>,
     return |candidate| and abort these steps.
-4. Return null.
+4. Return `null`.
 
 ## Interface <code>PictureInPictureWindow</code> ## {#interface-picture-in-picture-window}
 
