@@ -140,6 +140,7 @@ extensible.
 
 <script>
   let pipWindow;
+  const video = document.getElementById('video');
   const pipButton = document.getElementById('pipButton');
 
   pipButton.addEventListener('click', function() {
