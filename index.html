@@ -1461,7 +1461,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-02-07">7 February 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-02-08">8 February 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1569,20 +1569,20 @@ OSs.</p>
 by exposing the following sets of properties to the API:</p>
    <ul>
     <li data-md>
-     <p>Notify the website when it enters and leave Picture-in-Picture mode.</p>
+     <p>Notify the website when it enters and leaves Picture-in-Picture mode.</p>
     <li data-md>
-     <p>Allow the website to trigger Picture-in-Picture via a user gesture on a video
-element.</p>
+     <p>Allow the website to trigger Picture-in-Picture mode via a user gesture on a
+video element.</p>
     <li data-md>
-     <p>Allow the website to know the size of Picture-in-Picture window and notify
+     <p>Allow the website to know the size of the Picture-in-Picture window and notify
 the website when it changes.</p>
     <li data-md>
-     <p>Allow the website to exit Picture-in-Picture.</p>
+     <p>Allow the website to exit Picture-in-Picture mode.</p>
     <li data-md>
-     <p>Allow the website to check if Picture-in-Picture can be triggered.</p>
+     <p>Allow the website to check if Picture-in-Picture mode can be triggered.</p>
    </ul>
    <p>The proposed Picture-in-Picture API is very similar to <a data-link-type="biblio" href="#biblio-fullscreen">[Fullscreen]</a> as they
-have similar properties. The API only applies on <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement">HTMLVideoElement</a></code> at the moment but is meant to be
+have similar properties. The API only applies to <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement">HTMLVideoElement</a></code> at the moment but is meant to be
 extensible.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <h3 class="heading settled" data-level="2.1" id="example-add-custom-pip-button"><span class="secno">2.1. </span><span class="content">Add a custom Picture-in-Picture button</span><a class="self-link" href="#example-add-custom-pip-button"></a></h3>
@@ -1591,8 +1591,12 @@ extensible.</p>
 <c- p>&lt;</c-><c- f>button</c-> <c- e>id</c-><c- o>=</c-><c- s>"togglePipButton"</c-><c- p>>&lt;/</c-><c- f>button</c-><c- p>></c->
 
 <c- p>&lt;</c-><c- f>script</c-><c- p>></c->
+  <c- kr>const</c-> video <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'video'</c-><c- p>);</c->
+  <c- kr>const</c-> togglePipButton <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'togglePipButton'</c-><c- p>);</c->
+
   <c- c1>// Hide button if Picture-in-Picture is not supported or disabled.</c->
-  togglePipButton<c- p>.</c->hidden <c- o>=</c-> <c- o>!</c->document<c- p>.</c->pictureInPictureEnabled <c- o>||</c-> video<c- p>.</c->disablePictureInPicture<c- p>;</c->
+  togglePipButton<c- p>.</c->hidden <c- o>=</c-> <c- o>!</c->document<c- p>.</c->pictureInPictureEnabled <c- o>||</c->
+    video<c- p>.</c->disablePictureInPicture<c- p>;</c->
 
   togglePipButton<c- p>.</c->addEventListener<c- p>(</c-><c- t>'click'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
     <c- c1>// If there is no element in Picture-in-Picture yet, let’s request</c->
@@ -1615,6 +1619,8 @@ extensible.</p>
 <pre class="language-html highlight"><c- p>&lt;</c-><c- f>video</c-> <c- e>id</c-><c- o>=</c-><c- s>"video"</c-> <c- e>src</c-><c- o>=</c-><c- s>"https://example.com/file.mp4"</c-><c- p>>&lt;/</c-><c- f>video</c-><c- p>></c->
 
 <c- p>&lt;</c-><c- f>script</c-><c- p>></c->
+  <c- kr>const</c-> video <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'video'</c-><c- p>);</c->
+
   video<c- p>.</c->addEventListener<c- p>(</c-><c- t>'enterpictureinpicture'</c-><c- p>,</c-> <c- a>function</c-><c- p>(</c->event<c- p>)</c-> <c- p>{</c->
     <c- c1>// Video entered Picture-in-Picture mode.</c->
     <c- kr>const</c-> pipWindow <c- o>=</c-> event<c- p>.</c->pictureInPictureWindow<c- p>;</c->
@@ -1634,6 +1640,8 @@ extensible.</p>
 
 <c- p>&lt;</c-><c- f>script</c-><c- p>></c->
   <c- a>let</c-> pipWindow<c- p>;</c->
+  <c- kr>const</c-> video <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'video'</c-><c- p>);</c->
+  <c- kr>const</c-> pipButton <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'pipButton'</c-><c- p>);</c->
 
   pipButton<c- p>.</c->addEventListener<c- p>(</c-><c- t>'click'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
     video<c- p>.</c->requestPictureInPicture<c- p>()</c->
@@ -1672,14 +1680,15 @@ run the following steps:</p>
     <li data-md>
      <p>If <a data-link-type="dfn" href="#picture-in-picture-support" id="ref-for-picture-in-picture-support">Picture-in-Picture support</a> is <code>false</code>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#notsupportederror" id="ref-for-notsupportederror">NotSupportedError</a></code> and abort these steps.</p>
     <li data-md>
-     <p>If document is not allowed to use the <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> named <code>"picture-in-picture"</code>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#securityerror" id="ref-for-securityerror">SecurityError</a></code> and abort these steps.</p>
+     <p>If the document is not allowed to use the <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> named <code>"picture-in-picture"</code>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#securityerror" id="ref-for-securityerror">SecurityError</a></code> and abort these
+steps.</p>
     <li data-md>
      <p>If <var>video</var>’s <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#dom-media-readystate" id="ref-for-dom-media-readystate">readyState</a></code> attribute is <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#dom-media-have_nothing" id="ref-for-dom-media-have_nothing">HAVE_NOTHING</a></code>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code> and abort these steps.</p>
     <li data-md>
      <p>If <var>video</var> has no video track, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code> and abort
 these steps.</p>
     <li data-md>
-     <p>OPTIONALLY, if the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a></code> attribute is present on <var>video</var>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror②">InvalidStateError</a></code> and abort these steps.</p>
+     <p>OPTIONALLY, if the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a></code> attribute is present on <var>video</var>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror②">InvalidStateError</a></code> and abort these steps.</p>
     <li data-md>
      <p>If <var>userActivationRequired</var> is <code>true</code> and the algorithm is not <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#triggered-by-user-activation" id="ref-for-triggered-by-user-activation">triggered by user activation</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#notallowederror" id="ref-for-notallowederror">NotAllowedError</a></code> and
 abort these steps.</p>
@@ -1696,11 +1705,11 @@ abort these steps.</p>
 initialized to <code>true</code> and its <code class="idl"><a data-link-type="idl" href="#dom-enterpictureinpictureevent-pictureinpicturewindow" id="ref-for-dom-enterpictureinpictureevent-pictureinpicturewindow">pictureInPictureWindow</a></code> attribute
 initialized to <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window">Picture-in-Picture window</a>.</p>
    </ol>
-   <p>It is RECOMMENDED that the video frames are not rendered in the page and in
-the Picture-in-Picture window at the same time but if they are, they MUST be
-kept in sync.</p>
-   <p>When a video is played in Picture-in-Picture, the states SHOULD transition as
-if it was played inline. That means that the events SHOULD fire at the same
+   <p>It is RECOMMENDED that video frames are not rendered in the page and in the
+Picture-in-Picture window at the same time but if they are, they MUST be kept
+in sync.</p>
+   <p>When a video is played in Picture-in-Picture mode, the states SHOULD transition
+as if it was played inline. That means that the events SHOULD fire at the same
 time, calling methods SHOULD have the same behaviour, etc. However, the user
 agent MAY transition out of Picture-in-Picture when the video element enters a
 state that is considered not compatible with Picture-in-Picture.</p>
@@ -1715,8 +1724,8 @@ a half of one dimension of the screen.</p>
 the user agent MUST run the following steps:</p>
    <ol>
     <li data-md>
-     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement③">pictureInPictureElement</a></code> is null, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code> and abort
-these steps.</p>
+     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement③">pictureInPictureElement</a></code> is <code>null</code>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code> and
+abort these steps.</p>
     <li data-md>
      <p>Run the <a data-link-type="dfn" href="#close-window-algorithm" id="ref-for-close-window-algorithm">close window algorithm</a> with the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window①">Picture-in-Picture
 window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement④">pictureInPictureElement</a></code>.</p>
@@ -1726,19 +1735,18 @@ window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-
      <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task①">Queue a task</a> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire" id="ref-for-concept-event-fire①">fire an event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a></code> at the <var>video</var> with its <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-bubbles" id="ref-for-dom-event-bubbles①">bubbles</a></code> attribute
 initialized to <code>true</code>.</p>
    </ol>
-   <p>It is NOT RECOMMENDED that video playback state changes when the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm">exit
+   <p>It is NOT RECOMMENDED that the video playback state changes when the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm">exit
 Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
-of the experience if it is website initiated. However, user agent MAY expose
-Picture-in-Picture window controls that change video playback state (e.g.
+of the experience if it is website initiated. However, the user agent MAY expose
+Picture-in-Picture window controls that change video playback state (e.g.,
 pause).</p>
    <p>As one of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsing-the-web.html#unloading-document-cleanup-steps" id="ref-for-unloading-document-cleanup-steps">unloading document cleanup steps</a>, run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm①">exit
 Picture-in-Picture algorithm</a>.</p>
    <h3 class="heading settled" data-level="3.3" id="disable-pip"><span class="secno">3.3. </span><span class="content">Disable Picture-in-Picture</span><a class="self-link" href="#disable-pip"></a></h3>
-   <p>Some pages may want to disable Picture-in-Picture for a video element; for
-example, they may want to prevent user agent to suggest a Picture-in-Picture
-context menu or to request Picture-in-Picture automatically in some cases.
-To support these use cases, a new <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture①">disablePictureInPicture</a></code> attribute is
-added to the list of content attributes for video elements.</p>
+   <p>Some pages may want to disable Picture-in-Picture mode for a video element; for
+example, they may want to prevent the user agent from suggesting a
+Picture-in-Picture context menu or to request Picture-in-Picture automatically
+in some cases. To support these use cases, a new <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture①">disablePictureInPicture</a></code> attribute is added to the list of content attributes for video elements.</p>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture②">disablePictureInPicture</a></code> IDL attribute MUST <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#reflect" id="ref-for-reflect">reflect</a> the content
 attribute of the same name.</p>
    <p>If the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture③">disablePictureInPicture</a></code> attribute is present on the video element,
@@ -1755,8 +1763,8 @@ Picture-in-Picture algorithm</a>.</p>
    </ol>
    <h3 class="heading settled" data-level="3.4" id="auto-pip"><span class="secno">3.4. </span><span class="content">Auto Picture-in-Picture</span><a class="self-link" href="#auto-pip"></a></h3>
    <p>Some pages may want to automatically enter and leave Picture-in-Picture for
-a video element; for example, video meetings web apps would benefit from
-some automatic Picture-in-Picture behavior when user switches back and forth
+a video element; for example, video meeting web apps would benefit from
+some automatic Picture-in-Picture behavior when the user switches back and forth
 between the web app and other applications/tabs.
 To support these use cases, a new <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-autopictureinpicture" id="ref-for-dom-htmlvideoelement-autopictureinpicture">autoPictureInPicture</a></code> attribute is
 added to the list of content attributes for video elements.</p>
@@ -1765,12 +1773,12 @@ attribute of the same name.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="autopictureinpictureelement">autoPictureInPictureElement</dfn> is the video element, among all
 video elements with the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-autopictureinpicture" id="ref-for-dom-htmlvideoelement-autopictureinpicture②">autoPictureInPicture</a></code> attribute currently set,
 whose <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-autopictureinpicture" id="ref-for-dom-htmlvideoelement-autopictureinpicture③">autoPictureInPicture</a></code> attribute was set most recently. Note that the <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement">autoPictureInPictureElement</a> can have the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture⑤">disablePictureInPicture</a></code> attribute set. In that case, as expected, it won’t be allowed to enter
-Picture-in-Picture in the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm" id="ref-for-request-picture-in-picture-algorithm">request Picture-in-Picture algorithm</a>.</p>
+Picture-in-Picture mode in the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm" id="ref-for-request-picture-in-picture-algorithm">request Picture-in-Picture algorithm</a>.</p>
    <p>When the visibility state of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context" id="ref-for-top-level-browsing-context">top-level browsing context</a> value
 switches from "visible" to "hidden", the user agent MAY run these steps:</p>
    <ol>
     <li data-md>
-     <p>If <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement①">autoPictureInPictureElement</a> is null, abort these steps.</p>
+     <p>If <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement①">autoPictureInPictureElement</a> is <code>null</code>, abort these steps.</p>
     <li data-md>
      <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑦">pictureInPictureElement</a></code> is set, abort these steps.</p>
     <li data-md>
@@ -1786,7 +1794,7 @@ switches from "visible" to "hidden", the user agent MAY run these steps:</p>
 switches from "hidden" to "visible", the user agent MAY run these steps:</p>
    <ol>
     <li data-md>
-     <p>If <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement③">autoPictureInPictureElement</a> is null, abort these steps.</p>
+     <p>If <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement③">autoPictureInPictureElement</a> is <code>null</code>, abort these steps.</p>
     <li data-md>
      <p>Let <var>video</var> be <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement④">autoPictureInPictureElement</a>.</p>
     <li data-md>
@@ -1802,22 +1810,23 @@ Picture-in-Picture.</p>
 available controls on the Picture-in-Picture window.</p>
    <h3 class="heading settled" data-level="3.7" id="page-visibility"><span class="secno">3.7. </span><span class="content">Interaction with Page Visibility</span><a class="self-link" href="#page-visibility"></a></h3>
    <p>When <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑨">pictureInPictureElement</a></code> is set, the Picture-in-Picture window MUST
-be visible, even when <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-document" id="ref-for-concept-document">Document</a> is not in focus or hidden. The user agent
-SHOULD provide a way for users to manually close the Picture-in-Picture window.</p>
+be visible, even when the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-document" id="ref-for-concept-document">Document</a> is not in focus or hidden. The user
+agent SHOULD provide a way for users to manually close the Picture-in-Picture
+window.</p>
    <p>The <a data-link-type="biblio" href="#biblio-page-visibility">[Page-Visibility]</a> specification defines a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/page-visibility/#dom-visibilitystate" id="ref-for-dom-visibilitystate">visibilityState</a></code> attribute used to determine the visibility state of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context" id="ref-for-top-level-browsing-context②">top-level browsing
 context</a>. The Picture-in-Picture window visibility MUST NOT be taken into
 account when determining the value returned by <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/page-visibility/#dom-visibilitystate" id="ref-for-dom-visibilitystate①">visibilityState</a></code>.</p>
    <h3 class="heading settled" data-level="3.8" id="one-pip-window"><span class="secno">3.8. </span><span class="content">One Picture-in-Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
-   <p>Operating systems with a Picture-in-Picture API usually restricts
-Picture-in-Picture to only one window.  Whether only one window is allowed in
-Picture-in-Picture will be left to the implementation and the platform.
+   <p>Operating systems with a Picture-in-Picture API usually restrict
+Picture-in-Picture mode to only one window.  Whether only one window is allowed
+in Picture-in-Picture mode will be left to the implementation and the platform.
 However, because of the one Picture-in-Picture window limitation, the
 specification assumes that a given <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document" id="ref-for-document">Document</a></code> can only have one
 Picture-in-Picture window.</p>
    <p>What happens when there is a Picture-in-Picture request while a window is
-already in Picture-in-Picture will be left as an implementation details: the
+already in Picture-in-Picture will be left as an implementation detail: the
 current Picture-in-Picture window could be closed, the Picture-in-Picture
-request could be rejected or even two Picture-in-Picture windows can be
+request could be rejected or even two Picture-in-Picture windows could be
 created. Regardless, the User Agent will have to fire the appropriate events
 in order to notify the website of the Picture-in-Picture status changes.</p>
    <h2 class="heading settled" data-level="4" id="api"><span class="secno">4. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
@@ -1839,8 +1848,7 @@ parallel</a>:</p>
     <li data-md>
      <p>Let <var>video</var> be the video element on which the method was invoked.</p>
     <li data-md>
-     <p>Let <var>userActivationRequired</var> be <code>true</code> if <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⓪">pictureInPictureElement</a></code> is
-null. It is <code>false</code> otherwise.</p>
+     <p>Let <var>userActivationRequired</var> be <code>true</code> if <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⓪">pictureInPictureElement</a></code> is <code>null</code>. It is <code>false</code> otherwise.</p>
     <li data-md>
      <p>Let <var>playingRequired</var> be <code>false</code>.</p>
     <li data-md>
@@ -1881,7 +1889,7 @@ exception and abort these steps.</p>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①②">pictureInPictureElement</a></code> attribute’s getter must run these steps:</p>
    <ol>
     <li data-md>
-     <p>If the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object①">context object</a> is not <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#connected" id="ref-for-connected">connected</a>, return null and abort
+     <p>If the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object①">context object</a> is not <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#connected" id="ref-for-connected">connected</a>, return <code>null</code> and abort
 these steps.</p>
     <li data-md>
      <p>Let <var>candidate</var> be the result of <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#retarget" id="ref-for-retarget">retargeting</a> Picture-in-Picture
@@ -1890,7 +1898,7 @@ element against the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#c
      <p>If <var>candidate</var> and the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object③">context object</a> are in the same <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-tree" id="ref-for-concept-tree">tree</a>,
 return <var>candidate</var> and abort these steps.</p>
     <li data-md>
-     <p>Return null.</p>
+     <p>Return <code>null</code>.</p>
    </ol>
    <h3 class="heading settled" data-level="4.4" id="interface-picture-in-picture-window"><span class="secno">4.4. </span><span class="content">Interface <code>PictureInPictureWindow</code></span><a class="self-link" href="#interface-picture-in-picture-window"></a></h3>
 <pre class="idl highlight def"><c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="pictureinpicturewindow"><code><c- g>PictureInPictureWindow</c-></code></dfn> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget"><c- n>EventTarget</c-></a> {
@@ -1931,7 +1939,7 @@ the <code class="idl"><a data-link-type="idl" href="#enterpictureinpictureevent"
    <dl>
     <dt data-md><dfn class="dfn-paneled idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="event" data-export id="eventdef-htmlvideoelement-leavepictureinpicture"><code>leavepictureinpicture</code></dfn>
     <dd data-md>
-     <p>Fired on a <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement④">HTMLVideoElement</a></code> when it leaves Picture-in-Picture.</p>
+     <p>Fired on a <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement④">HTMLVideoElement</a></code> when it leaves Picture-in-Picture mode.</p>
     <dt data-md><dfn class="dfn-paneled idl-code" data-dfn-for="PictureInPictureWindow" data-dfn-type="event" data-export id="eventdef-pictureinpicturewindow-resize"><code>resize</code></dfn>
     <dd data-md>
      <p>Fired on a <code class="idl"><a data-link-type="idl" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow⑦">PictureInPictureWindow</a></code> when it changes size.</p>
@@ -1950,8 +1958,8 @@ whether the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm"
    <p>The <a data-link-type="dfn" href="https://wicg.github.io/feature-policy/#default-allowlist" id="ref-for-default-allowlist">default allowlist</a> for this feature is <code>*</code>.</p>
    <h2 class="heading settled" data-level="6" id="acknowledgments"><span class="secno">6. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
    <p>Thanks to Jennifer Apacible, Zouhir Chahoud, Marcos Cáceres, Philip Jägenstedt,
-Jeremy Jones, Jer Noble, Justin Uberti, Yoav Weiss, and Eckhart Wörner for
-their contributions to this document.</p>
+Jeremy Jones, Chris Needham, Jer Noble, Justin Uberti, Yoav Weiss, and Eckhart
+Wörner for their contributions to this document.</p>
   </main>
   <div data-fill-with="conformance">
    <h2 class="no-ref no-num heading settled" id="conformance"><span class="content"> Conformance</span><a class="self-link" href="#conformance"></a></h2>
