@@ -63,12 +63,12 @@ This specification aims to allow websites to initiate and control this behavior
 by exposing the following sets of properties to the API:
 
 * Notify the website when it enters and leaves Picture-in-Picture mode.
-* Allow the website to trigger Picture-in-Picture via a user gesture on a video
-    element.
+* Allow the website to trigger Picture-in-Picture mode via a user gesture on a
+    video element.
 * Allow the website to know the size of the Picture-in-Picture window and notify
     the website when it changes.
-* Allow the website to exit Picture-in-Picture.
-* Allow the website to check if Picture-in-Picture can be triggered.
+* Allow the website to exit Picture-in-Picture mode.
+* Allow the website to check if Picture-in-Picture mode can be triggered.
 
 The proposed Picture-in-Picture API is very similar to [[Fullscreen]] as they
 have similar properties. The API only applies to
@@ -208,8 +208,8 @@ It is RECOMMENDED that video frames are not rendered in the page and in the
 Picture-in-Picture window at the same time but if they are, they MUST be kept
 in sync.
 
-When a video is played in Picture-in-Picture, the states SHOULD transition as
-if it was played inline. That means that the events SHOULD fire at the same
+When a video is played in Picture-in-Picture mode, the states SHOULD transition
+as if it was played inline. That means that the events SHOULD fire at the same
 time, calling methods SHOULD have the same behaviour, etc. However, the user
 agent MAY transition out of Picture-in-Picture when the video element enters a
 state that is considered not compatible with Picture-in-Picture.
@@ -247,7 +247,7 @@ Picture-in-Picture algorithm</a>.
 
 ## Disable Picture-in-Picture ## {#disable-pip}
 
-Some pages may want to disable Picture-in-Picture for a video element; for
+Some pages may want to disable Picture-in-Picture mode for a video element; for
 example, they may want to prevent the user agent from suggesting a
 Picture-in-Picture context menu or to request Picture-in-Picture automatically
 in some cases. To support these use cases, a new {{disablePictureInPicture}}
@@ -285,7 +285,7 @@ video elements with the {{autoPictureInPicture}} attribute currently set,
 whose {{autoPictureInPicture}} attribute was set most recently. Note that the
 <a>autoPictureInPictureElement</a> can have the {{disablePictureInPicture}}
 attribute set. In that case, as expected, it won't be allowed to enter
-Picture-in-Picture in the <a>request Picture-in-Picture algorithm</a>.
+Picture-in-Picture mode in the <a>request Picture-in-Picture algorithm</a>.
 
 When the visibility state of a <a>top-level browsing context</a> value
 switches from "visible" to "hidden", the user agent MAY run these steps:
@@ -333,8 +333,8 @@ account when determining the value returned by {{Document/visibilityState}}.
 ## One Picture-in-Picture window ## {#one-pip-window}
 
 Operating systems with a Picture-in-Picture API usually restrict
-Picture-in-Picture to only one window.  Whether only one window is allowed
-in Picture-in-Picture will be left to the implementation and the platform.
+Picture-in-Picture mode to only one window.  Whether only one window is allowed
+in Picture-in-Picture mode will be left to the implementation and the platform.
 However, because of the one Picture-in-Picture window limitation, the
 specification assumes that a given {{Document}} can only have one
 Picture-in-Picture window.
@@ -473,7 +473,7 @@ dictionary EnterPictureInPictureEventInit : EventInit {
 </xmp>
 
 : <dfn event for="HTMLVideoElement">`leavepictureinpicture`</dfn>
-:: Fired on a {{HTMLVideoElement}} when it leaves Picture-in-Picture.
+:: Fired on a {{HTMLVideoElement}} when it leaves Picture-in-Picture mode.
 : <dfn event for="PictureInPictureWindow">`resize`</dfn>
 :: Fired on a {{PictureInPictureWindow}} when it changes size.
 
