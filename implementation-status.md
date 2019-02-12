@@ -7,7 +7,7 @@ This document shows the current implementation status of Picture-in-Picture on t
 
 Work is still in progress in [Chrome Canary](http://chrome.com/canary):
 
-* The API has shipped in Chrome 70 on **Mac, Linux, and Windows** and Chrome 72 on **Chrome OS**.
+* The API has shipped in Chrome 70 for **Linux, macOS, and Windows** and Chrome 72 for **Chrome OS**.
 * Know where to [report Picture-in-Picture bugs](https://bugs.chromium.org/p/chromium/issues/entry?components=Blink>Media>PictureInPicture).
 * Root [Issue 806249](http://crbug.com/806249) and blocking issues are most authorative on status.
 
