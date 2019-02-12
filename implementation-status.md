@@ -5,10 +5,9 @@ This document shows the current implementation status of Picture-in-Picture on t
 
 # Chrome
 
-Work is in progress in [Chrome Canary](http://chrome.com/canary):
+Work is still in progress in [Chrome Canary](http://chrome.com/canary):
 
-* In **Mac, Linux, and Windows**, the API is shipped in Chrome 70.
-* **Chrome OS** still requires the `chrome://flags/#enable-surfaces-for-videos` flag.
+* The API has shipped in Chrome 70 on **Mac, Linux, and Windows** and Chrome 72 on **Chrome OS**.
 * Know where to [report Picture-in-Picture bugs](https://bugs.chromium.org/p/chromium/issues/entry?components=Blink>Media>PictureInPicture).
 * Root [Issue 806249](http://crbug.com/806249) and blocking issues are most authorative on status.
 
