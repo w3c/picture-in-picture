@@ -294,9 +294,8 @@ When the visibility state of a <a>top-level browsing context</a> value
 switches from "hidden" to "visible", the user agent MAY run these steps:
 
 1. If <a>autoPictureInPictureElement</a> is null, abort these steps.
-2. Let |video| be <a>autoPictureInPictureElement</a>.
-3. If |video| is {{pictureInPictureElement}}, run the <a>exit
-    Picture-in-Picture algorithm</a>.
+2. If {{pictureInPictureElement}} is <a>autoPictureInPictureElement</a>, run
+    the <a>exit Picture-in-Picture algorithm</a>.
 
 ## Interaction with Remote Playback ## {#remote-playback}
 
