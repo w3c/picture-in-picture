@@ -482,6 +482,14 @@ dictionary EnterPictureInPictureEventInit : EventInit {
 The <a>task source</a> for all the tasks queued in this specification is the
 <a>media element event task source</a> of the video element in question.
 
+## CSS pseudo-class ## {#css-pseudo-class}
+
+The `:picture-in-picture` <a>pseudo-class</a> MUST match any <a>element</a>
+|element| for which one of the following conditions is true:
+- |element| is {{pictureInPictureElement}}.
+- |element| is a <a>shadow host</a> and the result of <a>retargeting</a> its
+   <a>node document</a>’s {{pictureInPictureElement}} against |element| is |element|.
+
 # Security considerations # {#security-considerations}
 
 <em>This section is non-normative.</em>
