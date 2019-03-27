@@ -488,7 +488,7 @@ The `:picture-in-picture` <a>pseudo-class</a> MUST match any <a>element</a>
 |element| for which one of the following conditions is true:
 - |element| is {{pictureInPictureElement}}.
 - |element| is a <a>shadow host</a> and the result of <a>retargeting</a> its
-   <a>node document</a>’s {{pictureInPictureElement}} against |element| is |element|.
+    <a>node document</a>’s {{pictureInPictureElement}} against |element| is |element|.
 
 # Security considerations # {#security-considerations}
 
