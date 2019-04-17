@@ -24,7 +24,7 @@ git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
 
 # Clean out existing contents
-rm -rf out/* || exit 0
+rm -rf out/*.html || exit 0
 
 # Build the html output
 make && mv index.html out/index.html
