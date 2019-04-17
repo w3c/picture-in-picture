@@ -5,6 +5,7 @@ script: bash ./deploy.sh
 branches:
   only:
     - master
+    - v2
 
 env:
   global:
