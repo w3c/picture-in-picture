@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
 
-SOURCE_BRANCH="master"
+SOURCE_BRANCH="v2"
 TARGET_BRANCH="gh-pages"
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
@@ -23,11 +23,15 @@ cd out
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
 
+# Output should live in a directory with the branch name
+OUT_PATH="out/$SOURCE_BRANCH"
+
 # Clean out existing contents
-rm -rf out/* || exit 0
+rm -rf $OUT_PATH/*.html || exit 0
+mkdir $OUT_PATH || exit 0
 
 # Build the html output
-make && mv index.html out/index.html
+make && mv index.html $OUT_PATH/index.html
 
 # Now let's go have some fun with the cloned repo
 cd out
