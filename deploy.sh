@@ -27,8 +27,8 @@ cd ..
 OUT_PATH="out/$SOURCE_BRANCH"
 
 # Clean out existing contents
-rm -rf $OUT_PATH/*.html || exit 0
 mkdir $OUT_PATH || exit 0
+rm -rf $OUT_PATH/*.html || exit 0
 
 # Build the html output
 make && mv index.html $OUT_PATH/index.html
