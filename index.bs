@@ -12,7 +12,7 @@ Repository: wicg/picture-in-picture
 Editor: François Beaufort, w3cid 81174, Google LLC https://www.google.com, fbeaufort@google.com
 Editor: Mounir Lamouri, w3cid 45389, Google LLC https://www.google.com, mlamouri@google.com
 Abstract: This specification intends to provide APIs to allow websites to
-Abstract: create a floating video window always on top of other windows so that
+Abstract: create a floating window always on top of other windows so that
 Abstract: users may continue consuming media while they interact with other
 Abstract: content sites, or applications on their device.
 </pre>
@@ -46,6 +46,12 @@ spec:dom; type:dfn; for:NamedNodeMap; text:element
 spec:dom; type:interface; text:Document
 spec:html; type:attribute; for:HTMLMediaElement; text:readyState
 </pre>
+
+<div boilerplate="warning">
+  <p style="padding: 5px; border:1px solid black; font-size:x-large; font-weight:bold; background-color:pink;">
+    This is a proposed V2 iteration of the Picture-in-Picture spec.
+  </p>
+</div>
 
 # Introduction # {#intro}
 
