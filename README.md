@@ -6,13 +6,15 @@
 [![WPT Firefox](https://wpt-badge.glitch.me/?product=firefox&prefix=/picture-in-picture/)](https://wpt.fyi/results/picture-in-picture)
 [![WPT Safari](https://wpt-badge.glitch.me/?product=safari&prefix=/picture-in-picture/)](https://wpt.fyi/results/picture-in-picture)
 
-https://wicg.github.io/picture-in-picture
+https://wicg.github.io/picture-in-picture/v2
 
-This standardization project aims to provide APIs to allow websites to create a floating video window over the desktop.
+This standardization project aims to provide APIs to allow websites to create a floating window over the desktop.
+
+**This is a proposed V2 iteration aimed at bringing arbitary content into the floating window.**
 
 ## Explainer
 
-An [explainer document](explainer.md) is available in the repository and describes the use cases and requirements used to define the API in addition of some optional use cases and requirements that can be discussed with the community.
+An [explainer document](explainer_v2.md) is available in the repository and describes the use cases and requirements for the v2 version of the API.
 
 ## Code of conduct
 
