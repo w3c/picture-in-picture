@@ -1213,7 +1213,7 @@ Possible extra rowspan handling
 	}
 </style>
   <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet">
-  <meta content="Bikeshed version e0f6b8b749fa390ec1e89d64ac471d2710b038a2" name="generator">
+  <meta content="Bikeshed version 10ff3eb4050069e20bb9b943c8b76fe5bfe3a48f" name="generator">
   <link href="https://wicg.github.io/picture-in-picture" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
 <style>/* style-md-lists */
@@ -1462,7 +1462,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2019-04-23">23 April 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2019-04-26">26 April 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1947,13 +1947,9 @@ the <code class="idl"><a data-link-type="idl" href="#enterpictureinpictureevent"
    <h3 class="heading settled" data-level="4.6" id="task-source"><span class="secno">4.6. </span><span class="content">Task source</span><a class="self-link" href="#task-source"></a></h3>
    <p>The <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#task-source" id="ref-for-task-source">task source</a> for all the tasks queued in this specification is the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/media.html#media-element-event-task-source" id="ref-for-media-element-event-task-source">media element event task source</a> of the video element in question.</p>
    <h3 class="heading settled" data-level="4.7" id="css-pseudo-class"><span class="secno">4.7. </span><span class="content">CSS pseudo-class</span><a class="self-link" href="#css-pseudo-class"></a></h3>
-   <p>The <code>:picture-in-picture</code> <a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#pseudo-class" id="ref-for-pseudo-class">pseudo-class</a> MUST match any <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-namednodemap-element" id="ref-for-concept-namednodemap-element">element</a> <var>element</var> for which one of the following conditions is true:</p>
-   <ul>
-    <li data-md>
-     <p><var>element</var> is <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑦">pictureInPictureElement</a></code>.</p>
-    <li data-md>
-     <p><var>element</var> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#element-shadow-host" id="ref-for-element-shadow-host">shadow host</a> and the result of <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#retarget" id="ref-for-retarget①">retargeting</a> its <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-node-document" id="ref-for-concept-node-document">node document</a>’s <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑧">pictureInPictureElement</a></code> against <var>element</var> is <var>element</var>.</p>
-   </ul>
+   <p>The <code>:picture-in-picture</code> <a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#pseudo-class" id="ref-for-pseudo-class">pseudo-class</a> MUST match the Picture-in-Picture
+element. It is different from the <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑦">pictureInPictureElement</a></code> as it does NOT
+apply to the shadow host chain.</p>
    <h2 class="heading settled" data-level="5" id="security-considerations"><span class="secno">5. </span><span class="content">Security considerations</span><a class="self-link" href="#security-considerations"></a></h2>
    <p><em>This section is non-normative.</em></p>
    <p>The API applies only to <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement⑤">HTMLVideoElement</a></code> in order to start on a minimal
@@ -2218,12 +2214,6 @@ Wörner for their contributions to this document.</p>
     <li><a href="#ref-for-concept-document">3.7. Interaction with Page Visibility</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-namednodemap-element">
-   <a href="https://dom.spec.whatwg.org/#concept-namednodemap-element">https://dom.spec.whatwg.org/#concept-namednodemap-element</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-namednodemap-element">4.7. CSS pseudo-class</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-concept-event-fire">
    <a href="https://dom.spec.whatwg.org/#concept-event-fire">https://dom.spec.whatwg.org/#concept-event-fire</a><b>Referenced in:</b>
    <ul>
@@ -2232,23 +2222,10 @@ Wörner for their contributions to this document.</p>
     <li><a href="#ref-for-concept-event-fire②">4.4. Interface PictureInPictureWindow</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-node-document">
-   <a href="https://dom.spec.whatwg.org/#concept-node-document">https://dom.spec.whatwg.org/#concept-node-document</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-node-document">4.7. CSS pseudo-class</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-retarget">
    <a href="https://dom.spec.whatwg.org/#retarget">https://dom.spec.whatwg.org/#retarget</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-retarget">4.3. Extension to DocumentOrShadowRoot</a>
-    <li><a href="#ref-for-retarget①">4.7. CSS pseudo-class</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-element-shadow-host">
-   <a href="https://dom.spec.whatwg.org/#element-shadow-host">https://dom.spec.whatwg.org/#element-shadow-host</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-element-shadow-host">4.7. CSS pseudo-class</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-concept-tree">
@@ -2492,11 +2469,8 @@ Wörner for their contributions to this document.</p>
      <li><span class="dfn-paneled" id="term-for-connected" style="color:initial">connected</span>
      <li><span class="dfn-paneled" id="term-for-context-object" style="color:initial">context object</span>
      <li><span class="dfn-paneled" id="term-for-concept-document" style="color:initial">document</span>
-     <li><span class="dfn-paneled" id="term-for-concept-namednodemap-element" style="color:initial">element</span>
      <li><span class="dfn-paneled" id="term-for-concept-event-fire" style="color:initial">fire an event</span>
-     <li><span class="dfn-paneled" id="term-for-concept-node-document" style="color:initial">node document</span>
      <li><span class="dfn-paneled" id="term-for-retarget" style="color:initial">retargeting</span>
-     <li><span class="dfn-paneled" id="term-for-element-shadow-host" style="color:initial">shadow host</span>
      <li><span class="dfn-paneled" id="term-for-concept-tree" style="color:initial">tree</span>
     </ul>
    <li>
@@ -2715,7 +2689,7 @@ Wörner for their contributions to this document.</p>
     <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⓪">4.1. Extensions to HTMLVideoElement</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①①">(2)</a>
     <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①②">4.3. Extension to DocumentOrShadowRoot</a>
     <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①③">4.4. Interface PictureInPictureWindow</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①④">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑤">(3)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑥">(4)</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑦">4.7. CSS pseudo-class</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑧">(2)</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑦">4.7. CSS pseudo-class</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="pictureinpicturewindow">
