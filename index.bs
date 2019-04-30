@@ -190,6 +190,34 @@ extensible.
 </script>
 ```
 
+## Display Arbitrary Content ## {#example-arbitrary-content}
+
+```html
+<div style="display: none;">
+  <div id="interactive-ui"></div>
+  <div id="non-interactive-ui"></div>
+</div>
+
+<video id="video" src="https://example.com/file.mp4"></video>
+
+<button id="pipButton"></button>
+
+<script>
+  const video = document.getElementById('video');
+  const pipButton = document.getElementById('pipButton');
+  const interactiveUI = document.getElementById('interactive-ui');
+  const nonInteractiveUI = document.getElementById('non-interactive-ui');
+
+  pipButton.addEventListener('click', () => {
+    interactiveUI.requestPictureInPicture({ interactive: true })
+      .catch(e =>
+          return nonInteractiveUI.requestPictureInPicture({ interactive: false }))
+      .then(e =>
+          e.pictureInPictureWindow.document.body.appendChild(video));
+  });
+</script>
+```
+
 # Concepts # {#concepts}
 
 ## Check Picture-in-Picture Is Allowed ## {#pip-allowed}
