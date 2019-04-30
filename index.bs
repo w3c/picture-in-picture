@@ -181,6 +181,65 @@ extensible.
 
 # Concepts # {#concepts}
 
+## Exit Picture-in-Picture ## {#exit-pip}
+
+When the <dfn>exit Picture-in-Picture algorithm</dfn> is invoked,
+the user agent MUST run the following steps:
+
+1. If {{pictureInPictureElement}} is `null`, throw a {{InvalidStateError}} and
+    abort these steps.
+2. Run the <a>close window algorithm</a> with the <a>Picture-in-Picture
+    window</a> associated with {{pictureInPictureElement}}.
+3. Unset {{pictureInPictureElement}}.
+4. <a>Queue a task</a> to <a>fire an event</a> with the name
+    {{leavepictureinpicture}} at the |video| with its {{bubbles}} attribute
+    initialized to `true`.
+
+It is NOT RECOMMENDED that the video playback state changes when the <a>exit
+Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
+of the experience if it is website initiated. However, the user agent MAY expose
+Picture-in-Picture window controls that change video playback state (e.g.,
+pause).
+
+As one of the <a>unloading document cleanup steps</a>, run the <a>exit
+Picture-in-Picture algorithm</a>.
+
+## Interaction with Media Session ## {#media-session}
+
+If the Picture-in-Picture window is showing video or non-interactive arbitrary
+content then the [[MediaSession]] API can be used to customize the available
+controls on the Picture-in-Picture window.
+
+## Interaction with Page Visibility ## {#page-visibility}
+
+When {{pictureInPictureElement}} is set, the Picture-in-Picture window MUST
+be visible, even when the <a>Document</a> is not in focus or hidden. The user
+agent SHOULD provide a way for users to manually close the Picture-in-Picture
+window.
+
+The [[Page-Visibility]] specification defines a {{Document/visibilityState}}
+attribute used to determine the visibility state of a <a>top-level browsing
+context</a>. The Picture-in-Picture window visibility MUST NOT be taken into
+account when determining the value returned by {{Document/visibilityState}}.
+
+## One Picture-in-Picture window ## {#one-pip-window}
+
+Operating systems with a Picture-in-Picture API usually restrict
+Picture-in-Picture mode to only one window.  Whether only one window is allowed
+in Picture-in-Picture mode will be left to the implementation and the platform.
+However, because of the one Picture-in-Picture window limitation, the
+specification assumes that a given {{Document}} can only have one
+Picture-in-Picture window.
+
+What happens when there is a Picture-in-Picture request while a window is
+already in Picture-in-Picture will be left as an implementation detail: the
+current Picture-in-Picture window could be closed, the Picture-in-Picture
+request could be rejected or even two Picture-in-Picture windows could be
+created. Regardless, the User Agent will have to fire the appropriate events
+in order to notify the website of the Picture-in-Picture status changes.
+
+# Video Specific Concepts # {#video-concepts}
+
 ## Request Picture-in-Picture ## {#request-pip}
 
 When the <dfn>request Picture-in-Picture algorithm</dfn> with |video|,
@@ -228,29 +287,6 @@ video size.
 It is also RECOMMENDED that the Picture-in-Picture window has a maximum and
 minimum size. For example, it could be restricted to be between a quarter and
 a half of one dimension of the screen.
-
-## Exit Picture-in-Picture ## {#exit-pip}
-
-When the <dfn>exit Picture-in-Picture algorithm</dfn> is invoked,
-the user agent MUST run the following steps:
-
-1. If {{pictureInPictureElement}} is `null`, throw a {{InvalidStateError}} and
-    abort these steps.
-2. Run the <a>close window algorithm</a> with the <a>Picture-in-Picture
-    window</a> associated with {{pictureInPictureElement}}.
-3. Unset {{pictureInPictureElement}}.
-4. <a>Queue a task</a> to <a>fire an event</a> with the name
-    {{leavepictureinpicture}} at the |video| with its {{bubbles}} attribute
-    initialized to `true`.
-
-It is NOT RECOMMENDED that the video playback state changes when the <a>exit
-Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
-of the experience if it is website initiated. However, the user agent MAY expose
-Picture-in-Picture window controls that change video playback state (e.g.,
-pause).
-
-As one of the <a>unloading document cleanup steps</a>, run the <a>exit
-Picture-in-Picture algorithm</a>.
 
 ## Disable Picture-in-Picture ## {#disable-pip}
 
@@ -318,39 +354,6 @@ The [[Remote-Playback]] specification defines a <a>local playback device</a>
 and a <a>local playback state</a>. For the purpose of Picture-in-Picture, the
 playback is local and regardless of whether it is played in page or in
 Picture-in-Picture.
-
-## Interaction with Media Session ## {#media-session}
-
-The API will have to be used with the [[MediaSession]] API for customizing the
-available controls on the Picture-in-Picture window.
-
-## Interaction with Page Visibility ## {#page-visibility}
-
-When {{pictureInPictureElement}} is set, the Picture-in-Picture window MUST
-be visible, even when the <a>Document</a> is not in focus or hidden. The user
-agent SHOULD provide a way for users to manually close the Picture-in-Picture
-window.
-
-The [[Page-Visibility]] specification defines a {{Document/visibilityState}}
-attribute used to determine the visibility state of a <a>top-level browsing
-context</a>. The Picture-in-Picture window visibility MUST NOT be taken into
-account when determining the value returned by {{Document/visibilityState}}.
-
-## One Picture-in-Picture window ## {#one-pip-window}
-
-Operating systems with a Picture-in-Picture API usually restrict
-Picture-in-Picture mode to only one window.  Whether only one window is allowed
-in Picture-in-Picture mode will be left to the implementation and the platform.
-However, because of the one Picture-in-Picture window limitation, the
-specification assumes that a given {{Document}} can only have one
-Picture-in-Picture window.
-
-What happens when there is a Picture-in-Picture request while a window is
-already in Picture-in-Picture will be left as an implementation detail: the
-current Picture-in-Picture window could be closed, the Picture-in-Picture
-request could be rejected or even two Picture-in-Picture windows could be
-created. Regardless, the User Agent will have to fire the appropriate events
-in order to notify the website of the Picture-in-Picture status changes.
 
 # API # {#api}
 
