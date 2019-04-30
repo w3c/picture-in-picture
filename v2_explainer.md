@@ -78,7 +78,7 @@ to load the URL.
 
 The new `requestPictureInPicture` API has different parameters and a different algorithm
 so we should consider renaming it
-([#129] (https://github.com/WICG/picture-in-picture/issues/129)).
+([#129](https://github.com/WICG/picture-in-picture/issues/129)).
 
 # Acknowledgements
 
