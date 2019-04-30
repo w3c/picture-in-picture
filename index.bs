@@ -18,13 +18,24 @@ Abstract: content sites, or applications on their device.
 </pre>
 
 <pre class="anchors">
+spec: DOM; urlPrefix: https://dom.spec.whatwg.org/
+    type: dfn
+        urlPrefix: #concept-
+            text: node clone
 spec: Feature Policy; urlPrefix: https://wicg.github.io/feature-policy/#
     type: dfn
         text: default allowlist
         text: feature name
         text: policy-controlled feature
+spec: Fetch; urlPrefix: https://fetch.spec.whatwg.org/
+    type: dfn
+        text: about:blank
 spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
+        urlPrefix: browsers.html
+            text: opening browsing context
+        urlPrefix: browsers.html
+            text: browsing context
         urlPrefix: infrastructure.html
             text: in parallel
             text: reflect
@@ -181,6 +192,35 @@ extensible.
 
 # Concepts # {#concepts}
 
+## Check Picture-in-Picture Is Allowed ## {#pip-allowed}
+
+When the <dfn>check Picture-in-Picture is allowed algorithm</dfn> with
+|element| and |userActivationRequired| is invoked, the user agent MUST run
+the following steps:
+
+1. If <a>Picture-in-Picture support</a> is `false`, throw a
+    {{NotSupportedError}} and abort these steps.
+2. If the document is not allowed to use the <a>policy-controlled feature</a>
+    named `"picture-in-picture"`, throw a {{SecurityError}} and abort these
+    steps.
+3. If |userActivationRequired| is `true` and the algorithm is not
+    <a>triggered by user activation</a>, throw a {{NotAllowedError}} and
+    abort these steps.
+
+## Update Picture-in-Picture Element ## {#update-element}
+
+When the <dfn>update Picture-in-Picture element algorithm</dfn> with |element|
+and |document| is invoked, the user agent MUST run the following steps:
+
+1. Set {{pictureInPictureElement}} to |element|.
+2. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
+    {{PictureInPictureWindow}} associated with {{pictureInPictureElement}} with
+    a reference to |document|.
+3. <a>Queue a task</a> to <a>fire an event</a> with the name
+    {{enterpictureinpicture}} at the |element| with its {{bubbles}} attribute
+    initialized to `true` and its {{pictureInPictureWindow}} attribute
+    initialized to <a>Picture-in-Picture window</a>.
+
 ## Exit Picture-in-Picture ## {#exit-pip}
 
 When the <dfn>exit Picture-in-Picture algorithm</dfn> is invoked,
@@ -251,37 +291,46 @@ is determined by the platform and will be left to the platform.
 Whether the <a>arbitrary content</a> is interactive or not will be specified by the
 website. <!-- TODO(beccahughes): Reference how this done -->
 
+## Request Element Picture-in-Picture ## {#request-element-pip}
+
+When the <dfn>request element Picture-in-Picture algorithm</dfn> with |element|
+and |interactive| is invoked, the user agent MUST run the following steps:
+
+1. Let |userActivationRequired| be `true`.
+2. Run the <a>check Picture-in-Picture is allowed algorithm</a> with |element| and
+    |userActivationRequired|. If an error is thrown then throw this error.
+3. If |interactive| is `true` and the platform does not support 
+    <a>interactive arbitrary content</a>, throw a {{NotSupportedError}} and abort
+    these steps.
+3. If |element| is {{pictureInPictureElement}}, abort these steps.
+4. Let |pictureInPictureBrowsingContext| be a new <a>browsing context</a> with the
+    <a>opener browsing context</a> set to the current document's browsing context.
+5. Let |document| be a new {{Document}} with its browsing context set to
+    |pictureInPictureBrowsingContext| and the URL set to <a>about:blank</a>.
+5. Let |clone children flag| be `true`.
+6. Run <a>node clone</a> with |element|, |document| and |clone children flag|.
+7. Run the <a>update Picture-in-Picture element algorithm</a> with |element| and
+    |document|.
+
 # Video Specific Concepts # {#video-concepts}
 
-## Request Picture-in-Picture ## {#request-pip}
+## Request Video Picture-in-Picture ## {#request-video-pip}
 
-When the <dfn>request Picture-in-Picture algorithm</dfn> with |video|,
+When the <dfn>request video Picture-in-Picture algorithm</dfn> with |video|,
 |userActivationRequired| and |playingRequired| is invoked, the user agent MUST
 run the following steps:
 
-1. If <a>Picture-in-Picture support</a> is `false`, throw a
-    {{NotSupportedError}} and abort these steps.
-2. If the document is not allowed to use the <a>policy-controlled feature</a>
-    named `"picture-in-picture"`, throw a {{SecurityError}} and abort these
-    steps.
-3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
+1. Run the <a>check Picture-in-Picture is allowed algorithm</a> with |video| and
+    |userActivationRequired|. If an error is thrown then throw this error.
+2. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
     {{InvalidStateError}} and abort these steps.
-4. If |video| has no video track, throw a {{InvalidStateError}} and abort
+3. If |video| has no video track, throw a {{InvalidStateError}} and abort
     these steps.
-5. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
+4. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
     |video|, throw an {{InvalidStateError}} and abort these steps.
-6. If |userActivationRequired| is `true` and the algorithm is not
-    <a>triggered by user activation</a>, throw a {{NotAllowedError}} and
-    abort these steps.
-7. If |video| is {{pictureInPictureElement}}, abort these steps.
-8. If |playingRequired| is `true` and |video| is {{paused}}, abort these steps.
-9. Set {{pictureInPictureElement}} to |video|.
-10. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
-    {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-11. <a>Queue a task</a> to <a>fire an event</a> with the name
-    {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
-    initialized to `true` and its {{pictureInPictureWindow}} attribute
-    initialized to <a>Picture-in-Picture window</a>.
+5. If |video| is {{pictureInPictureElement}}, abort these steps.
+6. If |playingRequired| is `true` and |video| is {{paused}}, abort these steps.
+7. Run the <a>update Picture-in-Picture element algorithm</a> with |video|.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
 Picture-in-Picture window at the same time but if they are, they MUST be kept
@@ -349,7 +398,7 @@ video elements with the {{autoPictureInPicture}} attribute currently set,
 whose {{autoPictureInPicture}} attribute was set most recently. Note that the
 <a>autoPictureInPictureElement</a> can have the {{disablePictureInPicture}}
 attribute set. In that case, as expected, it won't be allowed to enter
-Picture-in-Picture mode in the <a>request Picture-in-Picture algorithm</a>.
+Picture-in-Picture mode in the <a>request video Picture-in-Picture algorithm</a>.
 
 When the visibility state of a <a>top-level browsing context</a> value
 switches from "visible" to "hidden", the user agent MAY run these steps:
@@ -359,7 +408,7 @@ switches from "visible" to "hidden", the user agent MAY run these steps:
 3. Let |video| be <a>autoPictureInPictureElement</a>.
 4. Let |userActivationRequired| be `false`.
 5. Let |playingRequired| be `true`.
-6. Run the <a>request Picture-in-Picture algorithm</a> with |video|,
+6. Run the <a>request video Picture-in-Picture algorithm</a> with |video|,
     |userActivationRequired|, and |playingRequired|.
 
 When the visibility state of a <a>top-level browsing context</a> value
@@ -400,7 +449,7 @@ parallel</a>:
 2. Let |userActivationRequired| be `true` if {{pictureInPictureElement}} is
     `null`. It is `false` otherwise.
 3. Let |playingRequired| be `false`.
-4. Run the <a>request Picture-in-Picture algorithm</a> with |video|,
+4. Run the <a>request video Picture-in-Picture algorithm</a> with |video|,
     |userActivationRequired|, and |playingRequired|.
 5. If the previous step threw an exception, reject |promise| with that
     exception and abort these steps.
@@ -529,7 +578,7 @@ specification may allow PIP-ing arbitrary HTML content.
 ## Feature Policy ## {#feature-policy}
 
 This specification defines a <a>policy-controlled feature</a> that controls
-whether the <a>request Picture-in-Picture algorithm</a> may return a
+whether the <a>request video Picture-in-Picture algorithm</a> may return a
 {{SecurityError}} and whether {{pictureInPictureEnabled}} is `true` or `false`.
 
 The <a>feature name</a> for this feature is `"picture-in-picture"`.
