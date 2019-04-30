@@ -206,9 +206,9 @@ Picture-in-Picture algorithm</a>.
 
 ## Interaction with Media Session ## {#media-session}
 
-If the Picture-in-Picture window is showing video or non-interactive arbitrary
-content then the [[MediaSession]] API can be used to customize the available
-controls on the Picture-in-Picture window.
+If the Picture-in-Picture window is showing video or <a>non-interactive
+arbitrary content</a> then the [[MediaSession]] API can be used to customize
+the available controls on the Picture-in-Picture window.
 
 ## Interaction with Page Visibility ## {#page-visibility}
 
@@ -237,6 +237,22 @@ current Picture-in-Picture window could be closed, the Picture-in-Picture
 request could be rejected or even two Picture-in-Picture windows could be
 created. Regardless, the User Agent will have to fire the appropriate events
 in order to notify the website of the Picture-in-Picture status changes.
+
+# Arbitrary Content Specific Concepts # {#arbitrary-concepts}
+
+The Picture-in-Picture window MAY support <dfn>arbitrary content</dfn> which will
+display a {{Document}} in the Picture-in-Picture window. The <a>arbitrary content</a>
+MAY be <dfn>interactive arbitrary content</dfn> which will allow user interaction.
+
+The <a>arbitrary content</a> MAY also be <dfn>non-interactive arbitrary content</dfn>
+which will not allow user interaction. However, the user agent MAY show
+Picture-in-Picture window controls to support some interaction.
+
+Whether <a>interactive arbitrary content</a> is supported in Picture-in-Picture mode
+is determined by the platform and will be left to the platform.
+
+Whether the <a>arbitrary content</a> is interactive or not will be specified by the
+website. <!-- TODO(beccahughes): Reference how this done -->
 
 # Video Specific Concepts # {#video-concepts}
 
