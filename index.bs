@@ -2,7 +2,7 @@
 Title: Picture-in-Picture
 Shortname: picture-in-picture
 Level: 1
-Status: ED
+Status: CG-DRAFT
 ED: https://wicg.github.io/picture-in-picture
 Favicon: https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png
 Group: WICG
@@ -495,11 +495,9 @@ The <a>task source</a> for all the tasks queued in this specification is the
 
 ## CSS pseudo-class ## {#css-pseudo-class}
 
-The `:picture-in-picture` <a>pseudo-class</a> MUST match any <a>element</a>
-|element| for which one of the following conditions is true:
-- |element| is {{pictureInPictureElement}}.
-- |element| is a <a>shadow host</a> and the result of <a>retargeting</a> its
-    <a>node document</a>’s {{pictureInPictureElement}} against |element| is |element|.
+The `:picture-in-picture` <a>pseudo-class</a> MUST match the Picture-in-Picture
+element. It is different from the {{pictureInPictureElement}} as it does NOT
+apply to the shadow host chain.
 
 # Security considerations # {#security-considerations}
 
