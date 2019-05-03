@@ -211,9 +211,15 @@ extensible.
   pipButton.addEventListener('click', () => {
     interactiveUI.requestPictureInPicture({ interactive: true })
       .catch(e =>
-          return nonInteractiveUI.requestPictureInPicture({ interactive: false }))
-      .then(e =>
-          e.pictureInPictureWindow.document.body.appendChild(video));
+          nonInteractiveUI.requestPictureInPicture({ interactive: false }))
+      .then(e => {
+          e.pictureInPictureWindow.document.body.appendChild(video);
+
+          // TODO: Setup JavaScript and CSS for Picture-in-Picture window.
+      })
+      .catch(e => {
+          // TODO: Request failed.
+      });
   });
 </script>
 ```
@@ -223,27 +229,21 @@ extensible.
 ## Check Picture-in-Picture Is Allowed ## {#pip-allowed}
 
 When the <dfn>check Picture-in-Picture is allowed algorithm</dfn> with
-|element| and |userActivationRequired| is invoked, the user agent MUST run
+|element| is invoked, the user agent MUST run
 the following steps:
 
 1. If <a>Picture-in-Picture support</a> is `false`, throw a
     {{NotSupportedError}} and abort these steps.
 2. If the document is not allowed to use the <a>policy-controlled feature</a>
-    named `"picture-in-picture"`, throw a {{SecurityError}} and abort these
-    steps.
-3. If |userActivationRequired| is `true` and the algorithm is not
-    <a>triggered by user activation</a>, throw a {{NotAllowedError}} and
-    abort these steps.
+    named `"picture-in-picture"`, throw a {{SecurityError}}.
 
 ## Update Picture-in-Picture Element ## {#update-element}
 
 When the <dfn>update Picture-in-Picture element algorithm</dfn> with |element|
-and |document| is invoked, the user agent MUST run the following steps:
+and <dfn>Picture-in-Picture window</dfn> is invoked, the user agent MUST run
+the following steps:
 
 1. Set {{pictureInPictureElement}} to |element|.
-2. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
-    {{PictureInPictureWindow}} associated with {{pictureInPictureElement}} with
-    a reference to |document|.
 3. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} at the |element| with its {{bubbles}} attribute
     initialized to `true` and its {{pictureInPictureWindow}} attribute
@@ -324,21 +324,25 @@ website. <!-- TODO(beccahughes): Reference how this done -->
 When the <dfn>request element Picture-in-Picture algorithm</dfn> with |element|
 and |interactive| is invoked, the user agent MUST run the following steps:
 
-1. Let |userActivationRequired| be `true`.
-2. Run the <a>check Picture-in-Picture is allowed algorithm</a> with |element| and
-    |userActivationRequired|. If an error is thrown then throw this error.
-3. If |interactive| is `true` and the platform does not support 
+1. Run the <a>check Picture-in-Picture is allowed algorithm</a>. Abort these steps if
+    an error was thrown.
+2. If |interactive| is `true` and the platform does not support
     <a>interactive arbitrary content</a>, throw a {{NotSupportedError}} and abort
     these steps.
-3. If |element| is {{pictureInPictureElement}}, abort these steps.
-4. Let |pictureInPictureBrowsingContext| be a new <a>browsing context</a> with the
+3. If the algorithm is not <a>triggered by user activation</a>, throw a
+    {{NotAllowedError}} and abort these steps.
+4. If |element| is {{pictureInPictureElement}}, abort these steps.
+6. Let |pictureInPictureBrowsingContext| be a new <a>browsing context</a> with the
     <a>opener browsing context</a> set to the current document's browsing context.
-5. Let |document| be a new {{Document}} with its browsing context set to
+7. Let |document| be a new {{Document}} with its browsing context set to
     |pictureInPictureBrowsingContext| and the URL set to <a>about:blank</a>.
-5. Let |clone children flag| be `true`.
-6. Run <a>node clone</a> with |element|, |document| and |clone children flag|.
-7. Run the <a>update Picture-in-Picture element algorithm</a> with |element| and
+8. Let |clone children flag| be `true`.
+9. Run <a>node clone</a> with |element|, |document| and |clone children flag|.
+10. Let <a>Picture-in-Picture window</a> be a new instance of
+    {{PictureInPictureWindow}} associated with |element| and with a reference to
     |document|.
+11. Run the <a>update Picture-in-Picture element algorithm</a> with |element| and
+    <a>Picture-in-Picture window</a>.
 
 # Video Specific Concepts # {#video-concepts}
 
@@ -348,17 +352,23 @@ When the <dfn>request video Picture-in-Picture algorithm</dfn> with |video|,
 |userActivationRequired| and |playingRequired| is invoked, the user agent MUST
 run the following steps:
 
-1. Run the <a>check Picture-in-Picture is allowed algorithm</a> with |video| and
-    |userActivationRequired|. If an error is thrown then throw this error.
+1. Run the <a>check Picture-in-Picture is allowed algorithm</a>. Abort these steps if
+    an error was thrown.
 2. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
     {{InvalidStateError}} and abort these steps.
 3. If |video| has no video track, throw a {{InvalidStateError}} and abort
     these steps.
 4. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
     |video|, throw an {{InvalidStateError}} and abort these steps.
-5. If |video| is {{pictureInPictureElement}}, abort these steps.
-6. If |playingRequired| is `true` and |video| is {{paused}}, abort these steps.
-7. Run the <a>update Picture-in-Picture element algorithm</a> with |video|.
+5. If |userActivationRequired| is `true` and the algorithm is not
+    <a>triggered by user activation</a>, throw a {{NotAllowedError}} and
+    abort these steps.
+6. If |video| is {{pictureInPictureElement}}, abort these steps.
+7. If |playingRequired| is `true` and |video| is {{paused}}, abort these steps.
+8. Let <a>Picture-in-Picture window</a> be a new instance of
+    {{PictureInPictureWindow}} associated with |element|.
+9. Run the <a>update Picture-in-Picture element algorithm</a> with |element| and
+    <a>Picture-in-Picture window</a>.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
 Picture-in-Picture window at the same time but if they are, they MUST be kept
@@ -541,7 +551,7 @@ interface PictureInPictureWindow : EventTarget {
 </xmp>
 
 A {{PictureInPictureWindow}} instance represents a <a>Picture-in-Picture
-window</a> associated with an {{HTMLVideoElement}}. When instantiated, an
+window</a> associated with an {{HTMLElement}}. When instantiated, an
 instance of {{PictureInPictureWindow}} has its |state| set to |opened|.
 
 When the <dfn>close window algorithm</dfn> with an instance of
