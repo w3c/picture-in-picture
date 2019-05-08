@@ -14,7 +14,7 @@ This standardization project aims to provide APIs to allow websites to create a 
 
 ## Explainer
 
-An [explainer document](explainer_v2.md) is available in the repository and describes the use cases and requirements for the v2 version of the API.
+An [explainer document](v2_explainer.md) is available in the repository and describes the use cases and requirements for the v2 version of the API.
 
 ## Code of conduct
 
