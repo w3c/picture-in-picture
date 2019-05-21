@@ -1,5 +1,13 @@
 # Picture-in-Picture V2 Explained
 
+Many users want to continue consuming media while they interact with other
+content, sites, or applications on their device. A common UI affordance for
+this type of activity is Picture-in-Picture (PIP), where the video is
+contained in a separate miniature window that is viewable above all other
+activities. Most desktop and mobile OSs have announced or released
+platform-level support for PIP, as have many browsers. The proposed
+Picture-in-Picture API allows websites to initiate and control this behavior.
+
 ## Background: Picture-in-Picture V1
 
 Picture-in-Picture launched for HTMLVideoElement early in 2019. The API was
