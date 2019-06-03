@@ -55,7 +55,7 @@ Many users want to continue consuming media while they interact with other
 content, sites, or applications on their device. A common UI affordance for
 this type of activity is Picture-in-Picture (PiP), where the video is contained
 in a separate miniature window that is always on top of other windows. This
-window stays visible even when user agent is not visible.
+window stays visible even when a user agent is not visible.
 Picture-in-Picture is a common platform-level feature among desktop and mobile
 OSs.
 
@@ -92,19 +92,15 @@ extensible.
   togglePipButton.hidden = !document.pictureInPictureEnabled ||
     video.disablePictureInPicture;
 
-  togglePipButton.addEventListener('click', function() {
+  togglePipButton.addEventListener("click", async () => {
     // If there is no element in Picture-in-Picture yet, let's request
     // Picture-in-Picture for the video, otherwise leave it.
-    if (!document.pictureInPictureElement) {
-      video.requestPictureInPicture()
-      .catch(error => {
-        // Video failed to enter Picture-in-Picture mode.
-      });
-    } else {
-      document.exitPictureInPicture()
-      .catch(error => {
-        // Video failed to leave Picture-in-Picture mode.
-      });
+    try {
+      !document.pictureInPictureElement
+        ? await video.requestPictureInPicture()
+        : await document.exitPictureInPicture();
+    } catch (err) {
+      // Video failed to enter/leave Picture-in-Picture mode.
     }
   });
 </script>
@@ -118,14 +114,15 @@ extensible.
 <script>
   const video = document.getElementById('video');
 
-  video.addEventListener('enterpictureinpicture', function(event) {
+  video.addEventListener('enterpictureinpicture', event => {
     // Video entered Picture-in-Picture mode.
     const pipWindow = event.pictureInPictureWindow;
-    console.log('Picture-in-Picture window width: ' + pipWindow.width);
-    console.log('Picture-in-Picture window height: ' + pipWindow.height);
+    const { width, height } = pipWindow;
+    console.log(`Picture-in-Picture window width: ${width}`);
+    console.log(`Picture-in-Picture window height: ${height}`);
   });
 
-  video.addEventListener('leavepictureinpicture', function() {
+  video.addEventListener('leavepictureinpicture', () => {
     // Video left Picture-in-Picture mode.
   });
 </script>
@@ -139,37 +136,40 @@ extensible.
 <button id="pipButton"></button>
 
 <script>
-  let pipWindow;
-  const video = document.getElementById('video');
-  const pipButton = document.getElementById('pipButton');
+  const video = document.getElementById("video");
+  const pipButton = document.getElementById("pipButton");
 
-  pipButton.addEventListener('click', function() {
-    video.requestPictureInPicture()
-    .catch(error => {
+  pipButton.addEventListener("click", async () => {
+    try {
+      await video.requestPictureInPicture();
+    } catch (error) {
       // Video failed to enter Picture-in-Picture mode.
-    });
+    }
   });
 
-  video.addEventListener('enterpictureinpicture', function(event) {
+  video.addEventListener("enterpictureinpicture", event => {
     // Video entered Picture-in-Picture mode.
-    pipWindow = event.pictureInPictureWindow;
+    const { pictureInPictureWindow: pipWindow } = event;
     updateVideoSize(pipWindow.width, pipWindow.height);
-    pipWindow.addEventListener('resize', onPipWindowResize);
+    pipWindow.addEventListener("resize", onPipWindowResize);
   });
 
-  video.addEventListener('leavepictureinpicture', function() {
+  video.addEventListener("leavepictureinpicture", event => {
     // Video left Picture-in-Picture mode.
-    pipWindow.removeEventListener('resize', onPipWindowResize);
+    const { pictureInPictureWindow: pipWindow } = event;
+    pipWindow.removeEventListener("resize", onPipWindowResize);
   });
 
   function onPipWindowResize(event) {
     // Picture-in-Picture window has been resized.
-    updateVideoSize(event.target.width, event.target.height);
+    const { width, height } = event.target;
+    updateVideoSize(width, height);
   }
 
   function updateVideoSize(width, height) {
     // TODO: Update video size based on pip window width and height.
   }
+
 </script>
 ```
 
