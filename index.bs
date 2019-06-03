@@ -201,9 +201,10 @@ run the following steps:
 10. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
 11. <a>Queue a task</a> to <a>fire an event</a> with the name
-    {{enterpictureinpicture}} at the |video| with its {{bubbles}} attribute
-    initialized to `true` and its {{pictureInPictureWindow}} attribute
-    initialized to <a>Picture-in-Picture window</a>.
+    {{enterpictureinpicture}} using {{EnterPictureInPictureEvent}} at the
+    |video| with its {{bubbles}} attribute initialized to `true` and its
+    {{pictureInPictureWindow}} attribute initialized to
+    <a>Picture-in-Picture window</a>.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
 Picture-in-Picture window at the same time but if they are, they MUST be kept
@@ -455,8 +456,7 @@ When the size of the <a>Picture-in-Picture window</a> associated with
 ## Event types ## {#event-types}
 
 : <dfn event for="HTMLVideoElement">`enterpictureinpicture`</dfn>
-:: Fired on a {{HTMLVideoElement}} when it enters Picture-in-Picture. It uses
-    the {{EnterPictureInPictureEvent}} interface.
+:: Fired on a {{HTMLVideoElement}} when it enters Picture-in-Picture.
 
 <xmp class="idl">
 [
