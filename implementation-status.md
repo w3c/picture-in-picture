@@ -30,8 +30,8 @@ Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/
 * [Issue 854935](http://crbug.com/854935): Closed captions in Picture-in-Picture are not supported.
 
 # Microsoft Edge
-Under consideration.
-https://developer.microsoft.com/en-us/microsoft-edge/platform/status/pictureinpicture/
+* Available in [Edge Dev Channel](https://www.microsoftedgeinsider.com/en-us/)
+* Under consideration in [EdgeHTML Platform Status](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/pictureinpicture/)
 
 # Safari
 No public signals. 
