@@ -34,8 +34,7 @@ Under consideration.
 https://developer.microsoft.com/en-us/microsoft-edge/platform/status/pictureinpicture/
 
 # Safari
-No public signals. 
-https://bugs.webkit.org/show_bug.cgi?id=182688
+* [Public support](https://bugs.webkit.org/show_bug.cgi?id=189848#c8)
 
 # Firefox
 No public signals. 
