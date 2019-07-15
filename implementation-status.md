@@ -37,10 +37,7 @@ https://developer.microsoft.com/en-us/microsoft-edge/platform/status/pictureinpi
 * [Public support](https://bugs.webkit.org/show_bug.cgi?id=189848#c8)
 
 # Firefox
-No public signals. 
-https://bugzilla.mozilla.org/show_bug.cgi?id=1463402
-
-Mozilla position: https://github.com/mozilla/standards-positions/issues/72
+* Position: ["defer"](https://github.com/mozilla/standards-positions/issues/72) - waiting to see how the spec develops, but also looking forward to contributing to the design of the spec. Mozilla currently ships PiP without the API.  
 
 # Polyfill
 https://github.com/gbentaieb/pip-polyfill/
