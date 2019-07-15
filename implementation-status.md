@@ -23,7 +23,7 @@ Feature/Platform                       | Desktop | Android |
 `PictureInPictureWindow.width\|height` | 68      |         |
 `PictureInPictureWindow.onresize`      | 68      |         |
 `video.autoPictureInPicture`           | 👷      |         |
-Media Session controls support         | 👷      |         |
+Media Session controls support         | 74      |         |
 
 Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/current-versions/](https://googlechromelabs.github.io/current-versions/).
 
