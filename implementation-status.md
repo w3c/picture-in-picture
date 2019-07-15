@@ -1,8 +1,6 @@
 # Implementation Status
 This document shows the current implementation status of Picture-in-Picture on the different browsers.
 
-<a href="#chrome"><img width=64 src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_128x128.png" alt="Chrome browser logo"></a><a href="#microsoft-edge"><img width=64 src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_128x128.png" alt="Microsoft Edge browser logo"></a><a href="#safari"><img width=64 src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_128x128.png" alt="Safari browser logo"></a><a href="#firefox"><img width=64 src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_128x128.png" alt="Firefox browser logo"></a>
-
 # Chrome
 
 Work is still in progress in [Chrome Canary](http://chrome.com/canary):
@@ -32,13 +30,18 @@ Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/
 * [Issue 854935](http://crbug.com/854935): Closed captions in Picture-in-Picture are not supported.
 
 # Microsoft Edge
-https://dev.windows.com/en-us/microsoft-edge/platform/status/pictureinpicture
+Under consideration.
+https://developer.microsoft.com/en-us/microsoft-edge/platform/status/pictureinpicture/
 
 # Safari
+No public signals. 
 https://bugs.webkit.org/show_bug.cgi?id=182688
 
 # Firefox
+No public signals. 
 https://bugzilla.mozilla.org/show_bug.cgi?id=1463402
+
+Mozilla position: https://github.com/mozilla/standards-positions/issues/72
 
 # Polyfill
 https://github.com/gbentaieb/pip-polyfill/
