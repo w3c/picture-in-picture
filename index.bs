@@ -353,7 +353,7 @@ in order to notify the website of the Picture-in-Picture status changes.
 
 <pre class="idl">
 partial interface HTMLVideoElement {
-  [NewObject] Promise<PictureInPictureWindow> requestPictureInPicture();
+  [NewObject] Promise&lt;PictureInPictureWindow&gt; requestPictureInPicture();
 
   attribute EventHandler onenterpictureinpicture;
   attribute EventHandler onleavepictureinpicture;
@@ -384,7 +384,7 @@ parallel</a>:
 partial interface Document {
   readonly attribute boolean pictureInPictureEnabled;
 
-  [NewObject] Promise<void> exitPictureInPicture();
+  [NewObject] Promise&lt;void&gt; exitPictureInPicture();
 };
 </pre>
 
