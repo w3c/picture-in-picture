@@ -1213,7 +1213,7 @@ Possible extra rowspan handling
 	}
 </style>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version 5a2c04fbf9f3418b378c5d733b60fe6fc575091b" name="generator">
+  <meta content="Bikeshed version 08c4b0e94d147852f66673459784d3429bb3bda1" name="generator">
   <link href="https://w3c.github.io/picture-in-picture" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
 <style>/* style-md-lists */
@@ -1462,7 +1462,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-08-05">5 August 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-08-23">23 August 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1907,7 +1907,8 @@ return <var>candidate</var> and abort these steps.</p>
      <p>Return <code>null</code>.</p>
    </ol>
    <h3 class="heading settled" data-level="4.4" id="interface-picture-in-picture-window"><span class="secno">4.4. </span><span class="content">Interface <code>PictureInPictureWindow</code></span><a class="self-link" href="#interface-picture-in-picture-window"></a></h3>
-<pre class="idl highlight def"><c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="pictureinpicturewindow"><code><c- g>PictureInPictureWindow</c-></code></dfn> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget"><c- n>EventTarget</c-></a> {
+<pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
+<c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="pictureinpicturewindow"><code><c- g>PictureInPictureWindow</c-></code></dfn> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget"><c- n>EventTarget</c-></a> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long" id="ref-for-idl-long"><c- b>long</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="PictureInPictureWindow" data-dfn-type="attribute" data-export data-readonly data-type="long" id="dom-pictureinpicturewindow-width"><code><c- g>width</c-></code></dfn>;
   <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long" id="ref-for-idl-long①"><c- b>long</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="PictureInPictureWindow" data-dfn-type="attribute" data-export data-readonly data-type="long" id="dom-pictureinpicturewindow-height"><code><c- g>height</c-></code></dfn>;
 
@@ -1931,7 +1932,7 @@ the <var>state</var> is <var>opened</var>. Otherwise, it MUST return 0.</p>
    </dl>
 <pre class="idl highlight def">[
     <dfn class="idl-code" data-dfn-for="EnterPictureInPictureEvent" data-dfn-type="constructor" data-export data-lt="EnterPictureInPictureEvent(type, eventInitDict)" id="dom-enterpictureinpictureevent-enterpictureinpictureevent"><code><c- g>Constructor</c-></code><a class="self-link" href="#dom-enterpictureinpictureevent-enterpictureinpictureevent"></a></dfn>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString"><c- b>DOMString</c-></a> <dfn class="idl-code" data-dfn-for="EnterPictureInPictureEvent/EnterPictureInPictureEvent(type, eventInitDict)" data-dfn-type="argument" data-export id="dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-type"><code><c- g>type</c-></code><a class="self-link" href="#dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-type"></a></dfn>, <a class="n" data-link-type="idl-name" href="#dictdef-enterpictureinpictureeventinit" id="ref-for-dictdef-enterpictureinpictureeventinit"><c- n>EnterPictureInPictureEventInit</c-></a> <dfn class="idl-code" data-dfn-for="EnterPictureInPictureEvent/EnterPictureInPictureEvent(type, eventInitDict)" data-dfn-type="argument" data-export id="dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-eventinitdict"><code><c- g>eventInitDict</c-></code><a class="self-link" href="#dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-eventinitdict"></a></dfn>),
-    <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->
+    <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->
 ]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="enterpictureinpictureevent"><code><c- g>EnterPictureInPictureEvent</c-></code></dfn> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#event" id="ref-for-event"><c- n>Event</c-></a> {
     [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow⑤"><c- n>PictureInPictureWindow</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="EnterPictureInPictureEvent" data-dfn-type="attribute" data-export data-readonly data-type="PictureInPictureWindow" id="dom-enterpictureinpictureevent-pictureinpicturewindow"><code><c- g>pictureInPictureWindow</c-></code></dfn>;
@@ -2254,7 +2255,8 @@ Wörner for their contributions to this document.</p>
   <aside class="dfn-panel" data-for="term-for-Exposed">
    <a href="https://heycam.github.io/webidl/#Exposed">https://heycam.github.io/webidl/#Exposed</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-Exposed">4.5. Event types</a>
+    <li><a href="#ref-for-Exposed">4.4. Interface PictureInPictureWindow</a>
+    <li><a href="#ref-for-Exposed①">4.5. Event types</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-invalidstateerror">
@@ -2444,6 +2446,7 @@ Wörner for their contributions to this document.</p>
   <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#element" id="ref-for-element①"><c- n>Element</c-></a>? <a data-readonly data-type="Element?" href="#dom-documentorshadowroot-pictureinpictureelement"><code><c- g>pictureInPictureElement</c-></code></a>;
 };
 
+[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed②"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <a href="#pictureinpicturewindow"><code><c- g>PictureInPictureWindow</c-></code></a> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget①"><c- n>EventTarget</c-></a> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long" id="ref-for-idl-long②"><c- b>long</c-></a> <a data-readonly data-type="long" href="#dom-pictureinpicturewindow-width"><code><c- g>width</c-></code></a>;
   <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-long" id="ref-for-idl-long①①"><c- b>long</c-></a> <a data-readonly data-type="long" href="#dom-pictureinpicturewindow-height"><code><c- g>height</c-></code></a>;
@@ -2453,7 +2456,7 @@ Wörner for their contributions to this document.</p>
 
 [
     <a href="#dom-enterpictureinpictureevent-enterpictureinpictureevent"><code><c- g>Constructor</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString①"><c- b>DOMString</c-></a> <a href="#dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-type"><code><c- g>type</c-></code></a>, <a class="n" data-link-type="idl-name" href="#dictdef-enterpictureinpictureeventinit" id="ref-for-dictdef-enterpictureinpictureeventinit①"><c- n>EnterPictureInPictureEventInit</c-></a> <a href="#dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-eventinitdict"><code><c- g>eventInitDict</c-></code></a>),
-    <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->
+    <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①①"><c- g>Exposed</c-></a>=<c- n>Window</c->
 ]
 <c- b>interface</c-> <a href="#enterpictureinpictureevent"><code><c- g>EnterPictureInPictureEvent</c-></code></a> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#event" id="ref-for-event①"><c- n>Event</c-></a> {
     [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject①"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow⑤①"><c- n>PictureInPictureWindow</c-></a> <a data-readonly data-type="PictureInPictureWindow" href="#dom-enterpictureinpictureevent-pictureinpicturewindow"><code><c- g>pictureInPictureWindow</c-></code></a>;
