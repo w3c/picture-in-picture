@@ -6,7 +6,7 @@
 [![WPT Firefox](https://wpt-badge.glitch.me/?product=firefox&prefix=/picture-in-picture/)](https://wpt.fyi/results/picture-in-picture)
 [![WPT Safari](https://wpt-badge.glitch.me/?product=safari&prefix=/picture-in-picture/)](https://wpt.fyi/results/picture-in-picture)
 
-https://wicg.github.io/picture-in-picture/v2
+https://w3c.github.io/picture-in-picture/v2
 
 This standardization project aims to provide APIs to allow websites to create a floating window over the desktop.
 
