@@ -1213,7 +1213,7 @@ Possible extra rowspan handling
 	}
 </style>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version 08c4b0e94d147852f66673459784d3429bb3bda1" name="generator">
+  <meta content="Bikeshed version e86d5b1b47a216fa66165c234892adc259212183" name="generator">
   <link href="https://w3c.github.io/picture-in-picture" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
 <style>/* style-md-lists */
@@ -1462,7 +1462,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-08-23">23 August 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-09-23">23 September 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1848,7 +1848,7 @@ in order to notify the website of the Picture-in-Picture status changes.</p>
 };
 </pre>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-requestpictureinpicture" id="ref-for-dom-htmlvideoelement-requestpictureinpicture①">requestPictureInPicture()</a></code> method, when invoked, MUST
-return <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide/#a-new-promise" id="ref-for-a-new-promise">a new promise</a> <var>promise</var> and run the following steps <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel" id="ref-for-in-parallel">in
+return <a data-link-type="dfn" href="https://heycam.github.io/webidl/#a-new-promise" id="ref-for-a-new-promise">a new promise</a> <var>promise</var> and run the following steps <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel" id="ref-for-in-parallel">in
 parallel</a>:</p>
    <ol>
     <li data-md>
@@ -1876,7 +1876,7 @@ exception and abort these steps.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="picture-in-picture-support">Picture-in-Picture support</dfn> is <code>false</code> if there’s a user preference
 that disables it or a platform limitation. It is <code>true</code> otherwise.</p>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-document-exitpictureinpicture" id="ref-for-dom-document-exitpictureinpicture">exitPictureInPicture()</a></code> method, when invoked, MUST
-return <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide/#a-new-promise" id="ref-for-a-new-promise①">a new promise</a> <var>promise</var> and run the following steps <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel" id="ref-for-in-parallel①">in
+return <a data-link-type="dfn" href="https://heycam.github.io/webidl/#a-new-promise" id="ref-for-a-new-promise①">a new promise</a> <var>promise</var> and run the following steps <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel" id="ref-for-in-parallel①">in
 parallel</a>:</p>
    <ol>
     <li data-md>
@@ -1931,10 +1931,10 @@ the <var>state</var> is <var>opened</var>. Otherwise, it MUST return 0.</p>
      <p>Fired on a <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement③">HTMLVideoElement</a></code> when it enters Picture-in-Picture.</p>
    </dl>
 <pre class="idl highlight def">[
-    <dfn class="idl-code" data-dfn-for="EnterPictureInPictureEvent" data-dfn-type="constructor" data-export data-lt="EnterPictureInPictureEvent(type, eventInitDict)" id="dom-enterpictureinpictureevent-enterpictureinpictureevent"><code><c- g>Constructor</c-></code><a class="self-link" href="#dom-enterpictureinpictureevent-enterpictureinpictureevent"></a></dfn>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString"><c- b>DOMString</c-></a> <dfn class="idl-code" data-dfn-for="EnterPictureInPictureEvent/EnterPictureInPictureEvent(type, eventInitDict)" data-dfn-type="argument" data-export id="dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-type"><code><c- g>type</c-></code><a class="self-link" href="#dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-type"></a></dfn>, <a class="n" data-link-type="idl-name" href="#dictdef-enterpictureinpictureeventinit" id="ref-for-dictdef-enterpictureinpictureeventinit"><c- n>EnterPictureInPictureEventInit</c-></a> <dfn class="idl-code" data-dfn-for="EnterPictureInPictureEvent/EnterPictureInPictureEvent(type, eventInitDict)" data-dfn-type="argument" data-export id="dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-eventinitdict"><code><c- g>eventInitDict</c-></code><a class="self-link" href="#dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-eventinitdict"></a></dfn>),
     <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->
 ]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="enterpictureinpictureevent"><code><c- g>EnterPictureInPictureEvent</c-></code></dfn> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#event" id="ref-for-event"><c- n>Event</c-></a> {
+    <dfn class="idl-code" data-dfn-for="EnterPictureInPictureEvent" data-dfn-type="constructor" data-export data-lt="EnterPictureInPictureEvent(type, eventInitDict)|constructor(type, eventInitDict)" id="dom-enterpictureinpictureevent-enterpictureinpictureevent"><code><c- g>constructor</c-></code><a class="self-link" href="#dom-enterpictureinpictureevent-enterpictureinpictureevent"></a></dfn>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString"><c- b>DOMString</c-></a> <dfn class="idl-code" data-dfn-for="EnterPictureInPictureEvent/constructor(type, eventInitDict)" data-dfn-type="argument" data-export id="dom-enterpictureinpictureevent-constructor-type-eventinitdict-type"><code><c- g>type</c-></code><a class="self-link" href="#dom-enterpictureinpictureevent-constructor-type-eventinitdict-type"></a></dfn>, <a class="n" data-link-type="idl-name" href="#dictdef-enterpictureinpictureeventinit" id="ref-for-dictdef-enterpictureinpictureeventinit"><c- n>EnterPictureInPictureEventInit</c-></a> <dfn class="idl-code" data-dfn-for="EnterPictureInPictureEvent/constructor(type, eventInitDict)" data-dfn-type="argument" data-export id="dom-enterpictureinpictureevent-constructor-type-eventinitdict-eventinitdict"><code><c- g>eventInitDict</c-></code><a class="self-link" href="#dom-enterpictureinpictureevent-constructor-type-eventinitdict-eventinitdict"></a></dfn>);
     [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow⑤"><c- n>PictureInPictureWindow</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="EnterPictureInPictureEvent" data-dfn-type="attribute" data-export data-readonly data-type="PictureInPictureWindow" id="dom-enterpictureinpictureevent-pictureinpicturewindow"><code><c- g>pictureInPictureWindow</c-></code></dfn>;
 };
 
@@ -1979,6 +1979,7 @@ Wörner for their contributions to this document.</p>
    <li><a href="#dom-htmlvideoelement-autopictureinpicture">autoPictureInPicture</a><span>, in §4.1</span>
    <li><a href="#autopictureinpictureelement">autoPictureInPictureElement</a><span>, in §3.4</span>
    <li><a href="#close-window-algorithm">close window algorithm</a><span>, in §4.4</span>
+   <li><a href="#dom-enterpictureinpictureevent-enterpictureinpictureevent">constructor(type, eventInitDict)</a><span>, in §4.5</span>
    <li><a href="#dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a><span>, in §4.1</span>
    <li><a href="#eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a><span>, in §4.5</span>
    <li><a href="#enterpictureinpictureevent">EnterPictureInPictureEvent</a><span>, in §4.5</span>
@@ -2221,13 +2222,6 @@ Wörner for their contributions to this document.</p>
     <li><a href="#ref-for-dom-visibilitystate">3.7. Interaction with Page Visibility</a> <a href="#ref-for-dom-visibilitystate①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-a-new-promise">
-   <a href="https://www.w3.org/2001/tag/doc/promises-guide/#a-new-promise">https://www.w3.org/2001/tag/doc/promises-guide/#a-new-promise</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-a-new-promise">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-a-new-promise①">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-local-playback-device">
    <a href="https://w3c.github.io/remote-playback/#dfn-local-playback-device">https://w3c.github.io/remote-playback/#dfn-local-playback-device</a><b>Referenced in:</b>
    <ul>
@@ -2299,6 +2293,13 @@ Wörner for their contributions to this document.</p>
     <li><a href="#ref-for-securityerror①">5.1. Feature Policy</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-a-new-promise">
+   <a href="https://heycam.github.io/webidl/#a-new-promise">https://heycam.github.io/webidl/#a-new-promise</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-a-new-promise">4.1. Extensions to HTMLVideoElement</a>
+    <li><a href="#ref-for-a-new-promise①">4.2. Extensions to Document</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-idl-boolean">
    <a href="https://heycam.github.io/webidl/#idl-boolean">https://heycam.github.io/webidl/#idl-boolean</a><b>Referenced in:</b>
    <ul>
@@ -2368,11 +2369,6 @@ Wörner for their contributions to this document.</p>
      <li><span class="dfn-paneled" id="term-for-dom-visibilitystate" style="color:initial">visibilityState</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[promises-guide]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-a-new-promise" style="color:initial">a new promise</span>
-    </ul>
-   <li>
     <a data-link-type="biblio">[Remote-Playback]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-dfn-local-playback-device" style="color:initial">local playback device</span>
@@ -2394,6 +2390,7 @@ Wörner for their contributions to this document.</p>
      <li><span class="dfn-paneled" id="term-for-notsupportederror" style="color:initial">NotSupportedError</span>
      <li><span class="dfn-paneled" id="term-for-SameObject" style="color:initial">SameObject</span>
      <li><span class="dfn-paneled" id="term-for-securityerror" style="color:initial">SecurityError</span>
+     <li><span class="dfn-paneled" id="term-for-a-new-promise" style="color:initial">a new promise</span>
      <li><span class="dfn-paneled" id="term-for-idl-boolean" style="color:initial">boolean</span>
      <li><span class="dfn-paneled" id="term-for-idl-long" style="color:initial">long</span>
     </ul>
@@ -2409,8 +2406,6 @@ Wörner for their contributions to this document.</p>
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-page-visibility">[Page-Visibility]
    <dd>Jatinder Mann; Arvind Jain. <a href="https://www.w3.org/TR/page-visibility/">Page Visibility (Second Edition)</a>. 29 October 2013. REC. URL: <a href="https://www.w3.org/TR/page-visibility/">https://www.w3.org/TR/page-visibility/</a>
-   <dt id="biblio-promises-guide">[PROMISES-GUIDE]
-   <dd>Domenic Denicola. <a href="https://www.w3.org/2001/tag/doc/promises-guide">Writing Promise-Using Specifications</a>. 9 November 2018. TAG Finding. URL: <a href="https://www.w3.org/2001/tag/doc/promises-guide">https://www.w3.org/2001/tag/doc/promises-guide</a>
    <dt id="biblio-remote-playback">[Remote-Playback]
    <dd>Mounir Lamouri; Anton Vayvod. <a href="https://www.w3.org/TR/remote-playback/">Remote Playback API</a>. 19 October 2017. CR. URL: <a href="https://www.w3.org/TR/remote-playback/">https://www.w3.org/TR/remote-playback/</a>
    <dt id="biblio-selectors-4">[SELECTORS-4]
@@ -2455,10 +2450,10 @@ Wörner for their contributions to this document.</p>
 };
 
 [
-    <a href="#dom-enterpictureinpictureevent-enterpictureinpictureevent"><code><c- g>Constructor</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString①"><c- b>DOMString</c-></a> <a href="#dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-type"><code><c- g>type</c-></code></a>, <a class="n" data-link-type="idl-name" href="#dictdef-enterpictureinpictureeventinit" id="ref-for-dictdef-enterpictureinpictureeventinit①"><c- n>EnterPictureInPictureEventInit</c-></a> <a href="#dom-enterpictureinpictureevent-enterpictureinpictureevent-type-eventinitdict-eventinitdict"><code><c- g>eventInitDict</c-></code></a>),
     <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①①"><c- g>Exposed</c-></a>=<c- n>Window</c->
 ]
 <c- b>interface</c-> <a href="#enterpictureinpictureevent"><code><c- g>EnterPictureInPictureEvent</c-></code></a> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#event" id="ref-for-event①"><c- n>Event</c-></a> {
+    <a href="#dom-enterpictureinpictureevent-enterpictureinpictureevent"><code><c- g>constructor</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString①"><c- b>DOMString</c-></a> <a href="#dom-enterpictureinpictureevent-constructor-type-eventinitdict-type"><code><c- g>type</c-></code></a>, <a class="n" data-link-type="idl-name" href="#dictdef-enterpictureinpictureeventinit" id="ref-for-dictdef-enterpictureinpictureeventinit①"><c- n>EnterPictureInPictureEventInit</c-></a> <a href="#dom-enterpictureinpictureevent-constructor-type-eventinitdict-eventinitdict"><code><c- g>eventInitDict</c-></code></a>);
     [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject①"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow⑤①"><c- n>PictureInPictureWindow</c-></a> <a data-readonly data-type="PictureInPictureWindow" href="#dom-enterpictureinpictureevent-pictureinpicturewindow"><code><c- g>pictureInPictureWindow</c-></code></a>;
 };
 
