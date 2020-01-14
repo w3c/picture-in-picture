@@ -487,11 +487,10 @@ specification may allow PIP-ing arbitrary HTML content.
 
 ## Feature Policy ## {#feature-policy}
 
-This specification defines a <a>policy-controlled feature</a> that controls
-whether the <a>request Picture-in-Picture algorithm</a> may return a
-{{SecurityError}} and whether {{pictureInPictureEnabled}} is `true` or `false`.
-
-The feature name for this feature is `"picture-in-picture"`.
+This specification defines a <a>policy-controlled feature</a> named
+`"picture-in-picture"` that controls whether the <a>request Picture-in-Picture
+algorithm</a> may return a {{SecurityError}} and whether
+{{pictureInPictureEnabled}} is `true` or `false`.
 
 The <a>default allowlist</a> for this feature is `*`.
 
