@@ -473,9 +473,15 @@ The <a>task source</a> for all the tasks queued in this specification is the
 
 ## CSS pseudo-class ## {#css-pseudo-class}
 
-The `:picture-in-picture` <a>pseudo-class</a> MUST match the Picture-in-Picture
-element. It is different from the {{pictureInPictureElement}} as it does NOT
-apply to the shadow host chain.
+The `:picture-in-picture-inline` <a>pseudo-class</a> MUST match the
+Picture-in-Picture element. It is different from the {{pictureInPictureElement}}
+as it does NOT apply to the shadow host chain.
+
+Note: Previous version of this specification used the name `:picture-in-picture`
+for this <a>pseudo-class</a>. This name has been <em>deprecated</em> because it
+was too vague. Web developers may have thought that this <a>pseudo-class</a>
+would apply to the element in the Picture-in-Picture window, whereas it applies
+to the element in the web page.
 
 # Security considerations # {#security-considerations}
 
