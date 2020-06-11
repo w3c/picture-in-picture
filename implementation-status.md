@@ -30,18 +30,18 @@ Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/
 * [Issue 854935](http://crbug.com/854935): Closed captions in Picture-in-Picture are not supported.
 
 # Microsoft Edge
-* Available in [Edge Dev Channel](https://www.microsoftedgeinsider.com/en-us/)
-* Under consideration in [EdgeHTML Platform Status](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/pictureinpicture/)
+* Shipped in [Edge 79](https://www.microsoft.com/en-us/edge)
 
 # Safari
-No public signals. 
+Shipped in Safari 13.
+https://developer.apple.com/documentation/safari_release_notes/safari_13_1_release_notes
 https://bugs.webkit.org/show_bug.cgi?id=182688
 
 # Firefox
-No public signals. 
+Picture-in-Picture is a feature not exposed as a JavaScript API.
 https://bugzilla.mozilla.org/show_bug.cgi?id=1463402
 
-Mozilla position: https://github.com/mozilla/standards-positions/issues/72
+Mozilla position: [defer](https://github.com/mozilla/standards-positions/issues/72)
 
 # Polyfill
 https://github.com/gbentaieb/pip-polyfill/
