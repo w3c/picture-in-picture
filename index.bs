@@ -22,6 +22,10 @@ spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
         urlPrefix: media.html
             text: media element event task source
+spec: Fullscreen; urlPrefix: https://fullscreen.spec.whatwg.org
+    type: dfn; text: fullscreen flag; url: #fullscreen-flag
+    type: dfn; text: fullscreenElement; url: dom-document-fullscreenelement
+    type: dfn; text: exit fullscreen; url: fully-exit-fullscreen
 spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
     type: dfn
         text: local playback device
@@ -296,6 +300,14 @@ switches from "hidden" to "visible", the user agent MAY run these steps:
 1. If <a>autoPictureInPictureElement</a> is `null`, abort these steps.
 2. If {{pictureInPictureElement}} is <a>autoPictureInPictureElement</a>, run
     the <a>exit Picture-in-Picture algorithm</a>.
+
+## Interaction with Fullscreen ## {#fullscreen}
+
+It is RECOMMENDED to run the <a>exit Picture-in-Picture algorithm</a> when the
+{{pictureInPictureElement}} <a>fullscreen flag</a> is set.
+
+It is RECOMMENDED to <a>exit fullscreen</a> when the <a>request Picture-in-Picture
+algorithm</a> is invoked with <a>fullscreenElement</a>.
 
 ## Interaction with Remote Playback ## {#remote-playback}
 
