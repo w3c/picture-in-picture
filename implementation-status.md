@@ -31,14 +31,18 @@ Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/
 * It is possible to disable auto PiP behaviour on Android 8+ by specifing `disablePictureInPicture` content attribute on the video tag prior entering full screen.
 
 # Microsoft Edge
-Under consideration.
-https://developer.microsoft.com/en-us/microsoft-edge/platform/status/pictureinpicture/
+* Shipped in [Edge 79](https://www.microsoft.com/en-us/edge)
 
 # Safari
-* [Public support](https://bugs.webkit.org/show_bug.cgi?id=189848#c8)
+Shipped in Safari 13.
+https://developer.apple.com/documentation/safari_release_notes/safari_13_1_release_notes
+https://bugs.webkit.org/show_bug.cgi?id=182688
 
 # Firefox
-* Position: ["defer"](https://github.com/mozilla/standards-positions/issues/72) - waiting to see how the spec develops, but also looking forward to contributing to the design of the spec. Mozilla currently ships PiP without the API.  
+Picture-in-Picture is a feature not exposed as a JavaScript API.
+https://bugzilla.mozilla.org/show_bug.cgi?id=1463402
+
+Mozilla position: [defer](https://github.com/mozilla/standards-positions/issues/72)
 
 # Polyfill
 https://github.com/gbentaieb/pip-polyfill/
