@@ -2,12 +2,13 @@
 Title: Picture-in-Picture
 Shortname: picture-in-picture
 Level: 1
-Status: CG-DRAFT
-ED: https://wicg.github.io/picture-in-picture
+Status: ED
+ED: https://w3c.github.io/picture-in-picture/
+TR: https://www.w3.org/TR/picture-in-picture/
 Favicon: https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png
-Group: WICG
+Group: mediawg
 Markup Shorthands: markdown yes
-Repository: wicg/picture-in-picture
+Repository: w3c/picture-in-picture
 !Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/feature-policy">feature-policy/</a><br/><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
 Editor: François Beaufort, w3cid 81174, Google LLC https://www.google.com, fbeaufort@google.com
 Editor: Mounir Lamouri, w3cid 45389, Google LLC https://www.google.com, mlamouri@google.com
@@ -18,18 +19,8 @@ Abstract: content sites, or applications on their device.
 </pre>
 
 <pre class="anchors">
-spec: Feature Policy; urlPrefix: https://wicg.github.io/feature-policy/#
-    type: dfn
-        text: default allowlist
-        text: feature name
-        text: policy-controlled feature
 spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
-        urlPrefix: infrastructure.html
-            text: in parallel
-            text: reflect
-        urlPrefix: interaction.html
-            text: triggered by user activation
         urlPrefix: media.html
             text: media element event task source
 spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
@@ -183,7 +174,7 @@ run the following steps:
 
 1. If <a>Picture-in-Picture support</a> is `false`, throw a
     {{NotSupportedError}} and abort these steps.
-2. If the document is not allowed to use the <a>policy-controlled feature</a>
+2. If the document is not <a>allowed to use</a> the <a>policy-controlled feature</a>
     named `"picture-in-picture"`, throw a {{SecurityError}} and abort these
     steps.
 3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
@@ -192,9 +183,9 @@ run the following steps:
     these steps.
 5. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
     |video|, throw an {{InvalidStateError}} and abort these steps.
-6. If |userActivationRequired| is `true` and the algorithm is not
-    <a>triggered by user activation</a>, throw a {{NotAllowedError}} and
-    abort these steps.
+6. If |userActivationRequired| is `true` and the <a>relevant global object</a>
+    of <a>this</a> does not have <a>transient activation</a>, throw a
+    {{NotAllowedError}} and abort these steps.
 7. If |video| is {{pictureInPictureElement}}, abort these steps.
 8. If |playingRequired| is `true` and |video| is {{paused}}, abort these steps.
 9. Set {{pictureInPictureElement}} to |video|.
@@ -203,7 +194,7 @@ run the following steps:
 11. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} using {{EnterPictureInPictureEvent}} at the
     |video| with its {{bubbles}} attribute initialized to `true` and its
-    {{pictureInPictureWindow}} attribute initialized to
+    {{EnterPictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
     <a>Picture-in-Picture window</a>.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
@@ -351,9 +342,9 @@ in order to notify the website of the Picture-in-Picture status changes.
 
 ## Extensions to <code>HTMLVideoElement</code> ## {#htmlvideoelement-extensions}
 
-<xmp class="idl">
+<pre class="idl">
 partial interface HTMLVideoElement {
-  [NewObject] Promise<PictureInPictureWindow> requestPictureInPicture();
+  [NewObject] Promise&lt;PictureInPictureWindow&gt; requestPictureInPicture();
 
   attribute EventHandler onenterpictureinpicture;
   attribute EventHandler onleavepictureinpicture;
@@ -361,7 +352,7 @@ partial interface HTMLVideoElement {
   [CEReactions] attribute boolean autoPictureInPicture;
   [CEReactions] attribute boolean disablePictureInPicture;
 };
-</xmp>
+</pre>
 
 The {{requestPictureInPicture()}} method, when invoked, MUST
 return <a>a new promise</a> |promise| and run the following steps <a>in
@@ -380,13 +371,13 @@ parallel</a>:
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
 
-<xmp class="idl">
+<pre class="idl">
 partial interface Document {
   readonly attribute boolean pictureInPictureEnabled;
 
-  [NewObject] Promise<void> exitPictureInPicture();
+  [NewObject] Promise&lt;void&gt; exitPictureInPicture();
 };
-</xmp>
+</pre>
 
 The {{pictureInPictureEnabled}} attribute's getter must return `true` if
 <a>Picture-in-Picture support</a> is `true` and the <a>context object</a> is
@@ -407,11 +398,11 @@ parallel</a>:
 
 ## Extension to <code>DocumentOrShadowRoot</code> ## {#documentorshadowroot-extension}
 
-<xmp class="idl">
+<pre class="idl">
 partial interface mixin DocumentOrShadowRoot {
   readonly attribute Element? pictureInPictureElement;
 };
-</xmp>
+</pre>
 
 The {{pictureInPictureElement}} attribute's getter must run these steps:
 
@@ -425,29 +416,30 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
 
 ## Interface <code>PictureInPictureWindow</code> ## {#interface-picture-in-picture-window}
 
-<xmp class="idl">
+<pre class="idl">
+[Exposed=Window]
 interface PictureInPictureWindow : EventTarget {
   readonly attribute long width;
   readonly attribute long height;
 
   attribute EventHandler onresize;
 };
-</xmp>
+</pre>
 
 A {{PictureInPictureWindow}} instance represents a <a>Picture-in-Picture
 window</a> associated with an {{HTMLVideoElement}}. When instantiated, an
-instance of {{PictureInPictureWindow}} has its |state| set to |opened|.
+instance of {{PictureInPictureWindow}} has its |state| set to `opened`.
 
 When the <dfn>close window algorithm</dfn> with an instance of
-{{PictureInPictureWindow}} is invoked, its |state| is set to |closed|.
+{{PictureInPictureWindow}} is invoked, its |state| is set to `closed`.
 
 The {{width}} attribute MUST return the width in <a lt=px value>CSS pixels</a> of the
 <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}} if
-the |state| is |opened|. Otherwise, it MUST return 0.
+the |state| is `opened`. Otherwise, it MUST return 0.
 
 The {{height}} attribute MUST return the height in <a lt=px value>CSS pixels</a> of the
 <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}} if
-the |state| is |opened|. Otherwise, it MUST return 0.
+the |state| is `opened`. Otherwise, it MUST return 0.
 
 When the size of the <a>Picture-in-Picture window</a> associated with
 {{pictureInPictureElement}} changes, the user agent MUST <a>queue a task</a> to
@@ -458,19 +450,17 @@ When the size of the <a>Picture-in-Picture window</a> associated with
 : <dfn event for="HTMLVideoElement">`enterpictureinpicture`</dfn>
 :: Fired on a {{HTMLVideoElement}} when it enters Picture-in-Picture.
 
-<xmp class="idl">
-[
-    Constructor(DOMString type, EnterPictureInPictureEventInit eventInitDict),
-    Exposed=Window
-]
+<pre class="idl">
+[Exposed=Window]
 interface EnterPictureInPictureEvent : Event {
+    constructor(DOMString type, EnterPictureInPictureEventInit eventInitDict);
     [SameObject] readonly attribute PictureInPictureWindow pictureInPictureWindow;
 };
 
 dictionary EnterPictureInPictureEventInit : EventInit {
     required PictureInPictureWindow pictureInPictureWindow;
 };
-</xmp>
+</pre>
 
 : <dfn event for="HTMLVideoElement">`leavepictureinpicture`</dfn>
 :: Fired on a {{HTMLVideoElement}} when it leaves Picture-in-Picture mode.
@@ -498,11 +488,10 @@ specification may allow PIP-ing arbitrary HTML content.
 
 ## Feature Policy ## {#feature-policy}
 
-This specification defines a <a>policy-controlled feature</a> that controls
-whether the <a>request Picture-in-Picture algorithm</a> may return a
-{{SecurityError}} and whether {{pictureInPictureEnabled}} is `true` or `false`.
-
-The <a>feature name</a> for this feature is `"picture-in-picture"`.
+This specification defines a <a>policy-controlled feature</a> named
+`"picture-in-picture"` that controls whether the <a>request Picture-in-Picture
+algorithm</a> may return a {{SecurityError}} and whether
+{{pictureInPictureEnabled}} is `true` or `false`.
 
 The <a>default allowlist</a> for this feature is `*`.
 

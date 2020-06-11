@@ -14,8 +14,8 @@ Feature/Platform                       | Desktop | Android |
 `video.requestPictureInPicture()`      | 68      |         |
 `video.onenterpictureinpicture`        | 68      |         |
 `video.onleavepictureinpicture`        | 68      |         |
-`video.disablePictureInPicture`        | 68      | 68      |
-`document.pictureInPictureEnabled`     | 68      | 68      |
+`video.disablePictureInPicture`        | 68      |         |
+`document.pictureInPictureEnabled`     | 68      |         |
 `document.pictureInPictureElement`     | 68      |         |
 `document.exitPictureInPicture()`      | 68      |         |
 `PictureInPictureWindow.width\|height` | 68      |         |
@@ -28,6 +28,7 @@ Tip: Chrome channel releases are tracked at [https://googlechromelabs.github.io/
 ## Notes
 * Desktop includes Chrome OS, Linux, Mac, and Windows.
 * [Issue 854935](http://crbug.com/854935): Closed captions in Picture-in-Picture are not supported.
+* It is possible to disable auto PiP behaviour on Android 8+ by specifing `disablePictureInPicture` content attribute on the video tag prior entering full screen.
 
 # Microsoft Edge
 * Shipped in [Edge 79](https://www.microsoft.com/en-us/edge)
