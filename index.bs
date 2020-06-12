@@ -55,7 +55,7 @@ Many users want to continue consuming media while they interact with other
 content, sites, or applications on their device. A common UI affordance for
 this type of activity is Picture-in-Picture (PiP), where the video is contained
 in a separate miniature window that is always on top of other windows. This
-window stays visible even when a user agent is not visible.
+window stays visible even when the user agent is not visible.
 Picture-in-Picture is a common platform-level feature among desktop and mobile
 OSs.
 
