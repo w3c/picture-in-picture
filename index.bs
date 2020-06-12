@@ -85,21 +85,21 @@ extensible.
 <button id="togglePipButton"></button>
 
 <script>
-  const video = document.getElementById('video');
-  const togglePipButton = document.getElementById('togglePipButton');
+  const video = document.getElementById("video");
+  const togglePipButton = document.getElementById("togglePipButton");
 
   // Hide button if Picture-in-Picture is not supported or disabled.
-  togglePipButton.hidden = !document.pictureInPictureEnabled ||
-    video.disablePictureInPicture;
+  togglePipButton.hidden =
+    !document.pictureInPictureEnabled || video.disablePictureInPicture;
 
   togglePipButton.addEventListener("click", async () => {
     // If there is no element in Picture-in-Picture yet, let's request
     // Picture-in-Picture for the video, otherwise leave it.
     try {
       if (document.pictureInPictureElement) {
-        await video.requestPictureInPicture()
+        await video.requestPictureInPicture();
       } else {
-        await document.exitPictureInPicture()
+        await document.exitPictureInPicture();
       }
     } catch (err) {
       // Video failed to enter/leave Picture-in-Picture mode.
@@ -114,16 +114,16 @@ extensible.
 <video id="video" src="https://example.com/file.mp4"></video>
 
 <script>
-  const video = document.getElementById('video');
+  const video = document.getElementById("video");
 
-  video.addEventListener('enterpictureinpicture', event => {
+  video.addEventListener("enterpictureinpicture", (event) => {
     // Video entered Picture-in-Picture mode.
     const pipWindow = event.pictureInPictureWindow;
     console.log(`Picture-in-Picture window width: ${pipWindow.width}`);
     console.log(`Picture-in-Picture window height: ${pipWindow.height}`);
   });
 
-  video.addEventListener('leavepictureinpicture', () => {
+  video.addEventListener("leavepictureinpicture", () => {
     // Video left Picture-in-Picture mode.
   });
 </script>
@@ -148,14 +148,14 @@ extensible.
     }
   });
 
-  video.addEventListener("enterpictureinpicture", event => {
+  video.addEventListener("enterpictureinpicture", (event) => {
     // Video entered Picture-in-Picture mode.
     const { pictureInPictureWindow: pipWindow } = event;
     updateVideoSize(pipWindow.width, pipWindow.height);
     pipWindow.addEventListener("resize", onPipWindowResize);
   });
 
-  video.addEventListener("leavepictureinpicture", event => {
+  video.addEventListener("leavepictureinpicture", (event) => {
     // Video left Picture-in-Picture mode.
     const { pictureInPictureWindow: pipWindow } = event;
     pipWindow.removeEventListener("resize", onPipWindowResize);
@@ -170,7 +170,6 @@ extensible.
   function updateVideoSize(width, height) {
     // TODO: Update video size based on pip window width and height.
   }
-
 </script>
 ```
 
