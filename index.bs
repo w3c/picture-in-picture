@@ -181,8 +181,8 @@ run the following steps:
     {{InvalidStateError}} and abort these steps.
 4. If |video| has no video track, throw a {{InvalidStateError}} and abort
     these steps.
-5. OPTIONALLY, if the {{disablePictureInPicture}} attribute is present on
-    |video|, throw an {{InvalidStateError}} and abort these steps.
+5. OPTIONALLY, if |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
+    throw an {{InvalidStateError}} and abort these steps.
 6. If |userActivationRequired| is `true` and the <a>relevant global object</a>
     of <a>this</a> does not have <a>transient activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
