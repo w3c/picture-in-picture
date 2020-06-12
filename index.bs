@@ -119,9 +119,8 @@ extensible.
   video.addEventListener('enterpictureinpicture', event => {
     // Video entered Picture-in-Picture mode.
     const pipWindow = event.pictureInPictureWindow;
-    const { width, height } = pipWindow;
-    console.log(`Picture-in-Picture window width: ${width}`);
-    console.log(`Picture-in-Picture window height: ${height}`);
+    console.log(`Picture-in-Picture window width: ${pipWindow.width}`);
+    console.log(`Picture-in-Picture window height: ${pipWindow.height}`);
   });
 
   video.addEventListener('leavepictureinpicture', () => {
