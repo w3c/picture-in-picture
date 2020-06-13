@@ -199,6 +199,8 @@ run the following steps:
     |video| with its {{bubbles}} attribute initialized to `true` and its
     {{EnterPictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
     <a>Picture-in-Picture window</a>.
+12. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
+    RECOMMENDED to <a>exit fullscreen</a>.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
 Picture-in-Picture window at the same time but if they are, they MUST be kept
@@ -305,9 +307,6 @@ switches from "hidden" to "visible", the user agent MAY run these steps:
 
 It is RECOMMENDED to run the <a>exit Picture-in-Picture algorithm</a> when the
 {{pictureInPictureElement}} <a>fullscreen flag</a> is set.
-
-It is RECOMMENDED to <a>exit fullscreen</a> when the <a>request Picture-in-Picture
-algorithm</a> is invoked with <a>fullscreenElement</a>.
 
 ## Interaction with Remote Playback ## {#remote-playback}
 
