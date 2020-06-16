@@ -1471,7 +1471,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-06-11">11 June 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-06-16">16 June 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1539,10 +1539,11 @@ content sites, or applications on their device.</p>
       <li><a href="#exit-pip"><span class="secno">3.2</span> <span class="content">Exit Picture-in-Picture</span></a>
       <li><a href="#disable-pip"><span class="secno">3.3</span> <span class="content">Disable Picture-in-Picture</span></a>
       <li><a href="#auto-pip"><span class="secno">3.4</span> <span class="content">Auto Picture-in-Picture</span></a>
-      <li><a href="#remote-playback"><span class="secno">3.5</span> <span class="content">Interaction with Remote Playback</span></a>
-      <li><a href="#media-session"><span class="secno">3.6</span> <span class="content">Interaction with Media Session</span></a>
-      <li><a href="#page-visibility"><span class="secno">3.7</span> <span class="content">Interaction with Page Visibility</span></a>
-      <li><a href="#one-pip-window"><span class="secno">3.8</span> <span class="content">One Picture-in-Picture window</span></a>
+      <li><a href="#fullscreen"><span class="secno">3.5</span> <span class="content">Interaction with Fullscreen</span></a>
+      <li><a href="#remote-playback"><span class="secno">3.6</span> <span class="content">Interaction with Remote Playback</span></a>
+      <li><a href="#media-session"><span class="secno">3.7</span> <span class="content">Interaction with Media Session</span></a>
+      <li><a href="#page-visibility"><span class="secno">3.8</span> <span class="content">Interaction with Page Visibility</span></a>
+      <li><a href="#one-pip-window"><span class="secno">3.9</span> <span class="content">One Picture-in-Picture window</span></a>
      </ol>
     <li>
      <a href="#api"><span class="secno">4</span> <span class="content">API</span></a>
@@ -1723,6 +1724,9 @@ throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.i
      <p>Let <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="picture-in-picture-window">Picture-in-Picture window</dfn> be a new instance of <code class="idl"><a data-link-type="idl" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow">PictureInPictureWindow</a></code> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement②">pictureInPictureElement</a></code>.</p>
     <li data-md>
      <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task">Queue a task</a> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire" id="ref-for-concept-event-fire">fire an event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-enterpictureinpicture" id="ref-for-eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a></code> using <code class="idl"><a data-link-type="idl" href="#enterpictureinpictureevent" id="ref-for-enterpictureinpictureevent">EnterPictureInPictureEvent</a></code> at the <var>video</var> with its <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-bubbles" id="ref-for-dom-event-bubbles">bubbles</a></code> attribute initialized to <code>true</code> and its <code class="idl"><a data-link-type="idl" href="#dom-enterpictureinpictureevent-pictureinpicturewindow" id="ref-for-dom-enterpictureinpictureevent-pictureinpicturewindow">pictureInPictureWindow</a></code> attribute initialized to <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window">Picture-in-Picture window</a>.</p>
+    <li data-md>
+     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement③">pictureInPictureElement</a></code> is <a data-link-type="dfn" href="https://fullscreen.spec.whatwg.org#dom-document-fullscreenelement" id="ref-for-dom-document-fullscreenelement">fullscreenElement</a>, it is
+RECOMMENDED to <a data-link-type="dfn" href="https://fullscreen.spec.whatwg.org#fully-exit-fullscreen" id="ref-for-fully-exit-fullscreen">exit fullscreen</a>.</p>
    </ol>
    <p>It is RECOMMENDED that video frames are not rendered in the page and in the
 Picture-in-Picture window at the same time but if they are, they MUST be kept
@@ -1743,13 +1747,13 @@ a half of one dimension of the screen.</p>
 the user agent MUST run the following steps:</p>
    <ol>
     <li data-md>
-     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement③">pictureInPictureElement</a></code> is <code>null</code>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code> and
+     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement④">pictureInPictureElement</a></code> is <code>null</code>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code> and
 abort these steps.</p>
     <li data-md>
      <p>Run the <a data-link-type="dfn" href="#close-window-algorithm" id="ref-for-close-window-algorithm">close window algorithm</a> with the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window①">Picture-in-Picture
-window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement④">pictureInPictureElement</a></code>.</p>
+window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑤">pictureInPictureElement</a></code>.</p>
     <li data-md>
-     <p>Unset <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑤">pictureInPictureElement</a></code>.</p>
+     <p>Unset <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑥">pictureInPictureElement</a></code>.</p>
     <li data-md>
      <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task①">Queue a task</a> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire" id="ref-for-concept-event-fire①">fire an event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-htmlvideoelement-leavepictureinpicture" id="ref-for-eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a></code> at the <var>video</var> with its <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-bubbles" id="ref-for-dom-event-bubbles①">bubbles</a></code> attribute
 initialized to <code>true</code>.</p>
@@ -1777,7 +1781,7 @@ the user agent SHOULD run these steps:</p>
     <li data-md>
      <p>Reject any pending promises returned by the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-requestpictureinpicture" id="ref-for-dom-htmlvideoelement-requestpictureinpicture">requestPictureInPicture()</a></code> method with <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror④">InvalidStateError</a></code>.</p>
     <li data-md>
-     <p>If <var>video</var> is <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑥">pictureInPictureElement</a></code>, run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm②">exit
+     <p>If <var>video</var> is <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑦">pictureInPictureElement</a></code>, run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm②">exit
 Picture-in-Picture algorithm</a>.</p>
    </ol>
    <h3 class="heading settled" data-level="3.4" id="auto-pip"><span class="secno">3.4. </span><span class="content">Auto Picture-in-Picture</span><a class="self-link" href="#auto-pip"></a></h3>
@@ -1799,7 +1803,7 @@ switches from "visible" to "hidden", the user agent MAY run these steps:</p>
     <li data-md>
      <p>If <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement①">autoPictureInPictureElement</a> is <code>null</code>, abort these steps.</p>
     <li data-md>
-     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑦">pictureInPictureElement</a></code> is set, abort these steps.</p>
+     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑧">pictureInPictureElement</a></code> is set, abort these steps.</p>
     <li data-md>
      <p>Let <var>video</var> be <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement②">autoPictureInPictureElement</a>.</p>
     <li data-md>
@@ -1815,25 +1819,27 @@ switches from "hidden" to "visible", the user agent MAY run these steps:</p>
     <li data-md>
      <p>If <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement③">autoPictureInPictureElement</a> is <code>null</code>, abort these steps.</p>
     <li data-md>
-     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑧">pictureInPictureElement</a></code> is <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement④">autoPictureInPictureElement</a>, run
+     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑨">pictureInPictureElement</a></code> is <a data-link-type="dfn" href="#autopictureinpictureelement" id="ref-for-autopictureinpictureelement④">autoPictureInPictureElement</a>, run
 the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm③">exit Picture-in-Picture algorithm</a>.</p>
    </ol>
-   <h3 class="heading settled" data-level="3.5" id="remote-playback"><span class="secno">3.5. </span><span class="content">Interaction with Remote Playback</span><a class="self-link" href="#remote-playback"></a></h3>
+   <h3 class="heading settled" data-level="3.5" id="fullscreen"><span class="secno">3.5. </span><span class="content">Interaction with Fullscreen</span><a class="self-link" href="#fullscreen"></a></h3>
+   <p>It is RECOMMENDED to run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm④">exit Picture-in-Picture algorithm</a> when the <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⓪">pictureInPictureElement</a></code> <a data-link-type="dfn" href="https://fullscreen.spec.whatwg.org#fullscreen-flag" id="ref-for-fullscreen-flag">fullscreen flag</a> is set.</p>
+   <h3 class="heading settled" data-level="3.6" id="remote-playback"><span class="secno">3.6. </span><span class="content">Interaction with Remote Playback</span><a class="self-link" href="#remote-playback"></a></h3>
    <p>The <a data-link-type="biblio" href="#biblio-remote-playback">[Remote-Playback]</a> specification defines a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-device" id="ref-for-dfn-local-playback-device">local playback device</a> and a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-state" id="ref-for-dfn-local-playback-state">local playback state</a>. For the purpose of Picture-in-Picture, the
 playback is local and regardless of whether it is played in page or in
 Picture-in-Picture.</p>
-   <h3 class="heading settled" data-level="3.6" id="media-session"><span class="secno">3.6. </span><span class="content">Interaction with Media Session</span><a class="self-link" href="#media-session"></a></h3>
+   <h3 class="heading settled" data-level="3.7" id="media-session"><span class="secno">3.7. </span><span class="content">Interaction with Media Session</span><a class="self-link" href="#media-session"></a></h3>
    <p>The API will have to be used with the <a data-link-type="biblio" href="#biblio-mediasession">[MediaSession]</a> API for customizing the
 available controls on the Picture-in-Picture window.</p>
-   <h3 class="heading settled" data-level="3.7" id="page-visibility"><span class="secno">3.7. </span><span class="content">Interaction with Page Visibility</span><a class="self-link" href="#page-visibility"></a></h3>
-   <p>When <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑨">pictureInPictureElement</a></code> is set, the Picture-in-Picture window MUST
+   <h3 class="heading settled" data-level="3.8" id="page-visibility"><span class="secno">3.8. </span><span class="content">Interaction with Page Visibility</span><a class="self-link" href="#page-visibility"></a></h3>
+   <p>When <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①①">pictureInPictureElement</a></code> is set, the Picture-in-Picture window MUST
 be visible, even when the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-document" id="ref-for-concept-document">Document</a> is not in focus or hidden. The user
 agent SHOULD provide a way for users to manually close the Picture-in-Picture
 window.</p>
    <p>The <a data-link-type="biblio" href="#biblio-page-visibility">[Page-Visibility]</a> specification defines a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/page-visibility/#dom-visibilitystate" id="ref-for-dom-visibilitystate">visibilityState</a></code> attribute used to determine the visibility state of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context" id="ref-for-top-level-browsing-context②">top-level browsing
 context</a>. The Picture-in-Picture window visibility MUST NOT be taken into
 account when determining the value returned by <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/page-visibility/#dom-visibilitystate" id="ref-for-dom-visibilitystate①">visibilityState</a></code>.</p>
-   <h3 class="heading settled" data-level="3.8" id="one-pip-window"><span class="secno">3.8. </span><span class="content">One Picture-in-Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
+   <h3 class="heading settled" data-level="3.9" id="one-pip-window"><span class="secno">3.9. </span><span class="content">One Picture-in-Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
    <p>Operating systems with a Picture-in-Picture API usually restrict
 Picture-in-Picture mode to only one window.  Whether only one window is allowed
 in Picture-in-Picture mode will be left to the implementation and the platform.
@@ -1865,7 +1871,7 @@ parallel</a>:</p>
     <li data-md>
      <p>Let <var>video</var> be the video element on which the method was invoked.</p>
     <li data-md>
-     <p>Let <var>userActivationRequired</var> be <code>true</code> if <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⓪">pictureInPictureElement</a></code> is <code>null</code>. It is <code>false</code> otherwise.</p>
+     <p>Let <var>userActivationRequired</var> be <code>true</code> if <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①②">pictureInPictureElement</a></code> is <code>null</code>. It is <code>false</code> otherwise.</p>
     <li data-md>
      <p>Let <var>playingRequired</var> be <code>false</code>.</p>
     <li data-md>
@@ -1874,7 +1880,7 @@ parallel</a>:</p>
      <p>If the previous step threw an exception, reject <var>promise</var> with that
 exception and abort these steps.</p>
     <li data-md>
-     <p>Return <var>promise</var> with the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window②">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①①">pictureInPictureElement</a></code>.</p>
+     <p>Return <var>promise</var> with the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window②">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①③">pictureInPictureElement</a></code>.</p>
    </ol>
    <h3 class="heading settled" data-level="4.2" id="document-extensions"><span class="secno">4.2. </span><span class="content">Extensions to <code>Document</code></span><a class="self-link" href="#document-extensions"></a></h3>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#document" id="ref-for-document①"><c- g>Document</c-></a> {
@@ -1891,7 +1897,7 @@ return <a data-link-type="dfn" href="https://heycam.github.io/webidl/#a-new-prom
 parallel</a>:</p>
    <ol>
     <li data-md>
-     <p>Run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm④">exit Picture-in-Picture algorithm</a>.</p>
+     <p>Run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm⑤">exit Picture-in-Picture algorithm</a>.</p>
     <li data-md>
      <p>If the previous step threw an exception, reject <var>promise</var> with that
 exception and abort these steps.</p>
@@ -1903,7 +1909,7 @@ exception and abort these steps.</p>
   <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#element" id="ref-for-element"><c- n>Element</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="DocumentOrShadowRoot" data-dfn-type="attribute" data-export data-readonly data-type="Element?" id="dom-documentorshadowroot-pictureinpictureelement"><code><c- g>pictureInPictureElement</c-></code></dfn>;
 };
 </pre>
-   <p>The <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①②">pictureInPictureElement</a></code> attribute’s getter must run these steps:</p>
+   <p>The <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①④">pictureInPictureElement</a></code> attribute’s getter must run these steps:</p>
    <ol>
     <li data-md>
      <p>If the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object①">context object</a> is not <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#connected" id="ref-for-connected">connected</a>, return <code>null</code> and abort
@@ -1930,11 +1936,11 @@ return <var>candidate</var> and abort these steps.</p>
 window</a> associated with an <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement②">HTMLVideoElement</a></code>. When instantiated, an
 instance of <code class="idl"><a data-link-type="idl" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow③">PictureInPictureWindow</a></code> has its <var>state</var> set to <code>opened</code>.</p>
    <p>When the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="close-window-algorithm">close window algorithm</dfn> with an instance of <code class="idl"><a data-link-type="idl" href="#pictureinpicturewindow" id="ref-for-pictureinpicturewindow④">PictureInPictureWindow</a></code> is invoked, its <var>state</var> is set to <code>closed</code>.</p>
-   <p>The <code class="idl"><a data-link-type="idl" href="#dom-pictureinpicturewindow-width" id="ref-for-dom-pictureinpicturewindow-width">width</a></code> attribute MUST return the width in <a class="css" data-link-type="value" href="https://drafts.csswg.org/css-values-4/#px" id="ref-for-px">CSS pixels</a> of the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window④">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①③">pictureInPictureElement</a></code> if
+   <p>The <code class="idl"><a data-link-type="idl" href="#dom-pictureinpicturewindow-width" id="ref-for-dom-pictureinpicturewindow-width">width</a></code> attribute MUST return the width in <a class="css" data-link-type="value" href="https://drafts.csswg.org/css-values-4/#px" id="ref-for-px">CSS pixels</a> of the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window④">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑤">pictureInPictureElement</a></code> if
 the <var>state</var> is <code>opened</code>. Otherwise, it MUST return 0.</p>
-   <p>The <code class="idl"><a data-link-type="idl" href="#dom-pictureinpicturewindow-height" id="ref-for-dom-pictureinpicturewindow-height">height</a></code> attribute MUST return the height in <a class="css" data-link-type="value" href="https://drafts.csswg.org/css-values-4/#px" id="ref-for-px①">CSS pixels</a> of the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window⑤">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①④">pictureInPictureElement</a></code> if
+   <p>The <code class="idl"><a data-link-type="idl" href="#dom-pictureinpicturewindow-height" id="ref-for-dom-pictureinpicturewindow-height">height</a></code> attribute MUST return the height in <a class="css" data-link-type="value" href="https://drafts.csswg.org/css-values-4/#px" id="ref-for-px①">CSS pixels</a> of the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window⑤">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑥">pictureInPictureElement</a></code> if
 the <var>state</var> is <code>opened</code>. Otherwise, it MUST return 0.</p>
-   <p>When the size of the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window⑥">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑤">pictureInPictureElement</a></code> changes, the user agent MUST <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task②">queue a task</a> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire" id="ref-for-concept-event-fire②">fire an event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-pictureinpicturewindow-resize" id="ref-for-eventdef-pictureinpicturewindow-resize">resize</a></code> at <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑥">pictureInPictureElement</a></code>.</p>
+   <p>When the size of the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window⑥">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑦">pictureInPictureElement</a></code> changes, the user agent MUST <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task②">queue a task</a> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire" id="ref-for-concept-event-fire②">fire an event</a> with the name <code class="idl"><a data-link-type="idl" href="#eventdef-pictureinpicturewindow-resize" id="ref-for-eventdef-pictureinpicturewindow-resize">resize</a></code> at <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑧">pictureInPictureElement</a></code>.</p>
    <h3 class="heading settled" data-level="4.5" id="event-types"><span class="secno">4.5. </span><span class="content">Event types</span><a class="self-link" href="#event-types"></a></h3>
    <dl>
     <dt data-md><dfn class="dfn-paneled idl-code" data-dfn-for="HTMLVideoElement" data-dfn-type="event" data-export id="eventdef-htmlvideoelement-enterpictureinpicture"><code>enterpictureinpicture</code></dfn>
@@ -1963,7 +1969,7 @@ the <var>state</var> is <code>opened</code>. Otherwise, it MUST return 0.</p>
    <p>The <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#task-source" id="ref-for-task-source">task source</a> for all the tasks queued in this specification is the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/media.html#media-element-event-task-source" id="ref-for-media-element-event-task-source">media element event task source</a> of the video element in question.</p>
    <h3 class="heading settled" data-level="4.7" id="css-pseudo-class"><span class="secno">4.7. </span><span class="content">CSS pseudo-class</span><a class="self-link" href="#css-pseudo-class"></a></h3>
    <p>The <code>:picture-in-picture</code> <a data-link-type="dfn" href="https://drafts.csswg.org/selectors-4/#pseudo-class" id="ref-for-pseudo-class">pseudo-class</a> MUST match the Picture-in-Picture
-element. It is different from the <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑦">pictureInPictureElement</a></code> as it does NOT
+element. It is different from the <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⑨">pictureInPictureElement</a></code> as it does NOT
 apply to the shadow host chain.</p>
    <h2 class="heading settled" data-level="5" id="security-considerations"><span class="secno">5. </span><span class="content">Security considerations</span><a class="self-link" href="#security-considerations"></a></h2>
    <p><em>This section is non-normative.</em></p>
@@ -2025,7 +2031,7 @@ Wörner for their contributions to this document.</p>
   <aside class="dfn-panel" data-for="term-for-document">
    <a href="https://dom.spec.whatwg.org/#document">https://dom.spec.whatwg.org/#document</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-document">3.8. One Picture-in-Picture window</a>
+    <li><a href="#ref-for-document">3.9. One Picture-in-Picture window</a>
     <li><a href="#ref-for-document①">4.2. Extensions to Document</a>
    </ul>
   </aside>
@@ -2082,7 +2088,7 @@ Wörner for their contributions to this document.</p>
   <aside class="dfn-panel" data-for="term-for-concept-document">
    <a href="https://dom.spec.whatwg.org/#concept-document">https://dom.spec.whatwg.org/#concept-document</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-concept-document">3.7. Interaction with Page Visibility</a>
+    <li><a href="#ref-for-concept-document">3.8. Interaction with Page Visibility</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-concept-event-fire">
@@ -2123,6 +2129,24 @@ Wörner for their contributions to this document.</p>
    <ul>
     <li><a href="#ref-for-policy-controlled-feature">3.1. Request Picture-in-Picture</a>
     <li><a href="#ref-for-policy-controlled-feature①">5.1. Feature Policy</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-fully-exit-fullscreen">
+   <a href="https://fullscreen.spec.whatwg.org#fully-exit-fullscreen">https://fullscreen.spec.whatwg.org#fully-exit-fullscreen</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-fully-exit-fullscreen">3.1. Request Picture-in-Picture</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-fullscreen-flag">
+   <a href="https://fullscreen.spec.whatwg.org#fullscreen-flag">https://fullscreen.spec.whatwg.org#fullscreen-flag</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-fullscreen-flag">3.5. Interaction with Fullscreen</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-document-fullscreenelement">
+   <a href="https://fullscreen.spec.whatwg.org#dom-document-fullscreenelement">https://fullscreen.spec.whatwg.org#dom-document-fullscreenelement</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-document-fullscreenelement">3.1. Request Picture-in-Picture</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-cereactions">
@@ -2210,7 +2234,7 @@ Wörner for their contributions to this document.</p>
    <a href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context">https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-top-level-browsing-context">3.4. Auto Picture-in-Picture</a> <a href="#ref-for-top-level-browsing-context①">(2)</a>
-    <li><a href="#ref-for-top-level-browsing-context②">3.7. Interaction with Page Visibility</a>
+    <li><a href="#ref-for-top-level-browsing-context②">3.8. Interaction with Page Visibility</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-transient-activation">
@@ -2228,19 +2252,19 @@ Wörner for their contributions to this document.</p>
   <aside class="dfn-panel" data-for="term-for-dom-visibilitystate">
    <a href="https://www.w3.org/TR/page-visibility/#dom-visibilitystate">https://www.w3.org/TR/page-visibility/#dom-visibilitystate</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-visibilitystate">3.7. Interaction with Page Visibility</a> <a href="#ref-for-dom-visibilitystate①">(2)</a>
+    <li><a href="#ref-for-dom-visibilitystate">3.8. Interaction with Page Visibility</a> <a href="#ref-for-dom-visibilitystate①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-local-playback-device">
    <a href="https://w3c.github.io/remote-playback/#dfn-local-playback-device">https://w3c.github.io/remote-playback/#dfn-local-playback-device</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-local-playback-device">3.5. Interaction with Remote Playback</a>
+    <li><a href="#ref-for-dfn-local-playback-device">3.6. Interaction with Remote Playback</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-local-playback-state">
    <a href="https://w3c.github.io/remote-playback/#dfn-local-playback-state">https://w3c.github.io/remote-playback/#dfn-local-playback-state</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-local-playback-state">3.5. Interaction with Remote Playback</a>
+    <li><a href="#ref-for-dfn-local-playback-state">3.6. Interaction with Remote Playback</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-pseudo-class">
@@ -2360,6 +2384,13 @@ Wörner for their contributions to this document.</p>
      <li><span class="dfn-paneled" id="term-for-policy-controlled-feature" style="color:initial">policy-controlled feature</span>
     </ul>
    <li>
+    <a data-link-type="biblio">[Fullscreen]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-fully-exit-fullscreen" style="color:initial">exit fullscreen</span>
+     <li><span class="dfn-paneled" id="term-for-fullscreen-flag" style="color:initial">fullscreen flag</span>
+     <li><span class="dfn-paneled" id="term-for-dom-document-fullscreenelement" style="color:initial">fullscreenelement</span>
+    </ul>
+   <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-cereactions" style="color:initial">CEReactions</span>
@@ -2420,6 +2451,8 @@ Wörner for their contributions to this document.</p>
    <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/">DOM Standard</a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
    <dt id="biblio-feature-policy-1">[FEATURE-POLICY-1]
    <dd>Ian Clelland. <a href="https://www.w3.org/TR/feature-policy-1/">Feature Policy</a>. 16 April 2019. WD. URL: <a href="https://www.w3.org/TR/feature-policy-1/">https://www.w3.org/TR/feature-policy-1/</a>
+   <dt id="biblio-fullscreen">[Fullscreen]
+   <dd>Philip Jägenstedt. <a href="https://fullscreen.spec.whatwg.org/">Fullscreen API Standard</a>. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-page-visibility">[Page-Visibility]
@@ -2433,8 +2466,6 @@ Wörner for their contributions to this document.</p>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
-   <dt id="biblio-fullscreen">[Fullscreen]
-   <dd>Philip Jägenstedt. <a href="https://fullscreen.spec.whatwg.org/">Fullscreen API Standard</a>. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a>
    <dt id="biblio-mediasession">[MediaSession]
    <dd>Mounir Lamouri; Becca Hughes. <a href="https://www.w3.org/TR/mediasession/">Media Session Standard</a>. 30 January 2020. WD. URL: <a href="https://www.w3.org/TR/mediasession/">https://www.w3.org/TR/mediasession/</a>
   </dl>
@@ -2501,7 +2532,8 @@ Wörner for their contributions to this document.</p>
     <li><a href="#ref-for-exit-picture-in-picture-algorithm">3.2. Exit Picture-in-Picture</a> <a href="#ref-for-exit-picture-in-picture-algorithm①">(2)</a>
     <li><a href="#ref-for-exit-picture-in-picture-algorithm②">3.3. Disable Picture-in-Picture</a>
     <li><a href="#ref-for-exit-picture-in-picture-algorithm③">3.4. Auto Picture-in-Picture</a>
-    <li><a href="#ref-for-exit-picture-in-picture-algorithm④">4.2. Extensions to Document</a>
+    <li><a href="#ref-for-exit-picture-in-picture-algorithm④">3.5. Interaction with Fullscreen</a>
+    <li><a href="#ref-for-exit-picture-in-picture-algorithm⑤">4.2. Extensions to Document</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="autopictureinpictureelement">
@@ -2554,15 +2586,16 @@ Wörner for their contributions to this document.</p>
   <aside class="dfn-panel" data-for="dom-documentorshadowroot-pictureinpictureelement">
    <b><a href="#dom-documentorshadowroot-pictureinpictureelement">#dom-documentorshadowroot-pictureinpictureelement</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement">3.1. Request Picture-in-Picture</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement②">(3)</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement③">3.2. Exit Picture-in-Picture</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement④">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑤">(3)</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑥">3.3. Disable Picture-in-Picture</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑦">3.4. Auto Picture-in-Picture</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑧">(2)</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑨">3.7. Interaction with Page Visibility</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⓪">4.1. Extensions to HTMLVideoElement</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①①">(2)</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①②">4.3. Extension to DocumentOrShadowRoot</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①③">4.4. Interface PictureInPictureWindow</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①④">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑤">(3)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑥">(4)</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑦">4.7. CSS pseudo-class</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement">3.1. Request Picture-in-Picture</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement②">(3)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement③">(4)</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement④">3.2. Exit Picture-in-Picture</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑤">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑥">(3)</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑦">3.3. Disable Picture-in-Picture</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑧">3.4. Auto Picture-in-Picture</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑨">(2)</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⓪">3.5. Interaction with Fullscreen</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①①">3.8. Interaction with Page Visibility</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①②">4.1. Extensions to HTMLVideoElement</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①③">(2)</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①④">4.3. Extension to DocumentOrShadowRoot</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑤">4.4. Interface PictureInPictureWindow</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑥">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑦">(3)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑧">(4)</a>
+    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑨">4.7. CSS pseudo-class</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="pictureinpicturewindow">
