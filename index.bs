@@ -279,9 +279,19 @@ added to the list of content attributes for video elements.
 The {{autoPictureInPicture}} IDL attribute MUST <a>reflect</a> the content
 attribute of the same name.
 
-The <dfn>autoPictureInPictureElement</dfn> is the video element, among all
-video elements with the {{autoPictureInPicture}} attribute currently set,
-whose {{autoPictureInPicture}} attribute was set most recently. Note that the
+All <a>documents</a> have an associated <dfn>list of Auto Picture-in-Picture
+elements</dfn>, which is an <a>ordered set</a> of {{HTMLVideoElement}} items. It
+is initially empty.
+When the {{autoPictureInPicture}} attribute is added to a video element, the
+video element is first <a>removed</a> then <a>appended</a> into the
+appropriate <a>list of Auto Picture-in-Picture elements</a>.
+When a video element is removed from the {{document}} or its
+{{autoPictureInPicture}} attribute is removed, the video element is
+<a>removed</a> from the appropriate <a>list of Auto Picture-in-Picture
+elements</a>.
+
+The <dfn>autoPictureInPictureElement</dfn> is the last video element in the
+<a>list of Auto Picture-in-Picture elements</a>. Note that the
 <a>autoPictureInPictureElement</a> can have the {{disablePictureInPicture}}
 attribute set. In that case, as expected, it won't be allowed to enter
 Picture-in-Picture mode in the <a>request Picture-in-Picture algorithm</a>.
