@@ -1585,7 +1585,7 @@ content sites, or applications on their device.</p>
 content, sites, or applications on their device. A common UI affordance for
 this type of activity is Picture-in-Picture (PiP), where the video is contained
 in a separate miniature window that is always on top of other windows. This
-window stays visible even when user agent is not visible.
+window stays visible even when the user agent is not visible.
 Picture-in-Picture is a common platform-level feature among desktop and mobile
 OSs.</p>
    <p>This specification aims to allow websites to initiate and control this behavior
@@ -1614,26 +1614,24 @@ extensible.</p>
 <c- p>&lt;</c-><c- f>button</c-> <c- e>id</c-><c- o>=</c-><c- s>"togglePipButton"</c-><c- p>>&lt;/</c-><c- f>button</c-><c- p>></c->
 
 <c- p>&lt;</c-><c- f>script</c-><c- p>></c->
-  <c- kr>const</c-> video <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'video'</c-><c- p>);</c->
-  <c- kr>const</c-> togglePipButton <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'togglePipButton'</c-><c- p>);</c->
+  <c- kr>const</c-> video <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- u>"video"</c-><c- p>);</c->
+  <c- kr>const</c-> togglePipButton <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- u>"togglePipButton"</c-><c- p>);</c->
 
   <c- c1>// Hide button if Picture-in-Picture is not supported or disabled.</c->
-  togglePipButton<c- p>.</c->hidden <c- o>=</c-> <c- o>!</c->document<c- p>.</c->pictureInPictureEnabled <c- o>||</c->
-    video<c- p>.</c->disablePictureInPicture<c- p>;</c->
+  togglePipButton<c- p>.</c->hidden <c- o>=</c->
+    <c- o>!</c->document<c- p>.</c->pictureInPictureEnabled <c- o>||</c-> video<c- p>.</c->disablePictureInPicture<c- p>;</c->
 
-  togglePipButton<c- p>.</c->addEventListener<c- p>(</c-><c- t>'click'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
+  togglePipButton<c- p>.</c->addEventListener<c- p>(</c-><c- u>"click"</c-><c- p>,</c-> async <c- p>()</c-> <c- p>=></c-> <c- p>{</c->
     <c- c1>// If there is no element in Picture-in-Picture yet, let’s request</c->
     <c- c1>// Picture-in-Picture for the video, otherwise leave it.</c->
-    <c- k>if</c-> <c- p>(</c-><c- o>!</c->document<c- p>.</c->pictureInPictureElement<c- p>)</c-> <c- p>{</c->
-      video<c- p>.</c->requestPictureInPicture<c- p>()</c->
-      <c- p>.</c-><c- k>catch</c-><c- p>(</c->error <c- p>=></c-> <c- p>{</c->
-        <c- c1>// Video failed to enter Picture-in-Picture mode.</c->
-      <c- p>});</c->
-    <c- p>}</c-> <c- k>else</c-> <c- p>{</c->
-      document<c- p>.</c->exitPictureInPicture<c- p>()</c->
-      <c- p>.</c-><c- k>catch</c-><c- p>(</c->error <c- p>=></c-> <c- p>{</c->
-        <c- c1>// Video failed to leave Picture-in-Picture mode.</c->
-      <c- p>});</c->
+    <c- k>try</c-> <c- p>{</c->
+      <c- k>if</c-> <c- p>(</c->document<c- p>.</c->pictureInPictureElement<c- p>)</c-> <c- p>{</c->
+        await video<c- p>.</c->requestPictureInPicture<c- p>();</c->
+      <c- p>}</c-> <c- k>else</c-> <c- p>{</c->
+        await document<c- p>.</c->exitPictureInPicture<c- p>();</c->
+      <c- p>}</c->
+    <c- p>}</c-> <c- k>catch</c-> <c- p>(</c->err<c- p>)</c-> <c- p>{</c->
+      <c- c1>// Video failed to enter/leave Picture-in-Picture mode.</c->
     <c- p>}</c->
   <c- p>});</c->
 <c- p>&lt;/</c-><c- f>script</c-><c- p>></c->
@@ -1642,16 +1640,16 @@ extensible.</p>
 <pre class="language-html highlight"><c- p>&lt;</c-><c- f>video</c-> <c- e>id</c-><c- o>=</c-><c- s>"video"</c-> <c- e>src</c-><c- o>=</c-><c- s>"https://example.com/file.mp4"</c-><c- p>>&lt;/</c-><c- f>video</c-><c- p>></c->
 
 <c- p>&lt;</c-><c- f>script</c-><c- p>></c->
-  <c- kr>const</c-> video <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'video'</c-><c- p>);</c->
+  <c- kr>const</c-> video <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- u>"video"</c-><c- p>);</c->
 
-  video<c- p>.</c->addEventListener<c- p>(</c-><c- t>'enterpictureinpicture'</c-><c- p>,</c-> <c- a>function</c-><c- p>(</c->event<c- p>)</c-> <c- p>{</c->
+  video<c- p>.</c->addEventListener<c- p>(</c-><c- u>"enterpictureinpicture"</c-><c- p>,</c-> <c- p>(</c->event<c- p>)</c-> <c- p>=></c-> <c- p>{</c->
     <c- c1>// Video entered Picture-in-Picture mode.</c->
     <c- kr>const</c-> pipWindow <c- o>=</c-> event<c- p>.</c->pictureInPictureWindow<c- p>;</c->
-    console<c- p>.</c->log<c- p>(</c-><c- t>'Picture-in-Picture window width: '</c-> <c- o>+</c-> pipWindow<c- p>.</c->width<c- p>);</c->
-    console<c- p>.</c->log<c- p>(</c-><c- t>'Picture-in-Picture window height: '</c-> <c- o>+</c-> pipWindow<c- p>.</c->height<c- p>);</c->
+    console<c- p>.</c->log<c- p>(</c-><c- o>&lt;</c->code data<c- o>-</c->opaque bs<c- o>-</c->autolink<c- o>-</c->syntax<c- o>=</c-><c- t>'`Picture-in-Picture window width: ${pipWindow.width}`'</c-><c- o>></c->Picture<c- o>-</c-><c- k>in</c-><c- o>-</c->Picture window width<c- o>:</c-> $<c- p>{</c->pipWindow<c- p>.</c->width<c- p>}</c-><c- o>&lt;</c->/code>);
+    console<c- p>.</c->log<c- p>(</c-><c- o>&lt;</c->code data<c- o>-</c->opaque bs<c- o>-</c->autolink<c- o>-</c->syntax<c- o>=</c-><c- t>'`Picture-in-Picture window height: ${pipWindow.height}`'</c-><c- o>></c->Picture<c- o>-</c-><c- k>in</c-><c- o>-</c->Picture window height<c- o>:</c-> $<c- p>{</c->pipWindow<c- p>.</c->height<c- p>}</c-><c- o>&lt;</c->/code>);
   <c- p>});</c->
 
-  video<c- p>.</c->addEventListener<c- p>(</c-><c- t>'leavepictureinpicture'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
+  video<c- p>.</c->addEventListener<c- p>(</c-><c- u>"leavepictureinpicture"</c-><c- p>,</c-> <c- p>()</c-> <c- p>=></c-> <c- p>{</c->
     <c- c1>// Video left Picture-in-Picture mode.</c->
   <c- p>});</c->
 <c- p>&lt;/</c-><c- f>script</c-><c- p>></c->
@@ -1662,32 +1660,34 @@ extensible.</p>
 <c- p>&lt;</c-><c- f>button</c-> <c- e>id</c-><c- o>=</c-><c- s>"pipButton"</c-><c- p>>&lt;/</c-><c- f>button</c-><c- p>></c->
 
 <c- p>&lt;</c-><c- f>script</c-><c- p>></c->
-  <c- a>let</c-> pipWindow<c- p>;</c->
-  <c- kr>const</c-> video <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'video'</c-><c- p>);</c->
-  <c- kr>const</c-> pipButton <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- t>'pipButton'</c-><c- p>);</c->
+  <c- kr>const</c-> video <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- u>"video"</c-><c- p>);</c->
+  <c- kr>const</c-> pipButton <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- u>"pipButton"</c-><c- p>);</c->
 
-  pipButton<c- p>.</c->addEventListener<c- p>(</c-><c- t>'click'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
-    video<c- p>.</c->requestPictureInPicture<c- p>()</c->
-    <c- p>.</c-><c- k>catch</c-><c- p>(</c->error <c- p>=></c-> <c- p>{</c->
+  pipButton<c- p>.</c->addEventListener<c- p>(</c-><c- u>"click"</c-><c- p>,</c-> async <c- p>()</c-> <c- p>=></c-> <c- p>{</c->
+    <c- k>try</c-> <c- p>{</c->
+      await video<c- p>.</c->requestPictureInPicture<c- p>();</c->
+    <c- p>}</c-> <c- k>catch</c-> <c- p>(</c->error<c- p>)</c-> <c- p>{</c->
       <c- c1>// Video failed to enter Picture-in-Picture mode.</c->
-    <c- p>});</c->
+    <c- p>}</c->
   <c- p>});</c->
 
-  video<c- p>.</c->addEventListener<c- p>(</c-><c- t>'enterpictureinpicture'</c-><c- p>,</c-> <c- a>function</c-><c- p>(</c->event<c- p>)</c-> <c- p>{</c->
+  video<c- p>.</c->addEventListener<c- p>(</c-><c- u>"enterpictureinpicture"</c-><c- p>,</c-> <c- p>(</c->event<c- p>)</c-> <c- p>=></c-> <c- p>{</c->
     <c- c1>// Video entered Picture-in-Picture mode.</c->
-    pipWindow <c- o>=</c-> event<c- p>.</c->pictureInPictureWindow<c- p>;</c->
+    <c- kr>const</c-> pipWindow <c- o>=</c-> event<c- p>.</c->pictureInPictureWindow<c- p>;</c->
     updateVideoSize<c- p>(</c->pipWindow<c- p>.</c->width<c- p>,</c-> pipWindow<c- p>.</c->height<c- p>);</c->
-    pipWindow<c- p>.</c->addEventListener<c- p>(</c-><c- t>'resize'</c-><c- p>,</c-> onPipWindowResize<c- p>);</c->
+    pipWindow<c- p>.</c->addEventListener<c- p>(</c-><c- u>"resize"</c-><c- p>,</c-> onPipWindowResize<c- p>);</c->
   <c- p>});</c->
 
-  video<c- p>.</c->addEventListener<c- p>(</c-><c- t>'leavepictureinpicture'</c-><c- p>,</c-> <c- a>function</c-><c- p>()</c-> <c- p>{</c->
+  video<c- p>.</c->addEventListener<c- p>(</c-><c- u>"leavepictureinpicture"</c-><c- p>,</c-> <c- p>(</c->event<c- p>)</c-> <c- p>=></c-> <c- p>{</c->
     <c- c1>// Video left Picture-in-Picture mode.</c->
-    pipWindow<c- p>.</c->removeEventListener<c- p>(</c-><c- t>'resize'</c-><c- p>,</c-> onPipWindowResize<c- p>);</c->
+    <c- kr>const</c-> pipWindow <c- o>=</c-> event<c- p>.</c->pictureInPictureWindow<c- p>;</c->
+    pipWindow<c- p>.</c->removeEventListener<c- p>(</c-><c- u>"resize"</c-><c- p>,</c-> onPipWindowResize<c- p>);</c->
   <c- p>});</c->
 
   <c- a>function</c-> onPipWindowResize<c- p>(</c->event<c- p>)</c-> <c- p>{</c->
     <c- c1>// Picture-in-Picture window has been resized.</c->
-    updateVideoSize<c- p>(</c->event<c- p>.</c->target<c- p>.</c->width<c- p>,</c-> event<c- p>.</c->target<c- p>.</c->height<c- p>);</c->
+    <c- kr>const</c-> <c- p>{</c-> width<c- p>,</c-> height <c- p>}</c-> <c- o>=</c-> event<c- p>.</c->target<c- p>;</c->
+    updateVideoSize<c- p>(</c->width<c- p>,</c-> height<c- p>);</c->
   <c- p>}</c->
 
   <c- a>function</c-> updateVideoSize<c- p>(</c->width<c- p>,</c-> height<c- p>)</c-> <c- p>{</c->
