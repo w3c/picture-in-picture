@@ -150,14 +150,14 @@ extensible.
 
   video.addEventListener("enterpictureinpicture", (event) => {
     // Video entered Picture-in-Picture mode.
-    const { pictureInPictureWindow: pipWindow } = event;
+    const pipWindow = event.pictureInPictureWindow;
     updateVideoSize(pipWindow.width, pipWindow.height);
     pipWindow.addEventListener("resize", onPipWindowResize);
   });
 
   video.addEventListener("leavepictureinpicture", (event) => {
     // Video left Picture-in-Picture mode.
-    const { pictureInPictureWindow: pipWindow } = event;
+    const pipWindow = event.pictureInPictureWindow;
     pipWindow.removeEventListener("resize", onPipWindowResize);
   });
 
