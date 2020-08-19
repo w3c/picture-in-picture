@@ -389,7 +389,7 @@ parallel</a>:
 partial interface Document {
   readonly attribute boolean pictureInPictureEnabled;
 
-  [NewObject] Promise&lt;void&gt; exitPictureInPicture();
+  [NewObject] Promise&lt;undefined&gt; exitPictureInPicture();
 };
 </pre>
 
