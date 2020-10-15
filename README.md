@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/w3c/picture-in-picture.svg?branch=master)](https://travis-ci.org/w3c/picture-in-picture)
 [![WPT Chrome](https://wpt-badge.glitch.me/?product=chrome&prefix=/picture-in-picture/)](https://wpt.fyi/results/picture-in-picture)
-[![WPT Edge](https://wpt-badge.glitch.me/?product=edge&prefix=/picture-in-picture/)](https://wpt.fyi/results/picture-in-picture)
 [![WPT Firefox](https://wpt-badge.glitch.me/?product=firefox&prefix=/picture-in-picture/)](https://wpt.fyi/results/picture-in-picture)
 [![WPT Safari](https://wpt-badge.glitch.me/?product=safari&prefix=/picture-in-picture/)](https://wpt.fyi/results/picture-in-picture)
 
