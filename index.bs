@@ -9,7 +9,7 @@ Favicon: https://raw.githubusercontent.com/google/material-design-icons/master/a
 Group: mediawg
 Markup Shorthands: markdown yes
 Repository: w3c/picture-in-picture
-!Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/feature-policy">feature-policy/</a><br/><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
+!Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/permissions-policy">permissions-policy/</a><br/><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
 Editor: François Beaufort, w3cid 81174, Google LLC https://www.google.com, fbeaufort@google.com
 Editor: Mounir Lamouri, w3cid 45389, Google LLC https://www.google.com, mlamouri@google.com
 Abstract: This specification intends to provide APIs to allow websites to
@@ -505,7 +505,7 @@ The API is not limited to [[SECURE-CONTEXTS]] because it exposes a feature
 to web applications that user agents usually offer natively on all media
 regardless of the <a>browsing context</a>.
 
-## Feature Policy ## {#feature-policy}
+## Permissions Policy ## {#permissions-policy}
 
 This specification defines a <a>policy-controlled feature</a> named
 `"picture-in-picture"` that controls whether the <a>request Picture-in-Picture
