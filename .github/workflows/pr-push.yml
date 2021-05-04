@@ -12,7 +12,7 @@ on:
   # manually from GitHub's UI.
   pull_request: {}
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
