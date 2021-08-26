@@ -93,9 +93,9 @@ extensible.
     // Picture-in-Picture for the video, otherwise leave it.
     try {
       if (document.pictureInPictureElement) {
-        await video.requestPictureInPicture();
-      } else {
         await document.exitPictureInPicture();
+      } else {
+        await video.requestPictureInPicture();
       }
     } catch (err) {
       // Video failed to enter/leave Picture-in-Picture mode.
