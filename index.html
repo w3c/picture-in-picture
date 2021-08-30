@@ -4,10 +4,10 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>Picture-in-Picture</title>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version 800b43329, updated Tue May 25 14:13:32 2021 -0700" name="generator">
+  <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/picture-in-picture/" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
-  <meta content="1e8297a143b78342045fc931bde7dec0d1217de1" name="document-revision">
+  <meta content="fb2203991f47f0703df611dfecd36207a1ea7d80" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -568,7 +568,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-06-04">4 June 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-08-30">30 August 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -607,7 +607,7 @@ content sites, or applications on their device.</p>
    <p> Publication as an Editor’s Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. </p>
    <p> This is a draft document and may be updated, replaced or obsoleted by other documents at any time.
   It is inappropriate to cite this document as other than work in progress. </p>
-   <p> This document was produced by a group operating under the <a class="css" data-link-type="property" href="https://www.w3.org/Consortium/Patent-Policy-20170801/" id="sotd_patent">W3C Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/2004/01/pp-impl/115198/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
+   <p> This document was produced by a group operating under the <a class="css" data-link-type="property" href="https://www.w3.org/Consortium/Patent-Policy/" id="sotd_patent">W3C Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/groups/wg/media/ipr" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
    <p> This document is governed by the <a href="https://www.w3.org/2020/Process-20200915/" id="w3c_process_revision">15 September 2020 W3C Process Document</a>. </p>
    <p></p>
   </div>
@@ -717,9 +717,9 @@ extensible.</p>
     <c- c1>// Picture-in-Picture for the video, otherwise leave it.</c->
     <c- k>try</c-> <c- p>{</c->
       <c- k>if</c-> <c- p>(</c->document<c- p>.</c->pictureInPictureElement<c- p>)</c-> <c- p>{</c->
-        <c- k>await</c-> video<c- p>.</c->requestPictureInPicture<c- p>();</c->
-      <c- p>}</c-> <c- k>else</c-> <c- p>{</c->
         <c- k>await</c-> document<c- p>.</c->exitPictureInPicture<c- p>();</c->
+      <c- p>}</c-> <c- k>else</c-> <c- p>{</c->
+        <c- k>await</c-> video<c- p>.</c->requestPictureInPicture<c- p>();</c->
       <c- p>}</c->
     <c- p>}</c-> <c- k>catch</c-> <c- p>(</c->err<c- p>)</c-> <c- p>{</c->
       <c- c1>// Video failed to enter/leave Picture-in-Picture mode.</c->
@@ -1083,37 +1083,37 @@ Wörner for their contributions to this document.</p>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
-   <li><a href="#dom-htmlvideoelement-autopictureinpicture">autoPictureInPicture</a><span>, in §4.1</span>
-   <li><a href="#autopictureinpictureelement">autoPictureInPictureElement</a><span>, in §3.4</span>
-   <li><a href="#close-window-algorithm">close window algorithm</a><span>, in §4.4</span>
-   <li><a href="#dom-pictureinpictureevent-pictureinpictureevent">constructor(type, eventInitDict)</a><span>, in §4.5</span>
-   <li><a href="#dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a><span>, in §4.1</span>
-   <li><a href="#eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a><span>, in §4.5</span>
-   <li><a href="#dom-document-exitpictureinpicture">exitPictureInPicture()</a><span>, in §4.2</span>
-   <li><a href="#exit-picture-in-picture-algorithm">exit Picture-in-Picture algorithm</a><span>, in §3.2</span>
-   <li><a href="#dom-pictureinpicturewindow-height">height</a><span>, in §4.4</span>
-   <li><a href="#eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a><span>, in §4.5</span>
-   <li><a href="#dom-htmlvideoelement-onenterpictureinpicture">onenterpictureinpicture</a><span>, in §4.1</span>
-   <li><a href="#dom-htmlvideoelement-onleavepictureinpicture">onleavepictureinpicture</a><span>, in §4.1</span>
-   <li><a href="#dom-pictureinpicturewindow-onresize">onresize</a><span>, in §4.4</span>
-   <li><a href="#dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a><span>, in §4.3</span>
-   <li><a href="#dom-document-pictureinpictureenabled">pictureInPictureEnabled</a><span>, in §4.2</span>
-   <li><a href="#pictureinpictureevent">PictureInPictureEvent</a><span>, in §4.5</span>
-   <li><a href="#dictdef-pictureinpictureeventinit">PictureInPictureEventInit</a><span>, in §4.5</span>
-   <li><a href="#dom-pictureinpictureevent-pictureinpictureevent">PictureInPictureEvent(type, eventInitDict)</a><span>, in §4.5</span>
-   <li><a href="#picture-in-picture-support">Picture-in-Picture support</a><span>, in §4.2</span>
-   <li><a href="#picture-in-picture-window">Picture-in-Picture window</a><span>, in §3.1</span>
-   <li><a href="#pictureinpicturewindow">PictureInPictureWindow</a><span>, in §4.4</span>
+   <li><a href="#dom-htmlvideoelement-autopictureinpicture">autoPictureInPicture</a><span>, in § 4.1</span>
+   <li><a href="#autopictureinpictureelement">autoPictureInPictureElement</a><span>, in § 3.4</span>
+   <li><a href="#close-window-algorithm">close window algorithm</a><span>, in § 4.4</span>
+   <li><a href="#dom-pictureinpictureevent-pictureinpictureevent">constructor(type, eventInitDict)</a><span>, in § 4.5</span>
+   <li><a href="#dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a><span>, in § 4.1</span>
+   <li><a href="#eventdef-htmlvideoelement-enterpictureinpicture">enterpictureinpicture</a><span>, in § 4.5</span>
+   <li><a href="#dom-document-exitpictureinpicture">exitPictureInPicture()</a><span>, in § 4.2</span>
+   <li><a href="#exit-picture-in-picture-algorithm">exit Picture-in-Picture algorithm</a><span>, in § 3.2</span>
+   <li><a href="#dom-pictureinpicturewindow-height">height</a><span>, in § 4.4</span>
+   <li><a href="#eventdef-htmlvideoelement-leavepictureinpicture">leavepictureinpicture</a><span>, in § 4.5</span>
+   <li><a href="#dom-htmlvideoelement-onenterpictureinpicture">onenterpictureinpicture</a><span>, in § 4.1</span>
+   <li><a href="#dom-htmlvideoelement-onleavepictureinpicture">onleavepictureinpicture</a><span>, in § 4.1</span>
+   <li><a href="#dom-pictureinpicturewindow-onresize">onresize</a><span>, in § 4.4</span>
+   <li><a href="#dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a><span>, in § 4.3</span>
+   <li><a href="#dom-document-pictureinpictureenabled">pictureInPictureEnabled</a><span>, in § 4.2</span>
+   <li><a href="#pictureinpictureevent">PictureInPictureEvent</a><span>, in § 4.5</span>
+   <li><a href="#dictdef-pictureinpictureeventinit">PictureInPictureEventInit</a><span>, in § 4.5</span>
+   <li><a href="#dom-pictureinpictureevent-pictureinpictureevent">PictureInPictureEvent(type, eventInitDict)</a><span>, in § 4.5</span>
+   <li><a href="#picture-in-picture-support">Picture-in-Picture support</a><span>, in § 4.2</span>
+   <li><a href="#picture-in-picture-window">Picture-in-Picture window</a><span>, in § 3.1</span>
+   <li><a href="#pictureinpicturewindow">PictureInPictureWindow</a><span>, in § 4.4</span>
    <li>
     pictureInPictureWindow
     <ul>
-     <li><a href="#dom-pictureinpictureevent-pictureinpicturewindow">attribute for PictureInPictureEvent</a><span>, in §4.5</span>
-     <li><a href="#dom-pictureinpictureeventinit-pictureinpicturewindow">dict-member for PictureInPictureEventInit</a><span>, in §4.5</span>
+     <li><a href="#dom-pictureinpictureevent-pictureinpicturewindow">attribute for PictureInPictureEvent</a><span>, in § 4.5</span>
+     <li><a href="#dom-pictureinpictureeventinit-pictureinpicturewindow">dict-member for PictureInPictureEventInit</a><span>, in § 4.5</span>
     </ul>
-   <li><a href="#dom-htmlvideoelement-requestpictureinpicture">requestPictureInPicture()</a><span>, in §4.1</span>
-   <li><a href="#request-picture-in-picture-algorithm">request Picture-in-Picture algorithm</a><span>, in §3.1</span>
-   <li><a href="#eventdef-pictureinpicturewindow-resize">resize</a><span>, in §4.5</span>
-   <li><a href="#dom-pictureinpicturewindow-width">width</a><span>, in §4.4</span>
+   <li><a href="#dom-htmlvideoelement-requestpictureinpicture">requestPictureInPicture()</a><span>, in § 4.1</span>
+   <li><a href="#request-picture-in-picture-algorithm">request Picture-in-Picture algorithm</a><span>, in § 3.1</span>
+   <li><a href="#eventdef-pictureinpicturewindow-resize">resize</a><span>, in § 4.5</span>
+   <li><a href="#dom-pictureinpicturewindow-width">width</a><span>, in § 4.4</span>
   </ul>
   <aside class="dfn-panel" data-for="term-for-px">
    <a href="https://drafts.csswg.org/css-values-4/#px">https://drafts.csswg.org/css-values-4/#px</a><b>Referenced in:</b>
@@ -1553,30 +1553,30 @@ Wörner for their contributions to this document.</p>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-css-values-4">[CSS-VALUES-4]
-   <dd>Tab Atkins Jr.; Elika Etemad. <a href="https://www.w3.org/TR/css-values-4/">CSS Values and Units Module Level 4</a>. 11 November 2020. WD. URL: <a href="https://www.w3.org/TR/css-values-4/">https://www.w3.org/TR/css-values-4/</a>
+   <dd>Tab Atkins Jr.; Elika Etemad. <a href="https://www.w3.org/TR/css-values-4/"><cite>CSS Values and Units Module Level 4</cite></a>. 15 July 2021. WD. URL: <a href="https://www.w3.org/TR/css-values-4/">https://www.w3.org/TR/css-values-4/</a>
    <dt id="biblio-dom">[DOM]
-   <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/">DOM Standard</a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
+   <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
    <dt id="biblio-fullscreen">[Fullscreen]
-   <dd>Philip Jägenstedt. <a href="https://fullscreen.spec.whatwg.org/">Fullscreen API Standard</a>. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a>
+   <dd>Philip Jägenstedt. <a href="https://fullscreen.spec.whatwg.org/"><cite>Fullscreen API Standard</cite></a>. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a>
    <dt id="biblio-html">[HTML]
-   <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+   <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-page-visibility">[Page-Visibility]
-   <dd>Jatinder Mann; Arvind Jain. <a href="https://www.w3.org/TR/page-visibility/">Page Visibility (Second Edition)</a>. 29 October 2013. REC. URL: <a href="https://www.w3.org/TR/page-visibility/">https://www.w3.org/TR/page-visibility/</a>
+   <dd>Jatinder Mann; Arvind Jain. <a href="https://www.w3.org/TR/page-visibility/"><cite>Page Visibility (Second Edition)</cite></a>. 29 October 2013. REC. URL: <a href="https://www.w3.org/TR/page-visibility/">https://www.w3.org/TR/page-visibility/</a>
    <dt id="biblio-permissions-policy-1">[PERMISSIONS-POLICY-1]
-   <dd>Ian Clelland. <a href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a>. 16 July 2020. WD. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
+   <dd>Ian Clelland. <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. 16 July 2020. WD. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
    <dt id="biblio-remote-playback">[Remote-Playback]
-   <dd>Mounir Lamouri; Anton Vayvod. <a href="https://www.w3.org/TR/remote-playback/">Remote Playback API</a>. 19 October 2017. CR. URL: <a href="https://www.w3.org/TR/remote-playback/">https://www.w3.org/TR/remote-playback/</a>
+   <dd>Mounir Lamouri; Anton Vayvod. <a href="https://www.w3.org/TR/remote-playback/"><cite>Remote Playback API</cite></a>. 19 October 2017. CR. URL: <a href="https://www.w3.org/TR/remote-playback/">https://www.w3.org/TR/remote-playback/</a>
    <dt id="biblio-selectors-4">[SELECTORS-4]
-   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/selectors-4/">Selectors Level 4</a>. 21 November 2018. WD. URL: <a href="https://www.w3.org/TR/selectors-4/">https://www.w3.org/TR/selectors-4/</a>
+   <dd>Elika Etemad; Tab Atkins Jr.. <a href="https://www.w3.org/TR/selectors-4/"><cite>Selectors Level 4</cite></a>. 21 November 2018. WD. URL: <a href="https://www.w3.org/TR/selectors-4/">https://www.w3.org/TR/selectors-4/</a>
    <dt id="biblio-webidl">[WebIDL]
-   <dd>Boris Zbarsky. <a href="https://heycam.github.io/webidl/">Web IDL</a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
+   <dd>Boris Zbarsky. <a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-mediasession">[MediaSession]
-   <dd>Mounir Lamouri; Becca Hughes. <a href="https://www.w3.org/TR/mediasession/">Media Session Standard</a>. 4 May 2021. WD. URL: <a href="https://www.w3.org/TR/mediasession/">https://www.w3.org/TR/mediasession/</a>
+   <dd>Mounir Lamouri; Becca Hughes. <a href="https://www.w3.org/TR/mediasession/"><cite>Media Session Standard</cite></a>. 4 June 2021. WD. URL: <a href="https://www.w3.org/TR/mediasession/">https://www.w3.org/TR/mediasession/</a>
    <dt id="biblio-secure-contexts">[SECURE-CONTEXTS]
-   <dd>Mike West. <a href="https://www.w3.org/TR/secure-contexts/">Secure Contexts</a>. 15 September 2016. CR. URL: <a href="https://www.w3.org/TR/secure-contexts/">https://www.w3.org/TR/secure-contexts/</a>
+   <dd>Mike West. <a href="https://www.w3.org/TR/secure-contexts/"><cite>Secure Contexts</cite></a>. 15 September 2016. CR. URL: <a href="https://www.w3.org/TR/secure-contexts/">https://www.w3.org/TR/secure-contexts/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement"><c- g>HTMLVideoElement</c-></a> {
