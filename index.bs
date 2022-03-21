@@ -186,33 +186,31 @@ run the following steps:
 
 1. If <a>Picture-in-Picture support</a> is `false`, throw a
     {{NotSupportedError}} and abort these steps.
-2. Let |document| be the <a>current settings object</a>'s <a>relevant global object</a>'s
-    <a>associated <code>Document</code></a>.
-3. If the |document| is not <a>allowed to use</a> the <a>policy-controlled feature</a>
+2. If the document is not <a>allowed to use</a> the <a>policy-controlled feature</a>
     named `"picture-in-picture"`, throw a {{SecurityError}} and abort these
     steps.
-4. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
+3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
     {{InvalidStateError}} and abort these steps.
-5. If |video| has no video track, throw a {{InvalidStateError}} and abort
+4. If |video| has no video track, throw a {{InvalidStateError}} and abort
     these steps.
-6. OPTIONALLY, if |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
+5. OPTIONALLY, if |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
     throw an {{InvalidStateError}} and abort these steps.
-7. If |userActivationRequired| is `true` and the <a>relevant global object</a>
+6. If |userActivationRequired| is `true` and the <a>relevant global object</a>
     of <a>this</a> does not have <a>transient activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
-8. If |video| is {{pictureInPictureElement}}, abort these steps.
-9. If |playingRequired| is `true` and |video| is {{paused}}, abort these steps.
-10. Set {{pictureInPictureElement}} to |video|.
-11. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
+7. If |video| is {{pictureInPictureElement}}, abort these steps.
+8. If |playingRequired| is `true` and |video| is {{paused}}, abort these steps.
+9. Set {{pictureInPictureElement}} to |video|.
+10. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-12. Append <a>relevant settings object</a>'s <a>origin</a> to
+11. Append <a>relevant settings object</a>'s <a>origin</a> to
     <a>initiators of active Picture-in-Picture sessions</a>.
-13. <a>Queue a task</a> to <a>fire an event</a> with the name
+12. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
     |video| with its {{bubbles}} attribute initialized to `true` and its
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
     <a>Picture-in-Picture window</a>.
-14. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
+13. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
     RECOMMENDED to <a>exit fullscreen</a>.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
