@@ -171,12 +171,12 @@ extensible.
 
 # Concepts # {#concepts}
 
-## Internal Slot Definitions
+## Internal Slot Definitions ## {#defines}
 
 A <a>user agent</a> has:
 
-1. an <dfn>initiators of active Picture-in-Picture sessions</dfn> set,
-    which is initially empty.
+1. An <dfn>initiators of active Picture-in-Picture sessions</dfn>
+    set of zero or more {{Document}} objects, which is initially empty.
 
 ## Request Picture-in-Picture ## {#request-pip}
 
