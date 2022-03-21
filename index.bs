@@ -176,7 +176,7 @@ extensible.
 A <a>user agent</a> has:
 
 1. An <dfn>initiators of active Picture-in-Picture sessions</dfn>
-    set of zero or more {{Document}} objects, which is initially empty.
+    set of zero or more <a>origins</a>, which is initially empty.
 
 ## Request Picture-in-Picture ## {#request-pip}
 
@@ -205,7 +205,8 @@ run the following steps:
 10. Set {{pictureInPictureElement}} to |video|.
 11. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-12. Append |document| to <a>initiators of active Picture-in-Picture sessions</a>.
+12. Append <a>relevant settings object</a>'s <a>origin</a> to
+    <a>initiators of active Picture-in-Picture sessions</a>.
 13. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
     |video| with its {{bubbles}} attribute initialized to `true` and its
@@ -247,9 +248,8 @@ the user agent MUST run the following steps:
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
     <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}}.
 4. Unset {{pictureInPictureElement}}.
-5. Let |document| be the <a>current settings object</a>'s <a>relevant global object</a>'s
-    <a>associated <code>Document</code></a>.
-6. Remove |document| from <a>initiators of active Picture-in-Picture sessions</a>.
+5. Remove the <a>relevant settings object</a>'s <a>origin</a> from
+    <a>initiators of active Picture-in-Picture sessions</a>.
 
 It is NOT RECOMMENDED that the video playback state changes when the <a>exit
 Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
