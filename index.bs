@@ -176,7 +176,14 @@ extensible.
 A <a>user agent</a> has:
 
 1. An <dfn>initiators of active Picture-in-Picture sessions</dfn>
-    set of zero or more <a>origins</a>, which is initially empty.
+    list of zero or more <a>origins</a>, which is initially empty.
+
+Note: In case a <a>user agent</a> supports multiple Picture-in-Picture
+  windows, the list allows duplicates.
+
+An origin is said to have an <dfn>active Picture-in-Picture session</dfn> if any
+of the origins in <a>initiators of active Picture-in-Picture sessions</a>
+are <a>same origin-domain</a> with origin.
 
 ## Request Picture-in-Picture ## {#request-pip}
 
@@ -246,7 +253,7 @@ the user agent MUST run the following steps:
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
     <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}}.
 4. Unset {{pictureInPictureElement}}.
-5. Remove the <a>relevant settings object</a>'s <a>origin</a> from
+5. Remove one <a>item</a> matching <a>relevant settings object</a>'s <a>origin</a> from
     <a>initiators of active Picture-in-Picture sessions</a>.
 
 It is NOT RECOMMENDED that the video playback state changes when the <a>exit
