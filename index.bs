@@ -171,6 +171,20 @@ extensible.
 
 # Concepts # {#concepts}
 
+## Internal Slot Definitions ## {#defines}
+
+A <a>user agent</a> has:
+
+1. An <dfn>initiators of active Picture-in-Picture sessions</dfn>
+    list of zero or more <a>origins</a>, which is initially empty.
+
+Note: In case a <a>user agent</a> supports multiple Picture-in-Picture
+  windows, the list allows duplicates.
+
+An origin is said to have an <dfn>active Picture-in-Picture session</dfn> if any
+of the origins in <a>initiators of active Picture-in-Picture sessions</a>
+are <a>same origin-domain</a> with origin.
+
 ## Request Picture-in-Picture ## {#request-pip}
 
 When the <dfn>request Picture-in-Picture algorithm</dfn> with |video|,
@@ -196,12 +210,14 @@ run the following steps:
 9. Set {{pictureInPictureElement}} to |video|.
 10. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-11. <a>Queue a task</a> to <a>fire an event</a> with the name
+11. Append <a>relevant settings object</a>'s <a>origin</a> to
+    <a>initiators of active Picture-in-Picture sessions</a>.
+12. <a>Queue a task</a> to <a>fire an event</a> with the name
     {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
     |video| with its {{bubbles}} attribute initialized to `true` and its
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
     <a>Picture-in-Picture window</a>.
-12. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
+13. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
     RECOMMENDED to <a>exit fullscreen</a>.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
@@ -237,6 +253,8 @@ the user agent MUST run the following steps:
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
     <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}}.
 4. Unset {{pictureInPictureElement}}.
+5. Remove one <a>item</a> matching <a>relevant settings object</a>'s <a>origin</a> from
+    <a>initiators of active Picture-in-Picture sessions</a>.
 
 It is NOT RECOMMENDED that the video playback state changes when the <a>exit
 Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
