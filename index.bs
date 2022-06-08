@@ -212,7 +212,7 @@ run the following steps:
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
 11. Append <a>relevant settings object</a>'s <a>origin</a> to
     <a>initiators of active Picture-in-Picture sessions</a>.
-12. <a>Queue a task</a> to <a>fire an event</a> with the name
+12. <a>Queue a task</a> to <a>fire an event</a> named
     {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
     |video| with its {{bubbles}} attribute initialized to `true` and its
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
@@ -247,7 +247,7 @@ the user agent MUST run the following steps:
     abort these steps.
 2. Run the <a>close window algorithm</a> with the <a>Picture-in-Picture
     window</a> associated with {{pictureInPictureElement}}.
-3. <a>Queue a task</a> to <a>fire an event</a> with the name
+3. <a>Queue a task</a> to <a>fire an event</a> named
     {{leavepictureinpicture}} using {{PictureInPictureEvent}} at the
     |video| with its {{bubbles}} attribute initialized to `true` and its
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
@@ -475,7 +475,7 @@ the |state| is `opened`. Otherwise, it MUST return 0.
 
 When the size of the <a>Picture-in-Picture window</a> associated with
 {{pictureInPictureElement}} changes, the user agent MUST <a>queue a task</a> to
-<a>fire an event</a> with the name {{resize}} at {{pictureInPictureElement}}.
+<a>fire an event</a> named {{resize}} at {{pictureInPictureElement}}.
 
 ## Event types ## {#event-types}
 
