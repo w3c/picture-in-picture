@@ -207,7 +207,7 @@ the user agent MUST run the following steps:
 7. If |video| is {{pictureInPictureElement}}, abort these steps.
 8. Set {{pictureInPictureElement}} to |video|.
 9. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
-   {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
+    {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
 10. Append <a>relevant settings object</a>'s <a>origin</a> to
     <a>initiators of active Picture-in-Picture sessions</a>.
 11. <a>Queue a task</a> to <a>fire an event</a> named
