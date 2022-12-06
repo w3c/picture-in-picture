@@ -9,7 +9,7 @@
   <meta content="Bikeshed version 63e66730b, updated Tue Oct 25 12:35:05 2022 -0700" name="generator">
   <link href="https://www.w3.org/TR/picture-in-picture/" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
-  <meta content="f51cdfac6ba5ce88030d61136045d0652e544340" name="document-revision">
+  <meta content="a4e812ad1e5b4a79d5d8f22b4d574cc87a9917c4" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -604,7 +604,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <dt class="editor">Former Editor:
       <dd class="editor p-author h-card vcard" data-editor-id="45389"><a class="p-name fn u-email email" href="mailto:mlamouri@google.com">Mounir Lamouri</a> (<a class="p-org org" href="https://www.google.com">Google LLC</a>)
       <dt>Web Platform Tests:
-      <dd><a href="https://github.com/web-platform-tests/wpt/tree/master/feature-policy">feature-policy/</a><br><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
+      <dd><a href="https://github.com/web-platform-tests/wpt/tree/master/permissions-policy">permissions-policy/</a><br><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
      </dl>
     </div>
    </details>
@@ -673,7 +673,7 @@ content sites, or applications on their device.</p>
      <a href="#security-considerations"><span class="secno">5</span> <span class="content">Security considerations</span></a>
      <ol class="toc">
       <li><a href="#secure-context"><span class="secno">5.1</span> <span class="content">Secure Context</span></a>
-      <li><a href="#feature-policy"><span class="secno">5.2</span> <span class="content">Feature Policy</span></a>
+      <li><a href="#permissions-policy"><span class="secno">5.2</span> <span class="content">Permissions Policy</span></a>
      </ol>
     <li><a href="#acknowledgments"><span class="secno">6</span> <span class="content">Acknowledgments</span></a>
     <li>
@@ -1066,7 +1066,7 @@ specification may allow PIP-ing arbitrary HTML content.</p>
    <p>The API is not limited to <a data-link-type="biblio" href="#biblio-secure-contexts">[SECURE-CONTEXTS]</a> because it exposes a feature
 to web applications that user agents usually offer natively on all media
 regardless of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/document-sequences.html#browsing-context" id="ref-for-browsing-context">browsing context</a>.</p>
-   <h3 class="heading settled" data-level="5.2" id="feature-policy"><span class="secno">5.2. </span><span class="content">Feature Policy</span><a class="self-link" href="#feature-policy"></a></h3>
+   <h3 class="heading settled" data-level="5.2" id="permissions-policy"><span class="secno">5.2. </span><span class="content">Permissions Policy</span><a class="self-link" href="#permissions-policy"></a></h3>
    <p>This specification defines a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature①">policy-controlled feature</a> named <code>"picture-in-picture"</code> that controls whether the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm" id="ref-for-request-picture-in-picture-algorithm①">request Picture-in-Picture
 algorithm</a> may return a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#securityerror" id="ref-for-securityerror①">SecurityError</a></code> and whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled①">pictureInPictureEnabled</a></code> is <code>true</code> or <code>false</code>.</p>
    <p>The <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist" id="ref-for-default-allowlist">default allowlist</a> for this feature is <code>*</code>.</p>
@@ -1399,14 +1399,14 @@ Wörner for their contributions to this document.</p>
   <aside class="dfn-panel" data-for="term-for-default-allowlist">
    <a href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist">https://w3c.github.io/webappsec-permissions-policy/#default-allowlist</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-default-allowlist">5.2. Feature Policy</a>
+    <li><a href="#ref-for-default-allowlist">5.2. Permissions Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
    <a href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature">https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-policy-controlled-feature">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-policy-controlled-feature①">5.2. Feature Policy</a>
+    <li><a href="#ref-for-policy-controlled-feature①">5.2. Permissions Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-local-playback-device">
@@ -1484,7 +1484,7 @@ Wörner for their contributions to this document.</p>
    <a href="https://webidl.spec.whatwg.org/#securityerror">https://webidl.spec.whatwg.org/#securityerror</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-securityerror">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-securityerror①">5.2. Feature Policy</a>
+    <li><a href="#ref-for-securityerror①">5.2. Permissions Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-a-new-promise">
@@ -1703,7 +1703,7 @@ Wörner for their contributions to this document.</p>
    <b><a href="#request-picture-in-picture-algorithm">#request-picture-in-picture-algorithm</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-request-picture-in-picture-algorithm">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-request-picture-in-picture-algorithm①">5.2. Feature Policy</a>
+    <li><a href="#ref-for-request-picture-in-picture-algorithm①">5.2. Permissions Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="picture-in-picture-window">
@@ -1742,7 +1742,7 @@ Wörner for their contributions to this document.</p>
    <b><a href="#dom-document-pictureinpictureenabled">#dom-document-pictureinpictureenabled</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-document-pictureinpictureenabled">4.2. Extensions to Document</a>
-    <li><a href="#ref-for-dom-document-pictureinpictureenabled①">5.2. Feature Policy</a>
+    <li><a href="#ref-for-dom-document-pictureinpictureenabled①">5.2. Permissions Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-document-exitpictureinpicture">
