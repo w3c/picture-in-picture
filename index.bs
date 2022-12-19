@@ -23,6 +23,9 @@ spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
         urlPrefix: media.html
             text: media element event task source
+    type: dfn
+        urlPrefix: interaction.html
+            text: system visibility state
 spec: Fullscreen; urlPrefix: https://fullscreen.spec.whatwg.org
     type: dfn; text: fullscreen flag; url: #fullscreen-flag
     type: dfn; text: fullscreenElement; url: dom-document-fullscreenelement
@@ -31,8 +34,6 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
     type: dfn
         text: local playback device
         text: local playback state
-spec: Page-Visibility; urlPrefix: https://www.w3.org/TR/page-visibility/
-    type: attribute; text: visibilityState; for: Document; url: dom-visibilitystate
 </pre>
 
 <pre class="link-defaults">
@@ -310,10 +311,9 @@ be visible, even when the <a>Document</a> is not in focus or hidden. The user
 agent SHOULD provide a way for users to manually close the Picture-in-Picture
 window.
 
-The [[Page-Visibility]] specification defines a {{Document/visibilityState}}
-attribute used to determine the visibility state of a <a>top-level browsing
-context</a>. The Picture-in-Picture window visibility MUST NOT be taken into
-account when determining the value returned by {{Document/visibilityState}}.
+The Picture-in-Picture window visibility MUST NOT be taken into account by the
+user agent to determine if the <a>system visibility state</a> of a 
+<a for="/">traversable navigable</a> has changed.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
