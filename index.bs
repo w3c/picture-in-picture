@@ -25,7 +25,6 @@ spec: HTML; urlPrefix: https://html.spec.whatwg.org/multipage/
             text: media element event task source
     type: dfn
         urlPrefix: interaction.html
-            text: traversable navigable
             text: system visibility state
 spec: Fullscreen; urlPrefix: https://fullscreen.spec.whatwg.org
     type: dfn; text: fullscreen flag; url: #fullscreen-flag
@@ -314,7 +313,7 @@ window.
 
 The Picture-in-Picture window visibility MUST NOT be taken into account by the
 user agent to determine if the <a>system visibility state</a> of a 
-<a>traversable navigable</a> has changed.
+<a for="/">traversable navigable</a> has changed.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
