@@ -31,8 +31,6 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
     type: dfn
         text: local playback device
         text: local playback state
-spec: Page-Visibility; urlPrefix: https://www.w3.org/TR/page-visibility/
-    type: attribute; text: visibilityState; for: Document; url: dom-visibilitystate
 </pre>
 
 <pre class="link-defaults">
@@ -41,6 +39,7 @@ spec:dom; type:dfn; for:NamedNodeMap; text:element
 spec:dom; type:interface; text:Document
 spec:html; type:attribute; for:HTMLMediaElement; text:readyState
 spec:html; type:dfn; for:/; text:browsing context
+spec:html; type:attribute; text:visibilityState
 </pre>
 
 # Introduction # {#intro}
@@ -310,10 +309,8 @@ be visible, even when the <a>Document</a> is not in focus or hidden. The user
 agent SHOULD provide a way for users to manually close the Picture-in-Picture
 window.
 
-The [[Page-Visibility]] specification defines a {{Document/visibilityState}}
-attribute used to determine the visibility state of a <a>top-level browsing
-context</a>. The Picture-in-Picture window visibility MUST NOT be taken into
-account when determining the value returned by {{Document/visibilityState}}.
+The Picture-in-Picture window visibility MUST NOT be taken into account when
+determining the value returned by {{visibilityState}}.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
