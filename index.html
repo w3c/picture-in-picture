@@ -6,10 +6,10 @@
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version 63e66730b, updated Tue Oct 25 12:35:05 2022 -0700" name="generator">
+  <meta content="Bikeshed version 26e85e599, updated Thu Dec 8 15:29:31 2022 -0800" name="generator">
   <link href="https://www.w3.org/TR/picture-in-picture/" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
-  <meta content="a4e812ad1e5b4a79d5d8f22b4d574cc87a9917c4" name="document-revision">
+  <meta content="e2c03128fc0b761509d6e5e5c4c7f81207815d21" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -588,7 +588,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-12-06">6 December 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-12-19">19 December 2022</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -723,7 +723,7 @@ the website when it changes.</p>
     <li data-md>
      <p>Allow the website to check if Picture-in-Picture mode can be triggered.</p>
    </ul>
-   <p>The proposed Picture-in-Picture API is very similar to <a data-link-type="biblio" href="#biblio-fullscreen">[Fullscreen]</a> as they
+   <p>The proposed Picture-in-Picture API is very similar to <a data-link-type="biblio" href="#biblio-fullscreen" title="Fullscreen API Standard">[Fullscreen]</a> as they
 have similar properties. The API only applies to <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement">HTMLVideoElement</a></code> at the moment but is meant to be
 extensible.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
@@ -918,20 +918,19 @@ Picture-in-Picture algorithm</a>.</p>
    <h3 class="heading settled" data-level="3.5" id="fullscreen"><span class="secno">3.5. </span><span class="content">Interaction with Fullscreen</span><a class="self-link" href="#fullscreen"></a></h3>
    <p>It is RECOMMENDED to run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm③">exit Picture-in-Picture algorithm</a> when the <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①⓪">pictureInPictureElement</a></code> <a data-link-type="dfn" href="https://fullscreen.spec.whatwg.org#fullscreen-flag" id="ref-for-fullscreen-flag">fullscreen flag</a> is set.</p>
    <h3 class="heading settled" data-level="3.6" id="remote-playback"><span class="secno">3.6. </span><span class="content">Interaction with Remote Playback</span><a class="self-link" href="#remote-playback"></a></h3>
-   <p>The <a data-link-type="biblio" href="#biblio-remote-playback">[Remote-Playback]</a> specification defines a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-device" id="ref-for-dfn-local-playback-device">local playback device</a> and a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-state" id="ref-for-dfn-local-playback-state">local playback state</a>. For the purpose of Picture-in-Picture, the
+   <p>The <a data-link-type="biblio" href="#biblio-remote-playback" title="Remote Playback API">[Remote-Playback]</a> specification defines a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-device" id="ref-for-dfn-local-playback-device">local playback device</a> and a <a data-link-type="dfn" href="https://w3c.github.io/remote-playback/#dfn-local-playback-state" id="ref-for-dfn-local-playback-state">local playback state</a>. For the purpose of Picture-in-Picture, the
 playback is local and regardless of whether it is played in page or in
 Picture-in-Picture.</p>
    <h3 class="heading settled" data-level="3.7" id="media-session"><span class="secno">3.7. </span><span class="content">Interaction with Media Session</span><a class="self-link" href="#media-session"></a></h3>
-   <p>The API will have to be used with the <a data-link-type="biblio" href="#biblio-mediasession">[MediaSession]</a> API for customizing the
+   <p>The API will have to be used with the <a data-link-type="biblio" href="#biblio-mediasession" title="Media Session Standard">[MediaSession]</a> API for customizing the
 available controls on the Picture-in-Picture window.</p>
    <h3 class="heading settled" data-level="3.8" id="page-visibility"><span class="secno">3.8. </span><span class="content">Interaction with Page Visibility</span><a class="self-link" href="#page-visibility"></a></h3>
    <p>When <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①①">pictureInPictureElement</a></code> is set, the Picture-in-Picture window MUST
 be visible, even when the <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-document" id="ref-for-concept-document">Document</a> is not in focus or hidden. The user
 agent SHOULD provide a way for users to manually close the Picture-in-Picture
 window.</p>
-   <p>The <a data-link-type="biblio" href="#biblio-page-visibility">[Page-Visibility]</a> specification defines a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/page-visibility/#dom-visibilitystate" id="ref-for-dom-visibilitystate">visibilityState</a></code> attribute used to determine the visibility state of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/document-sequences.html#top-level-browsing-context" id="ref-for-top-level-browsing-context">top-level browsing
-context</a>. The Picture-in-Picture window visibility MUST NOT be taken into
-account when determining the value returned by <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/page-visibility/#dom-visibilitystate" id="ref-for-dom-visibilitystate①">visibilityState</a></code>.</p>
+   <p>The Picture-in-Picture window visibility MUST NOT be taken into account by the
+user agent to determine if the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state" id="ref-for-system-visibility-state">system visibility state</a> of a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable" id="ref-for-traversable-navigable">traversable navigable</a> has changed.</p>
    <h3 class="heading settled" data-level="3.9" id="one-pip-window"><span class="secno">3.9. </span><span class="content">One Picture-in-Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
    <p>Operating systems with a Picture-in-Picture API usually restrict
 Picture-in-Picture mode to only one window.  Whether only one window is allowed
@@ -1063,7 +1062,7 @@ apply to the shadow host chain.</p>
 viable product that has limited security issues. Later versions of this
 specification may allow PIP-ing arbitrary HTML content.</p>
    <h3 class="heading settled" data-level="5.1" id="secure-context"><span class="secno">5.1. </span><span class="content">Secure Context</span><a class="self-link" href="#secure-context"></a></h3>
-   <p>The API is not limited to <a data-link-type="biblio" href="#biblio-secure-contexts">[SECURE-CONTEXTS]</a> because it exposes a feature
+   <p>The API is not limited to <a data-link-type="biblio" href="#biblio-secure-contexts" title="Secure Contexts">[SECURE-CONTEXTS]</a> because it exposes a feature
 to web applications that user agents usually offer natively on all media
 regardless of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/document-sequences.html#browsing-context" id="ref-for-browsing-context">browsing context</a>.</p>
    <h3 class="heading settled" data-level="5.2" id="permissions-policy"><span class="secno">5.2. </span><span class="content">Permissions Policy</span><a class="self-link" href="#permissions-policy"></a></h3>
@@ -1087,7 +1086,7 @@ Wörner for their contributions to this document.</p>
     However, for readability,
     these words do not appear in all uppercase letters in this specification. </p>
    <p>All of the text of this specification is normative
-    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
+    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a> </p>
    <p>Examples in this specification are introduced with the words “for example”
     or are set apart from the normative text
     with <code>class="example"</code>,
@@ -1354,22 +1353,28 @@ Wörner for their contributions to this document.</p>
     <li><a href="#ref-for-same-origin-domain">3.1. Internal Slot Definitions</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-system-visibility-state">
+   <a href="https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state">https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-system-visibility-state">3.8. Interaction with Page Visibility</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-task-source">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#task-source">https://html.spec.whatwg.org/multipage/webappapis.html#task-source</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-task-source">4.6. Task source</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-top-level-browsing-context">
-   <a href="https://html.spec.whatwg.org/multipage/document-sequences.html#top-level-browsing-context">https://html.spec.whatwg.org/multipage/document-sequences.html#top-level-browsing-context</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-top-level-browsing-context">3.8. Interaction with Page Visibility</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-transient-activation">
    <a href="https://html.spec.whatwg.org/multipage/interaction.html#transient-activation">https://html.spec.whatwg.org/multipage/interaction.html#transient-activation</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-transient-activation">3.2. Request Picture-in-Picture</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-traversable-navigable">
+   <a href="https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable">https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-traversable-navigable">3.8. Interaction with Page Visibility</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-unloading-document-cleanup-steps">
@@ -1388,12 +1393,6 @@ Wörner for their contributions to this document.</p>
    <a href="https://infra.spec.whatwg.org/#user-agent">https://infra.spec.whatwg.org/#user-agent</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-user-agent">3.1. Internal Slot Definitions</a> <a href="#ref-for-user-agent①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-visibilitystate">
-   <a href="https://www.w3.org/TR/page-visibility/#dom-visibilitystate">https://www.w3.org/TR/page-visibility/#dom-visibilitystate</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-visibilitystate">3.8. Interaction with Page Visibility</a> <a href="#ref-for-dom-visibilitystate①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-default-allowlist">
@@ -1567,9 +1566,10 @@ Wörner for their contributions to this document.</p>
      <li><span class="dfn-paneled" id="term-for-concept-relevant-global">relevant global object</span>
      <li><span class="dfn-paneled" id="term-for-relevant-settings-object">relevant settings object</span>
      <li><span class="dfn-paneled" id="term-for-same-origin-domain">same origin-domain</span>
+     <li><span class="dfn-paneled" id="term-for-system-visibility-state">system visibility state</span>
      <li><span class="dfn-paneled" id="term-for-task-source">task source</span>
-     <li><span class="dfn-paneled" id="term-for-top-level-browsing-context">top-level browsing context</span>
      <li><span class="dfn-paneled" id="term-for-transient-activation">transient activation</span>
+     <li><span class="dfn-paneled" id="term-for-traversable-navigable">traversable navigable</span>
      <li><span class="dfn-paneled" id="term-for-unloading-document-cleanup-steps">unloading document cleanup steps</span>
     </ul>
    <li>
@@ -1577,11 +1577,6 @@ Wörner for their contributions to this document.</p>
     <ul>
      <li><span class="dfn-paneled" id="term-for-list-item">item</span>
      <li><span class="dfn-paneled" id="term-for-user-agent">user agent</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[Page-Visibility]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-dom-visibilitystate">visibilityState</span>
     </ul>
    <li>
     <a data-link-type="biblio">[PERMISSIONS-POLICY-1]</a> defines the following terms:
@@ -1632,8 +1627,6 @@ Wörner for their contributions to this document.</p>
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-infra">[INFRA]
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
-   <dt id="biblio-page-visibility">[Page-Visibility]
-   <dd>Jatinder Mann; Arvind Jain. <a href="https://www.w3.org/TR/page-visibility/"><cite>Page Visibility (Second Edition)</cite></a>. 29 October 2013. REC. URL: <a href="https://www.w3.org/TR/page-visibility/">https://www.w3.org/TR/page-visibility/</a>
    <dt id="biblio-permissions-policy-1">[PERMISSIONS-POLICY-1]
    <dd>Ian Clelland. <a href="https://w3c.github.io/webappsec-permissions-policy/"><cite>Permissions Policy</cite></a>. URL: <a href="https://w3c.github.io/webappsec-permissions-policy/">https://w3c.github.io/webappsec-permissions-policy/</a>
    <dt id="biblio-remote-playback">[Remote-Playback]
