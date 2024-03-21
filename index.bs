@@ -209,14 +209,16 @@ the user agent MUST run the following steps:
 8. Set {{pictureInPictureElement}} to |video|.
 9. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-10. Append <a>relevant settings object</a>'s <a>origin</a> to
+10. When the Picture-in-Picture window is opened it MUST be visible, even when
+    the <a>Document</a> is not in focus or hidden.
+11. Append <a>relevant settings object</a>'s <a>origin</a> to
     <a>initiators of active Picture-in-Picture sessions</a>.
-11. <a>Queue a task</a> to <a>fire an event</a> named
+12. <a>Queue a task</a> to <a>fire an event</a> named
     {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
     |video| with its {{bubbles}} attribute initialized to `true` and its
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
     <a>Picture-in-Picture window</a>.
-12. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
+13. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
     RECOMMENDED to <a>exit fullscreen</a>.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
@@ -236,6 +238,9 @@ video size.
 It is also RECOMMENDED that the Picture-in-Picture window has a maximum and
 minimum size. For example, it could be restricted to be between a quarter and
 a half of one dimension of the screen.
+
+The user agent SHOULD provide a way for users to manually close the
+Picture-in-Picture window.
 
 ## Exit Picture-in-Picture ## {#exit-pip}
 
@@ -305,11 +310,6 @@ The API will have to be used with the [[MediaSession]] API for customizing the
 available controls on the Picture-in-Picture window.
 
 ## Interaction with Page Visibility ## {#page-visibility}
-
-When {{pictureInPictureElement}} is set, the Picture-in-Picture window MUST
-be visible, even when the <a>Document</a> is not in focus or hidden. The user
-agent SHOULD provide a way for users to manually close the Picture-in-Picture
-window.
 
 The Picture-in-Picture window visibility MUST NOT be taken into account by the
 user agent to determine if the <a>system visibility state</a> of a 
