@@ -467,9 +467,10 @@ apply to the shadow host chain.
 
 <em>This section is non-normative.</em>
 
-The API applies only to {{HTMLVideoElement}} in order to start on a minimal
-viable product that has limited security issues. Later versions of this
-specification may allow PIP-ing arbitrary HTML content.
+To prevent potential abuse through spoofing, the API applies only to
+{{HTMLVideoElement}}. User interaction with the picture in picture window
+is intentionally limited so that the only effect is on the picture in
+picture window itself or the media being played.
 
 ## Secure Context ## {#secure-context}
 
