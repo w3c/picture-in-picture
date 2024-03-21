@@ -30,10 +30,6 @@ spec: Fullscreen; urlPrefix: https://fullscreen.spec.whatwg.org
     type: dfn; text: fullscreen flag; url: #fullscreen-flag
     type: dfn; text: fullscreenElement; url: dom-document-fullscreenelement
     type: dfn; text: exit fullscreen; url: fully-exit-fullscreen
-spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
-    type: dfn
-        text: local playback device
-        text: local playback state
 </pre>
 
 <pre class="link-defaults">
@@ -291,13 +287,6 @@ the user agent SHOULD run these steps:
 
 It is RECOMMENDED to run the <a>exit Picture-in-Picture algorithm</a> when the
 {{pictureInPictureElement}} <a>fullscreen flag</a> is set.
-
-## Interaction with Remote Playback ## {#remote-playback}
-
-The [[Remote-Playback]] specification defines a <a>local playback device</a>
-and a <a>local playback state</a>. For the purpose of Picture-in-Picture, the
-playback is local and regardless of whether it is played in page or in
-Picture-in-Picture.
 
 ## Interaction with Media Session ## {#media-session}
 
