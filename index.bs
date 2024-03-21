@@ -200,8 +200,8 @@ the user agent MUST run the following steps:
     {{InvalidStateError}} and abort these steps.
 4. If |video| has no video track, throw a {{InvalidStateError}} and abort
     these steps.
-5. OPTIONALLY, if |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
-    throw an {{InvalidStateError}} and abort these steps.
+5. If |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
+    the user agent MAY throw an {{InvalidStateError}} and abort these steps.
 6. If {{pictureInPictureElement}} is `null` and the <a>relevant global object</a>
     of <a>this</a> does not have <a>transient activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
@@ -276,11 +276,11 @@ The {{disablePictureInPicture}} IDL attribute MUST <a>reflect</a> the content
 attribute of the same name.
 
 If the {{disablePictureInPicture}} attribute is present on the video element,
-the user agent SHOULD NOT play the video element in Picture-in-Picture or
-present any UI to do so.
+the user agent MAY prevent the video element from playing in Picture-in-Picture
+mode or present any UI to do so.
 
 When the {{disablePictureInPicture}} attribute is added to a |video| element,
-the user agent SHOULD run these steps:
+the user agent MAY run these steps:
 
 1. Reject any pending promises returned by the {{requestPictureInPicture()}}
     method with {{InvalidStateError}}.
