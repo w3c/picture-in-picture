@@ -12,7 +12,7 @@ Repository: w3c/picture-in-picture
 !Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/permissions-policy">permissions-policy/</a><br/><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
 Editor: François Beaufort, w3cid 81174, Google LLC https://www.google.com, fbeaufort@google.com
 Former Editor: Mounir Lamouri, w3cid 45389, Google LLC https://www.google.com, mlamouri@google.com
-Abstract: This specification intends to provide APIs to allow websites to
+Abstract: This specification provides APIs to allow websites to
 Abstract: create a floating video window always on top of other windows so that
 Abstract: users may continue consuming media while they interact with other
 Abstract: content sites, or applications on their device.
@@ -56,8 +56,8 @@ window stays visible even when the user agent is not visible.
 Picture-in-Picture is a common platform-level feature among desktop and mobile
 OSs.
 
-This specification aims to allow websites to initiate and control this behavior
-by exposing the following sets of properties to the API:
+This specification extends {{HTMLVideoElement}} with the aim of allowing websites
+to initiate and control this behavior by exposing the following sets of properties:
 
 * Notify the website when it enters and leaves Picture-in-Picture mode.
 * Allow the website to trigger Picture-in-Picture mode via a user gesture on a
@@ -67,10 +67,8 @@ by exposing the following sets of properties to the API:
 * Allow the website to exit Picture-in-Picture mode.
 * Allow the website to check if Picture-in-Picture mode can be triggered.
 
-The proposed Picture-in-Picture API is very similar to [[Fullscreen]] as they
-have similar properties. The API only applies to
-{{HTMLVideoElement}} at the moment but is meant to be
-extensible.
+The Picture-in-Picture API is very similar to [[Fullscreen]] as they
+have similar properties.
 
 # Examples # {#examples}
 
