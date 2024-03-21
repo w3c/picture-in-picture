@@ -468,9 +468,9 @@ apply to the shadow host chain.
 <em>This section is non-normative.</em>
 
 To prevent potential abuse through spoofing, the API applies only to
-{{HTMLVideoElement}}. User interaction with the picture in picture window
-is intentionally limited so that the only effect is on the picture in
-picture window itself or the media being played.
+{{HTMLVideoElement}}. User interaction with the Picture-in-Picture window
+is intentionally limited so that the only effect is on the Picture-in-Picture
+window itself or the media being played.
 
 ## Secure Context ## {#secure-context}
 
