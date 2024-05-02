@@ -56,7 +56,7 @@ window stays visible even when the user agent is not visible.
 Picture-in-Picture is a common platform-level feature among desktop and mobile
 OSs.
 
-This specification extends {{HTMLVideoElement}} with the aim of allowing websites
+This specification extends {{HTMLVideoElement}} allowing websites
 to initiate and control this behavior by exposing the following sets of properties:
 
 * Notify the website when it enters and leaves Picture-in-Picture mode.
@@ -67,8 +67,6 @@ to initiate and control this behavior by exposing the following sets of properti
 * Allow the website to exit Picture-in-Picture mode.
 * Allow the website to check if Picture-in-Picture mode can be triggered.
 
-The Picture-in-Picture API is very similar to [[Fullscreen]] as they
-have similar properties.
 
 # Examples # {#examples}
 
@@ -467,7 +465,7 @@ apply to the shadow host chain.
 
 <em>This section is non-normative.</em>
 
-To prevent potential abuse through spoofing, the API applies only to
+To limit potential abuse through spoofing, the API applies only to
 {{HTMLVideoElement}}. User interaction with the Picture-in-Picture window
 is intentionally limited so that the only effect is on the Picture-in-Picture
 window itself or the media being played.
