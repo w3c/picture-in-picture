@@ -5,13 +5,11 @@
   <title>Picture-in-Picture</title>
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
-  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version 26e85e599, updated Thu Dec 8 15:29:31 2022 -0800" name="generator">
+  <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/picture-in-picture/" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
-  <meta content="e2c03128fc0b761509d6e5e5c4c7f81207815d21" name="document-revision">
-<style>/* style-autolinks */
-
+  <meta content="60f6f577176888c812922e3ce4f0c8c9f31c59df" name="document-revision">
+<style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
     font-size: inherit;
@@ -71,8 +69,17 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
-}</style>
-<style>/* style-colors */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+</style>
+<style>/* Boilerplate: style-colors */
 
 /* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
 :root {
@@ -180,221 +187,7 @@ pre .property::before, pre .property::after {
     --outdated-shadow: red;
 
     --editedrec-bg: darkorange;
-}</style>
-<style>/* style-counters */
-
-body {
-    counter-reset: example figure issue;
 }
-.issue {
-    counter-increment: issue;
-}
-.issue:not(.no-marker)::before {
-    content: "Issue " counter(issue);
-}
-
-.example {
-    counter-increment: example;
-}
-.example:not(.no-marker)::before {
-    content: "Example " counter(example);
-}
-.invalid.example:not(.no-marker)::before,
-.illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
-}
-
-figcaption {
-    counter-increment: figure;
-}
-figcaption:not(.no-marker)::before {
-    content: "Figure " counter(figure) " ";
-}</style>
-<style>/* style-dfn-panel */
-
-:root {
-    --dfnpanel-bg: #ddd;
-    --dfnpanel-text: var(--text);
-}
-.dfn-panel {
-    position: absolute;
-    z-index: 35;
-    height: auto;
-    width: -webkit-fit-content;
-    width: fit-content;
-    max-width: 300px;
-    max-height: 500px;
-    overflow: auto;
-    padding: 0.5em 0.75em;
-    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
-    background: var(--dfnpanel-bg);
-    color: var(--dfnpanel-text);
-    border: outset 0.2em;
-}
-.dfn-panel:not(.on) { display: none; }
-.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
-.dfn-panel > b { display: block; }
-.dfn-panel a { color: var(--dfnpanel-text); }
-.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
-.dfn-panel > b + b { margin-top: 0.25em; }
-.dfn-panel ul { padding: 0; }
-.dfn-panel li { list-style: inside; }
-.dfn-panel.activated {
-    display: inline-block;
-    position: fixed;
-    left: .5em;
-    bottom: 2em;
-    margin: 0 auto;
-    max-width: calc(100vw - 1.5em - .4em - .5em);
-    max-height: 30vh;
-}
-
-.dfn-paneled { cursor: pointer; }
-</style>
-<style>/* style-issues */
-
-a[href].issue-return {
-    float: right;
-    float: inline-end;
-    color: var(--issueheading-text);
-    font-weight: bold;
-    text-decoration: none;
-}
-</style>
-<style>/* style-md-lists */
-
-/* This is a weird hack for me not yet following the commonmark spec
-   regarding paragraph and lists. */
-[data-md] > :first-child {
-    margin-top: 0;
-}
-[data-md] > :last-child {
-    margin-bottom: 0;
-}</style>
-<style>/* style-selflinks */
-
-:root {
-    --selflink-text: white;
-    --selflink-bg: gray;
-    --selflink-hover-text: black;
-}
-.heading, .issue, .note, .example, li, dt {
-    position: relative;
-}
-a.self-link {
-    position: absolute;
-    top: 0;
-    left: calc(-1 * (3.5rem - 26px));
-    width: calc(3.5rem - 26px);
-    height: 2em;
-    text-align: center;
-    border: none;
-    transition: opacity .2s;
-    opacity: .5;
-}
-a.self-link:hover {
-    opacity: 1;
-}
-.heading > a.self-link {
-    font-size: 83%;
-}
-.example > a.self-link,
-.note > a.self-link,
-.issue > a.self-link {
-    /* These blocks are overflow:auto, so positioning outside
-       doesn't work. */
-    left: auto;
-    right: 0;
-}
-li > a.self-link {
-    left: calc(-1 * (3.5rem - 26px) - 2em);
-}
-dfn > a.self-link {
-    top: auto;
-    left: auto;
-    opacity: 0;
-    width: 1.5em;
-    height: 1.5em;
-    background: var(--selflink-bg);
-    color: var(--selflink-text);
-    font-style: normal;
-    transition: opacity .2s, background-color .2s, color .2s;
-}
-dfn:hover > a.self-link {
-    opacity: 1;
-}
-dfn > a.self-link:hover {
-    color: var(--selflink-hover-text);
-}
-
-a.self-link::before            { content: "¶"; }
-.heading > a.self-link::before { content: "§"; }
-dfn > a.self-link::before      { content: "#"; }
-</style>
-<style>/* style-syntax-highlighting */
-
-            pre.idl.highlight {
-                background: var(--borderedblock-bg, var(--def-bg));
-            }
-            
-code.highlight { padding: .1em; border-radius: .3em; }
-pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
-
-.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
-c-[a] { color: #990055 } /* Keyword.Declaration */
-c-[b] { color: #990055 } /* Keyword.Type */
-c-[c] { color: #708090 } /* Comment */
-c-[d] { color: #708090 } /* Comment.Multiline */
-c-[e] { color: #0077aa } /* Name.Attribute */
-c-[f] { color: #669900 } /* Name.Tag */
-c-[g] { color: #222222 } /* Name.Variable */
-c-[k] { color: #990055 } /* Keyword */
-c-[l] { color: #000000 } /* Literal */
-c-[m] { color: #000000 } /* Literal.Number */
-c-[n] { color: #0077aa } /* Name */
-c-[o] { color: #999999 } /* Operator */
-c-[p] { color: #999999 } /* Punctuation */
-c-[s] { color: #a67f59 } /* Literal.String */
-c-[t] { color: #a67f59 } /* Literal.String.Single */
-c-[u] { color: #a67f59 } /* Literal.String.Double */
-c-[cp] { color: #708090 } /* Comment.Preproc */
-c-[c1] { color: #708090 } /* Comment.Single */
-c-[cs] { color: #708090 } /* Comment.Special */
-c-[kc] { color: #990055 } /* Keyword.Constant */
-c-[kn] { color: #990055 } /* Keyword.Namespace */
-c-[kp] { color: #990055 } /* Keyword.Pseudo */
-c-[kr] { color: #990055 } /* Keyword.Reserved */
-c-[ld] { color: #000000 } /* Literal.Date */
-c-[nc] { color: #0077aa } /* Name.Class */
-c-[no] { color: #0077aa } /* Name.Constant */
-c-[nd] { color: #0077aa } /* Name.Decorator */
-c-[ni] { color: #0077aa } /* Name.Entity */
-c-[ne] { color: #0077aa } /* Name.Exception */
-c-[nf] { color: #0077aa } /* Name.Function */
-c-[nl] { color: #0077aa } /* Name.Label */
-c-[nn] { color: #0077aa } /* Name.Namespace */
-c-[py] { color: #0077aa } /* Name.Property */
-c-[ow] { color: #999999 } /* Operator.Word */
-c-[mb] { color: #000000 } /* Literal.Number.Bin */
-c-[mf] { color: #000000 } /* Literal.Number.Float */
-c-[mh] { color: #000000 } /* Literal.Number.Hex */
-c-[mi] { color: #000000 } /* Literal.Number.Integer */
-c-[mo] { color: #000000 } /* Literal.Number.Oct */
-c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
-c-[sc] { color: #a67f59 } /* Literal.String.Char */
-c-[sd] { color: #a67f59 } /* Literal.String.Doc */
-c-[se] { color: #a67f59 } /* Literal.String.Escape */
-c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
-c-[si] { color: #a67f59 } /* Literal.String.Interpol */
-c-[sx] { color: #a67f59 } /* Literal.String.Other */
-c-[sr] { color: #a67f59 } /* Literal.String.Regex */
-c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
-c-[vc] { color: #0077aa } /* Name.Variable.Class */
-c-[vg] { color: #0077aa } /* Name.Variable.Global */
-c-[vi] { color: #0077aa } /* Name.Variable.Instance */
-c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
-</style>
-<style>/* style-darkmode */
 
 @media (prefers-color-scheme: dark) {
     :root {
@@ -507,20 +300,288 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        which is quite common in practice... */
     img { background: white; }
 }
-@media (prefers-color-scheme: dark) {
-    :root {
-        --selflink-text: black;
-        --selflink-bg: silver;
-        --selflink-hover-text: white;
-    }
+</style>
+<style>/* Boilerplate: style-counters */
+body {
+    counter-reset: example figure issue;
+}
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
 }
 
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example" counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}
+</style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+}
 @media (prefers-color-scheme: dark) {
     :root {
         --dfnpanel-bg: #222;
         --dfnpanel-text: var(--text);
     }
 }
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    white-space: pre;
+    display: inline-block;
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled[role="button"] { cursor: pointer; }
+</style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dfnpanel-bg: #222;
+        --dfnpanel-text: var(--text);
+    }
+}
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    white-space: pre;
+    display: inline-block;
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled[role="button"] { cursor: pointer; }
+</style>
+<style>/* Boilerplate: style-issues */
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
+<style>/* Boilerplate: style-md-lists */
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}
+</style>
+<style>/* Boilerplate: style-selflinks */
+
+:root {
+    --selflink-text: white;
+    --selflink-bg: gray;
+    --selflink-hover-text: black;
+}
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--selflink-bg);
+    color: var(--selflink-text);
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: var(--selflink-hover-text);
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }
+</style>
+<style>/* Boilerplate: style-syntax-highlighting */
+
+            pre.idl.highlight {
+                background: var(--borderedblock-bg, var(--def-bg));
+            }
+            
+</style>
+<style>/* Boilerplate: style-syntax-highlighting */
+
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+
+.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+
+
 @media (prefers-color-scheme: dark) {
     .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
 
@@ -588,7 +649,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-12-19">19 December 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-05-02">2 May 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -609,7 +670,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2024 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -630,7 +691,7 @@ content sites, or applications on their device.</p>
   This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. </p>
    <p> Publication as an Editor’s Draft does not imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p>
    <p> This document was produced by a group operating under the <a class="css" data-link-type="property" href="https://www.w3.org/Consortium/Patent-Policy/" id="sotd_patent">W3C Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/groups/wg/media/ipr" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
-   <p> This document is governed by the <a href="https://www.w3.org/2021/Process-20211102/" id="w3c_process_revision">2 November 2021 W3C Process Document</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>. </p>
    <p></p>
   </div>
   <div data-fill-with="at-risk"></div>
@@ -764,8 +825,8 @@ extensible.</p>
   video<c- p>.</c->addEventListener<c- p>(</c-><c- u>"enterpictureinpicture"</c-><c- p>,</c-> <c- p>(</c->event<c- p>)</c-> <c- p>=></c-> <c- p>{</c->
     <c- c1>// Video entered Picture-in-Picture mode.</c->
     <c- a>const</c-> pipWindow <c- o>=</c-> event<c- p>.</c->pictureInPictureWindow<c- p>;</c->
-    console<c- p>.</c->log<c- p>(</c-><c- o>&lt;</c->code data<c- o>-</c->opaque bs<c- o>-</c->autolink<c- o>-</c->syntax<c- o>=</c-><c- t>'`Picture-in-Picture window width: ${pipWindow.width}`'</c-><c- o>></c->Picture<c- o>-</c-><c- ow>in</c-><c- o>-</c->Picture window width<c- o>:</c-> $<c- p>{</c->pipWindow<c- p>.</c->width<c- p>}</c-><c- o>&lt;</c->/code>);
-    console<c- p>.</c->log<c- p>(</c-><c- o>&lt;</c->code data<c- o>-</c->opaque bs<c- o>-</c->autolink<c- o>-</c->syntax<c- o>=</c-><c- t>'`Picture-in-Picture window height: ${pipWindow.height}`'</c-><c- o>></c->Picture<c- o>-</c-><c- ow>in</c-><c- o>-</c->Picture window height<c- o>:</c-> $<c- p>{</c->pipWindow<c- p>.</c->height<c- p>}</c-><c- o>&lt;</c->/code>);
+    console<c- p>.</c->log<c- p>(</c-><c- sb>`Picture-in-Picture window width: </c-><c- si>${</c->pipWindow<c- p>.</c->width<c- si>}</c-><c- sb>`</c-><c- p>);</c->
+    console<c- p>.</c->log<c- p>(</c-><c- sb>`Picture-in-Picture window height: </c-><c- si>${</c->pipWindow<c- p>.</c->height<c- si>}</c-><c- sb>`</c-><c- p>);</c->
   <c- p>});</c->
 
   video<c- p>.</c->addEventListener<c- p>(</c-><c- u>"leavepictureinpicture"</c-><c- p>,</c-> <c- p>()</c-> <c- p>=></c-> <c- p>{</c->
@@ -821,7 +882,7 @@ extensible.</p>
     <li data-md>
      <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="initiators-of-active-picture-in-picture-sessions">initiators of active Picture-in-Picture sessions</dfn> list of zero or more <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-document-origin" id="ref-for-concept-document-origin">origins</a>, which is initially empty.</p>
    </ol>
-   <p class="note" role="note"><span>Note:</span> In case a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent①">user agent</a> supports multiple Picture-in-Picture
+   <p class="note" role="note"><span class="marker">Note:</span> In case a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent①">user agent</a> supports multiple Picture-in-Picture
   windows, the list allows duplicates.</p>
    <p>An origin is said to have an <dfn data-dfn-type="dfn" data-noexport id="active-picture-in-picture-session">active Picture-in-Picture session<a class="self-link" href="#active-picture-in-picture-session"></a></dfn> if any
 of the origins in <a data-link-type="dfn" href="#initiators-of-active-picture-in-picture-sessions" id="ref-for-initiators-of-active-picture-in-picture-sessions">initiators of active Picture-in-Picture sessions</a> are <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin-domain" id="ref-for-same-origin-domain">same origin-domain</a> with origin.</p>
@@ -840,8 +901,8 @@ steps.</p>
      <p>If <var>video</var> has no video track, throw a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code> and abort
 these steps.</p>
     <li data-md>
-     <p>OPTIONALLY, if <var>video</var>’s <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a></code> is true,
-throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror②">InvalidStateError</a></code> and abort these steps.</p>
+     <p>If <var>video</var>’s <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a></code> is true,
+the user agent MAY throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror②">InvalidStateError</a></code> and abort these steps.</p>
     <li data-md>
      <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a></code> is <code>null</code> and the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global" id="ref-for-concept-relevant-global">relevant global object</a> of <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this">this</a> does not have <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#transient-activation" id="ref-for-transient-activation">transient activation</a>, throw a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#notallowederror" id="ref-for-notallowederror">NotAllowedError</a></code> and abort these steps.</p>
     <li data-md>
@@ -901,13 +962,13 @@ Picture-in-Picture algorithm</a>.</p>
 example, they may want to prevent the user agent from suggesting a
 Picture-in-Picture context menu in some cases.
 To support these use cases, a new <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture①">disablePictureInPicture</a></code> attribute is added to the list of content attributes for video elements.</p>
-   <p>The <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture②">disablePictureInPicture</a></code> IDL attribute MUST <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-reflect" id="ref-for-concept-reflect">reflect</a> the content
+   <p>The <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture②">disablePictureInPicture</a></code> IDL attribute MUST <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#reflect" id="ref-for-reflect">reflect</a> the content
 attribute of the same name.</p>
    <p>If the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture③">disablePictureInPicture</a></code> attribute is present on the video element,
-the user agent SHOULD NOT play the video element in Picture-in-Picture or
-present any UI to do so.</p>
+the user agent MAY prevent the video element from playing in Picture-in-Picture
+mode or present any UI to do so.</p>
    <p>When the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture④">disablePictureInPicture</a></code> attribute is added to a <var>video</var> element,
-the user agent SHOULD run these steps:</p>
+the user agent MAY run these steps:</p>
    <ol>
     <li data-md>
      <p>Reject any pending promises returned by the <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-requestpictureinpicture" id="ref-for-dom-htmlvideoelement-requestpictureinpicture">requestPictureInPicture()</a></code> method with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror④">InvalidStateError</a></code>.</p>
@@ -922,7 +983,7 @@ Picture-in-Picture algorithm</a>.</p>
 playback is local and regardless of whether it is played in page or in
 Picture-in-Picture.</p>
    <h3 class="heading settled" data-level="3.7" id="media-session"><span class="secno">3.7. </span><span class="content">Interaction with Media Session</span><a class="self-link" href="#media-session"></a></h3>
-   <p>The API will have to be used with the <a data-link-type="biblio" href="#biblio-mediasession" title="Media Session Standard">[MediaSession]</a> API for customizing the
+   <p>The API will have to be used with the <a data-link-type="biblio" href="#biblio-mediasession" title="Media Session">[MediaSession]</a> API for customizing the
 available controls on the Picture-in-Picture window.</p>
    <h3 class="heading settled" data-level="3.8" id="page-visibility"><span class="secno">3.8. </span><span class="content">Interaction with Page Visibility</span><a class="self-link" href="#page-visibility"></a></h3>
    <p>When <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①①">pictureInPictureElement</a></code> is set, the Picture-in-Picture window MUST
@@ -1068,7 +1129,7 @@ regardless of the <a data-link-type="dfn" href="https://html.spec.whatwg.org/mul
    <h3 class="heading settled" data-level="5.2" id="permissions-policy"><span class="secno">5.2. </span><span class="content">Permissions Policy</span><a class="self-link" href="#permissions-policy"></a></h3>
    <p>This specification defines a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature①">policy-controlled feature</a> named <code>"picture-in-picture"</code> that controls whether the <a data-link-type="dfn" href="#request-picture-in-picture-algorithm" id="ref-for-request-picture-in-picture-algorithm①">request Picture-in-Picture
 algorithm</a> may return a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#securityerror" id="ref-for-securityerror①">SecurityError</a></code> and whether <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled①">pictureInPictureEnabled</a></code> is <code>true</code> or <code>false</code>.</p>
-   <p>The <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist" id="ref-for-default-allowlist">default allowlist</a> for this feature is <code>*</code>.</p>
+   <p>The <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature-default-allowlist" id="ref-for-policy-controlled-feature-default-allowlist">default allowlist</a> for this feature is <code>*</code>.</p>
    <h2 class="heading settled" data-level="6" id="acknowledgments"><span class="secno">6. </span><span class="content">Acknowledgments</span><a class="self-link" href="#acknowledgments"></a></h2>
    <p>Thanks to Jennifer Apacible, Zouhir Chahoud, Marcos Cáceres, Philip Jägenstedt,
 Jeremy Jones, Chris Needham, Jer Noble, Justin Uberti, Yoav Weiss, and Eckhart
@@ -1100,20 +1161,22 @@ Wörner for their contributions to this document.</p>
     with <code>class="note"</code>,
     like this: </p>
    <p class="note" role="note">Note, this is an informative note.</p>
-   <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
-   <p>Requirements phrased in the imperative as part of algorithms
+   <section>
+    <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
+    <p>Requirements phrased in the imperative as part of algorithms
     (such as "strip any leading space characters"
     or "return false and abort these steps")
     are to be interpreted with the meaning of the key word
     ("must", "should", "may", etc)
     used in introducing the algorithm. </p>
-   <p>Conformance requirements phrased as algorithms or specific steps
+    <p>Conformance requirements phrased as algorithms or specific steps
     can be implemented in any manner,
     so long as the end result is equivalent.
     In particular, the algorithms defined in this specification
     are intended to be easy to understand
     and are not intended to be performant.
     Implementers are encouraged to optimize. </p>
+   </section>
   </div>
 <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
@@ -1151,467 +1214,100 @@ Wörner for their contributions to this document.</p>
    <li><a href="#eventdef-pictureinpicturewindow-resize">resize</a><span>, in § 4.5</span>
    <li><a href="#dom-pictureinpicturewindow-width">width</a><span>, in § 4.4</span>
   </ul>
-  <aside class="dfn-panel" data-for="term-for-px">
-   <a href="https://drafts.csswg.org/css-values-4/#px">https://drafts.csswg.org/css-values-4/#px</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-px">4.4. Interface PictureInPictureWindow</a> <a href="#ref-for-px①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-document">
-   <a href="https://dom.spec.whatwg.org/#document">https://dom.spec.whatwg.org/#document</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-document">3.9. One Picture-in-Picture window</a>
-    <li><a href="#ref-for-document①">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-documentorshadowroot">
-   <a href="https://dom.spec.whatwg.org/#documentorshadowroot">https://dom.spec.whatwg.org/#documentorshadowroot</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-documentorshadowroot">4.3. Extension to DocumentOrShadowRoot</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-element">
-   <a href="https://dom.spec.whatwg.org/#element">https://dom.spec.whatwg.org/#element</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-element">4.3. Extension to DocumentOrShadowRoot</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-event">
-   <a href="https://dom.spec.whatwg.org/#event">https://dom.spec.whatwg.org/#event</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-event">4.5. Event types</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dictdef-eventinit">
-   <a href="https://dom.spec.whatwg.org/#dictdef-eventinit">https://dom.spec.whatwg.org/#dictdef-eventinit</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dictdef-eventinit">4.5. Event types</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-eventtarget">
-   <a href="https://dom.spec.whatwg.org/#eventtarget">https://dom.spec.whatwg.org/#eventtarget</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-eventtarget">4.4. Interface PictureInPictureWindow</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-event-bubbles">
-   <a href="https://dom.spec.whatwg.org/#dom-event-bubbles">https://dom.spec.whatwg.org/#dom-event-bubbles</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-event-bubbles">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-dom-event-bubbles①">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-connected">
-   <a href="https://dom.spec.whatwg.org/#connected">https://dom.spec.whatwg.org/#connected</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-connected">4.3. Extension to DocumentOrShadowRoot</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-document">
-   <a href="https://dom.spec.whatwg.org/#concept-document">https://dom.spec.whatwg.org/#concept-document</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-document">3.8. Interaction with Page Visibility</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-event-fire">
-   <a href="https://dom.spec.whatwg.org/#concept-event-fire">https://dom.spec.whatwg.org/#concept-event-fire</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-event-fire">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-concept-event-fire①">3.3. Exit Picture-in-Picture</a>
-    <li><a href="#ref-for-concept-event-fire②">4.4. Interface PictureInPictureWindow</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-document-origin">
-   <a href="https://dom.spec.whatwg.org/#concept-document-origin">https://dom.spec.whatwg.org/#concept-document-origin</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-document-origin">3.1. Internal Slot Definitions</a>
-    <li><a href="#ref-for-concept-document-origin①">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-concept-document-origin②">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-reflect">
-   <a href="https://dom.spec.whatwg.org/#concept-reflect">https://dom.spec.whatwg.org/#concept-reflect</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-reflect">3.4. Disable Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-retarget">
-   <a href="https://dom.spec.whatwg.org/#retarget">https://dom.spec.whatwg.org/#retarget</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-retarget">4.3. Extension to DocumentOrShadowRoot</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-tree">
-   <a href="https://dom.spec.whatwg.org/#concept-tree">https://dom.spec.whatwg.org/#concept-tree</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-tree">4.3. Extension to DocumentOrShadowRoot</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-fully-exit-fullscreen">
-   <a href="https://fullscreen.spec.whatwg.org#fully-exit-fullscreen">https://fullscreen.spec.whatwg.org#fully-exit-fullscreen</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-fully-exit-fullscreen">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-fullscreen-flag">
-   <a href="https://fullscreen.spec.whatwg.org#fullscreen-flag">https://fullscreen.spec.whatwg.org#fullscreen-flag</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-fullscreen-flag">3.5. Interaction with Fullscreen</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-document-fullscreenelement">
-   <a href="https://fullscreen.spec.whatwg.org#dom-document-fullscreenelement">https://fullscreen.spec.whatwg.org#dom-document-fullscreenelement</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-document-fullscreenelement">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-cereactions">
-   <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#cereactions">https://html.spec.whatwg.org/multipage/custom-elements.html#cereactions</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-cereactions">4.1. Extensions to HTMLVideoElement</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-eventhandler">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-eventhandler">4.1. Extensions to HTMLVideoElement</a> <a href="#ref-for-eventhandler①">(2)</a>
-    <li><a href="#ref-for-eventhandler②">4.4. Interface PictureInPictureWindow</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-media-have_nothing">
-   <a href="https://html.spec.whatwg.org/multipage/media.html#dom-media-have_nothing">https://html.spec.whatwg.org/multipage/media.html#dom-media-have_nothing</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-media-have_nothing">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-htmlvideoelement">
-   <a href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-htmlvideoelement">1. Introduction</a>
-    <li><a href="#ref-for-htmlvideoelement①">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-htmlvideoelement②">4.4. Interface PictureInPictureWindow</a>
-    <li><a href="#ref-for-htmlvideoelement③">4.5. Event types</a> <a href="#ref-for-htmlvideoelement④">(2)</a>
-    <li><a href="#ref-for-htmlvideoelement⑤">5. Security considerations</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-allowed-to-use">
-   <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-allowed-to-use">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-allowed-to-use①">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-browsing-context">
-   <a href="https://html.spec.whatwg.org/multipage/document-sequences.html#browsing-context">https://html.spec.whatwg.org/multipage/document-sequences.html#browsing-context</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-browsing-context">5.1. Secure Context</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-in-parallel">
-   <a href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-in-parallel">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-in-parallel①">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-media-element-event-task-source">
-   <a href="https://html.spec.whatwg.org/multipage/media.html#media-element-event-task-source">https://html.spec.whatwg.org/multipage/media.html#media-element-event-task-source</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-media-element-event-task-source">4.6. Task source</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-queue-a-task">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-queue-a-task">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-queue-a-task①">3.3. Exit Picture-in-Picture</a>
-    <li><a href="#ref-for-queue-a-task②">4.4. Interface PictureInPictureWindow</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-media-readystate">
-   <a href="https://html.spec.whatwg.org/multipage/media.html#dom-media-readystate">https://html.spec.whatwg.org/multipage/media.html#dom-media-readystate</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-media-readystate">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-relevant-global">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global">https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-relevant-global">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-relevant-settings-object">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#relevant-settings-object">https://html.spec.whatwg.org/multipage/webappapis.html#relevant-settings-object</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-relevant-settings-object">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-relevant-settings-object①">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-same-origin-domain">
-   <a href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin-domain">https://html.spec.whatwg.org/multipage/browsers.html#same-origin-domain</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-same-origin-domain">3.1. Internal Slot Definitions</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-system-visibility-state">
-   <a href="https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state">https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-system-visibility-state">3.8. Interaction with Page Visibility</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-task-source">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#task-source">https://html.spec.whatwg.org/multipage/webappapis.html#task-source</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-task-source">4.6. Task source</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-transient-activation">
-   <a href="https://html.spec.whatwg.org/multipage/interaction.html#transient-activation">https://html.spec.whatwg.org/multipage/interaction.html#transient-activation</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-transient-activation">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-traversable-navigable">
-   <a href="https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable">https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-traversable-navigable">3.8. Interaction with Page Visibility</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-unloading-document-cleanup-steps">
-   <a href="https://html.spec.whatwg.org/multipage/document-lifecycle.html#unloading-document-cleanup-steps">https://html.spec.whatwg.org/multipage/document-lifecycle.html#unloading-document-cleanup-steps</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-unloading-document-cleanup-steps">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-list-item">
-   <a href="https://infra.spec.whatwg.org/#list-item">https://infra.spec.whatwg.org/#list-item</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-list-item">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-user-agent">
-   <a href="https://infra.spec.whatwg.org/#user-agent">https://infra.spec.whatwg.org/#user-agent</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-user-agent">3.1. Internal Slot Definitions</a> <a href="#ref-for-user-agent①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-default-allowlist">
-   <a href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist">https://w3c.github.io/webappsec-permissions-policy/#default-allowlist</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-default-allowlist">5.2. Permissions Policy</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
-   <a href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature">https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-policy-controlled-feature">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-policy-controlled-feature①">5.2. Permissions Policy</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dfn-local-playback-device">
-   <a href="https://w3c.github.io/remote-playback/#dfn-local-playback-device">https://w3c.github.io/remote-playback/#dfn-local-playback-device</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dfn-local-playback-device">3.6. Interaction with Remote Playback</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dfn-local-playback-state">
-   <a href="https://w3c.github.io/remote-playback/#dfn-local-playback-state">https://w3c.github.io/remote-playback/#dfn-local-playback-state</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dfn-local-playback-state">3.6. Interaction with Remote Playback</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-pseudo-class">
-   <a href="https://drafts.csswg.org/selectors-4/#pseudo-class">https://drafts.csswg.org/selectors-4/#pseudo-class</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-pseudo-class">4.7. CSS pseudo-class</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-DOMString">
-   <a href="https://webidl.spec.whatwg.org/#idl-DOMString">https://webidl.spec.whatwg.org/#idl-DOMString</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-DOMString">4.5. Event types</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-Exposed">
-   <a href="https://webidl.spec.whatwg.org/#Exposed">https://webidl.spec.whatwg.org/#Exposed</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-Exposed">4.4. Interface PictureInPictureWindow</a>
-    <li><a href="#ref-for-Exposed①">4.5. Event types</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-invalidstateerror">
-   <a href="https://webidl.spec.whatwg.org/#invalidstateerror">https://webidl.spec.whatwg.org/#invalidstateerror</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-invalidstateerror">3.2. Request Picture-in-Picture</a> <a href="#ref-for-invalidstateerror①">(2)</a> <a href="#ref-for-invalidstateerror②">(3)</a>
-    <li><a href="#ref-for-invalidstateerror③">3.3. Exit Picture-in-Picture</a>
-    <li><a href="#ref-for-invalidstateerror④">3.4. Disable Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-NewObject">
-   <a href="https://webidl.spec.whatwg.org/#NewObject">https://webidl.spec.whatwg.org/#NewObject</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-NewObject">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-NewObject①">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-notallowederror">
-   <a href="https://webidl.spec.whatwg.org/#notallowederror">https://webidl.spec.whatwg.org/#notallowederror</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-notallowederror">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-notsupportederror">
-   <a href="https://webidl.spec.whatwg.org/#notsupportederror">https://webidl.spec.whatwg.org/#notsupportederror</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-notsupportederror">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-promise">
-   <a href="https://webidl.spec.whatwg.org/#idl-promise">https://webidl.spec.whatwg.org/#idl-promise</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-promise">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-idl-promise①">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-SameObject">
-   <a href="https://webidl.spec.whatwg.org/#SameObject">https://webidl.spec.whatwg.org/#SameObject</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-SameObject">4.5. Event types</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-securityerror">
-   <a href="https://webidl.spec.whatwg.org/#securityerror">https://webidl.spec.whatwg.org/#securityerror</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-securityerror">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-securityerror①">5.2. Permissions Policy</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-a-new-promise">
-   <a href="https://webidl.spec.whatwg.org/#a-new-promise">https://webidl.spec.whatwg.org/#a-new-promise</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-a-new-promise">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-a-new-promise①">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-boolean">
-   <a href="https://webidl.spec.whatwg.org/#idl-boolean">https://webidl.spec.whatwg.org/#idl-boolean</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-boolean">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-idl-boolean①">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-long">
-   <a href="https://webidl.spec.whatwg.org/#idl-long">https://webidl.spec.whatwg.org/#idl-long</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-long">4.4. Interface PictureInPictureWindow</a> <a href="#ref-for-idl-long①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-this">
-   <a href="https://webidl.spec.whatwg.org/#this">https://webidl.spec.whatwg.org/#this</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-this">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-undefined">
-   <a href="https://webidl.spec.whatwg.org/#idl-undefined">https://webidl.spec.whatwg.org/#idl-undefined</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-undefined">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
     <a data-link-type="biblio">[CSS-VALUES-4]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-px">px</span>
+     <li><span class="dfn-paneled" id="9ddea951">px</span>
     </ul>
    <li>
     <a data-link-type="biblio">[DOM]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-document">Document</span>
-     <li><span class="dfn-paneled" id="term-for-documentorshadowroot">DocumentOrShadowRoot</span>
-     <li><span class="dfn-paneled" id="term-for-element">Element</span>
-     <li><span class="dfn-paneled" id="term-for-event">Event</span>
-     <li><span class="dfn-paneled" id="term-for-dictdef-eventinit">EventInit</span>
-     <li><span class="dfn-paneled" id="term-for-eventtarget">EventTarget</span>
-     <li><span class="dfn-paneled" id="term-for-dom-event-bubbles">bubbles</span>
-     <li><span class="dfn-paneled" id="term-for-connected">connected</span>
-     <li><span class="dfn-paneled" id="term-for-concept-document">document</span>
-     <li><span class="dfn-paneled" id="term-for-concept-event-fire">fire an event</span>
-     <li><span class="dfn-paneled" id="term-for-concept-document-origin">origin</span>
-     <li><span class="dfn-paneled" id="term-for-concept-reflect">reflect</span>
-     <li><span class="dfn-paneled" id="term-for-retarget">retargeting</span>
-     <li><span class="dfn-paneled" id="term-for-concept-tree">tree</span>
+     <li><span class="dfn-paneled" id="85394472">Document</span>
+     <li><span class="dfn-paneled" id="9ac2aadf">DocumentOrShadowRoot</span>
+     <li><span class="dfn-paneled" id="296f3551">Element</span>
+     <li><span class="dfn-paneled" id="129bdae8">Event</span>
+     <li><span class="dfn-paneled" id="44a7708c">EventInit</span>
+     <li><span class="dfn-paneled" id="2bc0cdf4">EventTarget</span>
+     <li><span class="dfn-paneled" id="0c0ceb78">bubbles</span>
+     <li><span class="dfn-paneled" id="9638f92b">connected</span>
+     <li><span class="dfn-paneled" id="a973e0fe">document</span>
+     <li><span class="dfn-paneled" id="5fd23811">fire an event</span>
+     <li><span class="dfn-paneled" id="c62cd7cf">origin</span>
+     <li><span class="dfn-paneled" id="c200d9ce">retargeting</span>
+     <li><span class="dfn-paneled" id="e6cc3311">tree</span>
     </ul>
    <li>
     <a data-link-type="biblio">[Fullscreen]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-fully-exit-fullscreen">exit fullscreen</span>
-     <li><span class="dfn-paneled" id="term-for-fullscreen-flag">fullscreen flag</span>
-     <li><span class="dfn-paneled" id="term-for-dom-document-fullscreenelement">fullscreenelement</span>
+     <li><span class="dfn-paneled" id="d8ca51d7">exit fullscreen</span>
+     <li><span class="dfn-paneled" id="2b2f3329">fullscreen flag</span>
+     <li><span class="dfn-paneled" id="b4dee070">fullscreenelement</span>
     </ul>
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-cereactions">CEReactions</span>
-     <li><span class="dfn-paneled" id="term-for-eventhandler">EventHandler</span>
-     <li><span class="dfn-paneled" id="term-for-dom-media-have_nothing">HAVE_NOTHING</span>
-     <li><span class="dfn-paneled" id="term-for-htmlvideoelement">HTMLVideoElement</span>
-     <li><span class="dfn-paneled" id="term-for-allowed-to-use">allowed to use</span>
-     <li><span class="dfn-paneled" id="term-for-browsing-context">browsing context</span>
-     <li><span class="dfn-paneled" id="term-for-in-parallel">in parallel</span>
-     <li><span class="dfn-paneled" id="term-for-media-element-event-task-source">media element event task source</span>
-     <li><span class="dfn-paneled" id="term-for-queue-a-task">queue a task</span>
-     <li><span class="dfn-paneled" id="term-for-dom-media-readystate">readyState</span>
-     <li><span class="dfn-paneled" id="term-for-concept-relevant-global">relevant global object</span>
-     <li><span class="dfn-paneled" id="term-for-relevant-settings-object">relevant settings object</span>
-     <li><span class="dfn-paneled" id="term-for-same-origin-domain">same origin-domain</span>
-     <li><span class="dfn-paneled" id="term-for-system-visibility-state">system visibility state</span>
-     <li><span class="dfn-paneled" id="term-for-task-source">task source</span>
-     <li><span class="dfn-paneled" id="term-for-transient-activation">transient activation</span>
-     <li><span class="dfn-paneled" id="term-for-traversable-navigable">traversable navigable</span>
-     <li><span class="dfn-paneled" id="term-for-unloading-document-cleanup-steps">unloading document cleanup steps</span>
+     <li><span class="dfn-paneled" id="402ed79d">CEReactions</span>
+     <li><span class="dfn-paneled" id="f0951476">EventHandler</span>
+     <li><span class="dfn-paneled" id="3f5f11ee">HAVE_NOTHING</span>
+     <li><span class="dfn-paneled" id="f57f330b">HTMLVideoElement</span>
+     <li><span class="dfn-paneled" id="3610bd67">allowed to use</span>
+     <li><span class="dfn-paneled" id="0d0390b4">browsing context</span>
+     <li><span class="dfn-paneled" id="a72449dd">in parallel</span>
+     <li><span class="dfn-paneled" id="10c9e8bf">media element event task source</span>
+     <li><span class="dfn-paneled" id="9a517a7d">queue a task</span>
+     <li><span class="dfn-paneled" id="621f3aeb">readyState</span>
+     <li><span class="dfn-paneled" id="5ab7b520">reflect</span>
+     <li><span class="dfn-paneled" id="e99bd18e">relevant global object</span>
+     <li><span class="dfn-paneled" id="9c4c1e66">relevant settings object</span>
+     <li><span class="dfn-paneled" id="521818b9">same origin-domain</span>
+     <li><span class="dfn-paneled" id="f4ee1bc9">system visibility state</span>
+     <li><span class="dfn-paneled" id="c3b2d08c">task source</span>
+     <li><span class="dfn-paneled" id="47fe679e">transient activation</span>
+     <li><span class="dfn-paneled" id="d0c1b934">traversable navigable</span>
+     <li><span class="dfn-paneled" id="4411082c">unloading document cleanup steps</span>
     </ul>
    <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-list-item">item</span>
-     <li><span class="dfn-paneled" id="term-for-user-agent">user agent</span>
+     <li><span class="dfn-paneled" id="5afbefcd">item</span>
+     <li><span class="dfn-paneled" id="6d19ac93">user agent</span>
     </ul>
    <li>
     <a data-link-type="biblio">[PERMISSIONS-POLICY-1]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-default-allowlist">default allowlist</span>
-     <li><span class="dfn-paneled" id="term-for-policy-controlled-feature">policy-controlled feature</span>
+     <li><span class="dfn-paneled" id="1570624a">default allowlist</span>
+     <li><span class="dfn-paneled" id="cc890cc1">policy-controlled feature</span>
     </ul>
    <li>
     <a data-link-type="biblio">[Remote-Playback]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-dfn-local-playback-device">local playback device</span>
-     <li><span class="dfn-paneled" id="term-for-dfn-local-playback-state">local playback state</span>
+     <li><span class="dfn-paneled" id="7c3032a3">local playback device</span>
+     <li><span class="dfn-paneled" id="9613fc2c">local playback state</span>
     </ul>
    <li>
     <a data-link-type="biblio">[SELECTORS-4]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-pseudo-class">pseudo-class</span>
+     <li><span class="dfn-paneled" id="628c6566">pseudo-class</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-idl-DOMString">DOMString</span>
-     <li><span class="dfn-paneled" id="term-for-Exposed">Exposed</span>
-     <li><span class="dfn-paneled" id="term-for-invalidstateerror">InvalidStateError</span>
-     <li><span class="dfn-paneled" id="term-for-NewObject">NewObject</span>
-     <li><span class="dfn-paneled" id="term-for-notallowederror">NotAllowedError</span>
-     <li><span class="dfn-paneled" id="term-for-notsupportederror">NotSupportedError</span>
-     <li><span class="dfn-paneled" id="term-for-idl-promise">Promise</span>
-     <li><span class="dfn-paneled" id="term-for-SameObject">SameObject</span>
-     <li><span class="dfn-paneled" id="term-for-securityerror">SecurityError</span>
-     <li><span class="dfn-paneled" id="term-for-a-new-promise">a new promise</span>
-     <li><span class="dfn-paneled" id="term-for-idl-boolean">boolean</span>
-     <li><span class="dfn-paneled" id="term-for-idl-long">long</span>
-     <li><span class="dfn-paneled" id="term-for-this">this</span>
-     <li><span class="dfn-paneled" id="term-for-idl-undefined">undefined</span>
+     <li><span class="dfn-paneled" id="8855a9aa">DOMString</span>
+     <li><span class="dfn-paneled" id="889e932f">Exposed</span>
+     <li><span class="dfn-paneled" id="797018a7">InvalidStateError</span>
+     <li><span class="dfn-paneled" id="c807e273">NewObject</span>
+     <li><span class="dfn-paneled" id="ba556545">NotAllowedError</span>
+     <li><span class="dfn-paneled" id="3182eb71">NotSupportedError</span>
+     <li><span class="dfn-paneled" id="bdbd19d1">Promise</span>
+     <li><span class="dfn-paneled" id="a5c91173">SameObject</span>
+     <li><span class="dfn-paneled" id="c3e881ef">SecurityError</span>
+     <li><span class="dfn-paneled" id="dacde8b5">a new promise</span>
+     <li><span class="dfn-paneled" id="5372cca8">boolean</span>
+     <li><span class="dfn-paneled" id="f8de33a3">long</span>
+     <li><span class="dfn-paneled" id="4013a022">this</span>
+     <li><span class="dfn-paneled" id="5f90bbfb">undefined</span>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -1641,7 +1337,7 @@ Wörner for their contributions to this document.</p>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-mediasession">[MediaSession]
-   <dd>Thomas Steimel; youenn fablet. <a href="https://w3c.github.io/mediasession/"><cite>Media Session Standard</cite></a>. URL: <a href="https://w3c.github.io/mediasession/">https://w3c.github.io/mediasession/</a>
+   <dd>Thomas Steimel; youenn fablet. <a href="https://w3c.github.io/mediasession/"><cite>Media Session</cite></a>. URL: <a href="https://w3c.github.io/mediasession/">https://w3c.github.io/mediasession/</a>
    <dt id="biblio-secure-contexts">[SECURE-CONTEXTS]
    <dd>Mike West. <a href="https://w3c.github.io/webappsec-secure-contexts/"><cite>Secure Contexts</cite></a>. URL: <a href="https://w3c.github.io/webappsec-secure-contexts/">https://w3c.github.io/webappsec-secure-contexts/</a>
   </dl>
@@ -1684,205 +1380,585 @@ Wörner for their contributions to this document.</p>
 };
 
 </pre>
-  <aside class="dfn-panel" data-for="initiators-of-active-picture-in-picture-sessions">
-   <b><a href="#initiators-of-active-picture-in-picture-sessions">#initiators-of-active-picture-in-picture-sessions</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-initiators-of-active-picture-in-picture-sessions">3.1. Internal Slot Definitions</a>
-    <li><a href="#ref-for-initiators-of-active-picture-in-picture-sessions①">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-initiators-of-active-picture-in-picture-sessions②">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="request-picture-in-picture-algorithm">
-   <b><a href="#request-picture-in-picture-algorithm">#request-picture-in-picture-algorithm</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-request-picture-in-picture-algorithm">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-request-picture-in-picture-algorithm①">5.2. Permissions Policy</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="picture-in-picture-window">
-   <b><a href="#picture-in-picture-window">#picture-in-picture-window</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-picture-in-picture-window">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-picture-in-picture-window①">3.3. Exit Picture-in-Picture</a> <a href="#ref-for-picture-in-picture-window②">(2)</a>
-    <li><a href="#ref-for-picture-in-picture-window③">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-picture-in-picture-window④">4.4. Interface PictureInPictureWindow</a> <a href="#ref-for-picture-in-picture-window⑤">(2)</a> <a href="#ref-for-picture-in-picture-window⑥">(3)</a> <a href="#ref-for-picture-in-picture-window⑦">(4)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="exit-picture-in-picture-algorithm">
-   <b><a href="#exit-picture-in-picture-algorithm">#exit-picture-in-picture-algorithm</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-exit-picture-in-picture-algorithm">3.3. Exit Picture-in-Picture</a> <a href="#ref-for-exit-picture-in-picture-algorithm①">(2)</a>
-    <li><a href="#ref-for-exit-picture-in-picture-algorithm②">3.4. Disable Picture-in-Picture</a>
-    <li><a href="#ref-for-exit-picture-in-picture-algorithm③">3.5. Interaction with Fullscreen</a>
-    <li><a href="#ref-for-exit-picture-in-picture-algorithm④">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-htmlvideoelement-requestpictureinpicture">
-   <b><a href="#dom-htmlvideoelement-requestpictureinpicture">#dom-htmlvideoelement-requestpictureinpicture</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-htmlvideoelement-requestpictureinpicture">3.4. Disable Picture-in-Picture</a>
-    <li><a href="#ref-for-dom-htmlvideoelement-requestpictureinpicture①">4.1. Extensions to HTMLVideoElement</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-htmlvideoelement-disablepictureinpicture">
-   <b><a href="#dom-htmlvideoelement-disablepictureinpicture">#dom-htmlvideoelement-disablepictureinpicture</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-htmlvideoelement-disablepictureinpicture">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-dom-htmlvideoelement-disablepictureinpicture①">3.4. Disable Picture-in-Picture</a> <a href="#ref-for-dom-htmlvideoelement-disablepictureinpicture②">(2)</a> <a href="#ref-for-dom-htmlvideoelement-disablepictureinpicture③">(3)</a> <a href="#ref-for-dom-htmlvideoelement-disablepictureinpicture④">(4)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-document-pictureinpictureenabled">
-   <b><a href="#dom-document-pictureinpictureenabled">#dom-document-pictureinpictureenabled</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-document-pictureinpictureenabled">4.2. Extensions to Document</a>
-    <li><a href="#ref-for-dom-document-pictureinpictureenabled①">5.2. Permissions Policy</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-document-exitpictureinpicture">
-   <b><a href="#dom-document-exitpictureinpicture">#dom-document-exitpictureinpicture</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-document-exitpictureinpicture">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="picture-in-picture-support">
-   <b><a href="#picture-in-picture-support">#picture-in-picture-support</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-picture-in-picture-support">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-picture-in-picture-support①">4.2. Extensions to Document</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-documentorshadowroot-pictureinpictureelement">
-   <b><a href="#dom-documentorshadowroot-pictureinpictureelement">#dom-documentorshadowroot-pictureinpictureelement</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement">3.2. Request Picture-in-Picture</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement②">(3)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement③">(4)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement④">(5)</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑤">3.3. Exit Picture-in-Picture</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑥">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑦">(3)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑧">(4)</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement⑨">3.4. Disable Picture-in-Picture</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⓪">3.5. Interaction with Fullscreen</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①①">3.8. Interaction with Page Visibility</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①②">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①③">4.3. Extension to DocumentOrShadowRoot</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①④">4.4. Interface PictureInPictureWindow</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑤">(2)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑥">(3)</a> <a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑦">(4)</a>
-    <li><a href="#ref-for-dom-documentorshadowroot-pictureinpictureelement①⑧">4.7. CSS pseudo-class</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="pictureinpicturewindow">
-   <b><a href="#pictureinpicturewindow">#pictureinpicturewindow</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-pictureinpicturewindow">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-pictureinpicturewindow①">4.1. Extensions to HTMLVideoElement</a>
-    <li><a href="#ref-for-pictureinpicturewindow②">4.4. Interface PictureInPictureWindow</a> <a href="#ref-for-pictureinpicturewindow③">(2)</a> <a href="#ref-for-pictureinpicturewindow④">(3)</a>
-    <li><a href="#ref-for-pictureinpicturewindow⑤">4.5. Event types</a> <a href="#ref-for-pictureinpicturewindow⑥">(2)</a> <a href="#ref-for-pictureinpicturewindow⑦">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-pictureinpicturewindow-width">
-   <b><a href="#dom-pictureinpicturewindow-width">#dom-pictureinpicturewindow-width</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-pictureinpicturewindow-width">4.4. Interface PictureInPictureWindow</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-pictureinpicturewindow-height">
-   <b><a href="#dom-pictureinpicturewindow-height">#dom-pictureinpicturewindow-height</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-pictureinpicturewindow-height">4.4. Interface PictureInPictureWindow</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="close-window-algorithm">
-   <b><a href="#close-window-algorithm">#close-window-algorithm</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-close-window-algorithm">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="pictureinpictureevent">
-   <b><a href="#pictureinpictureevent">#pictureinpictureevent</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-pictureinpictureevent">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-pictureinpictureevent①">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-pictureinpictureevent-pictureinpicturewindow">
-   <b><a href="#dom-pictureinpictureevent-pictureinpicturewindow">#dom-pictureinpictureevent-pictureinpicturewindow</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-pictureinpictureevent-pictureinpicturewindow">3.2. Request Picture-in-Picture</a>
-    <li><a href="#ref-for-dom-pictureinpictureevent-pictureinpicturewindow①">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dictdef-pictureinpictureeventinit">
-   <b><a href="#dictdef-pictureinpictureeventinit">#dictdef-pictureinpictureeventinit</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dictdef-pictureinpictureeventinit">4.5. Event types</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="eventdef-htmlvideoelement-enterpictureinpicture">
-   <b><a href="#eventdef-htmlvideoelement-enterpictureinpicture">#eventdef-htmlvideoelement-enterpictureinpicture</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-eventdef-htmlvideoelement-enterpictureinpicture">3.2. Request Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="eventdef-htmlvideoelement-leavepictureinpicture">
-   <b><a href="#eventdef-htmlvideoelement-leavepictureinpicture">#eventdef-htmlvideoelement-leavepictureinpicture</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-eventdef-htmlvideoelement-leavepictureinpicture">3.3. Exit Picture-in-Picture</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="eventdef-pictureinpicturewindow-resize">
-   <b><a href="#eventdef-pictureinpicturewindow-resize">#eventdef-pictureinpicturewindow-resize</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-eventdef-pictureinpicturewindow-resize">4.4. Interface PictureInPictureWindow</a>
-   </ul>
-  </aside>
-<script>/* script-dfn-panel */
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+    const dfnsJson = window.dfnsJson || {};
 
-document.body.addEventListener("click", function(e) {
-    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
-    // Find the dfn element or panel, if any, that was clicked on.
-    var el = e.target;
-    var target;
-    var hitALink = false;
-    while(el.parentElement) {
-        if(el.tagName == "A") {
-            // Clicking on a link in a <dfn> shouldn't summon the panel
-            hitALink = true;
-        }
-        if(el.classList.contains("dfn-paneled")) {
-            target = "dfn";
-            break;
-        }
-        if(el.classList.contains("dfn-panel")) {
-            target = "dfn-panel";
-            break;
-        }
-        el = el.parentElement;
+    function genDfnPanel({dfnID, url, dfnText, refSections, external}) {
+        return mk.aside({
+            class: "dfn-panel",
+            id: `infopanel-for-${dfnID}`,
+            "data-for": dfnID,
+            "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+            },
+            mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+                `Info about the '${dfnText}' ${external?"external":""} reference.`),
+            mk.a({href:url}, url),
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({
+                                    href: `#${ref.id}`
+                                    },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        );
     }
-    if(target != "dfn-panel") {
-        // Turn off any currently "on" or "activated" panels.
-        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
-            el.classList.remove("on");
-            el.classList.remove("activated");
-        });
-    }
-    if(target == "dfn" && !hitALink) {
-        // open the panel
-        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
-        if(dfnPanel) {
-            dfnPanel.classList.add("on");
-            var rect = el.getBoundingClientRect();
-            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
-            dfnPanel.style.top = window.scrollY + rect.top + "px";
-            var panelRect = dfnPanel.getBoundingClientRect();
-            var panelWidth = panelRect.right - panelRect.left;
-            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
-                // Reposition, because the panel is overflowing
-                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
+
+    function genAllDfnPanels() {
+        for(const panelData of Object.values(window.dfnpanelData)) {
+            const dfnID = panelData.dfnID;
+            const dfn = document.getElementById(dfnID);
+            if(!dfn) {
+                console.log(`Can't find dfn#${dfnID}.`, panelData);
+            } else {
+                const panel = genDfnPanel(panelData);
+                append(document.body, panel);
+                insertDfnPopupAction(dfn, panel)
             }
-        } else {
-            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
         }
-    } else if(target == "dfn-panel") {
-        // Switch it to "activated" state, which pins it.
-        el.classList.add("activated");
-        el.style.left = null;
-        el.style.top = null;
     }
 
+    document.addEventListener("DOMContentLoaded", ()=>{
+        genAllDfnPanels();
+
+        // Add popup behavior to all dfns to show the corresponding dfn-panel.
+        var dfns = queryAll('.dfn-paneled');
+        for(let dfn of dfns) { ; }
+
+        document.body.addEventListener("click", (e) => {
+            // If not handled already, just hide all dfn panels.
+            hideAllDfnPanels();
+        });
+    })
+
+
+    function hideAllDfnPanels() {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>hideDfnPanel(el));
+    }
+
+    function showDfnPanel(dfnPanel, dfn) {
+        hideAllDfnPanels(); // Only display one at this time.
+        dfn.setAttribute("aria-expanded", "true");
+        dfnPanel.classList.add("on");
+        dfnPanel.style.left = "5px";
+        dfnPanel.style.top = "0px";
+        const panelRect = dfnPanel.getBoundingClientRect();
+        const panelWidth = panelRect.right - panelRect.left;
+        if (panelRect.right > document.body.scrollWidth) {
+            // Panel's overflowing the screen.
+            // Just drop it below the dfn and flip it rightward instead.
+            // This still wont' fix things if the screen is *really* wide,
+            // but fixing that's a lot harder without 'anchor()'.
+            dfnPanel.style.top = "1.5em";
+            dfnPanel.style.left = "auto";
+            dfnPanel.style.right = "0px";
+        }
+    }
+
+    function pinDfnPanel(dfnPanel) {
+        // Switch it to "activated" state, which pins it.
+        dfnPanel.classList.add("activated");
+        dfnPanel.style.left = null;
+        dfnPanel.style.top = null;
+    }
+
+    function hideDfnPanel(dfnPanel, dfn) {
+        if(!dfn) {
+            dfn = document.getElementById(dfnPanel.getAttribute("data-for"));
+        }
+        dfn.setAttribute("aria-expanded", "false")
+        dfnPanel.classList.remove("on");
+        dfnPanel.classList.remove("activated");
+    }
+
+    function toggleDfnPanel(dfnPanel, dfn) {
+        if(dfnPanel.classList.contains("on")) {
+            hideDfnPanel(dfnPanel, dfn);
+        } else {
+            showDfnPanel(dfnPanel, dfn);
+        }
+    }
+
+    function insertDfnPopupAction(dfn, dfnPanel) {
+        // Find dfn panel
+        const panelWrapper = document.createElement('span');
+        panelWrapper.appendChild(dfnPanel);
+        panelWrapper.style.position = "relative";
+        panelWrapper.style.height = "0px";
+        dfn.insertAdjacentElement("afterend", panelWrapper);
+        dfn.setAttribute('role', 'button');
+        dfn.setAttribute('aria-expanded', 'false')
+        dfn.tabIndex = 0;
+        dfn.classList.add('has-dfn-panel');
+        dfn.addEventListener('click', (event) => {
+            showDfnPanel(dfnPanel, dfn);
+            event.stopPropagation();
+        });
+        dfn.addEventListener('keypress', (event) => {
+            const kc = event.keyCode;
+            // 32->Space, 13->Enter
+            if(kc == 32 || kc == 13) {
+                toggleDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        });
+
+        dfnPanel.addEventListener('click', (event) => {
+            if (event.target.nodeName == 'A') {
+                pinDfnPanel(dfnPanel);
+            }
+            event.stopPropagation();
+        });
+
+        dfnPanel.addEventListener('keydown', (event) => {
+            if(event.keyCode == 27) { // Escape key
+                hideDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        })
+    }
+}
+</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+    const dfnsJson = window.dfnsJson || {};
+
+    function genDfnPanel({dfnID, url, dfnText, refSections, external}) {
+        return mk.aside({
+            class: "dfn-panel",
+            id: `infopanel-for-${dfnID}`,
+            "data-for": dfnID,
+            "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+            },
+            mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+                `Info about the '${dfnText}' ${external?"external":""} reference.`),
+            mk.a({href:url}, url),
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({
+                                    href: `#${ref.id}`
+                                    },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        );
+    }
+
+    function genAllDfnPanels() {
+        for(const panelData of Object.values(window.dfnpanelData)) {
+            const dfnID = panelData.dfnID;
+            const dfn = document.getElementById(dfnID);
+            if(!dfn) {
+                console.log(`Can't find dfn#${dfnID}.`, panelData);
+            } else {
+                const panel = genDfnPanel(panelData);
+                append(document.body, panel);
+                insertDfnPopupAction(dfn, panel)
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", ()=>{
+        genAllDfnPanels();
+
+        // Add popup behavior to all dfns to show the corresponding dfn-panel.
+        var dfns = queryAll('.dfn-paneled');
+        for(let dfn of dfns) { ; }
+
+        document.body.addEventListener("click", (e) => {
+            // If not handled already, just hide all dfn panels.
+            hideAllDfnPanels();
+        });
+    })
+
+
+    function hideAllDfnPanels() {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>hideDfnPanel(el));
+    }
+
+    function showDfnPanel(dfnPanel, dfn) {
+        hideAllDfnPanels(); // Only display one at this time.
+        dfn.setAttribute("aria-expanded", "true");
+        dfnPanel.classList.add("on");
+        dfnPanel.style.left = "5px";
+        dfnPanel.style.top = "0px";
+        const panelRect = dfnPanel.getBoundingClientRect();
+        const panelWidth = panelRect.right - panelRect.left;
+        if (panelRect.right > document.body.scrollWidth) {
+            // Panel's overflowing the screen.
+            // Just drop it below the dfn and flip it rightward instead.
+            // This still wont' fix things if the screen is *really* wide,
+            // but fixing that's a lot harder without 'anchor()'.
+            dfnPanel.style.top = "1.5em";
+            dfnPanel.style.left = "auto";
+            dfnPanel.style.right = "0px";
+        }
+    }
+
+    function pinDfnPanel(dfnPanel) {
+        // Switch it to "activated" state, which pins it.
+        dfnPanel.classList.add("activated");
+        dfnPanel.style.left = null;
+        dfnPanel.style.top = null;
+    }
+
+    function hideDfnPanel(dfnPanel, dfn) {
+        if(!dfn) {
+            dfn = document.getElementById(dfnPanel.getAttribute("data-for"));
+        }
+        dfn.setAttribute("aria-expanded", "false")
+        dfnPanel.classList.remove("on");
+        dfnPanel.classList.remove("activated");
+    }
+
+    function toggleDfnPanel(dfnPanel, dfn) {
+        if(dfnPanel.classList.contains("on")) {
+            hideDfnPanel(dfnPanel, dfn);
+        } else {
+            showDfnPanel(dfnPanel, dfn);
+        }
+    }
+
+    function insertDfnPopupAction(dfn, dfnPanel) {
+        // Find dfn panel
+        const panelWrapper = document.createElement('span');
+        panelWrapper.appendChild(dfnPanel);
+        panelWrapper.style.position = "relative";
+        panelWrapper.style.height = "0px";
+        dfn.insertAdjacentElement("afterend", panelWrapper);
+        dfn.setAttribute('role', 'button');
+        dfn.setAttribute('aria-expanded', 'false')
+        dfn.tabIndex = 0;
+        dfn.classList.add('has-dfn-panel');
+        dfn.addEventListener('click', (event) => {
+            showDfnPanel(dfnPanel, dfn);
+            event.stopPropagation();
+        });
+        dfn.addEventListener('keypress', (event) => {
+            const kc = event.keyCode;
+            // 32->Space, 13->Enter
+            if(kc == 32 || kc == 13) {
+                toggleDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        });
+
+        dfnPanel.addEventListener('click', (event) => {
+            if (event.target.nodeName == 'A') {
+                pinDfnPanel(dfnPanel);
+            }
+            event.stopPropagation();
+        });
+
+        dfnPanel.addEventListener('keydown', (event) => {
+            if(event.keyCode == 27) { // Escape key
+                hideDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        })
+    }
+}
+</script>
+<script>/* Boilerplate: script-dfn-panel-json */
+window.dfnpanelData = {};
+window.dfnpanelData['9ddea951'] = {"dfnID": "9ddea951", "url": "https://drafts.csswg.org/css-values-4/#px", "dfnText": "px", "refSections": [{"refs": [{"id": "ref-for-px"}, {"id": "ref-for-px\u2460"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": true};
+window.dfnpanelData['85394472'] = {"dfnID": "85394472", "url": "https://dom.spec.whatwg.org/#document", "dfnText": "Document", "refSections": [{"refs": [{"id": "ref-for-document"}], "title": "3.9. One Picture-in-Picture window"}, {"refs": [{"id": "ref-for-document\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
+window.dfnpanelData['9ac2aadf'] = {"dfnID": "9ac2aadf", "url": "https://dom.spec.whatwg.org/#documentorshadowroot", "dfnText": "DocumentOrShadowRoot", "refSections": [{"refs": [{"id": "ref-for-documentorshadowroot"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
+window.dfnpanelData['296f3551'] = {"dfnID": "296f3551", "url": "https://dom.spec.whatwg.org/#element", "dfnText": "Element", "refSections": [{"refs": [{"id": "ref-for-element"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
+window.dfnpanelData['129bdae8'] = {"dfnID": "129bdae8", "url": "https://dom.spec.whatwg.org/#event", "dfnText": "Event", "refSections": [{"refs": [{"id": "ref-for-event"}], "title": "4.5. Event types"}], "external": true};
+window.dfnpanelData['44a7708c'] = {"dfnID": "44a7708c", "url": "https://dom.spec.whatwg.org/#dictdef-eventinit", "dfnText": "EventInit", "refSections": [{"refs": [{"id": "ref-for-dictdef-eventinit"}], "title": "4.5. Event types"}], "external": true};
+window.dfnpanelData['2bc0cdf4'] = {"dfnID": "2bc0cdf4", "url": "https://dom.spec.whatwg.org/#eventtarget", "dfnText": "EventTarget", "refSections": [{"refs": [{"id": "ref-for-eventtarget"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": true};
+window.dfnpanelData['0c0ceb78'] = {"dfnID": "0c0ceb78", "url": "https://dom.spec.whatwg.org/#dom-event-bubbles", "dfnText": "bubbles", "refSections": [{"refs": [{"id": "ref-for-dom-event-bubbles"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-dom-event-bubbles\u2460"}], "title": "3.3. Exit Picture-in-Picture"}], "external": true};
+window.dfnpanelData['9638f92b'] = {"dfnID": "9638f92b", "url": "https://dom.spec.whatwg.org/#connected", "dfnText": "connected", "refSections": [{"refs": [{"id": "ref-for-connected"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
+window.dfnpanelData['a973e0fe'] = {"dfnID": "a973e0fe", "url": "https://dom.spec.whatwg.org/#concept-document", "dfnText": "document", "refSections": [{"refs": [{"id": "ref-for-concept-document"}], "title": "3.8. Interaction with Page Visibility"}], "external": true};
+window.dfnpanelData['5fd23811'] = {"dfnID": "5fd23811", "url": "https://dom.spec.whatwg.org/#concept-event-fire", "dfnText": "fire an event", "refSections": [{"refs": [{"id": "ref-for-concept-event-fire"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-concept-event-fire\u2460"}], "title": "3.3. Exit Picture-in-Picture"}, {"refs": [{"id": "ref-for-concept-event-fire\u2461"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": true};
+window.dfnpanelData['c62cd7cf'] = {"dfnID": "c62cd7cf", "url": "https://dom.spec.whatwg.org/#concept-document-origin", "dfnText": "origin", "refSections": [{"refs": [{"id": "ref-for-concept-document-origin"}], "title": "3.1. Internal Slot Definitions"}, {"refs": [{"id": "ref-for-concept-document-origin\u2460"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-concept-document-origin\u2461"}], "title": "3.3. Exit Picture-in-Picture"}], "external": true};
+window.dfnpanelData['c200d9ce'] = {"dfnID": "c200d9ce", "url": "https://dom.spec.whatwg.org/#retarget", "dfnText": "retargeting", "refSections": [{"refs": [{"id": "ref-for-retarget"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
+window.dfnpanelData['e6cc3311'] = {"dfnID": "e6cc3311", "url": "https://dom.spec.whatwg.org/#concept-tree", "dfnText": "tree", "refSections": [{"refs": [{"id": "ref-for-concept-tree"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
+window.dfnpanelData['d8ca51d7'] = {"dfnID": "d8ca51d7", "url": "https://fullscreen.spec.whatwg.org#fully-exit-fullscreen", "dfnText": "exit fullscreen", "refSections": [{"refs": [{"id": "ref-for-fully-exit-fullscreen"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['2b2f3329'] = {"dfnID": "2b2f3329", "url": "https://fullscreen.spec.whatwg.org#fullscreen-flag", "dfnText": "fullscreen flag", "refSections": [{"refs": [{"id": "ref-for-fullscreen-flag"}], "title": "3.5. Interaction with Fullscreen"}], "external": true};
+window.dfnpanelData['b4dee070'] = {"dfnID": "b4dee070", "url": "https://fullscreen.spec.whatwg.org#dom-document-fullscreenelement", "dfnText": "fullscreenelement", "refSections": [{"refs": [{"id": "ref-for-dom-document-fullscreenelement"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['402ed79d'] = {"dfnID": "402ed79d", "url": "https://html.spec.whatwg.org/multipage/custom-elements.html#cereactions", "dfnText": "CEReactions", "refSections": [{"refs": [{"id": "ref-for-cereactions"}], "title": "4.1. Extensions to HTMLVideoElement"}], "external": true};
+window.dfnpanelData['f0951476'] = {"dfnID": "f0951476", "url": "https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler", "dfnText": "EventHandler", "refSections": [{"refs": [{"id": "ref-for-eventhandler"}, {"id": "ref-for-eventhandler\u2460"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-eventhandler\u2461"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": true};
+window.dfnpanelData['3f5f11ee'] = {"dfnID": "3f5f11ee", "url": "https://html.spec.whatwg.org/multipage/media.html#dom-media-have_nothing", "dfnText": "HAVE_NOTHING", "refSections": [{"refs": [{"id": "ref-for-dom-media-have_nothing"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['f57f330b'] = {"dfnID": "f57f330b", "url": "https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement", "dfnText": "HTMLVideoElement", "refSections": [{"refs": [{"id": "ref-for-htmlvideoelement"}], "title": "1. Introduction"}, {"refs": [{"id": "ref-for-htmlvideoelement\u2460"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-htmlvideoelement\u2461"}], "title": "4.4. Interface PictureInPictureWindow"}, {"refs": [{"id": "ref-for-htmlvideoelement\u2462"}, {"id": "ref-for-htmlvideoelement\u2463"}], "title": "4.5. Event types"}, {"refs": [{"id": "ref-for-htmlvideoelement\u2464"}], "title": "5. Security considerations"}], "external": true};
+window.dfnpanelData['3610bd67'] = {"dfnID": "3610bd67", "url": "https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use", "dfnText": "allowed to use", "refSections": [{"refs": [{"id": "ref-for-allowed-to-use"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-allowed-to-use\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
+window.dfnpanelData['0d0390b4'] = {"dfnID": "0d0390b4", "url": "https://html.spec.whatwg.org/multipage/document-sequences.html#browsing-context", "dfnText": "browsing context", "refSections": [{"refs": [{"id": "ref-for-browsing-context"}], "title": "5.1. Secure Context"}], "external": true};
+window.dfnpanelData['a72449dd'] = {"dfnID": "a72449dd", "url": "https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel", "dfnText": "in parallel", "refSections": [{"refs": [{"id": "ref-for-in-parallel"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-in-parallel\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
+window.dfnpanelData['10c9e8bf'] = {"dfnID": "10c9e8bf", "url": "https://html.spec.whatwg.org/multipage/media.html#media-element-event-task-source", "dfnText": "media element event task source", "refSections": [{"refs": [{"id": "ref-for-media-element-event-task-source"}], "title": "4.6. Task source"}], "external": true};
+window.dfnpanelData['9a517a7d'] = {"dfnID": "9a517a7d", "url": "https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task", "dfnText": "queue a task", "refSections": [{"refs": [{"id": "ref-for-queue-a-task"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-queue-a-task\u2460"}], "title": "3.3. Exit Picture-in-Picture"}, {"refs": [{"id": "ref-for-queue-a-task\u2461"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": true};
+window.dfnpanelData['621f3aeb'] = {"dfnID": "621f3aeb", "url": "https://html.spec.whatwg.org/multipage/media.html#dom-media-readystate", "dfnText": "readyState", "refSections": [{"refs": [{"id": "ref-for-dom-media-readystate"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['5ab7b520'] = {"dfnID": "5ab7b520", "url": "https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#reflect", "dfnText": "reflect", "refSections": [{"refs": [{"id": "ref-for-reflect"}], "title": "3.4. Disable Picture-in-Picture"}], "external": true};
+window.dfnpanelData['e99bd18e'] = {"dfnID": "e99bd18e", "url": "https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global", "dfnText": "relevant global object", "refSections": [{"refs": [{"id": "ref-for-concept-relevant-global"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['9c4c1e66'] = {"dfnID": "9c4c1e66", "url": "https://html.spec.whatwg.org/multipage/webappapis.html#relevant-settings-object", "dfnText": "relevant settings object", "refSections": [{"refs": [{"id": "ref-for-relevant-settings-object"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-relevant-settings-object\u2460"}], "title": "3.3. Exit Picture-in-Picture"}], "external": true};
+window.dfnpanelData['521818b9'] = {"dfnID": "521818b9", "url": "https://html.spec.whatwg.org/multipage/browsers.html#same-origin-domain", "dfnText": "same origin-domain", "refSections": [{"refs": [{"id": "ref-for-same-origin-domain"}], "title": "3.1. Internal Slot Definitions"}], "external": true};
+window.dfnpanelData['f4ee1bc9'] = {"dfnID": "f4ee1bc9", "url": "https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state", "dfnText": "system visibility state", "refSections": [{"refs": [{"id": "ref-for-system-visibility-state"}], "title": "3.8. Interaction with Page Visibility"}], "external": true};
+window.dfnpanelData['c3b2d08c'] = {"dfnID": "c3b2d08c", "url": "https://html.spec.whatwg.org/multipage/webappapis.html#task-source", "dfnText": "task source", "refSections": [{"refs": [{"id": "ref-for-task-source"}], "title": "4.6. Task source"}], "external": true};
+window.dfnpanelData['47fe679e'] = {"dfnID": "47fe679e", "url": "https://html.spec.whatwg.org/multipage/interaction.html#transient-activation", "dfnText": "transient activation", "refSections": [{"refs": [{"id": "ref-for-transient-activation"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['d0c1b934'] = {"dfnID": "d0c1b934", "url": "https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable", "dfnText": "traversable navigable", "refSections": [{"refs": [{"id": "ref-for-traversable-navigable"}], "title": "3.8. Interaction with Page Visibility"}], "external": true};
+window.dfnpanelData['4411082c'] = {"dfnID": "4411082c", "url": "https://html.spec.whatwg.org/multipage/document-lifecycle.html#unloading-document-cleanup-steps", "dfnText": "unloading document cleanup steps", "refSections": [{"refs": [{"id": "ref-for-unloading-document-cleanup-steps"}], "title": "3.3. Exit Picture-in-Picture"}], "external": true};
+window.dfnpanelData['5afbefcd'] = {"dfnID": "5afbefcd", "url": "https://infra.spec.whatwg.org/#list-item", "dfnText": "item", "refSections": [{"refs": [{"id": "ref-for-list-item"}], "title": "3.3. Exit Picture-in-Picture"}], "external": true};
+window.dfnpanelData['6d19ac93'] = {"dfnID": "6d19ac93", "url": "https://infra.spec.whatwg.org/#user-agent", "dfnText": "user agent", "refSections": [{"refs": [{"id": "ref-for-user-agent"}, {"id": "ref-for-user-agent\u2460"}], "title": "3.1. Internal Slot Definitions"}], "external": true};
+window.dfnpanelData['1570624a'] = {"dfnID": "1570624a", "url": "https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature-default-allowlist", "dfnText": "default allowlist", "refSections": [{"refs": [{"id": "ref-for-policy-controlled-feature-default-allowlist"}], "title": "5.2. Permissions Policy"}], "external": true};
+window.dfnpanelData['cc890cc1'] = {"dfnID": "cc890cc1", "url": "https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature", "dfnText": "policy-controlled feature", "refSections": [{"refs": [{"id": "ref-for-policy-controlled-feature"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-policy-controlled-feature\u2460"}], "title": "5.2. Permissions Policy"}], "external": true};
+window.dfnpanelData['7c3032a3'] = {"dfnID": "7c3032a3", "url": "https://w3c.github.io/remote-playback/#dfn-local-playback-device", "dfnText": "local playback device", "refSections": [{"refs": [{"id": "ref-for-dfn-local-playback-device"}], "title": "3.6. Interaction with Remote Playback"}], "external": true};
+window.dfnpanelData['9613fc2c'] = {"dfnID": "9613fc2c", "url": "https://w3c.github.io/remote-playback/#dfn-local-playback-state", "dfnText": "local playback state", "refSections": [{"refs": [{"id": "ref-for-dfn-local-playback-state"}], "title": "3.6. Interaction with Remote Playback"}], "external": true};
+window.dfnpanelData['628c6566'] = {"dfnID": "628c6566", "url": "https://drafts.csswg.org/selectors-4/#pseudo-class", "dfnText": "pseudo-class", "refSections": [{"refs": [{"id": "ref-for-pseudo-class"}], "title": "4.7. CSS pseudo-class"}], "external": true};
+window.dfnpanelData['8855a9aa'] = {"dfnID": "8855a9aa", "url": "https://webidl.spec.whatwg.org/#idl-DOMString", "dfnText": "DOMString", "refSections": [{"refs": [{"id": "ref-for-idl-DOMString"}], "title": "4.5. Event types"}], "external": true};
+window.dfnpanelData['889e932f'] = {"dfnID": "889e932f", "url": "https://webidl.spec.whatwg.org/#Exposed", "dfnText": "Exposed", "refSections": [{"refs": [{"id": "ref-for-Exposed"}], "title": "4.4. Interface PictureInPictureWindow"}, {"refs": [{"id": "ref-for-Exposed\u2460"}], "title": "4.5. Event types"}], "external": true};
+window.dfnpanelData['797018a7'] = {"dfnID": "797018a7", "url": "https://webidl.spec.whatwg.org/#invalidstateerror", "dfnText": "InvalidStateError", "refSections": [{"refs": [{"id": "ref-for-invalidstateerror"}, {"id": "ref-for-invalidstateerror\u2460"}, {"id": "ref-for-invalidstateerror\u2461"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-invalidstateerror\u2462"}], "title": "3.3. Exit Picture-in-Picture"}, {"refs": [{"id": "ref-for-invalidstateerror\u2463"}], "title": "3.4. Disable Picture-in-Picture"}], "external": true};
+window.dfnpanelData['c807e273'] = {"dfnID": "c807e273", "url": "https://webidl.spec.whatwg.org/#NewObject", "dfnText": "NewObject", "refSections": [{"refs": [{"id": "ref-for-NewObject"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-NewObject\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
+window.dfnpanelData['ba556545'] = {"dfnID": "ba556545", "url": "https://webidl.spec.whatwg.org/#notallowederror", "dfnText": "NotAllowedError", "refSections": [{"refs": [{"id": "ref-for-notallowederror"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['3182eb71'] = {"dfnID": "3182eb71", "url": "https://webidl.spec.whatwg.org/#notsupportederror", "dfnText": "NotSupportedError", "refSections": [{"refs": [{"id": "ref-for-notsupportederror"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['bdbd19d1'] = {"dfnID": "bdbd19d1", "url": "https://webidl.spec.whatwg.org/#idl-promise", "dfnText": "Promise", "refSections": [{"refs": [{"id": "ref-for-idl-promise"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-idl-promise\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
+window.dfnpanelData['a5c91173'] = {"dfnID": "a5c91173", "url": "https://webidl.spec.whatwg.org/#SameObject", "dfnText": "SameObject", "refSections": [{"refs": [{"id": "ref-for-SameObject"}], "title": "4.5. Event types"}], "external": true};
+window.dfnpanelData['c3e881ef'] = {"dfnID": "c3e881ef", "url": "https://webidl.spec.whatwg.org/#securityerror", "dfnText": "SecurityError", "refSections": [{"refs": [{"id": "ref-for-securityerror"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-securityerror\u2460"}], "title": "5.2. Permissions Policy"}], "external": true};
+window.dfnpanelData['dacde8b5'] = {"dfnID": "dacde8b5", "url": "https://webidl.spec.whatwg.org/#a-new-promise", "dfnText": "a new promise", "refSections": [{"refs": [{"id": "ref-for-a-new-promise"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-a-new-promise\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
+window.dfnpanelData['5372cca8'] = {"dfnID": "5372cca8", "url": "https://webidl.spec.whatwg.org/#idl-boolean", "dfnText": "boolean", "refSections": [{"refs": [{"id": "ref-for-idl-boolean"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-idl-boolean\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
+window.dfnpanelData['f8de33a3'] = {"dfnID": "f8de33a3", "url": "https://webidl.spec.whatwg.org/#idl-long", "dfnText": "long", "refSections": [{"refs": [{"id": "ref-for-idl-long"}, {"id": "ref-for-idl-long\u2460"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": true};
+window.dfnpanelData['4013a022'] = {"dfnID": "4013a022", "url": "https://webidl.spec.whatwg.org/#this", "dfnText": "this", "refSections": [{"refs": [{"id": "ref-for-this"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['5f90bbfb'] = {"dfnID": "5f90bbfb", "url": "https://webidl.spec.whatwg.org/#idl-undefined", "dfnText": "undefined", "refSections": [{"refs": [{"id": "ref-for-idl-undefined"}], "title": "4.2. Extensions to Document"}], "external": true};
+window.dfnpanelData['initiators-of-active-picture-in-picture-sessions'] = {"dfnID": "initiators-of-active-picture-in-picture-sessions", "url": "#initiators-of-active-picture-in-picture-sessions", "dfnText": "initiators of active Picture-in-Picture sessions", "refSections": [{"refs": [{"id": "ref-for-initiators-of-active-picture-in-picture-sessions"}], "title": "3.1. Internal Slot Definitions"}, {"refs": [{"id": "ref-for-initiators-of-active-picture-in-picture-sessions\u2460"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-initiators-of-active-picture-in-picture-sessions\u2461"}], "title": "3.3. Exit Picture-in-Picture"}], "external": false};
+window.dfnpanelData['request-picture-in-picture-algorithm'] = {"dfnID": "request-picture-in-picture-algorithm", "url": "#request-picture-in-picture-algorithm", "dfnText": "request Picture-in-Picture algorithm", "refSections": [{"refs": [{"id": "ref-for-request-picture-in-picture-algorithm"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-request-picture-in-picture-algorithm\u2460"}], "title": "5.2. Permissions Policy"}], "external": false};
+window.dfnpanelData['picture-in-picture-window'] = {"dfnID": "picture-in-picture-window", "url": "#picture-in-picture-window", "dfnText": "Picture-in-Picture window", "refSections": [{"refs": [{"id": "ref-for-picture-in-picture-window"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-picture-in-picture-window\u2460"}, {"id": "ref-for-picture-in-picture-window\u2461"}], "title": "3.3. Exit Picture-in-Picture"}, {"refs": [{"id": "ref-for-picture-in-picture-window\u2462"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-picture-in-picture-window\u2463"}, {"id": "ref-for-picture-in-picture-window\u2464"}, {"id": "ref-for-picture-in-picture-window\u2465"}, {"id": "ref-for-picture-in-picture-window\u2466"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": false};
+window.dfnpanelData['exit-picture-in-picture-algorithm'] = {"dfnID": "exit-picture-in-picture-algorithm", "url": "#exit-picture-in-picture-algorithm", "dfnText": "exit Picture-in-Picture algorithm", "refSections": [{"refs": [{"id": "ref-for-exit-picture-in-picture-algorithm"}, {"id": "ref-for-exit-picture-in-picture-algorithm\u2460"}], "title": "3.3. Exit Picture-in-Picture"}, {"refs": [{"id": "ref-for-exit-picture-in-picture-algorithm\u2461"}], "title": "3.4. Disable Picture-in-Picture"}, {"refs": [{"id": "ref-for-exit-picture-in-picture-algorithm\u2462"}], "title": "3.5. Interaction with Fullscreen"}, {"refs": [{"id": "ref-for-exit-picture-in-picture-algorithm\u2463"}], "title": "4.2. Extensions to Document"}], "external": false};
+window.dfnpanelData['dom-htmlvideoelement-requestpictureinpicture'] = {"dfnID": "dom-htmlvideoelement-requestpictureinpicture", "url": "#dom-htmlvideoelement-requestpictureinpicture", "dfnText": "requestPictureInPicture", "refSections": [{"refs": [{"id": "ref-for-dom-htmlvideoelement-requestpictureinpicture"}], "title": "3.4. Disable Picture-in-Picture"}, {"refs": [{"id": "ref-for-dom-htmlvideoelement-requestpictureinpicture\u2460"}], "title": "4.1. Extensions to HTMLVideoElement"}], "external": false};
+window.dfnpanelData['dom-htmlvideoelement-disablepictureinpicture'] = {"dfnID": "dom-htmlvideoelement-disablepictureinpicture", "url": "#dom-htmlvideoelement-disablepictureinpicture", "dfnText": "disablePictureInPicture", "refSections": [{"refs": [{"id": "ref-for-dom-htmlvideoelement-disablepictureinpicture"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-dom-htmlvideoelement-disablepictureinpicture\u2460"}, {"id": "ref-for-dom-htmlvideoelement-disablepictureinpicture\u2461"}, {"id": "ref-for-dom-htmlvideoelement-disablepictureinpicture\u2462"}, {"id": "ref-for-dom-htmlvideoelement-disablepictureinpicture\u2463"}], "title": "3.4. Disable Picture-in-Picture"}], "external": false};
+window.dfnpanelData['dom-document-pictureinpictureenabled'] = {"dfnID": "dom-document-pictureinpictureenabled", "url": "#dom-document-pictureinpictureenabled", "dfnText": "pictureInPictureEnabled", "refSections": [{"refs": [{"id": "ref-for-dom-document-pictureinpictureenabled"}], "title": "4.2. Extensions to Document"}, {"refs": [{"id": "ref-for-dom-document-pictureinpictureenabled\u2460"}], "title": "5.2. Permissions Policy"}], "external": false};
+window.dfnpanelData['dom-document-exitpictureinpicture'] = {"dfnID": "dom-document-exitpictureinpicture", "url": "#dom-document-exitpictureinpicture", "dfnText": "exitPictureInPicture", "refSections": [{"refs": [{"id": "ref-for-dom-document-exitpictureinpicture"}], "title": "4.2. Extensions to Document"}], "external": false};
+window.dfnpanelData['picture-in-picture-support'] = {"dfnID": "picture-in-picture-support", "url": "#picture-in-picture-support", "dfnText": "Picture-in-Picture support", "refSections": [{"refs": [{"id": "ref-for-picture-in-picture-support"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-picture-in-picture-support\u2460"}], "title": "4.2. Extensions to Document"}], "external": false};
+window.dfnpanelData['dom-documentorshadowroot-pictureinpictureelement'] = {"dfnID": "dom-documentorshadowroot-pictureinpictureelement", "url": "#dom-documentorshadowroot-pictureinpictureelement", "dfnText": "pictureInPictureElement", "refSections": [{"refs": [{"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2461"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2462"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2463"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2464"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2465"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2466"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2467"}], "title": "3.3. Exit Picture-in-Picture"}, {"refs": [{"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2468"}], "title": "3.4. Disable Picture-in-Picture"}, {"refs": [{"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460\u24ea"}], "title": "3.5. Interaction with Fullscreen"}, {"refs": [{"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460\u2460"}], "title": "3.8. Interaction with Page Visibility"}, {"refs": [{"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460\u2461"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460\u2462"}], "title": "4.3. Extension to DocumentOrShadowRoot"}, {"refs": [{"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460\u2463"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460\u2464"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460\u2465"}, {"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460\u2466"}], "title": "4.4. Interface PictureInPictureWindow"}, {"refs": [{"id": "ref-for-dom-documentorshadowroot-pictureinpictureelement\u2460\u2467"}], "title": "4.7. CSS pseudo-class"}], "external": false};
+window.dfnpanelData['pictureinpicturewindow'] = {"dfnID": "pictureinpicturewindow", "url": "#pictureinpicturewindow", "dfnText": "PictureInPictureWindow", "refSections": [{"refs": [{"id": "ref-for-pictureinpicturewindow"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-pictureinpicturewindow\u2460"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-pictureinpicturewindow\u2461"}, {"id": "ref-for-pictureinpicturewindow\u2462"}, {"id": "ref-for-pictureinpicturewindow\u2463"}], "title": "4.4. Interface PictureInPictureWindow"}, {"refs": [{"id": "ref-for-pictureinpicturewindow\u2464"}, {"id": "ref-for-pictureinpicturewindow\u2465"}, {"id": "ref-for-pictureinpicturewindow\u2466"}], "title": "4.5. Event types"}], "external": false};
+window.dfnpanelData['dom-pictureinpicturewindow-width'] = {"dfnID": "dom-pictureinpicturewindow-width", "url": "#dom-pictureinpicturewindow-width", "dfnText": "width", "refSections": [{"refs": [{"id": "ref-for-dom-pictureinpicturewindow-width"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": false};
+window.dfnpanelData['dom-pictureinpicturewindow-height'] = {"dfnID": "dom-pictureinpicturewindow-height", "url": "#dom-pictureinpicturewindow-height", "dfnText": "height", "refSections": [{"refs": [{"id": "ref-for-dom-pictureinpicturewindow-height"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": false};
+window.dfnpanelData['close-window-algorithm'] = {"dfnID": "close-window-algorithm", "url": "#close-window-algorithm", "dfnText": "close window algorithm", "refSections": [{"refs": [{"id": "ref-for-close-window-algorithm"}], "title": "3.3. Exit Picture-in-Picture"}], "external": false};
+window.dfnpanelData['pictureinpictureevent'] = {"dfnID": "pictureinpictureevent", "url": "#pictureinpictureevent", "dfnText": "PictureInPictureEvent", "refSections": [{"refs": [{"id": "ref-for-pictureinpictureevent"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-pictureinpictureevent\u2460"}], "title": "3.3. Exit Picture-in-Picture"}], "external": false};
+window.dfnpanelData['dom-pictureinpictureevent-pictureinpicturewindow'] = {"dfnID": "dom-pictureinpictureevent-pictureinpicturewindow", "url": "#dom-pictureinpictureevent-pictureinpicturewindow", "dfnText": "pictureInPictureWindow", "refSections": [{"refs": [{"id": "ref-for-dom-pictureinpictureevent-pictureinpicturewindow"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-dom-pictureinpictureevent-pictureinpicturewindow\u2460"}], "title": "3.3. Exit Picture-in-Picture"}], "external": false};
+window.dfnpanelData['dictdef-pictureinpictureeventinit'] = {"dfnID": "dictdef-pictureinpictureeventinit", "url": "#dictdef-pictureinpictureeventinit", "dfnText": "PictureInPictureEventInit", "refSections": [{"refs": [{"id": "ref-for-dictdef-pictureinpictureeventinit"}], "title": "4.5. Event types"}], "external": false};
+window.dfnpanelData['eventdef-htmlvideoelement-enterpictureinpicture'] = {"dfnID": "eventdef-htmlvideoelement-enterpictureinpicture", "url": "#eventdef-htmlvideoelement-enterpictureinpicture", "dfnText": "enterpictureinpicture", "refSections": [{"refs": [{"id": "ref-for-eventdef-htmlvideoelement-enterpictureinpicture"}], "title": "3.2. Request Picture-in-Picture"}], "external": false};
+window.dfnpanelData['eventdef-htmlvideoelement-leavepictureinpicture'] = {"dfnID": "eventdef-htmlvideoelement-leavepictureinpicture", "url": "#eventdef-htmlvideoelement-leavepictureinpicture", "dfnText": "leavepictureinpicture", "refSections": [{"refs": [{"id": "ref-for-eventdef-htmlvideoelement-leavepictureinpicture"}], "title": "3.3. Exit Picture-in-Picture"}], "external": false};
+window.dfnpanelData['eventdef-pictureinpicturewindow-resize'] = {"dfnID": "eventdef-pictureinpicturewindow-resize", "url": "#eventdef-pictureinpicturewindow-resize", "dfnText": "resize", "refSections": [{"refs": [{"id": "ref-for-eventdef-pictureinpicturewindow-resize"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": false};
+</script>
+<script>/* Boilerplate: script-dom-helper */
+function query(sel) { return document.querySelector(sel); }
+
+function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
+
+function iter(obj) {
+	if(!obj) return [];
+	var it = obj[Symbol.iterator];
+	if(it) return it;
+	return Object.entries(obj);
+}
+
+function mk(tagname, attrs, ...children) {
+	const el = document.createElement(tagname);
+	for(const [k,v] of iter(attrs)) {
+		if(k.slice(0,3) == "_on") {
+			const eventName = k.slice(3);
+			el.addEventListener(eventName, v);
+		} else if(k[0] == "_") {
+			// property, not attribute
+			el[k.slice(1)] = v;
+		} else {
+			if(v === false || v == null) {
+        continue;
+      } else if(v === true) {
+        el.setAttribute(k, "");
+        continue;
+      } else {
+  			el.setAttribute(k, v);
+      }
+		}
+	}
+	append(el, children);
+	return el;
+}
+
+/* Create shortcuts for every known HTML element */
+[
+  "a",
+  "abbr",
+  "acronym",
+  "address",
+  "applet",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "basefont",
+  "bdo",
+  "big",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "center",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "font",
+  "footer",
+  "form",
+  "frame",
+  "frameset",
+  "head",
+  "header",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "nobr",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "pre",
+  "progress",
+  "q",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr",
+  "xmp",
+].forEach(tagname=>{
+	mk[tagname] = (...args) => mk(tagname, ...args);
 });
+
+function* nodesFromChildList(children) {
+	for(const child of children.flat(Infinity)) {
+		if(child instanceof Node) {
+			yield child;
+		} else {
+			yield new Text(child);
+		}
+	}
+}
+function append(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		if(el instanceof Node) el.appendChild(child);
+		else el.push(child);
+	}
+	return el;
+}
+
+function insertAfter(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		el.parentNode.insertBefore(child, el.nextSibling);
+	}
+	return el;
+}
+
+function clearContents(el) {
+	el.innerHTML = "";
+	return el;
+}
+
+function parseHTML(markup) {
+	if(markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+		const doc = document.implementation.createHTMLDocument("");
+		doc.documentElement.innerHTML = markup;
+		return doc;
+	} else {
+		const el = mk.template({});
+		el.innerHTML = markup;
+		return el.content;
+	}
+}
 </script>
