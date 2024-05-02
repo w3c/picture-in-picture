@@ -8,7 +8,7 @@
   <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/picture-in-picture/" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
-  <meta content="60f6f577176888c812922e3ce4f0c8c9f31c59df" name="document-revision">
+  <meta content="8e590950301a7379d7de1ec64c50324526280c85" name="document-revision">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
@@ -675,7 +675,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>This specification intends to provide APIs to allow websites to
+   <p>This specification provides APIs to allow websites to
 
 create a floating video window always on top of other windows so that
 users may continue consuming media while they interact with other
@@ -768,8 +768,8 @@ in a separate miniature window that is always on top of other windows. This
 window stays visible even when the user agent is not visible.
 Picture-in-Picture is a common platform-level feature among desktop and mobile
 OSs.</p>
-   <p>This specification aims to allow websites to initiate and control this behavior
-by exposing the following sets of properties to the API:</p>
+   <p>This specification extends <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement">HTMLVideoElement</a></code> allowing websites
+to initiate and control this behavior by exposing the following sets of properties:</p>
    <ul>
     <li data-md>
      <p>Notify the website when it enters and leaves Picture-in-Picture mode.</p>
@@ -784,9 +784,6 @@ the website when it changes.</p>
     <li data-md>
      <p>Allow the website to check if Picture-in-Picture mode can be triggered.</p>
    </ul>
-   <p>The proposed Picture-in-Picture API is very similar to <a data-link-type="biblio" href="#biblio-fullscreen" title="Fullscreen API Standard">[Fullscreen]</a> as they
-have similar properties. The API only applies to <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement">HTMLVideoElement</a></code> at the moment but is meant to be
-extensible.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <h3 class="heading settled" data-level="2.1" id="example-add-custom-pip-button"><span class="secno">2.1. </span><span class="content">Add a custom Picture-in-Picture button</span><a class="self-link" href="#example-add-custom-pip-button"></a></h3>
 <pre class="language-html highlight"><c- p>&lt;</c-><c- f>video</c-> <c- e>id</c-><c- o>=</c-><c- s>"video"</c-> <c- e>src</c-><c- o>=</c-><c- s>"https://example.com/file.mp4"</c-><c- p>>&lt;/</c-><c- f>video</c-><c- p>></c->
@@ -1119,9 +1116,9 @@ element. It is different from the <code class="idl"><a data-link-type="idl" href
 apply to the shadow host chain.</p>
    <h2 class="heading settled" data-level="5" id="security-considerations"><span class="secno">5. </span><span class="content">Security considerations</span><a class="self-link" href="#security-considerations"></a></h2>
    <p><em>This section is non-normative.</em></p>
-   <p>The API applies only to <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement⑤">HTMLVideoElement</a></code> in order to start on a minimal
-viable product that has limited security issues. Later versions of this
-specification may allow PIP-ing arbitrary HTML content.</p>
+   <p>To limit potential abuse through spoofing, the API applies only to <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement" id="ref-for-htmlvideoelement⑤">HTMLVideoElement</a></code>. User interaction with the Picture-in-Picture window
+is intentionally limited so that the only effect is on the Picture-in-Picture
+window itself or the media being played.</p>
    <h3 class="heading settled" data-level="5.1" id="secure-context"><span class="secno">5.1. </span><span class="content">Secure Context</span><a class="self-link" href="#secure-context"></a></h3>
    <p>The API is not limited to <a data-link-type="biblio" href="#biblio-secure-contexts" title="Secure Contexts">[SECURE-CONTEXTS]</a> because it exposes a feature
 to web applications that user agents usually offer natively on all media
@@ -1239,7 +1236,7 @@ Wörner for their contributions to this document.</p>
      <li><span class="dfn-paneled" id="e6cc3311">tree</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[Fullscreen]</a> defines the following terms:
+    <a data-link-type="biblio">[FULLSCREEN]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="d8ca51d7">exit fullscreen</span>
      <li><span class="dfn-paneled" id="2b2f3329">fullscreen flag</span>
@@ -1317,7 +1314,7 @@ Wörner for their contributions to this document.</p>
    <dd>Tab Atkins Jr.; Elika Etemad. <a href="https://drafts.csswg.org/css-values-4/"><cite>CSS Values and Units Module Level 4</cite></a>. URL: <a href="https://drafts.csswg.org/css-values-4/">https://drafts.csswg.org/css-values-4/</a>
    <dt id="biblio-dom">[DOM]
    <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
-   <dt id="biblio-fullscreen">[Fullscreen]
+   <dt id="biblio-fullscreen">[FULLSCREEN]
    <dd>Philip Jägenstedt. <a href="https://fullscreen.spec.whatwg.org/"><cite>Fullscreen API Standard</cite></a>. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
