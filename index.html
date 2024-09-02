@@ -8,7 +8,7 @@
   <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/picture-in-picture/" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
-  <meta content="59f728662db155ed7d6fe7cd93815ae67e4f0862" name="document-revision">
+  <meta content="e819c96259fd2c4362bf9b5c4672e5dde4166fd7" name="document-revision">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
@@ -649,7 +649,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-07-04">4 July 2024</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-09-02">2 September 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -1025,7 +1025,7 @@ parallel</a>:</p>
      <p>If the previous step threw an exception, reject <var>promise</var> with that
 exception and abort these steps.</p>
     <li data-md>
-     <p>Return <var>promise</var> with the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window③">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①②">pictureInPictureElement</a></code>.</p>
+     <p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#resolve" id="ref-for-resolve">Resolve</a> <var>promise</var> with the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window③">Picture-in-Picture window</a> associated with <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①②">pictureInPictureElement</a></code>.</p>
    </ol>
    <h3 class="heading settled" data-level="4.2" id="document-extensions"><span class="secno">4.2. </span><span class="content">Extensions to <code>Document</code></span><a class="self-link" href="#document-extensions"></a></h3>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#document" id="ref-for-document①"><c- g>Document</c-></a> {
@@ -1047,7 +1047,7 @@ parallel</a>:</p>
      <p>If the previous step threw an exception, reject <var>promise</var> with that
 exception and abort these steps.</p>
     <li data-md>
-     <p>Return <var>promise</var>.</p>
+     <p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#resolve" id="ref-for-resolve①">Resolve</a> <var>promise</var>.</p>
    </ol>
    <h3 class="heading settled" data-level="4.3" id="documentorshadowroot-extension"><span class="secno">4.3. </span><span class="content">Extension to <code>DocumentOrShadowRoot</code></span><a class="self-link" href="#documentorshadowroot-extension"></a></h3>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <c- b>mixin</c-> <a class="idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#documentorshadowroot" id="ref-for-documentorshadowroot"><c- g>DocumentOrShadowRoot</c-></a> {
@@ -1303,6 +1303,7 @@ Wörner for their contributions to this document.</p>
      <li><span class="dfn-paneled" id="dacde8b5">a new promise</span>
      <li><span class="dfn-paneled" id="5372cca8">boolean</span>
      <li><span class="dfn-paneled" id="f8de33a3">long</span>
+     <li><span class="dfn-paneled" id="3b90bdcd">resolve</span>
      <li><span class="dfn-paneled" id="4013a022">this</span>
      <li><span class="dfn-paneled" id="5f90bbfb">undefined</span>
     </ul>
@@ -1740,6 +1741,7 @@ window.dfnpanelData['c3e881ef'] = {"dfnID": "c3e881ef", "url": "https://webidl.s
 window.dfnpanelData['dacde8b5'] = {"dfnID": "dacde8b5", "url": "https://webidl.spec.whatwg.org/#a-new-promise", "dfnText": "a new promise", "refSections": [{"refs": [{"id": "ref-for-a-new-promise"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-a-new-promise\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
 window.dfnpanelData['5372cca8'] = {"dfnID": "5372cca8", "url": "https://webidl.spec.whatwg.org/#idl-boolean", "dfnText": "boolean", "refSections": [{"refs": [{"id": "ref-for-idl-boolean"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-idl-boolean\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
 window.dfnpanelData['f8de33a3'] = {"dfnID": "f8de33a3", "url": "https://webidl.spec.whatwg.org/#idl-long", "dfnText": "long", "refSections": [{"refs": [{"id": "ref-for-idl-long"}, {"id": "ref-for-idl-long\u2460"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": true};
+window.dfnpanelData['3b90bdcd'] = {"dfnID": "3b90bdcd", "url": "https://webidl.spec.whatwg.org/#resolve", "dfnText": "resolve", "refSections": [{"refs": [{"id": "ref-for-resolve"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-resolve\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
 window.dfnpanelData['4013a022'] = {"dfnID": "4013a022", "url": "https://webidl.spec.whatwg.org/#this", "dfnText": "this", "refSections": [{"refs": [{"id": "ref-for-this"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
 window.dfnpanelData['5f90bbfb'] = {"dfnID": "5f90bbfb", "url": "https://webidl.spec.whatwg.org/#idl-undefined", "dfnText": "undefined", "refSections": [{"refs": [{"id": "ref-for-idl-undefined"}], "title": "4.2. Extensions to Document"}], "external": true};
 window.dfnpanelData['initiators-of-active-picture-in-picture-sessions'] = {"dfnID": "initiators-of-active-picture-in-picture-sessions", "url": "#initiators-of-active-picture-in-picture-sessions", "dfnText": "initiators of active Picture-in-Picture sessions", "refSections": [{"refs": [{"id": "ref-for-initiators-of-active-picture-in-picture-sessions"}], "title": "3.1. Internal Slot Definitions"}, {"refs": [{"id": "ref-for-initiators-of-active-picture-in-picture-sessions\u2460"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-initiators-of-active-picture-in-picture-sessions\u2461"}], "title": "3.3. Exit Picture-in-Picture"}], "external": false};
