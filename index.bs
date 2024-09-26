@@ -34,14 +34,21 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
     type: dfn
         text: local playback device
         text: local playback state
+spec: ecmascript; urlPrefix: https://tc39.es/ecma262/multipage/
+    type: dfn;
+        text: current realm; url: executable-code-and-execution-contexts.html#sec-code-realms
 </pre>
 
 <pre class="link-defaults">
 spec:dom; type:attribute; text:bubbles
 spec:dom; type:dfn; for:NamedNodeMap; text:element
 spec:dom; type:interface; text:Document
+spec:dom; type:dfn; text:origin
 spec:html; type:attribute; for:HTMLMediaElement; text:readyState
 spec:html; type:dfn; for:/; text:browsing context
+spec:html; type:dfn; for:realm; text:global object
+spec:infra; type:dfn; text:user agent
+spec:infra; type:dfn; for:list; text:item
 </pre>
 
 # Introduction # {#intro}
@@ -207,7 +214,7 @@ the user agent MUST run the following steps:
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
 10. Append <a>relevant settings object</a>'s <a>origin</a> to
     <a>initiators of active Picture-in-Picture sessions</a>.
-11. <a>Queue a task</a> to <a>fire an event</a> named
+11. <a>Queue a picture-in-picture task</a> to <a>fire an event</a> named
     {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
     |video| with its {{bubbles}} attribute initialized to `true` and its
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
@@ -242,7 +249,7 @@ the user agent MUST run the following steps:
     abort these steps.
 2. Run the <a>close window algorithm</a> with the <a>Picture-in-Picture
     window</a> associated with {{pictureInPictureElement}}.
-3. <a>Queue a task</a> to <a>fire an event</a> named
+3. <a>Queue a picture-in-picture task</a> to <a>fire an event</a> named
     {{leavepictureinpicture}} using {{PictureInPictureEvent}} at the
     |video| with its {{bubbles}} attribute initialized to `true` and its
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
@@ -348,10 +355,10 @@ parallel</a>:
 
 1. Let |video| be the video element on which the method was invoked.
 2. Run the <a>request Picture-in-Picture algorithm</a> with |video|.
-3. If the previous step threw an exception, reject |promise| with that
-    exception and abort these steps.
-4. [=/Resolve=] |promise| with the <a>Picture-in-Picture window</a> associated with
-    {{pictureInPictureElement}}.
+3. If the previous step threw an exception, [=queue a picture-in-picture task=]
+    to reject |promise| with that exception and abort these steps.
+4. [=Queue a picture-in-picture task=] to [=/resolve=] |promise| with the
+    <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}}.
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
 
@@ -376,9 +383,10 @@ return <a>a new promise</a> |promise| and run the following steps <a>in
 parallel</a>:
 
 1. Run the <a>exit Picture-in-Picture algorithm</a>.
-2. If the previous step threw an exception, reject |promise| with that
+2. If the previous step threw an exception,
+    [=queue a picture-in-picture task=] to reject |promise| with that
     exception and abort these steps.
-3. [=/Resolve=] |promise|.
+3. [=Queue a picture-in-picture task=] to [=/resolve=] |promise|.
 
 ## Extension to <code>DocumentOrShadowRoot</code> ## {#documentorshadowroot-extension}
 
@@ -426,8 +434,9 @@ The {{height}} attribute MUST return the height in <a lt=px value>CSS pixels</a>
 the |state| is `opened`. Otherwise, it MUST return 0.
 
 When the size of the <a>Picture-in-Picture window</a> associated with
-{{pictureInPictureElement}} changes, the user agent MUST <a>queue a task</a> to
-<a>fire an event</a> named {{resize}} at {{pictureInPictureElement}}.
+{{pictureInPictureElement}} changes, the user agent MUST
+<a>queue a picture-in-picture task</a> to <a>fire an event</a> named
+{{resize}} at {{pictureInPictureElement}}.
 
 ## Event types ## {#event-types}
 
@@ -454,6 +463,11 @@ dictionary PictureInPictureEventInit : EventInit {
 
 The <a>task source</a> for all the tasks queued in this specification is the
 <a>media element event task source</a> of the video element in question.
+
+When an algorithm <dfn lt="queue a picture-in-picture task">queues a
+picture-in-picture task</dfn> <var>T</var>, the user agent MUST
+[=queue a global task=] <var>T</var> on the [[media element task source]]
+using the [=global object=] of the [=current realm=].
 
 ## CSS pseudo-class ## {#css-pseudo-class}
 
