@@ -8,7 +8,7 @@
   <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/picture-in-picture/" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
-  <meta content="e819c96259fd2c4362bf9b5c4672e5dde4166fd7" name="document-revision">
+  <meta content="2fdd8b208c10bc41b17bbed7bdb31ac71773bcb7" name="document-revision">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
@@ -649,7 +649,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Picture-in-Picture</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-09-02">2 September 2024</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-10-02">2 October 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -881,7 +881,7 @@ the website when it changes.</p>
    </ol>
    <p class="note" role="note"><span class="marker">Note:</span> In case a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent①">user agent</a> supports multiple Picture-in-Picture
   windows, the list allows duplicates.</p>
-   <p>An origin is said to have an <dfn data-dfn-type="dfn" data-noexport id="active-picture-in-picture-session">active Picture-in-Picture session<a class="self-link" href="#active-picture-in-picture-session"></a></dfn> if any
+   <p>An origin is said to have an active Picture-in-Picture session if any
 of the origins in <a data-link-type="dfn" href="#initiators-of-active-picture-in-picture-sessions" id="ref-for-initiators-of-active-picture-in-picture-sessions">initiators of active Picture-in-Picture sessions</a> are <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin-domain" id="ref-for-same-origin-domain">same origin-domain</a> with origin.</p>
    <h3 class="heading settled" data-level="3.2" id="request-pip"><span class="secno">3.2. </span><span class="content">Request Picture-in-Picture</span><a class="self-link" href="#request-pip"></a></h3>
    <p>When the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="request-picture-in-picture-algorithm">request Picture-in-Picture algorithm</dfn> with <var>video</var> is invoked,
@@ -1034,7 +1034,7 @@ exception and abort these steps.</p>
   [<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#NewObject" id="ref-for-NewObject①"><c- g>NewObject</c-></a>] <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise①"><c- b>Promise</c-></a>&lt;<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-undefined" id="ref-for-idl-undefined"><c- b>undefined</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="Document" data-dfn-type="method" data-export data-lt="exitPictureInPicture()" id="dom-document-exitpictureinpicture"><code><c- g>exitPictureInPicture</c-></code></dfn>();
 };
 </pre>
-   <p>The <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled">pictureInPictureEnabled</a></code> attribute’s getter must return <code>true</code> if <a data-link-type="dfn" href="#picture-in-picture-support" id="ref-for-picture-in-picture-support①">Picture-in-Picture support</a> is <code>true</code> and the <a data-link-type="dfn">context object</a> is <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use" id="ref-for-allowed-to-use①">allowed to use</a> the feature indicated by attribute name <code>picture-in-picture</code>, and <code>false</code> otherwise.</p>
+   <p>The <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled">pictureInPictureEnabled</a></code> attribute’s getter must return <code>true</code> if <a data-link-type="dfn" href="#picture-in-picture-support" id="ref-for-picture-in-picture-support①">Picture-in-Picture support</a> is <code>true</code> and <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this①">this</a>> is <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use" id="ref-for-allowed-to-use①">allowed to use</a> the feature indicated by attribute name <code>picture-in-picture</code>, and <code>false</code> otherwise.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="picture-in-picture-support">Picture-in-Picture support</dfn> is <code>false</code> if there’s a user preference
 that disables it or a platform limitation. It is <code>true</code> otherwise.</p>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-document-exitpictureinpicture" id="ref-for-dom-document-exitpictureinpicture">exitPictureInPicture()</a></code> method, when invoked, MUST
@@ -1057,13 +1057,12 @@ exception and abort these steps.</p>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①③">pictureInPictureElement</a></code> attribute’s getter must run these steps:</p>
    <ol>
     <li data-md>
-     <p>If the <a data-link-type="dfn">context object</a> is not <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#connected" id="ref-for-connected">connected</a>, return <code>null</code> and abort
-these steps.</p>
+     <p>If <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this②">this</a> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-shadow-root" id="ref-for-concept-shadow-root">shadow root</a> and its <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-documentfragment-host" id="ref-for-concept-documentfragment-host">host</a> is not <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#connected" id="ref-for-connected">connected</a>, return <code>null</code> and abort these steps.</p>
     <li data-md>
      <p>Let <var>candidate</var> be the result of <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#retarget" id="ref-for-retarget">retargeting</a> Picture-in-Picture
-element against the <a data-link-type="dfn">context object</a>.</p>
+element against <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this③">this</a>.</p>
     <li data-md>
-     <p>If <var>candidate</var> and the <a data-link-type="dfn">context object</a> are in the same <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-tree" id="ref-for-concept-tree">tree</a>,
+     <p>If <var>candidate</var> and <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this④">this</a> are in the same <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-tree" id="ref-for-concept-tree">tree</a>,
 return <var>candidate</var> and abort these steps.</p>
     <li data-md>
      <p>Return <code>null</code>.</p>
@@ -1179,7 +1178,6 @@ Wörner for their contributions to this document.</p>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
-   <li><a href="#active-picture-in-picture-session">active Picture-in-Picture session</a><span>, in § 3.1</span>
    <li><a href="#close-window-algorithm">close window algorithm</a><span>, in § 4.4</span>
    <li><a href="#dom-pictureinpictureevent-pictureinpictureevent">constructor(type, eventInitDict)</a><span>, in § 4.5</span>
    <li><a href="#dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a><span>, in § 4.1</span>
@@ -1231,8 +1229,10 @@ Wörner for their contributions to this document.</p>
      <li><span class="dfn-paneled" id="9638f92b">connected</span>
      <li><span class="dfn-paneled" id="a973e0fe">document</span>
      <li><span class="dfn-paneled" id="5fd23811">fire an event</span>
+     <li><span class="dfn-paneled" id="5d233601">host</span>
      <li><span class="dfn-paneled" id="c62cd7cf">origin</span>
      <li><span class="dfn-paneled" id="c200d9ce">retargeting</span>
+     <li><span class="dfn-paneled" id="3fcc582f">shadow root</span>
      <li><span class="dfn-paneled" id="e6cc3311">tree</span>
     </ul>
    <li>
@@ -1697,8 +1697,10 @@ window.dfnpanelData['0c0ceb78'] = {"dfnID": "0c0ceb78", "url": "https://dom.spec
 window.dfnpanelData['9638f92b'] = {"dfnID": "9638f92b", "url": "https://dom.spec.whatwg.org/#connected", "dfnText": "connected", "refSections": [{"refs": [{"id": "ref-for-connected"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
 window.dfnpanelData['a973e0fe'] = {"dfnID": "a973e0fe", "url": "https://dom.spec.whatwg.org/#concept-document", "dfnText": "document", "refSections": [{"refs": [{"id": "ref-for-concept-document"}], "title": "3.8. Interaction with Page Visibility"}], "external": true};
 window.dfnpanelData['5fd23811'] = {"dfnID": "5fd23811", "url": "https://dom.spec.whatwg.org/#concept-event-fire", "dfnText": "fire an event", "refSections": [{"refs": [{"id": "ref-for-concept-event-fire"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-concept-event-fire\u2460"}], "title": "3.3. Exit Picture-in-Picture"}, {"refs": [{"id": "ref-for-concept-event-fire\u2461"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": true};
+window.dfnpanelData['5d233601'] = {"dfnID": "5d233601", "url": "https://dom.spec.whatwg.org/#concept-documentfragment-host", "dfnText": "host", "refSections": [{"refs": [{"id": "ref-for-concept-documentfragment-host"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
 window.dfnpanelData['c62cd7cf'] = {"dfnID": "c62cd7cf", "url": "https://dom.spec.whatwg.org/#concept-document-origin", "dfnText": "origin", "refSections": [{"refs": [{"id": "ref-for-concept-document-origin"}], "title": "3.1. Internal Slot Definitions"}, {"refs": [{"id": "ref-for-concept-document-origin\u2460"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-concept-document-origin\u2461"}], "title": "3.3. Exit Picture-in-Picture"}], "external": true};
 window.dfnpanelData['c200d9ce'] = {"dfnID": "c200d9ce", "url": "https://dom.spec.whatwg.org/#retarget", "dfnText": "retargeting", "refSections": [{"refs": [{"id": "ref-for-retarget"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
+window.dfnpanelData['3fcc582f'] = {"dfnID": "3fcc582f", "url": "https://dom.spec.whatwg.org/#concept-shadow-root", "dfnText": "shadow root", "refSections": [{"refs": [{"id": "ref-for-concept-shadow-root"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
 window.dfnpanelData['e6cc3311'] = {"dfnID": "e6cc3311", "url": "https://dom.spec.whatwg.org/#concept-tree", "dfnText": "tree", "refSections": [{"refs": [{"id": "ref-for-concept-tree"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
 window.dfnpanelData['d8ca51d7'] = {"dfnID": "d8ca51d7", "url": "https://fullscreen.spec.whatwg.org#fully-exit-fullscreen", "dfnText": "exit fullscreen", "refSections": [{"refs": [{"id": "ref-for-fully-exit-fullscreen"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
 window.dfnpanelData['2b2f3329'] = {"dfnID": "2b2f3329", "url": "https://fullscreen.spec.whatwg.org#fullscreen-flag", "dfnText": "fullscreen flag", "refSections": [{"refs": [{"id": "ref-for-fullscreen-flag"}], "title": "3.5. Interaction with Fullscreen"}], "external": true};
@@ -1742,7 +1744,7 @@ window.dfnpanelData['dacde8b5'] = {"dfnID": "dacde8b5", "url": "https://webidl.s
 window.dfnpanelData['5372cca8'] = {"dfnID": "5372cca8", "url": "https://webidl.spec.whatwg.org/#idl-boolean", "dfnText": "boolean", "refSections": [{"refs": [{"id": "ref-for-idl-boolean"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-idl-boolean\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
 window.dfnpanelData['f8de33a3'] = {"dfnID": "f8de33a3", "url": "https://webidl.spec.whatwg.org/#idl-long", "dfnText": "long", "refSections": [{"refs": [{"id": "ref-for-idl-long"}, {"id": "ref-for-idl-long\u2460"}], "title": "4.4. Interface PictureInPictureWindow"}], "external": true};
 window.dfnpanelData['3b90bdcd'] = {"dfnID": "3b90bdcd", "url": "https://webidl.spec.whatwg.org/#resolve", "dfnText": "resolve", "refSections": [{"refs": [{"id": "ref-for-resolve"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-resolve\u2460"}], "title": "4.2. Extensions to Document"}], "external": true};
-window.dfnpanelData['4013a022'] = {"dfnID": "4013a022", "url": "https://webidl.spec.whatwg.org/#this", "dfnText": "this", "refSections": [{"refs": [{"id": "ref-for-this"}], "title": "3.2. Request Picture-in-Picture"}], "external": true};
+window.dfnpanelData['4013a022'] = {"dfnID": "4013a022", "url": "https://webidl.spec.whatwg.org/#this", "dfnText": "this", "refSections": [{"refs": [{"id": "ref-for-this"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-this\u2460"}], "title": "4.2. Extensions to Document"}, {"refs": [{"id": "ref-for-this\u2461"}, {"id": "ref-for-this\u2462"}, {"id": "ref-for-this\u2463"}], "title": "4.3. Extension to DocumentOrShadowRoot"}], "external": true};
 window.dfnpanelData['5f90bbfb'] = {"dfnID": "5f90bbfb", "url": "https://webidl.spec.whatwg.org/#idl-undefined", "dfnText": "undefined", "refSections": [{"refs": [{"id": "ref-for-idl-undefined"}], "title": "4.2. Extensions to Document"}], "external": true};
 window.dfnpanelData['initiators-of-active-picture-in-picture-sessions'] = {"dfnID": "initiators-of-active-picture-in-picture-sessions", "url": "#initiators-of-active-picture-in-picture-sessions", "dfnText": "initiators of active Picture-in-Picture sessions", "refSections": [{"refs": [{"id": "ref-for-initiators-of-active-picture-in-picture-sessions"}], "title": "3.1. Internal Slot Definitions"}, {"refs": [{"id": "ref-for-initiators-of-active-picture-in-picture-sessions\u2460"}], "title": "3.2. Request Picture-in-Picture"}, {"refs": [{"id": "ref-for-initiators-of-active-picture-in-picture-sessions\u2461"}], "title": "3.3. Exit Picture-in-Picture"}], "external": false};
 window.dfnpanelData['request-picture-in-picture-algorithm'] = {"dfnID": "request-picture-in-picture-algorithm", "url": "#request-picture-in-picture-algorithm", "dfnText": "request Picture-in-Picture algorithm", "refSections": [{"refs": [{"id": "ref-for-request-picture-in-picture-algorithm"}], "title": "4.1. Extensions to HTMLVideoElement"}, {"refs": [{"id": "ref-for-request-picture-in-picture-algorithm\u2460"}], "title": "5.2. Permissions Policy"}], "external": false};
