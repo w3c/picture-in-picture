@@ -39,9 +39,12 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
 <pre class="link-defaults">
 spec:dom; type:attribute; text:bubbles
 spec:dom; type:dfn; for:NamedNodeMap; text:element
+spec:dom; type:dfn; text:origin
 spec:dom; type:interface; text:Document
 spec:html; type:attribute; for:HTMLMediaElement; text:readyState
 spec:html; type:dfn; for:/; text:browsing context
+spec:infra; type:dfn; text:user agent
+spec:infra; type:dfn; for:list; text:item
 </pre>
 
 # Introduction # {#intro}
@@ -178,7 +181,7 @@ A <a>user agent</a> has:
 Note: In case a <a>user agent</a> supports multiple Picture-in-Picture
   windows, the list allows duplicates.
 
-An origin is said to have an <dfn>active Picture-in-Picture session</dfn> if any
+An origin is said to have an active Picture-in-Picture session if any
 of the origins in <a>initiators of active Picture-in-Picture sessions</a>
 are <a>same origin-domain</a> with origin.
 
@@ -364,7 +367,7 @@ partial interface Document {
 </pre>
 
 The {{pictureInPictureEnabled}} attribute's getter must return `true` if
-<a>Picture-in-Picture support</a> is `true` and the <a>context object</a> is
+<a>Picture-in-Picture support</a> is `true` and <a>this</a>> is
 <a>allowed to use</a> the feature indicated by attribute name
 `picture-in-picture`, and `false` otherwise.
 
@@ -390,11 +393,11 @@ partial interface mixin DocumentOrShadowRoot {
 
 The {{pictureInPictureElement}} attribute's getter must run these steps:
 
-1. If the <a>context object</a> is not <a>connected</a>, return `null` and abort
-    these steps.
+1. If <a>this</a> is a <a for=/>shadow root</a> and its <a for=DocumentFragment>host</a>
+    is not <a>connected</a>, return `null` and abort these steps.
 2. Let |candidate| be the result of <a>retargeting</a> Picture-in-Picture
-    element against the <a>context object</a>.
-3. If |candidate| and the <a>context object</a> are in the same <a>tree</a>,
+    element against <a>this</a>.
+3. If |candidate| and <a>this</a> are in the same <a>tree</a>,
     return |candidate| and abort these steps.
 4. Return `null`.
 
