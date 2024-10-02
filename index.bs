@@ -367,7 +367,7 @@ partial interface Document {
 </pre>
 
 The {{pictureInPictureEnabled}} attribute's getter must return `true` if
-<a>Picture-in-Picture support</a> is `true` and <a>this</a>> is
+<a>Picture-in-Picture support</a> is `true` and <a>this</a> is
 <a>allowed to use</a> the feature indicated by attribute name
 `picture-in-picture`, and `false` otherwise.
 
