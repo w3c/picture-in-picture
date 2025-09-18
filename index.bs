@@ -481,12 +481,22 @@ regardless of the <a>browsing context</a>.
 
 ## Permissions Policy ## {#permissions-policy}
 
-This specification defines a <a>policy-controlled feature</a> named
-`"picture-in-picture"` that controls whether the <a>request Picture-in-Picture
-algorithm</a> may return a {{SecurityError}} and whether
-{{pictureInPictureEnabled}} is `true` or `false`.
+This specification defines two <a>policy-controlled features</a> that control
+whether picture-in-picture is allowed:
 
+* `"picture-in-picture"`.
+* `"browser-initiated-automatic-picture-in-picture"`.
+
+The <a>policy-controlled feature</a> named `"picture-in-picture"` controls
+whether the <a>request Picture-in-Picture algorithm</a> may return a
+{{SecurityError}} and whether {{pictureInPictureEnabled}} is `true` or `false`.
 The <a>default allowlist</a> for this feature is `*`.
+
+The <a>policy-controlled feature</a> named
+`"browser-initiated-automatic-picture-in-picture"` controls whether the
+<a>request Picture-in-Picture algorithm</a> may be invoked automatically by the
+<a>user agent</a>. When blocked by this policy, a console warning is recorded.
+The <a>default allowlist</a> for this feature is `self`.
 
 # Acknowledgments # {#acknowledgments}
 
