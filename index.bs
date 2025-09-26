@@ -34,6 +34,10 @@ spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
     type: dfn
         text: local playback device
         text: local playback state
+spec: MediaSession; urlPrefix: https://w3c.github.io/mediasession
+    type: dfn; text: enterpictureinpicture; url: #dom-mediasessionaction-enterpictureinpicture
+    type: dfn; text: contentoccluded; url: #dom-mediasessionenterpictureinpicturereason-contentoccluded
+    type: dfn; text: media session action; url: #media-session-action
 </pre>
 
 <pre class="link-defaults">
@@ -193,8 +197,8 @@ the user agent MUST run the following steps:
 1. If <a>Picture-in-Picture support</a> is `false`, throw a
     {{NotSupportedError}} and abort these steps.
 2. If the document is not <a>allowed to use</a> the <a>policy-controlled feature</a>
-    named `"picture-in-picture"`, throw a {{SecurityError}} and abort these
-    steps.
+    named {{picture-in-picture}} or {{automatic-picture-in-picture}}, throw a
+    {{SecurityError}} and abort these steps.
 3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
     {{InvalidStateError}} and abort these steps.
 4. If |video| has no video track, throw a {{InvalidStateError}} and abort
@@ -302,6 +306,9 @@ Picture-in-Picture.
 
 The API will have to be used with the [[MediaSession]] API for customizing the
 available controls on the Picture-in-Picture window.
+
+The user agent SHOULD not override the <a>media session action</a>
+<a>enterpictureinpicture</a> action handler,  if one is provided by the site.
 
 ## Interaction with Page Visibility ## {#page-visibility}
 
@@ -484,18 +491,23 @@ regardless of the <a>browsing context</a>.
 This specification defines two <a>policy-controlled features</a> that control
 whether picture-in-picture is allowed:
 
-* `"picture-in-picture"`.
-* `"automatic-picture-in-picture"`.
+<dl dfn-type=value>
+  <dt>"<dfn permission export>picture-in-picture</dfn>".
+  <dt>"<dfn permission export>automatic-picture-in-picture</dfn>".
+</dl>
 
-The <a>policy-controlled feature</a> named `"picture-in-picture"` controls
-whether the <a>request Picture-in-Picture algorithm</a> may return a
-{{SecurityError}} and whether {{pictureInPictureEnabled}} is `true` or `false`.
-The <a>default allowlist</a> for this feature is `*`.
+Access to the Picture-in-Picture API is gated behind the
+<a>policy-controlled feature</a> {{picture-in-picture}}, which has a
+<a>default allowlist</a> of `*`.
 
-The <a>policy-controlled feature</a> named `"automatic-picture-in-picture"`
-controls whether the <a>request Picture-in-Picture algorithm</a> may be invoked
-automatically by the <a>user agent</a>. When blocked by this policy, a console
-warning is recorded. The <a>default allowlist</a> for this feature is `self`.
+When the {{automatic-picture-in-picture}} <a>policy-controlled feature</a>
+policy is set, the user agent SHOULD not trigger a [[MediaSession]]
+<a>enterpictureinpicture</a> action with the <a>contentoccluded</a> reason. The
+<a>default allowlist</a> for this feature is `self`.
+
+Note: User agents should surface a console warning whenever
+`"picture-in-picture"` is blocked by the {{automatic-picture-in-picture}}
+permissions policy.
 
 # Acknowledgments # {#acknowledgments}
 
