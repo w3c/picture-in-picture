@@ -493,7 +493,13 @@ whether picture-in-picture is allowed:
 
 <dl dfn-type=value>
   <dt>"<dfn permission export>picture-in-picture</dfn>".
+  <dd>
+    The `"picture-in-picture"` permission policy.
+
   <dt>"<dfn permission export>automatic-picture-in-picture</dfn>".
+
+  <dd>
+    The `"automatic-picture-in-picture"` permission policy.
 </dl>
 
 Access to the Picture-in-Picture API is gated behind the
