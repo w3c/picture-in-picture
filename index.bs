@@ -46,6 +46,7 @@ spec:dom; type:dfn; for:NamedNodeMap; text:element
 spec:dom; type:dfn; text:origin
 spec:dom; type:interface; text:Document
 spec:html; type:attribute; for:HTMLMediaElement; text:readyState
+spec:html; type:dfn; text:allowed to use
 spec:html; type:dfn; for:/; text:browsing context
 spec:infra; type:dfn; text:user agent
 spec:infra; type:dfn; for:list; text:item
@@ -197,8 +198,8 @@ the user agent MUST run the following steps:
 1. If <a>Picture-in-Picture support</a> is `false`, throw a
     {{NotSupportedError}} and abort these steps.
 2. If the document is not <a>allowed to use</a> the <a>policy-controlled feature</a>
-    named {{picture-in-picture}} or {{automatic-picture-in-picture}}, throw a
-    {{SecurityError}} and abort these steps.
+    named `"picture-in-picture"`, throw a {{SecurityError}} and abort these
+    steps.
 3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
     {{InvalidStateError}} and abort these steps.
 4. If |video| has no video track, throw a {{InvalidStateError}} and abort
@@ -309,6 +310,8 @@ available controls on the Picture-in-Picture window.
 
 The user agent SHOULD not override the <a>media session action</a>
 <a>enterpictureinpicture</a> action handler,  if one is provided by the site.
+This gives the site control over the Picture-in-Picture user experience, when a
+Picture-in-Picture window is requested.
 
 ## Interaction with Page Visibility ## {#page-visibility}
 
@@ -497,7 +500,6 @@ whether picture-in-picture is allowed:
     The `"picture-in-picture"` permission policy.
 
   <dt>"<dfn permission export>automatic-picture-in-picture</dfn>".
-
   <dd>
     The `"automatic-picture-in-picture"` permission policy.
 </dl>
@@ -506,10 +508,11 @@ Access to the Picture-in-Picture API is gated behind the
 <a>policy-controlled feature</a> {{picture-in-picture}}, which has a
 <a>default allowlist</a> of `*`.
 
-When the {{automatic-picture-in-picture}} <a>policy-controlled feature</a>
-policy is set, the user agent SHOULD not trigger a [[MediaSession]]
-<a>enterpictureinpicture</a> action with the <a>contentoccluded</a> reason. The
-<a>default allowlist</a> for this feature is `self`.
+When the document is not <a>allowed to use</a> the
+<a>policy-controlled feature</a> named {{automatic-picture-in-picture}}, the
+user agent SHOULD not trigger a [[MediaSession]] <a>enterpictureinpicture</a>
+action with the <a>contentoccluded</a> reason. The <a>default allowlist</a> for
+this feature is `self`.
 
 Note: User agents should surface a console warning whenever
 `"picture-in-picture"` is blocked by the {{automatic-picture-in-picture}}
@@ -518,5 +521,5 @@ permissions policy.
 # Acknowledgments # {#acknowledgments}
 
 Thanks to Jennifer Apacible, Zouhir Chahoud, Marcos Cáceres, Philip Jägenstedt,
-Jeremy Jones, Chris Needham, Jer Noble, Justin Uberti, Yoav Weiss, and Eckhart
-Wörner for their contributions to this document.
+Jeremy Jones, Chris Needham, Jer Noble, Justin Uberti, Yoav Weiss, Eckhart
+Wörner and Benjamin Keen for their contributions to this document.
