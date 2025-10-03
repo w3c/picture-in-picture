@@ -305,7 +305,7 @@ The API will have to be used with the [[MediaSession]] API for customizing the
 available controls on the Picture-in-Picture window.
 
 The user agent SHOULD not override the media session action
-{{MediaSessionAction/"enterpictureinpicture"}} action handler,  if one is
+{{MediaSessionAction/"enterpictureinpicture"}} action handler, if one is
 provided by the site. This gives the site control over the Picture-in-Picture
 user experience, when a Picture-in-Picture window is requested.
 
@@ -493,10 +493,8 @@ whether picture-in-picture is allowed:
 <dl dfn-type=value>
   <dt>"<dfn permission export>picture-in-picture</dfn>".
   <dd>
-    Controls whether the document is allowed to use Picture-in-Picture.
-    Specifically, the <a>request Picture-in-Picture algorithm</a> throws a
-    {{SecurityError}} if the document is not [=allowed to use=] this feature.
-    The <a>default allowlist</a> for this feature is `*`.
+    Controls whether the [=document=] [=allowed to use|is allowed=] to use
+    Picture-in-Picture. The <a>default allowlist</a> for this feature is `*`.
 
   <dt>"<dfn permission export>automatic-picture-in-picture</dfn>".
   <dd>
