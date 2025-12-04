@@ -527,6 +527,6 @@ permissions policy.
 
 # Acknowledgments # {#acknowledgments}
 
-Thanks to Jennifer Apacible, Zouhir Chahoud, Marcos Cáceres, Philip Jägenstedt,
-Jeremy Jones, Chris Needham, Jer Noble, Justin Uberti, Yoav Weiss, Eckhart
-Wörner and Benjamin Keen for their contributions to this document.
+Thanks to Jennifer Apacible, Marcos Cáceres, Zouhir Chahoud, Philip Jägenstedt,
+Jeremy Jones, Benjamin Keen, Chris Needham, Jer Noble, Justin Uberti, Yoav Weiss,
+and Eckhart Wörner for their contributions to this document.
