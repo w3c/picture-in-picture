@@ -299,9 +299,9 @@ be visible, even when the <a>Document</a> is not in focus or hidden. The user
 agent SHOULD provide a way for users to manually close the Picture-in-Picture
 window.
 
-The Picture-in-Picture window visibility MUST NOT be taken into account by the
-user agent to determine if the <a>system visibility state</a> of a 
-<a for="/">traversable navigable</a> has changed.
+The Picture-in-Picture window visibility MUST NOT be taken into account by the user agent to
+determine if the <a>system visibility state</a> of a <a for="/">traversable navigable</a> has
+changed.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
@@ -417,9 +417,8 @@ The {{height}} attribute MUST return the height in <a lt=px value>CSS pixels</a>
 <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}} if
 the |state| is `opened`. Otherwise, it MUST return 0.
 
-When the size of the <a>Picture-in-Picture window</a> associated with
-{{pictureInPictureElement}} changes, the user agent MUST <a>queue a task</a> to
-<a>fire an event</a> named {{resize}} at {{pictureInPictureElement}}.
+When the size of a <a>Picture-in-Picture window</a> |pipWindow| changes, the user agent MUST
+<a>queue a task</a> to <a>fire an event</a> named {{resize}} at |pipWindow|.
 
 ## Event types ## {#event-types}
 
