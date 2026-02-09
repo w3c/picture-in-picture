@@ -325,8 +325,8 @@ The {{requestPictureInPicture()}} method steps are:
     {{NotAllowedError}} exception and return |p|.
 9. Return promise, and run the remaining steps in parallel:
     1. If <a>this</a> is {{pictureInPictureElement}}:
-        1. Queue a global task on the DOM manipulation task source given global to [=/resolve=] the <a>Picture-in-Picture window</a> associated with
-            {{pictureInPictureElement}}
+        1. Queue a global task on the DOM manipulation task source given global to [=/resolve=] |p| with
+            the <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}}
         2. return
     2. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
         {{PictureInPictureWindow}} associated with <a>this</a>.
