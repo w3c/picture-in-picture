@@ -327,7 +327,7 @@ The {{requestPictureInPicture()}} method steps are:
     1. If <a>this</a> is {{pictureInPictureElement}}:
         1. Queue a global task on the DOM manipulation task source given global to [=/resolve=] |p| with
             the <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}}
-        2. return
+        2. abort these steps
     2. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
         {{PictureInPictureWindow}} associated with <a>this</a>.
     3. Queue a global task on the DOM manipulation task source given **global**, to perform the following steps:
