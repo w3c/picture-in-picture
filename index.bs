@@ -197,9 +197,10 @@ the user agent MUST run the following steps:
     these steps.
 5. If |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
     the user agent MAY throw an {{InvalidStateError}} and abort these steps.
-6. If {{pictureInPictureElement}} is `null` and the <a>relevant global object</a>
-    of <a>this</a> does not have <a>transient activation</a>, throw a
-    {{NotAllowedError}} and abort these steps.
+6. If {{pictureInPictureElement}} is `null`:
+    1. If <a>this</a>'s <a>relevant global object</a> does not have 
+        <a>transient activation</a>, throw a {{NotAllowedError}} and abort these steps.
+    2. [=Consume user activation=] given <a>this</a>'s <a>relevant global object</a>.
 7. If |video| is {{pictureInPictureElement}}, abort these steps.
 8. Set {{pictureInPictureElement}} to |video|.
 9. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
