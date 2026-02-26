@@ -322,7 +322,7 @@ The {{requestPictureInPicture()}} method steps are:
 8. If {{pictureInPictureElement}} is `null` and the <a>relevant global object</a>
     of <a>this</a> does not have <a>transient activation</a>, reject |p| with a
     {{NotAllowedError}} exception and return |p|.
-9. Return promise, and run the remaining steps in parallel:
+9. Return |promise|, and run the remaining steps |in parallel|:
     1. If <a>this</a> is {{pictureInPictureElement}}:
         1. Queue a global task on the <a>media element event task source</a> given |global| to [=/resolve=] |p| with
             the <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}}
