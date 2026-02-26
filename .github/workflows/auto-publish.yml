@@ -17,11 +17,11 @@ on:
 
 jobs:
   main:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       # See doc at https://github.com/actions/checkout#checkout-v2
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # See doc at https://github.com/w3c/spec-prod/#spec-prod
       # The action only deploys the generated spec to the gh-pages branch when

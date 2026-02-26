@@ -12,7 +12,7 @@ Repository: w3c/picture-in-picture
 !Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/permissions-policy">permissions-policy/</a><br/><a href="https://github.com/web-platform-tests/wpt/tree/master/picture-in-picture">picture-in-picture/</a>
 Editor: François Beaufort, w3cid 81174, Google LLC https://www.google.com, fbeaufort@google.com
 Former Editor: Mounir Lamouri, w3cid 45389, Google LLC https://www.google.com, mlamouri@google.com
-Abstract: This specification intends to provide APIs to allow websites to
+Abstract: This specification provides APIs to allow websites to
 Abstract: create a floating video window always on top of other windows so that
 Abstract: users may continue consuming media while they interact with other
 Abstract: content sites, or applications on their device.
@@ -30,18 +30,17 @@ spec: Fullscreen; urlPrefix: https://fullscreen.spec.whatwg.org
     type: dfn; text: fullscreen flag; url: #fullscreen-flag
     type: dfn; text: fullscreenElement; url: dom-document-fullscreenelement
     type: dfn; text: exit fullscreen; url: fully-exit-fullscreen
-spec: Remote-Playback; urlPrefix: https://w3c.github.io/remote-playback/#dfn-
-    type: dfn
-        text: local playback device
-        text: local playback state
 </pre>
 
 <pre class="link-defaults">
 spec:dom; type:attribute; text:bubbles
 spec:dom; type:dfn; for:NamedNodeMap; text:element
+spec:dom; type:dfn; text:origin
 spec:dom; type:interface; text:Document
 spec:html; type:attribute; for:HTMLMediaElement; text:readyState
 spec:html; type:dfn; for:/; text:browsing context
+spec:infra; type:dfn; text:user agent
+spec:infra; type:dfn; for:list; text:item
 </pre>
 
 # Introduction # {#intro}
@@ -56,8 +55,8 @@ window stays visible even when the user agent is not visible.
 Picture-in-Picture is a common platform-level feature among desktop and mobile
 OSs.
 
-This specification aims to allow websites to initiate and control this behavior
-by exposing the following sets of properties to the API:
+This specification extends {{HTMLVideoElement}} allowing websites
+to initiate and control this behavior by exposing the following sets of properties:
 
 * Notify the website when it enters and leaves Picture-in-Picture mode.
 * Allow the website to trigger Picture-in-Picture mode via a user gesture on a
@@ -67,10 +66,6 @@ by exposing the following sets of properties to the API:
 * Allow the website to exit Picture-in-Picture mode.
 * Allow the website to check if Picture-in-Picture mode can be triggered.
 
-The proposed Picture-in-Picture API is very similar to [[Fullscreen]] as they
-have similar properties. The API only applies to
-{{HTMLVideoElement}} at the moment but is meant to be
-extensible.
 
 # Examples # {#examples}
 
@@ -182,7 +177,7 @@ A <a>user agent</a> has:
 Note: In case a <a>user agent</a> supports multiple Picture-in-Picture
   windows, the list allows duplicates.
 
-An origin is said to have an <dfn>active Picture-in-Picture session</dfn> if any
+An origin is said to have an active Picture-in-Picture session if any
 of the origins in <a>initiators of active Picture-in-Picture sessions</a>
 are <a>same origin-domain</a> with origin.
 
@@ -200,8 +195,8 @@ the user agent MUST run the following steps:
     {{InvalidStateError}} and abort these steps.
 4. If |video| has no video track, throw a {{InvalidStateError}} and abort
     these steps.
-5. OPTIONALLY, if |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
-    throw an {{InvalidStateError}} and abort these steps.
+5. If |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
+    the user agent MAY throw an {{InvalidStateError}} and abort these steps.
 6. If {{pictureInPictureElement}} is `null` and the <a>relevant global object</a>
     of <a>this</a> does not have <a>transient activation</a>, throw a
     {{NotAllowedError}} and abort these steps.
@@ -281,11 +276,11 @@ The {{disablePictureInPicture}} IDL attribute MUST <a>reflect</a> the content
 attribute of the same name.
 
 If the {{disablePictureInPicture}} attribute is present on the video element,
-the user agent SHOULD NOT play the video element in Picture-in-Picture or
-present any UI to do so.
+the user agent MAY prevent the video element from playing in Picture-in-Picture
+mode or present any UI to do so.
 
 When the {{disablePictureInPicture}} attribute is added to a |video| element,
-the user agent SHOULD run these steps:
+the user agent MAY run these steps:
 
 1. Reject any pending promises returned by the {{requestPictureInPicture()}}
     method with {{InvalidStateError}}.
@@ -296,13 +291,6 @@ the user agent SHOULD run these steps:
 
 It is RECOMMENDED to run the <a>exit Picture-in-Picture algorithm</a> when the
 {{pictureInPictureElement}} <a>fullscreen flag</a> is set.
-
-## Interaction with Remote Playback ## {#remote-playback}
-
-The [[Remote-Playback]] specification defines a <a>local playback device</a>
-and a <a>local playback state</a>. For the purpose of Picture-in-Picture, the
-playback is local and regardless of whether it is played in page or in
-Picture-in-Picture.
 
 ## Interaction with Media Session ## {#media-session}
 
@@ -354,7 +342,7 @@ parallel</a>:
 2. Run the <a>request Picture-in-Picture algorithm</a> with |video|.
 3. If the previous step threw an exception, reject |promise| with that
     exception and abort these steps.
-4. Return |promise| with the <a>Picture-in-Picture window</a> associated with
+4. [=/Resolve=] |promise| with the <a>Picture-in-Picture window</a> associated with
     {{pictureInPictureElement}}.
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
@@ -368,7 +356,7 @@ partial interface Document {
 </pre>
 
 The {{pictureInPictureEnabled}} attribute's getter must return `true` if
-<a>Picture-in-Picture support</a> is `true` and the <a>context object</a> is
+<a>Picture-in-Picture support</a> is `true` and <a>this</a> is
 <a>allowed to use</a> the feature indicated by attribute name
 `picture-in-picture`, and `false` otherwise.
 
@@ -382,7 +370,7 @@ parallel</a>:
 1. Run the <a>exit Picture-in-Picture algorithm</a>.
 2. If the previous step threw an exception, reject |promise| with that
     exception and abort these steps.
-3. Return |promise|.
+3. [=/Resolve=] |promise|.
 
 ## Extension to <code>DocumentOrShadowRoot</code> ## {#documentorshadowroot-extension}
 
@@ -394,11 +382,11 @@ partial interface mixin DocumentOrShadowRoot {
 
 The {{pictureInPictureElement}} attribute's getter must run these steps:
 
-1. If the <a>context object</a> is not <a>connected</a>, return `null` and abort
-    these steps.
+1. If <a>this</a> is a <a for=/>shadow root</a> and its <a for=DocumentFragment>host</a>
+    is not <a>connected</a>, return `null` and abort these steps.
 2. Let |candidate| be the result of <a>retargeting</a> Picture-in-Picture
-    element against the <a>context object</a>.
-3. If |candidate| and the <a>context object</a> are in the same <a>tree</a>,
+    element against <a>this</a>.
+3. If |candidate| and <a>this</a> are in the same <a>tree</a>,
     return |candidate| and abort these steps.
 4. Return `null`.
 
@@ -429,9 +417,8 @@ The {{height}} attribute MUST return the height in <a lt=px value>CSS pixels</a>
 <a>Picture-in-Picture window</a> associated with {{pictureInPictureElement}} if
 the |state| is `opened`. Otherwise, it MUST return 0.
 
-When the size of the <a>Picture-in-Picture window</a> associated with
-{{pictureInPictureElement}} changes, the user agent MUST <a>queue a task</a> to
-<a>fire an event</a> named {{resize}} at {{pictureInPictureElement}}.
+When the size of a <a>Picture-in-Picture window</a> |pipWindow| changes, the user agent MUST
+<a>queue a task</a> to <a>fire an event</a> named {{resize}} at |pipWindow|.
 
 ## Event types ## {#event-types}
 
@@ -469,9 +456,10 @@ apply to the shadow host chain.
 
 <em>This section is non-normative.</em>
 
-The API applies only to {{HTMLVideoElement}} in order to start on a minimal
-viable product that has limited security issues. Later versions of this
-specification may allow PIP-ing arbitrary HTML content.
+To limit potential abuse through spoofing, the API applies only to
+{{HTMLVideoElement}}. User interaction with the Picture-in-Picture window
+is intentionally limited so that the only effect is on the Picture-in-Picture
+window itself or the media being played.
 
 ## Secure Context ## {#secure-context}
 

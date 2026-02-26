@@ -33,7 +33,6 @@ Many users want to continue consuming media while they interact with other conte
 ### For future considerations or candidates for first API
 
 *   The API will take a hint for the preferred window size and position which could be ignored by the user agent.
-*   The API may be extended to allow an arbitrary element of the DOM to enter Picture-in-Picture.
 *   The API may be extended to allow custom actions in the window UI.
 
 ## Proposed API
