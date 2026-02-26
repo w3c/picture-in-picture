@@ -232,6 +232,11 @@ It is also RECOMMENDED that the Picture-in-Picture window has a maximum and
 minimum size. For example, it could be restricted to be between a quarter and
 a half of one dimension of the screen.
 
+When {{pictureInPictureElement}} is set, the Picture-in-Picture window MUST
+be visible, even when the [=document=]'s {{Window}} is not in [=Window/focus|focused=] or the  [=document=]'s [=Document/visibility state=] is "hidden". The user
+agent SHOULD provide a way for users to manually close the Picture-in-Picture
+window.
+
 ## Exit Picture-in-Picture ## {#exit-pip}
 
 When the <dfn>exit Picture-in-Picture algorithm</dfn> is invoked,
@@ -294,14 +299,9 @@ available controls on the Picture-in-Picture window.
 
 ## Interaction with Page Visibility ## {#page-visibility}
 
-When {{pictureInPictureElement}} is set, the Picture-in-Picture window MUST
-be visible, even when the <a>Document</a> is not in focus or hidden. The user
-agent SHOULD provide a way for users to manually close the Picture-in-Picture
-window.
-
-The Picture-in-Picture window visibility MUST NOT be taken into account by the user agent to
-determine if the <a>system visibility state</a> of a <a for="/">traversable navigable</a> has
-changed.
+The Picture-in-Picture window visibility MUST NOT be taken into account by the
+user agent to determine if the <a>system visibility state</a> of a 
+<a for="/">traversable navigable</a> has changed.
 
 ## One Picture-in-Picture window ## {#one-pip-window}
 
