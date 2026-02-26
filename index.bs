@@ -232,10 +232,12 @@ It is also RECOMMENDED that the Picture-in-Picture window has a maximum and
 minimum size. For example, it could be restricted to be between a quarter and
 a half of one dimension of the screen.
 
-When {{pictureInPictureElement}} is set, the Picture-in-Picture window MUST
-be visible, even when the [=document=]'s {{Window}} is not focused or the [=document=]'s [=Document/visibility state=] is "hidden". The user
-agent SHOULD provide a way for users to manually close the Picture-in-Picture
-window.
+When a {{DocumentOrShadowRoot}}'s {{pictureInPictureElement}} attribute is set,
+the [=Picture-in-Picture window=] MUST be visible, even when the
+{{DocumentOrShadowRoot}}'s [=relevant global object=]'s [=associated Document=]'s
+[=Document/visibility state=] is "hidden".
+The user agent SHOULD provide a way for users to manually close the
+Picture-in-Picture window.
 
 ## Exit Picture-in-Picture ## {#exit-pip}
 
