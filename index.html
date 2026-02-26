@@ -8,7 +8,7 @@
   <meta content="Bikeshed version 3c53a5b02, updated Thu Nov 27 17:03:30 2025 +0000" name="generator">
   <link href="https://www.w3.org/TR/picture-in-picture/" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
-  <meta content="b75322e3cbb7ca024dfa3062817e6806361d9d12" name="revision">
+  <meta content="e8fa3085ad06ff93001af895c56f139eae3e6645" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>/* Boilerplate: style-autolinks */
@@ -780,9 +780,8 @@ content sites, or applications on their device.</p>
       <li><a href="#exit-pip"><span class="secno">3.3</span> <span class="content">Exit Picture-in-Picture</span></a>
       <li><a href="#disable-pip"><span class="secno">3.4</span> <span class="content">Disable Picture-in-Picture</span></a>
       <li><a href="#fullscreen"><span class="secno">3.5</span> <span class="content">Interaction with Fullscreen</span></a>
-      <li><a href="#media-session"><span class="secno">3.6</span> <span class="content">Interaction with Media Session</span></a>
-      <li><a href="#page-visibility"><span class="secno">3.7</span> <span class="content">Interaction with Page Visibility</span></a>
-      <li><a href="#one-pip-window"><span class="secno">3.8</span> <span class="content">One Picture-in-Picture window</span></a>
+      <li><a href="#page-visibility"><span class="secno">3.6</span> <span class="content">Interaction with Page Visibility</span></a>
+      <li><a href="#one-pip-window"><span class="secno">3.7</span> <span class="content">One Picture-in-Picture window</span></a>
      </ol>
     <li>
      <a href="#api"><span class="secno">4</span> <span class="content">API</span></a>
@@ -1067,14 +1066,11 @@ Picture-in-Picture algorithm</a>.</p>
    <h3 class="heading settled" data-level="3.5" id="fullscreen"><span class="secno">3.5. </span><span class="content">Interaction with Fullscreen</span><a class="self-link" href="#fullscreen"></a></h3>
    <p>It is RECOMMENDED to run the <a data-link-type="dfn" href="#exit-picture-in-picture-algorithm" id="ref-for-exit-picture-in-picture-algorithm③">exit Picture-in-Picture algorithm</a> when the
 <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①①">pictureInPictureElement</a></code> <a data-link-type="dfn" href="https://fullscreen.spec.whatwg.org#fullscreen-flag" id="ref-for-fullscreen-flag">fullscreen flag</a> is set.</p>
-   <h3 class="heading settled" data-level="3.6" id="media-session"><span class="secno">3.6. </span><span class="content">Interaction with Media Session</span><a class="self-link" href="#media-session"></a></h3>
-   <p>The API will have to be used with the <a data-link-type="biblio" href="#biblio-mediasession" title="Media Session">[MediaSession]</a> API for customizing the
-available controls on the Picture-in-Picture window.</p>
-   <h3 class="heading settled" data-level="3.7" id="page-visibility"><span class="secno">3.7. </span><span class="content">Interaction with Page Visibility</span><a class="self-link" href="#page-visibility"></a></h3>
+   <h3 class="heading settled" data-level="3.6" id="page-visibility"><span class="secno">3.6. </span><span class="content">Interaction with Page Visibility</span><a class="self-link" href="#page-visibility"></a></h3>
    <p>The Picture-in-Picture window visibility MUST NOT be taken into account by the
 user agent to determine if the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state" id="ref-for-system-visibility-state">system visibility state</a> of a
 <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable" id="ref-for-traversable-navigable">traversable navigable</a> has changed.</p>
-   <h3 class="heading settled" data-level="3.8" id="one-pip-window"><span class="secno">3.8. </span><span class="content">One Picture-in-Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
+   <h3 class="heading settled" data-level="3.7" id="one-pip-window"><span class="secno">3.7. </span><span class="content">One Picture-in-Picture window</span><a class="self-link" href="#one-pip-window"></a></h3>
    <p>Operating systems with a Picture-in-Picture API usually restrict
 Picture-in-Picture mode to only one window.  Whether only one window is allowed
 in Picture-in-Picture mode will be left to the implementation and the platform.
@@ -1438,8 +1434,6 @@ Wörner for their contributions to this document.</p>
   </dl>
   <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
-   <dt id="biblio-mediasession">[MediaSession]
-   <dd>Thomas Steimel; youenn fablet. <a href="https://w3c.github.io/mediasession/"><cite>Media Session</cite></a>. URL: <a href="https://w3c.github.io/mediasession/">https://w3c.github.io/mediasession/</a>
    <dt id="biblio-secure-contexts">[SECURE-CONTEXTS]
    <dd>Mike West. <a href="https://w3c.github.io/webappsec-secure-contexts/"><cite>Secure Contexts</cite></a>. URL: <a href="https://w3c.github.io/webappsec-secure-contexts/">https://w3c.github.io/webappsec-secure-contexts/</a>
   </dl>
@@ -1712,7 +1706,7 @@ let dfnPanelData = {
 "628c6566": {"dfnID":"628c6566","dfnText":"pseudo-class","external":true,"refSections":[{"refs":[{"id":"ref-for-pseudo-class"}],"title":"4.7. CSS pseudo-class"}],"url":"https://drafts.csswg.org/selectors-4/#pseudo-class"},
 "6d19ac93": {"dfnID":"6d19ac93","dfnText":"user agent","external":true,"refSections":[{"refs":[{"id":"ref-for-user-agent"},{"id":"ref-for-user-agent\u2460"}],"title":"3.1. Internal Slot Definitions"}],"url":"https://infra.spec.whatwg.org/#user-agent"},
 "797018a7": {"dfnID":"797018a7","dfnText":"InvalidStateError","external":true,"refSections":[{"refs":[{"id":"ref-for-invalidstateerror"},{"id":"ref-for-invalidstateerror\u2460"},{"id":"ref-for-invalidstateerror\u2461"}],"title":"3.2. Request Picture-in-Picture"},{"refs":[{"id":"ref-for-invalidstateerror\u2462"}],"title":"3.3. Exit Picture-in-Picture"},{"refs":[{"id":"ref-for-invalidstateerror\u2463"}],"title":"3.4. Disable Picture-in-Picture"}],"url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
-"85394472": {"dfnID":"85394472","dfnText":"Document","external":true,"refSections":[{"refs":[{"id":"ref-for-document"}],"title":"3.8. One Picture-in-Picture window"},{"refs":[{"id":"ref-for-document\u2460"}],"title":"4.2. Extensions to Document"}],"url":"https://dom.spec.whatwg.org/#document"},
+"85394472": {"dfnID":"85394472","dfnText":"Document","external":true,"refSections":[{"refs":[{"id":"ref-for-document"}],"title":"3.7. One Picture-in-Picture window"},{"refs":[{"id":"ref-for-document\u2460"}],"title":"4.2. Extensions to Document"}],"url":"https://dom.spec.whatwg.org/#document"},
 "8855a9aa": {"dfnID":"8855a9aa","dfnText":"DOMString","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-DOMString"}],"title":"4.5. Event types"}],"url":"https://webidl.spec.whatwg.org/#idl-DOMString"},
 "889e932f": {"dfnID":"889e932f","dfnText":"Exposed","external":true,"refSections":[{"refs":[{"id":"ref-for-Exposed"}],"title":"4.4. Interface PictureInPictureWindow"},{"refs":[{"id":"ref-for-Exposed\u2460"}],"title":"4.5. Event types"}],"url":"https://webidl.spec.whatwg.org/#Exposed"},
 "9638f92b": {"dfnID":"9638f92b","dfnText":"connected","external":true,"refSections":[{"refs":[{"id":"ref-for-connected"}],"title":"4.3. Extension to DocumentOrShadowRoot"}],"url":"https://dom.spec.whatwg.org/#connected"},
@@ -1733,7 +1727,7 @@ let dfnPanelData = {
 "c807e273": {"dfnID":"c807e273","dfnText":"NewObject","external":true,"refSections":[{"refs":[{"id":"ref-for-NewObject"}],"title":"4.1. Extensions to HTMLVideoElement"},{"refs":[{"id":"ref-for-NewObject\u2460"}],"title":"4.2. Extensions to Document"}],"url":"https://webidl.spec.whatwg.org/#NewObject"},
 "cc890cc1": {"dfnID":"cc890cc1","dfnText":"policy-controlled feature","external":true,"refSections":[{"refs":[{"id":"ref-for-policy-controlled-feature"}],"title":"3.2. Request Picture-in-Picture"},{"refs":[{"id":"ref-for-policy-controlled-feature\u2460"}],"title":"5.2. Permissions Policy"}],"url":"https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature"},
 "close-window-algorithm": {"dfnID":"close-window-algorithm","dfnText":"close window algorithm","external":false,"refSections":[{"refs":[{"id":"ref-for-close-window-algorithm"}],"title":"3.3. Exit Picture-in-Picture"}],"url":"#close-window-algorithm"},
-"d0c1b934": {"dfnID":"d0c1b934","dfnText":"traversable navigable","external":true,"refSections":[{"refs":[{"id":"ref-for-traversable-navigable"}],"title":"3.7. Interaction with Page Visibility"}],"url":"https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable"},
+"d0c1b934": {"dfnID":"d0c1b934","dfnText":"traversable navigable","external":true,"refSections":[{"refs":[{"id":"ref-for-traversable-navigable"}],"title":"3.6. Interaction with Page Visibility"}],"url":"https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable"},
 "d8ca51d7": {"dfnID":"d8ca51d7","dfnText":"exit fullscreen","external":true,"refSections":[{"refs":[{"id":"ref-for-fully-exit-fullscreen"}],"title":"3.2. Request Picture-in-Picture"}],"url":"https://fullscreen.spec.whatwg.org#fully-exit-fullscreen"},
 "dacde8b5": {"dfnID":"dacde8b5","dfnText":"a new promise","external":true,"refSections":[{"refs":[{"id":"ref-for-a-new-promise"}],"title":"4.1. Extensions to HTMLVideoElement"},{"refs":[{"id":"ref-for-a-new-promise\u2460"}],"title":"4.2. Extensions to Document"}],"url":"https://webidl.spec.whatwg.org/#a-new-promise"},
 "dictdef-pictureinpictureeventinit": {"dfnID":"dictdef-pictureinpictureeventinit","dfnText":"PictureInPictureEventInit","external":false,"refSections":[{"refs":[{"id":"ref-for-dictdef-pictureinpictureeventinit"}],"title":"4.5. Event types"}],"url":"#dictdef-pictureinpictureeventinit"},
@@ -1759,7 +1753,7 @@ let dfnPanelData = {
 "eventdef-pictureinpicturewindow-resize": {"dfnID":"eventdef-pictureinpicturewindow-resize","dfnText":"resize","external":false,"refSections":[{"refs":[{"id":"ref-for-eventdef-pictureinpicturewindow-resize"}],"title":"4.4. Interface PictureInPictureWindow"}],"url":"#eventdef-pictureinpicturewindow-resize"},
 "exit-picture-in-picture-algorithm": {"dfnID":"exit-picture-in-picture-algorithm","dfnText":"exit Picture-in-Picture algorithm","external":false,"refSections":[{"refs":[{"id":"ref-for-exit-picture-in-picture-algorithm"},{"id":"ref-for-exit-picture-in-picture-algorithm\u2460"}],"title":"3.3. Exit Picture-in-Picture"},{"refs":[{"id":"ref-for-exit-picture-in-picture-algorithm\u2461"}],"title":"3.4. Disable Picture-in-Picture"},{"refs":[{"id":"ref-for-exit-picture-in-picture-algorithm\u2462"}],"title":"3.5. Interaction with Fullscreen"},{"refs":[{"id":"ref-for-exit-picture-in-picture-algorithm\u2463"}],"title":"4.2. Extensions to Document"}],"url":"#exit-picture-in-picture-algorithm"},
 "f0951476": {"dfnID":"f0951476","dfnText":"EventHandler","external":true,"refSections":[{"refs":[{"id":"ref-for-eventhandler"},{"id":"ref-for-eventhandler\u2460"}],"title":"4.1. Extensions to HTMLVideoElement"},{"refs":[{"id":"ref-for-eventhandler\u2461"}],"title":"4.4. Interface PictureInPictureWindow"}],"url":"https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler"},
-"f4ee1bc9": {"dfnID":"f4ee1bc9","dfnText":"system visibility state","external":true,"refSections":[{"refs":[{"id":"ref-for-system-visibility-state"}],"title":"3.7. Interaction with Page Visibility"}],"url":"https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state"},
+"f4ee1bc9": {"dfnID":"f4ee1bc9","dfnText":"system visibility state","external":true,"refSections":[{"refs":[{"id":"ref-for-system-visibility-state"}],"title":"3.6. Interaction with Page Visibility"}],"url":"https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state"},
 "f57f330b": {"dfnID":"f57f330b","dfnText":"HTMLVideoElement","external":true,"refSections":[{"refs":[{"id":"ref-for-htmlvideoelement"}],"title":"1. Introduction"},{"refs":[{"id":"ref-for-htmlvideoelement\u2460"}],"title":"4.1. Extensions to HTMLVideoElement"},{"refs":[{"id":"ref-for-htmlvideoelement\u2461"}],"title":"4.4. Interface PictureInPictureWindow"},{"refs":[{"id":"ref-for-htmlvideoelement\u2462"},{"id":"ref-for-htmlvideoelement\u2463"}],"title":"4.5. Event types"},{"refs":[{"id":"ref-for-htmlvideoelement\u2464"}],"title":"5. Security considerations"}],"url":"https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement"},
 "f8de33a3": {"dfnID":"f8de33a3","dfnText":"long","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-long"},{"id":"ref-for-idl-long\u2460"}],"title":"4.4. Interface PictureInPictureWindow"}],"url":"https://webidl.spec.whatwg.org/#idl-long"},
 "initiators-of-active-picture-in-picture-sessions": {"dfnID":"initiators-of-active-picture-in-picture-sessions","dfnText":"initiators of active Picture-in-Picture sessions","external":false,"refSections":[{"refs":[{"id":"ref-for-initiators-of-active-picture-in-picture-sessions"}],"title":"3.1. Internal Slot Definitions"},{"refs":[{"id":"ref-for-initiators-of-active-picture-in-picture-sessions\u2460"}],"title":"3.2. Request Picture-in-Picture"},{"refs":[{"id":"ref-for-initiators-of-active-picture-in-picture-sessions\u2461"}],"title":"3.3. Exit Picture-in-Picture"}],"url":"#initiators-of-active-picture-in-picture-sessions"},
