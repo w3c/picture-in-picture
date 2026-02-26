@@ -294,11 +294,6 @@ the user agent MAY run these steps:
 It is RECOMMENDED to run the <a>exit Picture-in-Picture algorithm</a> when the
 {{pictureInPictureElement}} <a>fullscreen flag</a> is set.
 
-## Interaction with Media Session ## {#media-session}
-
-The API will have to be used with the [[MediaSession]] API for customizing the
-available controls on the Picture-in-Picture window.
-
 ## Interaction with Page Visibility ## {#page-visibility}
 
 The Picture-in-Picture window visibility MUST NOT be taken into account by the
