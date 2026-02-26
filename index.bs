@@ -307,7 +307,7 @@ partial interface HTMLVideoElement {
 
 The {{requestPictureInPicture()}} method steps are:
 
-1. Let |p| be a new promise created in <a>this</a>'s relevant realm.
+1. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
 2. Let |global| be <a>this</a>'s <a>relevant global object</a>.
 3. If <a>Picture-in-Picture support</a> is `false`, reject |p| with a
     {{NotSupportedError}} exception and return |p|.
