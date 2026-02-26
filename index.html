@@ -8,7 +8,7 @@
   <meta content="Bikeshed version 3c53a5b02, updated Thu Nov 27 17:03:30 2025 +0000" name="generator">
   <link href="https://www.w3.org/TR/picture-in-picture/" rel="canonical">
   <link href="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_picture_in_picture_alt_black_48dp.png" rel="icon">
-  <meta content="e8fa3085ad06ff93001af895c56f139eae3e6645" name="revision">
+  <meta content="29832896b98bdf08ccb0ab01b8ca3f850c301127" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>/* Boilerplate: style-autolinks */
@@ -970,9 +970,14 @@ these steps.</p>
      <p>If <var>video</var>’s <code class="idl"><a data-link-type="idl" href="#dom-htmlvideoelement-disablepictureinpicture" id="ref-for-dom-htmlvideoelement-disablepictureinpicture">disablePictureInPicture</a></code> is true,
 the user agent MAY throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror②">InvalidStateError</a></code> and abort these steps.</p>
     <li data-md>
-     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a></code> is <code>null</code> and the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global" id="ref-for-concept-relevant-global">relevant global object</a>
-of <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this">this</a> does not have <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#transient-activation" id="ref-for-transient-activation">transient activation</a>, throw a
-<code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#notallowederror" id="ref-for-notallowederror">NotAllowedError</a></code> and abort these steps.</p>
+     <p>If <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement">pictureInPictureElement</a></code> is <code>null</code>:</p>
+     <ol>
+      <li data-md>
+       <p>If <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this">this</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global" id="ref-for-concept-relevant-global">relevant global object</a> does not have
+<a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#transient-activation" id="ref-for-transient-activation">transient activation</a>, throw a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#notallowederror" id="ref-for-notallowederror">NotAllowedError</a></code> and abort these steps.</p>
+      <li data-md>
+       <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#consume-user-activation" id="ref-for-consume-user-activation">Consume user activation</a> given <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this①">this</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global" id="ref-for-concept-relevant-global①">relevant global object</a>.</p>
+     </ol>
     <li data-md>
      <p>If <var>video</var> is <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①">pictureInPictureElement</a></code>, abort these steps.</p>
     <li data-md>
@@ -1009,7 +1014,7 @@ minimum size. For example, it could be restricted to be between a quarter and
 a half of one dimension of the screen.</p>
    <p>When a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentorshadowroot" id="ref-for-documentorshadowroot">DocumentOrShadowRoot</a></code>’s <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement⑤">pictureInPictureElement</a></code> attribute is set,
 the <a data-link-type="dfn" href="#picture-in-picture-window" id="ref-for-picture-in-picture-window①">Picture-in-Picture window</a> MUST be visible, even when the
-<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentorshadowroot" id="ref-for-documentorshadowroot①">DocumentOrShadowRoot</a></code>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global" id="ref-for-concept-relevant-global①">relevant global object</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#concept-document-window" id="ref-for-concept-document-window">associated Document</a>’s
+<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#documentorshadowroot" id="ref-for-documentorshadowroot①">DocumentOrShadowRoot</a></code>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global" id="ref-for-concept-relevant-global②">relevant global object</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#concept-document-window" id="ref-for-concept-document-window">associated Document</a>’s
 <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/interaction.html#visibility-state" id="ref-for-visibility-state">visibility state</a> is "hidden".
 The user agent SHOULD provide a way for users to manually close the
 Picture-in-Picture window.</p>
@@ -1117,7 +1122,7 @@ exception and abort these steps.</p>
 };
 </pre>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-document-pictureinpictureenabled" id="ref-for-dom-document-pictureinpictureenabled">pictureInPictureEnabled</a></code> attribute’s getter must return <code>true</code> if
-<a data-link-type="dfn" href="#picture-in-picture-support" id="ref-for-picture-in-picture-support①">Picture-in-Picture support</a> is <code>true</code> and <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this①">this</a> is
+<a data-link-type="dfn" href="#picture-in-picture-support" id="ref-for-picture-in-picture-support①">Picture-in-Picture support</a> is <code>true</code> and <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this②">this</a> is
 <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use" id="ref-for-allowed-to-use①">allowed to use</a> the feature indicated by attribute name
 <code>picture-in-picture</code>, and <code>false</code> otherwise.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="picture-in-picture-support">Picture-in-Picture support</dfn> is <code>false</code> if there’s a user preference
@@ -1142,13 +1147,13 @@ exception and abort these steps.</p>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-documentorshadowroot-pictureinpictureelement" id="ref-for-dom-documentorshadowroot-pictureinpictureelement①③">pictureInPictureElement</a></code> attribute’s getter must run these steps:</p>
    <ol>
     <li data-md>
-     <p>If <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this②">this</a> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-shadow-root" id="ref-for-concept-shadow-root">shadow root</a> and its <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-documentfragment-host" id="ref-for-concept-documentfragment-host">host</a>
+     <p>If <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this③">this</a> is a <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-shadow-root" id="ref-for-concept-shadow-root">shadow root</a> and its <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-documentfragment-host" id="ref-for-concept-documentfragment-host">host</a>
 is not <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#connected" id="ref-for-connected">connected</a>, return <code>null</code> and abort these steps.</p>
     <li data-md>
      <p>Let <var>candidate</var> be the result of <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#retarget" id="ref-for-retarget">retargeting</a> Picture-in-Picture
-element against <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this③">this</a>.</p>
+element against <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this④">this</a>.</p>
     <li data-md>
-     <p>If <var>candidate</var> and <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this④">this</a> are in the same <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-tree" id="ref-for-concept-tree">tree</a>,
+     <p>If <var>candidate</var> and <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this⑤">this</a> are in the same <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-tree" id="ref-for-concept-tree">tree</a>,
 return <var>candidate</var> and abort these steps.</p>
     <li data-md>
      <p>Return <code>null</code>.</p>
@@ -1358,6 +1363,7 @@ Wörner for their contributions to this document.</p>
      <li><span class="dfn-paneled" id="3610bd67">allowed to use</span>
      <li><span class="dfn-paneled" id="3349d69f">associated Document</span>
      <li><span class="dfn-paneled" id="0d0390b4">browsing context</span>
+     <li><span class="dfn-paneled" id="aca22383">consume user activation</span>
      <li><span class="dfn-paneled" id="a72449dd">in parallel</span>
      <li><span class="dfn-paneled" id="10c9e8bf">media element event task source</span>
      <li><span class="dfn-paneled" id="9a517a7d">queue a task</span>
@@ -1690,7 +1696,7 @@ let dfnPanelData = {
 "3b90bdcd": {"dfnID":"3b90bdcd","dfnText":"resolve","external":true,"refSections":[{"refs":[{"id":"ref-for-resolve"}],"title":"4.1. Extensions to HTMLVideoElement"},{"refs":[{"id":"ref-for-resolve\u2460"}],"title":"4.2. Extensions to Document"}],"url":"https://webidl.spec.whatwg.org/#resolve"},
 "3f5f11ee": {"dfnID":"3f5f11ee","dfnText":"HAVE_NOTHING","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-media-have_nothing"}],"title":"3.2. Request Picture-in-Picture"}],"url":"https://html.spec.whatwg.org/multipage/media.html#dom-media-have_nothing"},
 "3fcc582f": {"dfnID":"3fcc582f","dfnText":"shadow root","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-shadow-root"}],"title":"4.3. Extension to DocumentOrShadowRoot"}],"url":"https://dom.spec.whatwg.org/#concept-shadow-root"},
-"4013a022": {"dfnID":"4013a022","dfnText":"this","external":true,"refSections":[{"refs":[{"id":"ref-for-this"}],"title":"3.2. Request Picture-in-Picture"},{"refs":[{"id":"ref-for-this\u2460"}],"title":"4.2. Extensions to Document"},{"refs":[{"id":"ref-for-this\u2461"},{"id":"ref-for-this\u2462"},{"id":"ref-for-this\u2463"}],"title":"4.3. Extension to DocumentOrShadowRoot"}],"url":"https://webidl.spec.whatwg.org/#this"},
+"4013a022": {"dfnID":"4013a022","dfnText":"this","external":true,"refSections":[{"refs":[{"id":"ref-for-this"},{"id":"ref-for-this\u2460"}],"title":"3.2. Request Picture-in-Picture"},{"refs":[{"id":"ref-for-this\u2461"}],"title":"4.2. Extensions to Document"},{"refs":[{"id":"ref-for-this\u2462"},{"id":"ref-for-this\u2463"},{"id":"ref-for-this\u2464"}],"title":"4.3. Extension to DocumentOrShadowRoot"}],"url":"https://webidl.spec.whatwg.org/#this"},
 "402ed79d": {"dfnID":"402ed79d","dfnText":"CEReactions","external":true,"refSections":[{"refs":[{"id":"ref-for-cereactions"}],"title":"4.1. Extensions to HTMLVideoElement"}],"url":"https://html.spec.whatwg.org/multipage/custom-elements.html#cereactions"},
 "4411082c": {"dfnID":"4411082c","dfnText":"unloading document cleanup steps","external":true,"refSections":[{"refs":[{"id":"ref-for-unloading-document-cleanup-steps"}],"title":"3.3. Exit Picture-in-Picture"}],"url":"https://html.spec.whatwg.org/multipage/document-lifecycle.html#unloading-document-cleanup-steps"},
 "44a7708c": {"dfnID":"44a7708c","dfnText":"EventInit","external":true,"refSections":[{"refs":[{"id":"ref-for-dictdef-eventinit"}],"title":"4.5. Event types"}],"url":"https://dom.spec.whatwg.org/#dictdef-eventinit"},
@@ -1716,6 +1722,7 @@ let dfnPanelData = {
 "9ddea951": {"dfnID":"9ddea951","dfnText":"px","external":true,"refSections":[{"refs":[{"id":"ref-for-px"},{"id":"ref-for-px\u2460"}],"title":"4.4. Interface PictureInPictureWindow"}],"url":"https://drafts.csswg.org/css-values-4/#px"},
 "a5c91173": {"dfnID":"a5c91173","dfnText":"SameObject","external":true,"refSections":[{"refs":[{"id":"ref-for-SameObject"}],"title":"4.5. Event types"}],"url":"https://webidl.spec.whatwg.org/#SameObject"},
 "a72449dd": {"dfnID":"a72449dd","dfnText":"in parallel","external":true,"refSections":[{"refs":[{"id":"ref-for-in-parallel"}],"title":"4.1. Extensions to HTMLVideoElement"},{"refs":[{"id":"ref-for-in-parallel\u2460"}],"title":"4.2. Extensions to Document"}],"url":"https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel"},
+"aca22383": {"dfnID":"aca22383","dfnText":"consume user activation","external":true,"refSections":[{"refs":[{"id":"ref-for-consume-user-activation"}],"title":"3.2. Request Picture-in-Picture"}],"url":"https://html.spec.whatwg.org/multipage/interaction.html#consume-user-activation"},
 "b4c365f8": {"dfnID":"b4c365f8","dfnText":"visibility state","external":true,"refSections":[{"refs":[{"id":"ref-for-visibility-state"}],"title":"3.2. Request Picture-in-Picture"}],"url":"https://html.spec.whatwg.org/multipage/interaction.html#visibility-state"},
 "b4dee070": {"dfnID":"b4dee070","dfnText":"fullscreenElement","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-document-fullscreenelement"}],"title":"3.2. Request Picture-in-Picture"}],"url":"https://fullscreen.spec.whatwg.org#dom-document-fullscreenelement"},
 "ba556545": {"dfnID":"ba556545","dfnText":"NotAllowedError","external":true,"refSections":[{"refs":[{"id":"ref-for-notallowederror"}],"title":"3.2. Request Picture-in-Picture"}],"url":"https://webidl.spec.whatwg.org/#notallowederror"},
@@ -1747,7 +1754,7 @@ let dfnPanelData = {
 "dom-pictureinpicturewindow-onresize": {"dfnID":"dom-pictureinpicturewindow-onresize","dfnText":"onresize","external":false,"refSections":[],"url":"#dom-pictureinpicturewindow-onresize"},
 "dom-pictureinpicturewindow-width": {"dfnID":"dom-pictureinpicturewindow-width","dfnText":"width","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-pictureinpicturewindow-width"}],"title":"4.4. Interface PictureInPictureWindow"}],"url":"#dom-pictureinpicturewindow-width"},
 "e6cc3311": {"dfnID":"e6cc3311","dfnText":"tree","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-tree"}],"title":"4.3. Extension to DocumentOrShadowRoot"}],"url":"https://dom.spec.whatwg.org/#concept-tree"},
-"e99bd18e": {"dfnID":"e99bd18e","dfnText":"relevant global object","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-relevant-global"},{"id":"ref-for-concept-relevant-global\u2460"}],"title":"3.2. Request Picture-in-Picture"}],"url":"https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global"},
+"e99bd18e": {"dfnID":"e99bd18e","dfnText":"relevant global object","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-relevant-global"},{"id":"ref-for-concept-relevant-global\u2460"},{"id":"ref-for-concept-relevant-global\u2461"}],"title":"3.2. Request Picture-in-Picture"}],"url":"https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global"},
 "eventdef-htmlvideoelement-enterpictureinpicture": {"dfnID":"eventdef-htmlvideoelement-enterpictureinpicture","dfnText":"enterpictureinpicture","external":false,"refSections":[{"refs":[{"id":"ref-for-eventdef-htmlvideoelement-enterpictureinpicture"}],"title":"3.2. Request Picture-in-Picture"}],"url":"#eventdef-htmlvideoelement-enterpictureinpicture"},
 "eventdef-htmlvideoelement-leavepictureinpicture": {"dfnID":"eventdef-htmlvideoelement-leavepictureinpicture","dfnText":"leavepictureinpicture","external":false,"refSections":[{"refs":[{"id":"ref-for-eventdef-htmlvideoelement-leavepictureinpicture"}],"title":"3.3. Exit Picture-in-Picture"}],"url":"#eventdef-htmlvideoelement-leavepictureinpicture"},
 "eventdef-pictureinpicturewindow-resize": {"dfnID":"eventdef-pictureinpicturewindow-resize","dfnText":"resize","external":false,"refSections":[{"refs":[{"id":"ref-for-eventdef-pictureinpicturewindow-resize"}],"title":"4.4. Interface PictureInPictureWindow"}],"url":"#eventdef-pictureinpicturewindow-resize"},
@@ -2197,6 +2204,7 @@ let refsData = {
 "https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable": {"displayText":"traversable navigable","export":true,"for_":[],"level":"1","normative":true,"shortname":"html","spec":"html","status":"current","text":"traversable navigable","type":"dfn","url":"https://html.spec.whatwg.org/multipage/document-sequences.html#traversable-navigable"},
 "https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use": {"displayText":"allowed to use","export":true,"for_":[],"level":"1","normative":true,"shortname":"html","spec":"html","status":"current","text":"allowed to use","type":"dfn","url":"https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use"},
 "https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel": {"displayText":"in parallel","export":true,"for_":[],"level":"1","normative":true,"shortname":"html","spec":"html","status":"current","text":"in parallel","type":"dfn","url":"https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel"},
+"https://html.spec.whatwg.org/multipage/interaction.html#consume-user-activation": {"displayText":"consume user activation","export":true,"for_":[],"level":"1","normative":true,"shortname":"html","spec":"html","status":"current","text":"consume user activation","type":"dfn","url":"https://html.spec.whatwg.org/multipage/interaction.html#consume-user-activation"},
 "https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state": {"displayText":"system visibility state","export":true,"for_":[],"level":"","normative":true,"shortname":"html","spec":"html","status":"anchor-block","text":"system visibility state","type":"dfn","url":"https://html.spec.whatwg.org/multipage/interaction.html#system-visibility-state"},
 "https://html.spec.whatwg.org/multipage/interaction.html#transient-activation": {"displayText":"transient activation","export":true,"for_":[],"level":"1","normative":true,"shortname":"html","spec":"html","status":"current","text":"transient activation","type":"dfn","url":"https://html.spec.whatwg.org/multipage/interaction.html#transient-activation"},
 "https://html.spec.whatwg.org/multipage/interaction.html#visibility-state": {"displayText":"visibility state","export":true,"for_":["Document"],"level":"1","normative":true,"shortname":"html","spec":"html","status":"current","text":"visibility state","type":"dfn","url":"https://html.spec.whatwg.org/multipage/interaction.html#visibility-state"},
