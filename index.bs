@@ -333,7 +333,7 @@ The {{requestPictureInPicture()}} method steps are:
         Note: A user agent may abort when it deems necessary, e.g. due to an error. When doing so it must queue a global task on the <a>media element event task source</a> given |global| and reject the promise with an {{InvalidStateError}}.
     3. Queue a global task on the <a>media element event task source</a> given |global|, to perform the following steps:
         1. Set {{pictureInPictureElement}} to <a>this</a>.
-        2. Append <a>relevant settings object</a>'s <a>origin</a> to
+        2. [=list/Append=] <a>relevant settings object</a>'s <a>origin</a> to
             <a>initiators of active Picture-in-Picture sessions</a>.
         3. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
             RECOMMENDED to <a>exit fullscreen</a>.
