@@ -30,6 +30,9 @@ spec: Fullscreen; urlPrefix: https://fullscreen.spec.whatwg.org
     type: dfn; text: fullscreen flag; url: #fullscreen-flag
     type: dfn; text: fullscreenElement; url: dom-document-fullscreenelement
     type: dfn; text: exit fullscreen; url: fully-exit-fullscreen
+spec: MediaSession; urlPrefix: https://w3c.github.io/mediasession/
+    type: enum; text: MediaSessionEnterPictureInPictureReason; url: #enumdef-mediasessionenterpictureinpicturereason
+    type: enum-value; for: MediaSessionEnterPictureInPictureReason; text: "contentoccluded"; url: #dom-mediasessionenterpictureinpicturereason-contentoccluded
 </pre>
 
 <pre class="link-defaults">
@@ -188,31 +191,37 @@ the user agent MUST run the following steps:
 
 1. If <a>Picture-in-Picture support</a> is `false`, throw a
     {{NotSupportedError}} and abort these steps.
-2. If the document is not <a>allowed to use</a> the <a>policy-controlled feature</a>
+1. Let |document| be [=this=]'s [=/relevant global object=]'s [=/associated Document=].
+1. If the |document| is not [=/allowed to use=] the [=policy-controlled feature=]
     named `"picture-in-picture"`, throw a {{SecurityError}} and abort these
     steps.
-3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
+1. If the |document| is not [=/allowed to use=] the <a>policy-controlled feature</a>
+    named `"automatic-picture-in-picture"` and the
+    {{MediaSessionEnterPictureInPictureReason}} enum, defined in [[MediaSession]], is
+    {{MediaSessionEnterPictureInPictureReason/"contentoccluded"}}, throw a
+    {{SecurityError}} and abort these steps.
+1. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
     {{InvalidStateError}} and abort these steps.
-4. If |video| has no video track, throw a {{InvalidStateError}} and abort
+1. If |video| has no video track, throw a {{InvalidStateError}} and abort
     these steps.
-5. If |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
+1. If |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
     the user agent MAY throw an {{InvalidStateError}} and abort these steps.
-6. If {{pictureInPictureElement}} is `null`:
+1. If {{pictureInPictureElement}} is `null`:
     1. If <a>this</a>'s <a>relevant global object</a> does not have 
         <a>transient activation</a>, throw a {{NotAllowedError}} and abort these steps.
-    2. [=Consume user activation=] given <a>this</a>'s <a>relevant global object</a>.
-7. If |video| is {{pictureInPictureElement}}, abort these steps.
-8. Set {{pictureInPictureElement}} to |video|.
-9. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
+    1. [=Consume user activation=] given <a>this</a>'s <a>relevant global object</a>.
+1. If |video| is {{pictureInPictureElement}}, abort these steps.
+1. Set {{pictureInPictureElement}} to |video|.
+1. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
     {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-10. Append <a>relevant settings object</a>'s <a>origin</a> to
+1. Append <a>relevant settings object</a>'s <a>origin</a> to
     <a>initiators of active Picture-in-Picture sessions</a>.
-11. <a>Queue a task</a> to <a>fire an event</a> named
-    {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
-    |video| with its {{bubbles}} attribute initialized to `true` and its
+1. <a>Queue a task</a> to <a>fire an event</a> named {{enterpictureinpicture}}
+    using {{PictureInPictureEvent}} at the |video| with its {{bubbles}}
+    attribute initialized to `true` and its
     {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
     <a>Picture-in-Picture window</a>.
-12. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
+1. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
     RECOMMENDED to <a>exit fullscreen</a>.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
@@ -295,6 +304,13 @@ the user agent MAY run these steps:
 It is RECOMMENDED to run the <a>exit Picture-in-Picture algorithm</a> when the
 {{pictureInPictureElement}} <a>fullscreen flag</a> is set.
 
+## Interaction with Media Session ## {#media-session}
+
+The user agent SHOULD NOT override the media session action
+{{MediaSessionAction/"enterpictureinpicture"}} action handler, if one is
+provided by the site. This gives the site control over the Picture-in-Picture
+user experience, when a Picture-in-Picture window is requested.
+
 ## Interaction with Page Visibility ## {#page-visibility}
 
 The Picture-in-Picture window visibility MUST NOT be taken into account by the
@@ -355,7 +371,7 @@ partial interface Document {
 
 The {{pictureInPictureEnabled}} attribute's getter must return `true` if
 <a>Picture-in-Picture support</a> is `true` and <a>this</a> is
-<a>allowed to use</a> the feature indicated by attribute name
+[=/allowed to use=] the feature indicated by attribute name
 `picture-in-picture`, and `false` otherwise.
 
 <dfn>Picture-in-Picture support</dfn> is `false` if there's a user preference
@@ -467,15 +483,39 @@ regardless of the <a>browsing context</a>.
 
 ## Permissions Policy ## {#permissions-policy}
 
-This specification defines a <a>policy-controlled feature</a> named
-`"picture-in-picture"` that controls whether the <a>request Picture-in-Picture
-algorithm</a> may return a {{SecurityError}} and whether
-{{pictureInPictureEnabled}} is `true` or `false`.
+This specification defines two <a>policy-controlled features</a> that control
+whether picture-in-picture is allowed:
 
-The <a>default allowlist</a> for this feature is `*`.
+<dl dfn-type=value>
+  <dt>"<dfn permission export>picture-in-picture</dfn>".
+  <dd>
+    Controls whether the [=document=] [=/allowed to use|is allowed=] to use
+    Picture-in-Picture. The <a>default allowlist</a> for this feature is `*`.
+
+  <dt>"<dfn permission export>automatic-picture-in-picture</dfn>".
+  <dd>
+    Controls whether the [=document=] [=/allowed to use|is allowed=] to use
+    Picture-in-Picture when the {{MediaSessionEnterPictureInPictureReason}}
+    enum, defined in [[MediaSession]], is
+    {{MediaSessionEnterPictureInPictureReason/"contentoccluded"}}. The
+    <a>default allowlist</a> for this feature is `self`.
+</dl>
+
+When the document is not [=/allowed to use=] the
+<a>policy-controlled feature</a> named {{automatic-picture-in-picture}}, the
+user agent SHOULD NOT trigger a [[MediaSession]]
+{{MediaSessionAction/"enterpictureinpicture"}} action with the
+{{MediaSessionEnterPictureInPictureReason/"contentoccluded"}} reason. If such
+action is triggered, the <a>request Picture-in-Picture algorithm</a>. will
+throw a {{SecurityError}}. The <a>default allowlist</a> for this feature is
+`self`.
+
+Note: User agents should surface a console warning whenever
+`"picture-in-picture"` is blocked by the {{automatic-picture-in-picture}}
+permissions policy.
 
 # Acknowledgments # {#acknowledgments}
 
-Thanks to Jennifer Apacible, Zouhir Chahoud, Marcos Cáceres, Philip Jägenstedt,
-Jeremy Jones, Chris Needham, Jer Noble, Justin Uberti, Yoav Weiss, and Eckhart
-Wörner for their contributions to this document.
+Thanks to Jennifer Apacible, Marcos Cáceres, Zouhir Chahoud, Philip Jägenstedt,
+Jeremy Jones, Benjamin Keen, Chris Needham, Jer Noble, Justin Uberti, Yoav Weiss,
+and Eckhart Wörner for their contributions to this document.
