@@ -178,14 +178,15 @@ A <a>Document</a> has:
 
 1. A <dfn>Picture-in-Picture element</dfn>, which is an {{Element}} or null, initially null.
 
+2. A <dfn>picture-in-picture parallel queue</dfn> (a [=parallel queue=]), initially the result of
+    [=starting a new parallel queue=].
+
 A <a>user agent</a> has:
 
 1. An <dfn>initiators of active Picture-in-Picture sessions</dfn>
     list of zero or more <a>origins</a>, which is initially empty.
 
     Note: In case a <a>user agent</a> supports multiple Picture-in-Picture windows, the list allows duplicates.
-2. A <dfn>picture-in-picture parallel queue</dfn> (a [=parallel queue=]), initially the result of
-    [=starting a new parallel queue=].
 
 An origin is said to have an active Picture-in-Picture session if any
 of the origins in <a>initiators of active Picture-in-Picture sessions</a>
@@ -330,7 +331,7 @@ The {{requestPictureInPicture()}} method steps are:
     1. Return [=a promise resolved with=] with the [=Picture-in-Picture window=] associated with {{pictureInPictureElement}}
 8. Let |global| be [=this=]'s [=relevant global object=].
 9. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
-10. Return |p|, and [=enqueue the following steps=] to the [=user agent=]'s [=picture-in-picture parallel queue=]:
+10. Return |p|, and [=enqueue the following steps=] to [=this=]'s [=node document=]'s [=picture-in-picture parallel queue=]:
     1. If [=this=] is {{pictureInPictureElement}}:
         1. Queue a global task on the [=media element event task source=] given |global| to
             [=/resolve=] |p| with the [=Picture-in-Picture window=] associated with
