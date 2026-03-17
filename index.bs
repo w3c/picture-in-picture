@@ -172,7 +172,9 @@ to initiate and control this behavior by exposing the following sets of properti
 
 # Concepts # {#concepts}
 
-## Internal Slot Definitions ## {#defines}
+## Definitions ## {#defines}
+
+A <dfn>Picture-in-Picture window</dfn> is a window displaying the video element.
 
 A <a>Document</a> has:
 
@@ -180,6 +182,7 @@ A <a>Document</a> has:
 
 2. A <dfn>picture-in-picture parallel queue</dfn> (a [=parallel queue=]), initially the result of
     [=starting a new parallel queue=].
+
 
 A <a>user agent</a> has:
 
@@ -320,7 +323,7 @@ The {{requestPictureInPicture()}} method steps are:
 2. If [=this=]'s [=node document=] is not [=allowed to use=] the [=policy-controlled feature=]
     named `"picture-in-picture"`, return [=a promise rejected with=] {{SecurityError}} {{DOMException}}.
 3. If [=this=]'s {{readyState}} attribute is {{HAVE_NOTHING}}, return [=a promise rejected with=] with {{InvalidStateError}} {{DOMException}}
-4. If [=this=] has no video track, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}
+4. If [=this=] has no video track, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
 5. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, the user agent MAY return [=a
    promise rejected with=] {{InvalidStateError}} {{DOMException}}.
 6. If {{pictureInPictureElement}} is `null`:
@@ -328,36 +331,34 @@ The {{requestPictureInPicture()}} method steps are:
        promise rejected with=] {{NotAllowedError}} {{DOMException}}
     2. [=Consume user activation=] given [=this=]'s [=relevant global object=].
 7. If [=this=] is {{pictureInPictureElement}}:
-    1. Return [=a promise resolved with=] with the [=Picture-in-Picture window=] associated with {{pictureInPictureElement}}
+    1. Return [=a promise resolved with=] with the [=Picture-in-Picture window=] associated with {{pictureInPictureElement}}.
 8. Let |global| be [=this=]'s [=relevant global object=].
 9. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
 10. Return |p|, and [=enqueue the following steps=] to [=this=]'s [=node document=]'s [=picture-in-picture parallel queue=]:
     1. If [=this=] is {{pictureInPictureElement}}:
         1. Queue a global task on the [=media element event task source=] given |global| to
             [=/resolve=] |p| with the [=Picture-in-Picture window=] associated with
-            {{pictureInPictureElement}}
-        2. abort these steps
-    2. Let <dfn>Picture-in-Picture window</dfn> be a new instance of {{PictureInPictureWindow}}
-        associated with [=this=].
-
-        Note: A user agent may abort when it deems necessary, e.g. due to an error.
-    3. In case where user agent aborted:
+            [=this=].
+        2. Abort these steps.
+    2. Attempt to associate a [=Picture in Picture window=] with [=this=].
+    3. If the previous step failed:
         1. [=Queue a global task=] on the [=media element event task source=] given |global| to
-            [=/reject=] |p| with {{InvalidStateError}} {{DOMException}}
-        2. abort these steps
+            [=/reject=] |p| with {{InvalidStateError}} {{DOMException}}.
+        2. Abort these steps.
+    4. Let |pipWindow| be new instance of {{PictureInPictureWindow}} that represents [=this=]'s associated [=Picture-in-Picture window=].
     4. [=Queue a global task=] on the [=media element event task source=] given |global|, to perform
         the following steps:
         1. Set [=this=]'s [=node document=]'s [=Picture-in-Picture element=] to [=this=].
         2. [=list/Append=] [=relevant settings object=]'s [=origin=] to [=initiators of active
             Picture-in-Picture sessions=].
-        3. If {{pictureInPictureElement}} is [=fullscreenElement=], it is RECOMMENDED to [=exit
+        3. If [=this=] is [=fullscreenElement=], it is RECOMMENDED to [=exit
            fullscreen=].
         4. [=Fire an event=] named {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
             [=this=] with its {{bubbles}} attribute initialized to `true` and its
             {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
             [=Picture-in-Picture window=].
         5. [=/Resolve=] |p| with the [=Picture-in-Picture window=] associated with
-            {{pictureInPictureElement}}.
+            [=this=].
 
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
