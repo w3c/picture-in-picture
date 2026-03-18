@@ -176,7 +176,7 @@ to initiate and control this behavior by exposing the following sets of properti
 
 A <dfn>Picture-in-Picture window</dfn> is a window displaying the video element.
 
-A <a>Document</a> has:
+A <a>DocumentOrShadowRoot</a> has:
 
 1. A <dfn>Picture-in-Picture element</dfn>, which is an {{Element}} or null, initially null.
 
@@ -340,25 +340,23 @@ The {{requestPictureInPicture()}} method steps are:
             [=/resolve=] |p| with the [=Picture-in-Picture window=] associated with
             [=this=].
         2. Abort these steps.
-    2. Attempt to associate a [=Picture in Picture window=] with [=this=].
+    2. Attempt to associate a [=Picture-in-Picture window=] with [=this=].
     3. If the previous step failed:
         1. [=Queue a global task=] on the [=media element event task source=] given |global| to
             [=/reject=] |p| with {{InvalidStateError}} {{DOMException}}.
         2. Abort these steps.
     4. Let |pipWindow| be new instance of {{PictureInPictureWindow}} that represents [=this=]'s associated [=Picture-in-Picture window=].
-    4. [=Queue a global task=] on the [=media element event task source=] given |global|, to perform
+    5. [=Queue a global task=] on the [=media element event task source=] given |global|, to perform
         the following steps:
         1. Set [=this=]'s [=node document=]'s [=Picture-in-Picture element=] to [=this=].
         2. [=list/Append=] [=relevant settings object=]'s [=origin=] to [=initiators of active
             Picture-in-Picture sessions=].
-        3. If [=this=] is [=fullscreenElement=], it is RECOMMENDED to [=exit
-           fullscreen=].
+        3. If [=this=] is [=fullscreenElement=], [=exit fullscreen=].
         4. [=Fire an event=] named {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
             [=this=] with its {{bubbles}} attribute initialized to `true` and its
             {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
             [=Picture-in-Picture window=].
-        5. [=/Resolve=] |p| with the [=Picture-in-Picture window=] associated with
-            [=this=].
+        5. [=/Resolve=] |p| with the |pipWindow|
 
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
