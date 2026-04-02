@@ -175,7 +175,7 @@ A <a>DocumentOrShadowRoot</a> has:
 
 1. A <dfn>Picture-in-Picture element</dfn>, which is an {{Element}} or null, initially null.
 
-2. A <dfn>picture-in-picture parallel queue</dfn> (a [=parallel queue=]), initially the result of
+2. A <dfn>picture-in-picture parallel queue</dfn> is a [=parallel queue=] resulting from
     [=starting a new parallel queue=].
 
 
