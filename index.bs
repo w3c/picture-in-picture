@@ -331,7 +331,7 @@ The {{requestPictureInPicture()}} method steps are:
 9. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
 10. Return |p|, and [=enqueue the following steps=] to [=this=]'s [=node document=]'s [=picture-in-picture parallel queue=]:
     1. If [=this=] is {{pictureInPictureElement}}:
-        1. Queue a global task on the [=media element event task source=] given |global| to
+        1. [=Queue a global task=] on the [=media element event task source=] given |global| to
             [=/resolve=] |p| with the [=Picture-in-Picture window=] associated with
             [=this=].
         2. Abort these steps.
