@@ -317,7 +317,7 @@ The {{requestPictureInPicture()}} method steps are:
 1. If [=Picture-in-Picture support=] is `false`, return [=a promise rejected with=] {{NotSupportedError}} {{DOMException}}.
 2. If [=this=]'s [=node document=] is not [=allowed to use=] the [=policy-controlled feature=]
     named `"picture-in-picture"`, return [=a promise rejected with=] {{SecurityError}} {{DOMException}}.
-3. If [=this=]'s {{readyState}} attribute is {{HAVE_NOTHING}}, return [=a promise rejected with=] with {{InvalidStateError}} {{DOMException}}
+3. If [=this=]'s {{readyState}} attribute is {{HAVE_NOTHING}}, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}
 4. If [=this=] has no video track, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
 5. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, the user agent MAY return [=a
    promise rejected with=] {{InvalidStateError}} {{DOMException}}.
