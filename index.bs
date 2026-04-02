@@ -326,7 +326,7 @@ The {{requestPictureInPicture()}} method steps are:
        promise rejected with=] {{NotAllowedError}} {{DOMException}}
     2. [=Consume user activation=] given [=this=]'s [=relevant global object=].
 7. If [=this=] is {{pictureInPictureElement}}:
-    1. Return [=a promise resolved with=] with the [=Picture-in-Picture window=] associated with {{pictureInPictureElement}}.
+    1. Return [=a promise resolved with=] the [=Picture-in-Picture window=] associated with {{pictureInPictureElement}}.
 8. Let |global| be [=this=]'s [=relevant global object=].
 9. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
 10. Return |p|, and [=enqueue the following steps=] to [=this=]'s [=node document=]'s [=picture-in-picture parallel queue=]:
