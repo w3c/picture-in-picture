@@ -173,7 +173,7 @@ A <dfn>Picture-in-Picture window</dfn> is a window displaying the video element.
 
 A <a>DocumentOrShadowRoot</a> has:
 
-1. A <dfn>Picture-in-Picture element</dfn>, which is an {{Element}} or null, initially null.
+1. A <dfn>Picture-in-Picture element</dfn>, which is an {{Element}} or `null`, initially `null`.
 
 2. A <dfn>picture-in-picture parallel queue</dfn> is a [=parallel queue=] resulting from
     [=starting a new parallel queue=].
@@ -312,15 +312,14 @@ partial interface HTMLVideoElement {
 };
 </pre>
 
-The {{requestPictureInPicture()}} method steps are:
+The {{requestPictureInPicture()}} method steps <dfn>request Picture-in-Picture</dfn>:
 
 1. If [=Picture-in-Picture support=] is `false`, return [=a promise rejected with=] {{NotSupportedError}} {{DOMException}}.
 2. If [=this=]'s [=node document=] is not [=allowed to use=] the [=policy-controlled feature=]
     named `"picture-in-picture"`, return [=a promise rejected with=] {{SecurityError}} {{DOMException}}.
 3. If [=this=]'s {{readyState}} attribute is {{HAVE_NOTHING}}, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}
 4. If [=this=] has no video track, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
-5. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, the user agent MAY return [=a
-   promise rejected with=] {{InvalidStateError}} {{DOMException}}.
+5. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
 6. If {{pictureInPictureElement}} is `null`:
     1. If [=this=]'s [=relevant global object=] does not have a [=transient activation=], then return [=a
        promise rejected with=] {{NotAllowedError}} {{DOMException}}
@@ -340,7 +339,7 @@ The {{requestPictureInPicture()}} method steps are:
         1. [=Queue a global task=] on the [=media element event task source=] given |global| to
             [=/reject=] |p| with {{InvalidStateError}} {{DOMException}}.
         2. Abort these steps.
-    4. Let |pipWindow| be new instance of {{PictureInPictureWindow}} that represents [=this=]'s associated [=Picture-in-Picture window=].
+    4. Let |pipWindow| be a new instance of {{PictureInPictureWindow}} that represents [=this=]'s associated [=Picture-in-Picture window=].
     5. [=Queue a global task=] on the [=media element event task source=] given |global|, to perform
         the following steps:
         1. Set [=this=]'s [=node document=]'s [=Picture-in-Picture element=] to [=this=].
