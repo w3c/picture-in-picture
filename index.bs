@@ -175,8 +175,9 @@ A <a>DocumentOrShadowRoot</a> has:
 
 1. A <dfn>Picture-in-Picture element</dfn>, which is an {{Element}} or `null`, initially `null`.
 
-2. A <dfn>picture-in-picture parallel queue</dfn> is a [=parallel queue=] resulting from
-    [=starting a new parallel queue=].
+A <a for="/">traversable navigable</a> has:
+1. A <dfn>picture-in-picture parallel queue</dfn>, which is a [=parallel queue=] created by
+   [=starting a new parallel queue=].
 
 
 A <a>user agent</a> has:
