@@ -171,7 +171,7 @@ to initiate and control this behavior by exposing the following sets of properti
 
 A <dfn>Picture-in-Picture window</dfn> is a window displaying the video element.
 
-A <a>DocumentOrShadowRoot</a> has:
+A {{DocumentOrShadowRoot}} has:
 
 1. A <dfn>Picture-in-Picture element</dfn>, which is an {{Element}} or `null`, initially `null`.
 
