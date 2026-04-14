@@ -177,7 +177,7 @@ A <a>DocumentOrShadowRoot</a> has:
 
 A <a for="/">traversable navigable</a> has:
 1. A <dfn>picture-in-picture parallel queue</dfn>, which is a [=parallel queue=] created by
-   [=starting a new parallel queue=].
+    [=starting a new parallel queue=].
 
 
 A <a>user agent</a> has:
@@ -192,9 +192,6 @@ of the origins in <a>initiators of active Picture-in-Picture sessions</a>
 are <a>same origin-domain</a> with origin.
 
 ## Picture-in-Picture ## {#pip}
-
-To enter picture-in-picture is to have script invoke
-{{HTMLVideoElement/requestPictureInPicture()}}.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
 Picture-in-Picture window at the same time but if they are, they MUST be kept
