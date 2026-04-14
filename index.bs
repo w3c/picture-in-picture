@@ -190,10 +190,10 @@ An origin is said to have an active Picture-in-Picture session if any
 of the origins in <a>initiators of active Picture-in-Picture sessions</a>
 are <a>same origin-domain</a> with origin.
 
-## Request Picture-in-Picture ## {#request-pip}
+## Picture-in-Picture ## {#pip}
 
-The <dfn export>request Picture-in-Picture algorithm</dfn> is the set of steps
-run when {{HTMLVideoElement/requestPictureInPicture()}} is invoked.
+To enter picture-in-picture is to have script invoke
+{{HTMLVideoElement/requestPictureInPicture()}}.
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
 Picture-in-Picture window at the same time but if they are, they MUST be kept
