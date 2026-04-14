@@ -316,7 +316,7 @@ The {{requestPictureInPicture()}} method steps <dfn>request Picture-in-Picture</
 
 1. If [=Picture-in-Picture support=] is `false`, return [=a promise rejected with=] {{NotSupportedError}} {{DOMException}}.
 2. If [=this=]'s [=node document=] is not [=allowed to use=] the [=policy-controlled feature=]
-    named `"picture-in-picture"`, return [=a promise rejected with=] {{SecurityError}} {{DOMException}}.
+    named `"picture-in-picture"`, return [=a promise rejected with=] {{NotAllowedError}} {{DOMException}}.
 3. If [=this=]'s {{readyState}} attribute is {{HAVE_NOTHING}}, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}
 4. If [=this=] has no video track, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
 5. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
