@@ -39,6 +39,7 @@ spec:dom; type:dfn; text:origin
 spec:dom; type:interface; text:Document
 spec:html; type:attribute; for:HTMLMediaElement; text:readyState
 spec:html; type:dfn; for:/; text:browsing context
+spec:html; type:dfn; text:allowed to use
 spec:infra; type:dfn; text:user agent
 spec:infra; type:dfn; for:list; text:item
 </pre>
@@ -310,24 +311,25 @@ partial interface HTMLVideoElement {
 };
 </pre>
 
-The {{requestPictureInPicture()}} method steps <dfn>request Picture-in-Picture</dfn>:
+The {{requestPictureInPicture()}} method steps <dfn export>request Picture-in-Picture</dfn>:
 
 1. If [=Picture-in-Picture support=] is `false`, return [=a promise rejected with=] {{NotSupportedError}} {{DOMException}}.
-2. If [=this=]'s [=node document=] is not [=allowed to use=] the [=policy-controlled feature=]
+2. Let |doc| be [=this=]'s [=node document=].
+3. If |doc| is not [=allowed to use=] the [=policy-controlled feature=]
     named `"picture-in-picture"`, return [=a promise rejected with=] {{NotAllowedError}} {{DOMException}}.
-3. If [=this=]'s {{readyState}} attribute is {{HAVE_NOTHING}}, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}
-4. If [=this=] has no video track, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
-5. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
-6. If {{pictureInPictureElement}} is `null`:
+4. If [=this=]'s {{readyState}} attribute is {{HAVE_NOTHING}}, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
+5. If [=this=] has no video track, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
+6. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
+7. If |doc|'s [=Picture-in-Picture element=] is `null`:
     1. If [=this=]'s [=relevant global object=] does not have a [=transient activation=], then return [=a
-       promise rejected with=] {{NotAllowedError}} {{DOMException}}
+       promise rejected with=] {{NotAllowedError}} {{DOMException}}.
     2. [=Consume user activation=] given [=this=]'s [=relevant global object=].
-7. If [=this=] is {{pictureInPictureElement}}:
-    1. Return [=a promise resolved with=] the [=Picture-in-Picture window=] associated with {{pictureInPictureElement}}.
-8. Let |global| be [=this=]'s [=relevant global object=].
-9. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
-10. Return |p|, and [=enqueue the following steps=] to [=this=]'s [=node document=]'s [=picture-in-picture parallel queue=]:
-    1. If [=this=] is {{pictureInPictureElement}}:
+8. If [=this=] is |doc|'s [=Picture-in-Picture element=]:
+    1. Return [=a promise resolved with=] the [=Picture-in-Picture window=] associated with |doc|'s [=Picture-in-Picture element=].
+9. Let |global| be [=this=]'s [=relevant global object=].
+10. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
+11. Return |p|, and [=enqueue the following steps=] to |doc|'s [=picture-in-picture parallel queue=]:
+    1. If [=this=] is |doc|'s [=Picture-in-Picture element=]:
         1. [=Queue a global task=] on the [=media element event task source=] given |global| to
             [=/resolve=] |p| with the [=Picture-in-Picture window=] associated with
             [=this=].
@@ -340,15 +342,15 @@ The {{requestPictureInPicture()}} method steps <dfn>request Picture-in-Picture</
     4. Let |pipWindow| be a new instance of {{PictureInPictureWindow}} that represents [=this=]'s associated [=Picture-in-Picture window=].
     5. [=Queue a global task=] on the [=media element event task source=] given |global|, to perform
         the following steps:
-        1. Set [=this=]'s [=node document=]'s [=Picture-in-Picture element=] to [=this=].
+        1. Set |doc|'s [=Picture-in-Picture element=] to [=this=].
         2. [=list/Append=] [=relevant settings object=]'s [=origin=] to [=initiators of active
             Picture-in-Picture sessions=].
         3. If [=this=] is [=fullscreenElement=], [=exit fullscreen=].
-        4. [=Fire an event=] named {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
+        4. [=Fire an event=] named {{enterpictureinpicture}} using {{PictureInPictureEvent}} at
             [=this=] with its {{bubbles}} attribute initialized to `true` and its
             {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
             [=Picture-in-Picture window=].
-        5. [=/Resolve=] |p| with the |pipWindow|
+        5. [=/Resolve=] |p| with |pipWindow|.
 
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
@@ -475,8 +477,8 @@ regardless of the <a>browsing context</a>.
 ## Permissions Policy ## {#permissions-policy}
 
 This specification defines a <a>policy-controlled feature</a> named
-`"picture-in-picture"` that controls whether the <a>request Picture-in-Picture
-algorithm</a> may return a {{SecurityError}} and whether
+`"picture-in-picture"` that controls whether [=request Picture-in-Picture=]
+may return a {{SecurityError}} and whether
 {{pictureInPictureEnabled}} is `true` or `false`.
 
 The <a>default allowlist</a> for this feature is `*`.
