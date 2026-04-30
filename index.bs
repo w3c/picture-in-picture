@@ -170,7 +170,7 @@ to initiate and control this behavior by exposing the following sets of properti
 
 ## Definitions ## {#defines}
 
-A <dfn>Picture-in-Picture window</dfn> is a window displaying the video element.
+A <dfn>Picture-in-Picture window</dfn> is a window displaying the <{video}> element.
 
 A {{DocumentOrShadowRoot}} has:
 
