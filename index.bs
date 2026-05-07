@@ -342,15 +342,16 @@ The {{requestPictureInPicture()}} method steps <dfn export>request Picture-in-Pi
     4. Let |pipWindow| be a new instance of {{PictureInPictureWindow}} that represents [=this=]'s associated [=Picture-in-Picture window=].
     5. [=Queue a global task=] on the [=media element event task source=] given |global|, to perform
         the following steps:
-        1. Set |doc|'s [=Picture-in-Picture element=] to [=this=].
-        2. [=list/Append=] [=relevant settings object=]'s [=origin=] to [=initiators of active
+        1. If {{pictureInPictureElement}} is not `null`, run the [=exit Picture-in-Picture algorithm=].
+        2. Set |doc|'s [=Picture-in-Picture element=] to [=this=].
+        3. [=list/Append=] [=relevant settings object=]'s [=origin=] to [=initiators of active
             Picture-in-Picture sessions=].
-        3. If [=this=] is [=fullscreenElement=], [=exit fullscreen=].
-        4. [=Fire an event=] named {{enterpictureinpicture}} using {{PictureInPictureEvent}} at
+        4. If [=this=] is [=fullscreenElement=], [=exit fullscreen=].
+        5. [=Fire an event=] named {{enterpictureinpicture}} using {{PictureInPictureEvent}} at
             [=this=] with its {{bubbles}} attribute initialized to `true` and its
             {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
             [=Picture-in-Picture window=].
-        5. [=/Resolve=] |p| with |pipWindow|.
+        6. [=/Resolve=] |p| with |pipWindow|.
 
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
