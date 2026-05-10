@@ -479,7 +479,7 @@ regardless of the <a>browsing context</a>.
 
 This specification defines a <a>policy-controlled feature</a> named
 `"picture-in-picture"` that controls whether [=request Picture-in-Picture=]
-may return a {{SecurityError}} and whether
+returns a {{SecurityError}} and whether
 {{pictureInPictureEnabled}} is `true` or `false`.
 
 The <a>default allowlist</a> for this feature is `*`.
