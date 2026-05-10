@@ -319,7 +319,7 @@ The {{requestPictureInPicture()}} method steps <dfn export>request Picture-in-Pi
     named `"picture-in-picture"`, return [=a promise rejected with=] {{NotAllowedError}} {{DOMException}}.
 4. If [=this=]'s {{readyState}} attribute is {{HAVE_NOTHING}}, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
 5. If [=this=] has no video track, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
-6. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, user agent MAY return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
+6. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, user agent may return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
 7. If |doc|'s [=Picture-in-Picture element=] is `null`:
     1. If [=this=]'s [=relevant global object=] does not have a [=transient activation=], then return [=a
        promise rejected with=] {{NotAllowedError}} {{DOMException}}.
