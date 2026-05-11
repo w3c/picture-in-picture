@@ -391,12 +391,16 @@ partial interface mixin DocumentOrShadowRoot {
 
 The {{pictureInPictureElement}} attribute's getter must run these steps:
 
-1. If <a>this</a> is a <a for=/>shadow root</a> and its <a for=DocumentFragment>host</a>
-    is not <a>connected</a>, return `null` and abort these steps.
-2. Let |candidate| be the result of [=retargeting=] [=Picture-in-Picture element=] against [=this=].
-3. If |candidate| and <a>this</a> are in the same <a>tree</a>,
-    return |candidate| and abort these steps.
-4. Return `null`.
+1. If [=this=] is a <a for=/>shadow root</a> and its <a for=DocumentFragment>host</a>
+    is not <a>connected</a>, return `null`.
+2. Let |candidate| be the result of <a>retargeting</a> Picture-in-Picture
+    element against [=this=].
+3. If |candidate| is `null`, return `null`.
+4. If |candidate| and [=this=] are in the same [=tree=],
+    return |candidate|.
+5. If [=this=] is a {{Document}} and |candidate|'s [=node document=]
+    is [=this=], return |candidate|.
+6. Return `null`.
 
 ## Interface <code>PictureInPictureWindow</code> ## {#interface-picture-in-picture-window}
 
