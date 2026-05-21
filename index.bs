@@ -39,6 +39,7 @@ spec:dom; type:dfn; text:origin
 spec:dom; type:interface; text:Document
 spec:html; type:attribute; for:HTMLMediaElement; text:readyState
 spec:html; type:dfn; for:/; text:browsing context
+spec:html; type:dfn; text:allowed to use
 spec:infra; type:dfn; text:user agent
 spec:infra; type:dfn; for:list; text:item
 </pre>
@@ -167,53 +168,31 @@ to initiate and control this behavior by exposing the following sets of properti
 
 # Concepts # {#concepts}
 
-## Internal Slot Definitions ## {#defines}
+## Definitions ## {#defines}
+
+A <dfn>Picture-in-Picture window</dfn> is a window displaying the <{video}> element.
+
+A {{DocumentOrShadowRoot}} has:
+
+1. A <dfn>Picture-in-Picture element</dfn>, which is an {{Element}} or `null`, initially `null`.
+
+A <a for="/">traversable navigable</a> has:
+1. A <dfn>picture-in-picture parallel queue</dfn>, which is a [=parallel queue=] created by
+    [=starting a new parallel queue=].
+
 
 A <a>user agent</a> has:
 
 1. An <dfn>initiators of active Picture-in-Picture sessions</dfn>
     list of zero or more <a>origins</a>, which is initially empty.
 
-Note: In case a <a>user agent</a> supports multiple Picture-in-Picture
-  windows, the list allows duplicates.
+    Note: In case a <a>user agent</a> supports multiple Picture-in-Picture windows, the list allows duplicates.
 
 An origin is said to have an active Picture-in-Picture session if any
 of the origins in <a>initiators of active Picture-in-Picture sessions</a>
 are <a>same origin-domain</a> with origin.
 
-## Request Picture-in-Picture ## {#request-pip}
-
-When the <dfn>request Picture-in-Picture algorithm</dfn> with |video| is invoked,
-the user agent MUST run the following steps:
-
-1. If <a>Picture-in-Picture support</a> is `false`, throw a
-    {{NotSupportedError}} and abort these steps.
-2. If the document is not <a>allowed to use</a> the <a>policy-controlled feature</a>
-    named `"picture-in-picture"`, throw a {{SecurityError}} and abort these
-    steps.
-3. If |video|'s {{readyState}} attribute is {{HAVE_NOTHING}}, throw a
-    {{InvalidStateError}} and abort these steps.
-4. If |video| has no video track, throw a {{InvalidStateError}} and abort
-    these steps.
-5. If |video|'s {{HTMLVideoElement/disablePictureInPicture}} is true,
-    the user agent MAY throw an {{InvalidStateError}} and abort these steps.
-6. If {{pictureInPictureElement}} is `null`:
-    1. If <a>this</a>'s <a>relevant global object</a> does not have 
-        <a>transient activation</a>, throw a {{NotAllowedError}} and abort these steps.
-    2. [=Consume user activation=] given <a>this</a>'s <a>relevant global object</a>.
-7. If |video| is {{pictureInPictureElement}}, abort these steps.
-8. Set {{pictureInPictureElement}} to |video|.
-9. Let <dfn>Picture-in-Picture window</dfn> be a new instance of
-    {{PictureInPictureWindow}} associated with {{pictureInPictureElement}}.
-10. Append <a>relevant settings object</a>'s <a>origin</a> to
-    <a>initiators of active Picture-in-Picture sessions</a>.
-11. <a>Queue a task</a> to <a>fire an event</a> named
-    {{enterpictureinpicture}} using {{PictureInPictureEvent}} at the
-    |video| with its {{bubbles}} attribute initialized to `true` and its
-    {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
-    <a>Picture-in-Picture window</a>.
-12. If {{pictureInPictureElement}} is <a>fullscreenElement</a>, it is
-    RECOMMENDED to <a>exit fullscreen</a>.
+## Picture-in-Picture ## {#pip}
 
 It is RECOMMENDED that video frames are not rendered in the page and in the
 Picture-in-Picture window at the same time but if they are, they MUST be kept
@@ -233,7 +212,7 @@ It is also RECOMMENDED that the Picture-in-Picture window has a maximum and
 minimum size. For example, it could be restricted to be between a quarter and
 a half of one dimension of the screen.
 
-When a {{DocumentOrShadowRoot}}'s {{pictureInPictureElement}} attribute is set,
+When a {{DocumentOrShadowRoot}}'s <a>Picture-in-Picture element</a> is set,
 the [=Picture-in-Picture window=] MUST be visible, even when the
 {{DocumentOrShadowRoot}}'s [=relevant global object=]'s [=associated Document=]'s
 [=Document/visibility state=] is "hidden".
@@ -332,16 +311,48 @@ partial interface HTMLVideoElement {
 };
 </pre>
 
-The {{requestPictureInPicture()}} method, when invoked, MUST
-return <a>a new promise</a> |promise| and run the following steps <a>in
-parallel</a>:
+The {{requestPictureInPicture()}} method steps <dfn export>request Picture-in-Picture</dfn>:
 
-1. Let |video| be the video element on which the method was invoked.
-2. Run the <a>request Picture-in-Picture algorithm</a> with |video|.
-3. If the previous step threw an exception, reject |promise| with that
-    exception and abort these steps.
-4. [=/Resolve=] |promise| with the <a>Picture-in-Picture window</a> associated with
-    {{pictureInPictureElement}}.
+1. If [=Picture-in-Picture support=] is `false`, return [=a promise rejected with=] {{NotSupportedError}} {{DOMException}}.
+2. Let |doc| be [=this=]'s [=node document=].
+3. If |doc| is not [=allowed to use=] the [=policy-controlled feature=]
+    named `"picture-in-picture"`, return [=a promise rejected with=] {{NotAllowedError}} {{DOMException}}.
+4. If [=this=]'s {{readyState}} attribute is {{HAVE_NOTHING}}, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
+5. If [=this=] has no video track, return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
+6. If [=this=]'s {{HTMLVideoElement/disablePictureInPicture}} is true, user agent may return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
+7. If |doc|'s [=Picture-in-Picture element=] is `null`:
+    1. If [=this=]'s [=relevant global object=] does not have a [=transient activation=], then return [=a
+       promise rejected with=] {{NotAllowedError}} {{DOMException}}.
+    2. [=Consume user activation=] given [=this=]'s [=relevant global object=].
+8. If [=this=] is |doc|'s [=Picture-in-Picture element=]:
+    1. Return [=a promise resolved with=] the [=Picture-in-Picture window=] associated with |doc|'s [=Picture-in-Picture element=].
+9. Let |global| be [=this=]'s [=relevant global object=].
+10. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
+11. Return |p|, and [=enqueue the following steps=] to |doc|'s [=picture-in-picture parallel queue=]:
+    1. If [=this=] is |doc|'s [=Picture-in-Picture element=]:
+        1. [=Queue a global task=] on the [=media element event task source=] given |global| to
+            [=/resolve=] |p| with the [=Picture-in-Picture window=] associated with
+            [=this=].
+        2. Abort these steps.
+    2. Attempt to associate a [=Picture-in-Picture window=] with [=this=].
+    3. If the previous step failed:
+        1. [=Queue a global task=] on the [=media element event task source=] given |global| to
+            [=/reject=] |p| with {{InvalidStateError}} {{DOMException}}.
+        2. Abort these steps.
+    4. Let |pipWindow| be a new instance of {{PictureInPictureWindow}} that represents [=this=]'s associated [=Picture-in-Picture window=].
+    5. [=Queue a global task=] on the [=media element event task source=] given |global|, to perform
+        the following steps:
+        1. If {{pictureInPictureElement}} is not `null`, run the [=exit Picture-in-Picture algorithm=].
+        2. Set |doc|'s [=Picture-in-Picture element=] to [=this=].
+        3. [=list/Append=] [=relevant settings object=]'s [=origin=] to [=initiators of active
+            Picture-in-Picture sessions=].
+        4. If [=this=] is [=fullscreenElement=], [=exit fullscreen=].
+        5. [=Fire an event=] named {{enterpictureinpicture}} using {{PictureInPictureEvent}} at
+            [=this=] with its {{bubbles}} attribute initialized to `true` and its
+            {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
+            [=Picture-in-Picture window=].
+        6. [=/Resolve=] |p| with |pipWindow|.
+
 
 ## Extensions to <code>Document</code> ## {#document-extensions}
 
@@ -382,8 +393,7 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
 
 1. If <a>this</a> is a <a for=/>shadow root</a> and its <a for=DocumentFragment>host</a>
     is not <a>connected</a>, return `null` and abort these steps.
-2. Let |candidate| be the result of <a>retargeting</a> Picture-in-Picture
-    element against <a>this</a>.
+2. Let |candidate| be the result of [=retargeting=] [=Picture-in-Picture element=] against [=this=].
 3. If |candidate| and <a>this</a> are in the same <a>tree</a>,
     return |candidate| and abort these steps.
 4. Return `null`.
@@ -468,8 +478,8 @@ regardless of the <a>browsing context</a>.
 ## Permissions Policy ## {#permissions-policy}
 
 This specification defines a <a>policy-controlled feature</a> named
-`"picture-in-picture"` that controls whether the <a>request Picture-in-Picture
-algorithm</a> may return a {{SecurityError}} and whether
+`"picture-in-picture"` that controls whether [=request Picture-in-Picture=]
+returns a {{SecurityError}} and whether
 {{pictureInPictureEnabled}} is `true` or `false`.
 
 The <a>default allowlist</a> for this feature is `*`.
