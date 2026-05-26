@@ -400,14 +400,14 @@ The {{pictureInPictureElement}} attribute's getter must run these steps:
     return |candidate|.
 5. If [=this=] is a {{Document}} and |candidate|'s [=node document=]
     is [=this=], return |candidate|.
-6. Return `null`.
 
-Note: Step 5 handles the case where |candidate| is not <a>connected</a> to
-<a>this</a>'s <a>tree</a> but its <a>node document</a> is still <a>this</a>.
-For example, an element that was created via {{Document/createElement()}}
-but never inserted into the tree. In that case |candidate| and <a>this</a>
-are not in the same <a>tree</a> (so step 4 does not match), but the element
-still belongs to <a>this</a> Document and is returned to script.
+    Note: This handles the case where |candidate| is not [=connected=] to
+    [=this=]'s [=tree=] but its [=node document=] is still [=this=].
+    For example, an element that was created via {{Document/createElement()}}
+    but never inserted into the tree. In that case |candidate| and [=this=]
+    are not in the same [=tree=] (so step 4 does not match), but the element
+    still belongs to [=this=] Document and is returned to script.
+6. Return `null`.
 
 ## Interface <code>PictureInPictureWindow</code> ## {#interface-picture-in-picture-window}
 
