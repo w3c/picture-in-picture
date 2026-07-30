@@ -461,6 +461,43 @@ The `:picture-in-picture` <a>pseudo-class</a> MUST match the Picture-in-Picture
 element. It is different from the {{pictureInPictureElement}} as it does NOT
 apply to the shadow host chain.
 
+# Accessibility # {#accessibility}
+
+Making Picture-in-Picture accessible is a shared responsibility between the
+<a>user agent</a> and the underlying platform.
+
+The <a>user agent</a> is responsible for the parts of the experience it
+controls. When a <a>user agent</a> presents an affordance to enter
+Picture-in-Picture, that affordance MUST expose its name, role, state, and value
+to platform accessibility APIs and MUST be operable through assistive
+technology. Where the platform supports keyboard input, the affordance MUST be
+keyboard operable.
+
+When the <a>user agent</a> draws controls in the Picture-in-Picture window
+itself, those controls MUST expose their name, role, state, and value to platform
+accessibility APIs and be operable through assistive technology, including by
+keyboard where the platform supports keyboard input. The available controls are
+customized using the [[MediaSession]] API. Because the play and pause control
+reflects the media's playback state, the <a>user agent</a> MUST convey the
+current play or pause state to assistive technology, for example by updating the
+control's accessible name or by exposing its pressed state.
+
+When entering Picture-in-Picture, if the video is presenting captions,
+subtitles, or an accompanying sign-language or other alternative media track,
+the <a>user agent</a> MUST continue to present it in the Picture-in-Picture
+window, unless the platform's Picture-in-Picture surface makes this impossible.
+
+When Picture-in-Picture is exited, focus MUST return to the
+last focused known focused element on the page.
+
+The Picture-in-Picture window itself MAY be provided by the operating system
+rather than the <a>user agent</a>. Where the platform draws the window and its
+controls, the accessibility of that surface, including contrast and keyboard
+operation of system controls, depends on the platform.
+
+Note: [[WCAG22]] defines conformance for web content. The accessibility of the
+<a>user agent</a>'s own user interface is out of scope for this specification.
+
 # Security considerations # {#security-considerations}
 
 <em>This section is non-normative.</em>
