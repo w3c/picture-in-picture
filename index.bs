@@ -250,7 +250,7 @@ Picture-in-Picture window controls that change video playback state (e.g.,
 pause).
 
 ### Unloading steps ### {#unloading-steps}
-As one of the <a>unloading document cleanup steps</a> given |doc| run the following steps:
+The <dfn export>picture in picture unloading steps</dfn>, given {{Document}} |doc| are:
 1. If |doc|'s [=Picture-in-Picture element=] is `null`, return.
 2. Let |window| be the <a>Picture-in-Picture window</a> associated with |doc|'s
     [=Picture-in-Picture element=].
