@@ -221,8 +221,8 @@ Picture-in-Picture window.
 
 ## Exit Picture-in-Picture ## {#exit-pip}
 
-When the <dfn>exit Picture-in-Picture algorithm</dfn> is invoked given |doc|,  and nullable
-{{Promise}} |p|, run these steps:
+When the <dfn>exit Picture-in-Picture algorithm</dfn> is invoked given a {{Document}} |doc| and a
+nullable {{Promise}} |p|, run these steps:
 
 1. [=Assert=] that these steps are running on the [=picture-in-picture parallel queue=].
 2. Let |global| be |doc|'s [=relevant global object=].
@@ -278,10 +278,10 @@ mode or present any UI to do so.
 When the {{disablePictureInPicture}} attribute is added to a |video| element,
 the user agent MAY run these steps:
 
-1. Reject any pending promises returned by the {{requestPictureInPicture()}}
-    method with {{InvalidStateError}}.
-2. If |video| is {{pictureInPictureElement}}, run the <a>exit
-    Picture-in-Picture algorithm</a>.
+1. Let |doc| be |video|'s [=node document=].
+2. If |video| is not |doc|'s [=Picture-in-Picture element=], then return.
+3. [=Enqueue the following steps=] to |doc|'s <a>picture-in-picture parallel queue</a>:
+    1. Run the <a>exit Picture-in-Picture algorithm</a> given |doc| and `null`.
 
 ## Interaction with Fullscreen ## {#fullscreen}
 
