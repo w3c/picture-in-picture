@@ -391,10 +391,12 @@ that disables it or a platform limitation. It is `true` otherwise.
 
 The {{exitPictureInPicture()}} method, when invoked, runs the following steps:
 
-1. If [=this=]'s [=Picture-in-Picture element=] is `null` or [=this=] is not [=fully active=],
-    return [=a promise rejected with=] {{InvalidStateError}} {{DOMException}}.
-2. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
-3. Return |p|, and [=enqueue the following steps=] to [=this=]'s [=picture-in-picture parallel
+1. If [=this=] is not [=fully active=], return [=a promise rejected with=] {{InvalidStateError}}
+    {{DOMException}}.
+2. If [=this=]'s [=Picture-in-Picture element=] is `null`, return [=a promise rejected with=]
+    {{InvalidStateError}} {{DOMException}}.
+3. Let |p| be [=a new promise=] created in [=this=]'s [=relevant realm=].
+4. Return |p|, and [=enqueue the following steps=] to [=this=]'s [=picture-in-picture parallel
     queue=]:
     1. If [=this=]'s [=Picture-in-Picture element=] is `null`:
         1. [=Queue a global task=] on the [=media element event task source=] given [=this=]'s
