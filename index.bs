@@ -400,7 +400,8 @@ The {{exitPictureInPicture()}} method, when invoked, runs the following steps:
     queue=]:
     1. If [=this=]'s [=Picture-in-Picture element=] is `null`:
         1. [=Queue a global task=] on the [=media element event task source=] given [=this=]'s
-            [=relevant global object=] to [=/resolve=] |p| with undefined.
+            [=relevant global object=] to [=/reject=] |p| with an {{InvalidStateError}}
+            {{DOMException}}.
         2. Return.
     2. Run the <a>exit Picture-in-Picture algorithm</a> given [=this=] and |p|.
 
