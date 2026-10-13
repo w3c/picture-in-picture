@@ -230,8 +230,8 @@ nullable {{Promise}} |p|, run these steps:
     |doc|'s [=Picture-in-Picture element=].
 4. [=Queue a global task=] on the [=media element event task source=] given |global|, to perform the
     following steps:
-    1. If |doc| is not [=fully active=] or |doc|'s [=Picture-in-Picture element=] is `null`:
-        1. If |p| is not `null`, [=/resolve=] |p| with undefined.
+    1. If |doc|'s [=Picture-in-Picture element=] is `null`:
+        1. If |p| is not `null`, [=/reject=] |p| with an {{InvalidStateError}} {{DOMException}}.
         2. Return.
     2. Let |element| be |doc|'s [=Picture-in-Picture element=].
     3. Set |doc|'s [=Picture-in-Picture element=] to `null`.
