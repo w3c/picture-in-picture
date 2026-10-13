@@ -239,9 +239,7 @@ nullable {{Promise}} |p|, run these steps:
         |element| with its {{bubbles}} attribute initialized to `true` and its
         {{PictureInPictureEvent/pictureInPictureWindow}} attribute initialized to
         <a>Picture-in-Picture window</a> associated with |element|.
-    5. Remove one <a>item</a> matching <a>relevant settings object</a>'s <a>origin</a> from
-        <a>initiators of active Picture-in-Picture sessions</a>.
-    6. If |p| is not `null`, [=/resolve=] |p| with undefined.
+    5. If |p| is not `null`, [=/resolve=] |p| with undefined.
 
 It is NOT RECOMMENDED that the video playback state changes when the <a>exit
 Picture-in-Picture algorithm</a> is invoked. The website SHOULD be in control
